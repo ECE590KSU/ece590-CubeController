@@ -130,40 +130,6 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Gets the plane indexed by x. This is so you can shift a plane
-		/// much easier than the original source code. There will be
-		/// a counterpart called PatternSetPlane_X. 
-		/// </summary>
-		/// <returns>The plane x.</returns>
-		/// <param name="x">The x axis.</param>
-		internal bool[,] GetPlane_X(int x)
-		{
-			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
-
-			for (int y = 0; y < DIMENSION; ++y) {
-				for (int z = 0; z < DIMENSION; ++z) {
-					tmpplane [y, z] = _cubeState [x, y, z];
-				}
-			}
-
-			return tmpplane;
-		}
-
-		/// <summary>
-		/// Sets the plane indexed by x from a given pattern. 
-		/// </summary>
-		/// <param name="x">The plane x.</param>
-		/// <param name="pattern">The pattern to fill x.</param>
-		internal void PatternSetPlane_X(int x, bool[,] pattern)
-		{
-			for (int y = 0; y < DIMENSION; ++y) {
-				for (int z = 0; z < DIMENSION; ++z) {
-					_cubeState [x, y, z] = pattern [y, z];
-				}
-			}
-		}
-
-		/// <summary>
 		/// Turns on all voxels on the plane indexed by y.
 		/// </summary>
 		/// <param name="y">The y axis.</param>
@@ -192,41 +158,7 @@ namespace CubeController
 				}
 			}
 		}
-
-		/// <summary>
-		/// Gets the plane indexed by y. This is so you can shift a plane
-		/// much easier than the original source code. There will be
-		/// a counterpart called PatternSetPlane_Y. 
-		/// </summary>
-		/// <returns>The plane y.</returns>
-		/// <param name="y">The y axis.</param>
-		internal bool[,] GetPlane_Y(int y)
-		{
-			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
-
-			for (int x = 0; x < DIMENSION; ++x) {
-				for (int z = 0; z < DIMENSION; ++z) {
-					tmpplane [x, z] = _cubeState [x, y, z];
-				}
-			}
-
-			return tmpplane;
-		}
-
-		/// <summary>
-		/// Sets the plane indexed by y from a given pattern. 
-		/// </summary>
-		/// <param name="y">The plane y.</param>
-		/// <param name="pattern">The pattern to fill y.</param>
-		internal void PatternSetPlane_Y(int y, bool[,] pattern)
-		{
-			for (int x = 0; x < DIMENSION; ++x) {
-				for (int z = 0; z < DIMENSION; ++z) {
-					_cubeState [x, y, z] = pattern [x, z];
-				}
-			}
-		}
-
+			
 		/// <summary>
 		/// Turns on all voxels on the plane indexed by z.
 		/// </summary>
@@ -258,19 +190,32 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Gets the plane indexed by z. This is so you can shift a plane
-		/// much easier than the original source code. There will be
-		/// a counterpart called PatternSetPlane_Z. 
+		/// Gets a plane by axis, indexed by i.
 		/// </summary>
-		/// <returns>The plane z.</returns>
-		/// <param name="z">The z axis.</param>
-		internal bool[,] GetPlane_Z(int z)
+		/// <returns>The plane indexed by i on the axis axis.</returns>
+		/// <param name="axis">The axis of the plane.</param>
+		/// <param name="i">The index of the plane.</param>
+		internal bool[,] GetPlane(AXIS axis, int i)
 		{
 			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
 
-			for (int x = 0; x < DIMENSION; ++x) {
+			if (axis == AXIS.AXIS_X) {
 				for (int y = 0; y < DIMENSION; ++y) {
-					tmpplane [x, y] = _cubeState [x, y, z];
+					for (int z = 0; z < DIMENSION; ++z) {
+						tmpplane [y, z] = _cubeState [i, y, z];
+					}
+				}
+			} else if (axis == AXIS.AXIS_Y) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						tmpplane [x, z] = _cubeState [x, i, z];
+					}
+				}
+			} else {	// Otherwise, Z axis.
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						tmpplane [x, y] = _cubeState [x, y, i];
+					}
 				}
 			}
 
@@ -278,15 +223,31 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Sets the plane indexed by z from a given pattern. 
+		/// Sets a plane indexed by i on the axis axis to a
+		/// given pattern.
 		/// </summary>
-		/// <param name="z">The plane z.</param>
-		/// <param name="pattern">The pattern to fill z.</param>
-		internal void PatternSetPlane_Z(int z, bool[,] pattern)
+		/// <param name="axis">The axis to set the plane on.</param>
+		/// <param name="i">The index of the plane.</param>
+		/// <param name="pattern">The pattern to fill the plane with.</param>
+		internal void PatternSetPlane(AXIS axis, int i, bool [,] pattern)
 		{
-			for (int x = 0; x < DIMENSION; ++x) {
+			if (axis == AXIS.AXIS_X) {
 				for (int y = 0; y < DIMENSION; ++y) {
-					_cubeState [x, y, z] = pattern [x, y];
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [i, y, z] = pattern [y, z];
+					}
+				}
+			} else if (axis == AXIS.AXIS_Y) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, i, z] = pattern [x, z];
+					}
+				}
+			} else {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						_cubeState [x, y, i] = pattern [x, y];
+					}
 				}
 			}
 		}
@@ -309,72 +270,25 @@ namespace CubeController
 		{
 			bool[,] tmpplane;
 
-			// SHIFTING THE X AXIS.
-			if (axis == AXIS.AXIS_X) {
 				if (direction == DIRECTION.FORWARD) {
 					// Save the last plane so that it may be rotated through as element 0. 
-					tmpplane = GetPlane_X (DIMENSION - 1);
+					tmpplane = GetPlane (axis, DIMENSION - 1);
 					for (int i = DIMENSION - 1; i > 0; --i) {
 						// Set the ith plane to the plane before it.
-						PatternSetPlane_X (i, GetPlane_X (i-1));
+						PatternSetPlane (axis, i, GetPlane(axis, i-1));
 					}
 					// Rotate the last plane through to the first element.
-					PatternSetPlane_X (0, tmpplane);
+					PatternSetPlane (axis, 0, tmpplane);
 				} else {
 					// Save the first plane so it will rotate through as last element.
-					tmpplane = GetPlane_X (0);
+					tmpplane = GetPlane (axis, 0);
 					for (int i = 0; i < DIMENSION - 1; ++i) {
 						// Set the i plane to the plane after it. 
-						PatternSetPlane_X (i, GetPlane_X (i+1));
+						PatternSetPlane (axis, i, GetPlane (axis, i+1));
 					}
 					// Rotate the first plane through as the last element. 
-					PatternSetPlane_X (DIMENSION - 1, tmpplane);
+					PatternSetPlane (axis, DIMENSION - 1, tmpplane);
 				}
-
-			// SHIFTING THE Y AXIS
-			} else if (axis == AXIS.AXIS_Y) {
-				if (direction == DIRECTION.FORWARD) {
-					// Save the last plane so that it may be rotated through as element 0. 
-					tmpplane = GetPlane_Y (DIMENSION - 1);
-					for (int i = DIMENSION - 1; i > 0; --i) {
-						// Set the ith plane to the plane before it.
-						PatternSetPlane_Y (i, GetPlane_Y (i-1));
-					}
-					// Rotate the last plane through to the first element.
-					PatternSetPlane_Y (0, tmpplane);
-				} else {
-					// Save the first plane so it will rotate through as last element.
-					tmpplane = GetPlane_Y (0);
-					for (int i = 0; i < DIMENSION - 1; ++i) {
-						// Set the i plane to the plane after it. 
-						PatternSetPlane_Y (i, GetPlane_Y (i+1));
-					}
-					// Rotate the first plane through as the last element. 
-					PatternSetPlane_Y (DIMENSION - 1, tmpplane);
-				}
-
-			// SHIFTING THE Z AXIS.
-			} else {
-				if (direction == DIRECTION.FORWARD) {
-					// Save the last plane so that it may be rotated through as element 0. 
-					tmpplane = GetPlane_Z (DIMENSION - 1);
-					for (int i = DIMENSION - 1; i > 0; --i) {
-						// Set the ith plane to the plane before it.
-						PatternSetPlane_Z (i, GetPlane_Z (i-1));
-					}
-					// Rotate the last plane through to the first element.
-					PatternSetPlane_Z (0, tmpplane);
-				} else {
-					// Save the first plane so it will rotate through as last element.
-					tmpplane = GetPlane_Z (0);
-					for (int i = 0; i < DIMENSION - 1; ++i) {
-						// Set the i plane to the plane after it. 
-						PatternSetPlane_Z (i, GetPlane_Z (i+1));
-					}
-					// Rotate the first plane through as the last element. 
-					PatternSetPlane_Z (DIMENSION - 1, tmpplane);
-				}
-			}
 		}
 
 		#endregion
