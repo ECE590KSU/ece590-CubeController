@@ -8,8 +8,6 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-
-			cube.SetPlane_Z (0);
 		}
 	}
 }

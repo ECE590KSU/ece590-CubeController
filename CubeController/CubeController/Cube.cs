@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Dynamic;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Security.Policy;
 
 namespace CubeController
 {
@@ -95,10 +97,70 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Sets the plane z.
+		/// Sets the plane indexed by x.
+		/// </summary>
+		/// <param name="x">The x axis.</param>
+		internal void SetPlane_X(int x)
+		{
+			if (x >= 0 && x < DIMENSION) {
+				for (int y = 0; y < DIMENSION; ++y) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, y, z] = true;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Clears the plane indexed by x.
+		/// </summary>
+		/// <param name="x">The x axis.</param>
+		internal void ClearPlane_X(int x)
+		{
+			if (x >= 0 && x < DIMENSION) {
+				for (int y = 0; y < DIMENSION; ++y) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, y, z] = false;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Sets the plane indexed by y.
+		/// </summary>
+		/// <param name="y">The y axis.</param>
+		internal void SetPlane_Y(int y)
+		{
+			if (y >= 0 && y < DIMENSION) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, y, z] = true;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Clears the plane y.
+		/// </summary>
+		/// <param name="y">The y axis.</param>
+		internal void ClearPlane_Y(int y)
+		{
+			if (y >= 0 && y < DIMENSION) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, y, z] = false;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Sets the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		public void SetPlane_Z(int z)
+		internal void SetPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -110,10 +172,10 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Clears the plane z.
+		/// Clears the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		public void ClearPlane_Z(int z)
+		internal void ClearPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
