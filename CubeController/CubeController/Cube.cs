@@ -13,8 +13,8 @@ namespace CubeController
 		private bool[,,] _cubeState;
 		private const int DIMENSION = 8;
 
-		private enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
-		private enum DIRECTION { UP, DOWN };
+		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
+		public enum DIRECTION { FORWARD, REVERSE };
 
 		public Cube ()
 		{
@@ -41,8 +41,7 @@ namespace CubeController
 			    && (y >= 0 && y < DIMENSION)
 			    && (z >= 0 && z < DIMENSION)) {
 				return true;
-			} 
-			else {
+			} else {
 				return false;
 			}
 		}
@@ -84,8 +83,7 @@ namespace CubeController
 		{
 			if (!InRange (x, y, z)) {
 				return false;
-			} 
-			else {
+			} else {
 				return _cubeState [x, y, z];
 			}
 		}
@@ -102,10 +100,10 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Sets the plane indexed by x.
+		/// Turns on all the voxels on the plane indexed by x.
 		/// </summary>
 		/// <param name="x">The x axis.</param>
-		internal void SetPlane_X(int x)
+		public void SetPlane_X(int x)
 		{
 			if (x >= 0 && x < DIMENSION) {
 				for (int y = 0; y < DIMENSION; ++y) {
@@ -156,7 +154,7 @@ namespace CubeController
 		/// </summary>
 		/// <param name="x">The plane x.</param>
 		/// <param name="pattern">The pattern to fill x.</param>
-		internal void PatternSetPlane_X(int x, ref bool[,] pattern)
+		internal void PatternSetPlane_X(int x, bool[,] pattern)
 		{
 			for (int y = 0; y < DIMENSION; ++y) {
 				for (int z = 0; z < DIMENSION; ++z) {
@@ -166,10 +164,10 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Sets the plane indexed by y.
+		/// Turns on all voxels on the plane indexed by y.
 		/// </summary>
 		/// <param name="y">The y axis.</param>
-		internal void SetPlane_Y(int y)
+		public void SetPlane_Y(int y)
 		{
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -220,7 +218,7 @@ namespace CubeController
 		/// </summary>
 		/// <param name="y">The plane y.</param>
 		/// <param name="pattern">The pattern to fill y.</param>
-		internal void PatternSetPlane_Y(int y, ref bool[,] pattern)
+		internal void PatternSetPlane_Y(int y, bool[,] pattern)
 		{
 			for (int x = 0; x < DIMENSION; ++x) {
 				for (int z = 0; z < DIMENSION; ++z) {
@@ -230,10 +228,10 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Sets the plane indexed by z.
+		/// Turns on all voxels on the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		internal void SetPlane_Z(int z)
+		public void SetPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -284,7 +282,7 @@ namespace CubeController
 		/// </summary>
 		/// <param name="z">The plane z.</param>
 		/// <param name="pattern">The pattern to fill z.</param>
-		internal void PatternSetPlane_Z(int z, ref bool[,] pattern)
+		internal void PatternSetPlane_Z(int z, bool[,] pattern)
 		{
 			for (int x = 0; x < DIMENSION; ++x) {
 				for (int y = 0; y < DIMENSION; ++y) {
@@ -307,9 +305,76 @@ namespace CubeController
 		/// </summary>
 		/// <param name="axis">Axis.</param>
 		/// <param name="direction">Direction.</param>
-		private void Shift(AXIS axis, DIRECTION direction)
+		public void Shift(AXIS axis, DIRECTION direction)
 		{
+			bool[,] tmpplane;
 
+			// SHIFTING THE X AXIS.
+			if (axis == AXIS.AXIS_X) {
+				if (direction == DIRECTION.FORWARD) {
+					// Save the last plane so that it may be rotated through as element 0. 
+					tmpplane = GetPlane_X (DIMENSION - 1);
+					for (int i = DIMENSION - 1; i > 0; --i) {
+						// Set the ith plane to the plane before it.
+						PatternSetPlane_X (i, GetPlane_X (i-1));
+					}
+					// Rotate the last plane through to the first element.
+					PatternSetPlane_X (0, tmpplane);
+				} else {
+					// Save the first plane so it will rotate through as last element.
+					tmpplane = GetPlane_X (0);
+					for (int i = 0; i < DIMENSION - 1; ++i) {
+						// Set the i plane to the plane after it. 
+						PatternSetPlane_X (i, GetPlane_X (i+1));
+					}
+					// Rotate the first plane through as the last element. 
+					PatternSetPlane_X (DIMENSION - 1, tmpplane);
+				}
+
+			// SHIFTING THE Y AXIS
+			} else if (axis == AXIS.AXIS_Y) {
+				if (direction == DIRECTION.FORWARD) {
+					// Save the last plane so that it may be rotated through as element 0. 
+					tmpplane = GetPlane_Y (DIMENSION - 1);
+					for (int i = DIMENSION - 1; i > 0; --i) {
+						// Set the ith plane to the plane before it.
+						PatternSetPlane_Y (i, GetPlane_Y (i-1));
+					}
+					// Rotate the last plane through to the first element.
+					PatternSetPlane_Y (0, tmpplane);
+				} else {
+					// Save the first plane so it will rotate through as last element.
+					tmpplane = GetPlane_Y (0);
+					for (int i = 0; i < DIMENSION - 1; ++i) {
+						// Set the i plane to the plane after it. 
+						PatternSetPlane_Y (i, GetPlane_Y (i+1));
+					}
+					// Rotate the first plane through as the last element. 
+					PatternSetPlane_Y (DIMENSION - 1, tmpplane);
+				}
+
+			// SHIFTING THE Z AXIS.
+			} else {
+				if (direction == DIRECTION.FORWARD) {
+					// Save the last plane so that it may be rotated through as element 0. 
+					tmpplane = GetPlane_Z (DIMENSION - 1);
+					for (int i = DIMENSION - 1; i > 0; --i) {
+						// Set the ith plane to the plane before it.
+						PatternSetPlane_Z (i, GetPlane_Z (i-1));
+					}
+					// Rotate the last plane through to the first element.
+					PatternSetPlane_Z (0, tmpplane);
+				} else {
+					// Save the first plane so it will rotate through as last element.
+					tmpplane = GetPlane_Z (0);
+					for (int i = 0; i < DIMENSION - 1; ++i) {
+						// Set the i plane to the plane after it. 
+						PatternSetPlane_Z (i, GetPlane_Z (i+1));
+					}
+					// Rotate the first plane through as the last element. 
+					PatternSetPlane_Z (DIMENSION - 1, tmpplane);
+				}
+			}
 		}
 
 		#endregion
