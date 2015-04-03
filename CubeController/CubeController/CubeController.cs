@@ -66,6 +66,33 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Gets the voxel.
+		/// </summary>
+		/// <returns><c>true</c>, if voxel was set, <c>false</c> otherwise.</returns>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="z">The z coordinate.</param>
+		private bool GetVoxel(int x, int y, int z)
+		{
+			if (!InRange (x, y, z)) {
+				return false;
+			} 
+			else {
+				return _cubeState [x] [y] [z];
+			}
+		}
+
+		/// <summary>
+		/// Performs logical NOT on voxel value. 
+		/// </summary>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="z">The z coordinate.</param>
+		private void SwapVoxel(int x, int y, int z)
+		{
+			_cubeState [x][y][z] = !_cubeState[x][y][z];
+		}
 
 
 		#endregion
