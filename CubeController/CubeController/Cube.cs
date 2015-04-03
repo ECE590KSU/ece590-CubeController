@@ -97,13 +97,28 @@ namespace CubeController
 		/// <summary>
 		/// Sets the plane z.
 		/// </summary>
-		/// <param name="z">The z coordinate.</param>
+		/// <param name="z">The z axis.</param>
 		public void SetPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
 						_cubeState [x, y, z] = true;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Clears the plane z.
+		/// </summary>
+		/// <param name="z">The z axis.</param>
+		public void ClearPlane_Z(int z)
+		{
+			if (z >= 0 && z < DIMENSION) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						_cubeState [x, y, z] = false;
 					}
 				}
 			}

@@ -1,2 +1,4 @@
 #MonoDevelop
 *.userprefs
+*.dll
+*.dll.mdb
