@@ -53,6 +53,21 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Clears the voxel.
+		/// </summary>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="z">The z coordinate.</param>
+		private void ClearVoxel(int x, int y, int z)
+		{
+			if (InRange (x, y, z)) {
+				_cubeState [x] [y] [z] = false;
+			}
+		}
+
+
+
 		#endregion
 
 
