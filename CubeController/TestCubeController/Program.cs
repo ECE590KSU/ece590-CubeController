@@ -7,7 +7,9 @@ namespace TestCubeController
 	{
 		public static void Main (string[] args)
 		{
-			CubeController cube = new CubeController ();
+			Cube cube = new Cube ();
+
+			cube.SetPlane_Z (0);
 		}
 	}
 }

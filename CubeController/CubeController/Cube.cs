@@ -4,17 +4,17 @@ using System.Runtime.InteropServices;
 
 namespace CubeController
 {
-	public class CubeController
+	public class Cube
 	{
-		private bool[][][] _cubeState;
+		private bool[,,] _cubeState;
 		private const int DIMENSION = 8;
 
-		public CubeController ()
+		public Cube ()
 		{
-			_cubeState = new bool[DIMENSION][DIMENSION][DIMENSION];
+			_cubeState = new bool[DIMENSION,DIMENSION,DIMENSION];
 		}
 
-		internal bool[][][] GetCubeState()
+		public bool[,,] GetCubeState()
 		{
 			return _cubeState;
 		}
@@ -46,10 +46,10 @@ namespace CubeController
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="z">The z coordinate.</param>
-		private void SetVoxel(int x, int y, int z)
+		public void SetVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x] [y] [z] = true;
+				_cubeState [x, y, z] = true;
 			}
 		}
 
@@ -59,10 +59,10 @@ namespace CubeController
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="z">The z coordinate.</param>
-		private void ClearVoxel(int x, int y, int z)
+		public void ClearVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x] [y] [z] = false;
+				_cubeState [x, y, z] = false;
 			}
 		}
 
@@ -73,13 +73,13 @@ namespace CubeController
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="z">The z coordinate.</param>
-		private bool GetVoxel(int x, int y, int z)
+		public bool GetVoxel(int x, int y, int z)
 		{
 			if (!InRange (x, y, z)) {
 				return false;
 			} 
 			else {
-				return _cubeState [x] [y] [z];
+				return _cubeState [x, y, z];
 			}
 		}
 
@@ -89,11 +89,25 @@ namespace CubeController
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
 		/// <param name="z">The z coordinate.</param>
-		private void SwapVoxel(int x, int y, int z)
+		public void SwapVoxel(int x, int y, int z)
 		{
-			_cubeState [x][y][z] = !_cubeState[x][y][z];
+			_cubeState [x, y, z] = !_cubeState [x, y, z];
 		}
 
+		/// <summary>
+		/// Sets the plane z.
+		/// </summary>
+		/// <param name="z">The z coordinate.</param>
+		public void SetPlane_Z(int z)
+		{
+			if (z >= 0 && z < DIMENSION) {
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						_cubeState [x, y, z] = true;
+					}
+				}
+			}
+		}
 
 		#endregion
 
