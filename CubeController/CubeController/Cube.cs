@@ -103,7 +103,7 @@ namespace CubeController
 		/// Turns on all the voxels on the plane indexed by x.
 		/// </summary>
 		/// <param name="x">The x axis.</param>
-		public void SetPlane_X(int x)
+		internal void SetPlane_X(int x)
 		{
 			if (x >= 0 && x < DIMENSION) {
 				for (int y = 0; y < DIMENSION; ++y) {
@@ -167,7 +167,7 @@ namespace CubeController
 		/// Turns on all voxels on the plane indexed by y.
 		/// </summary>
 		/// <param name="y">The y axis.</param>
-		public void SetPlane_Y(int y)
+		internal void SetPlane_Y(int y)
 		{
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -231,7 +231,7 @@ namespace CubeController
 		/// Turns on all voxels on the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		public void SetPlane_Z(int z)
+		internal void SetPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -305,7 +305,7 @@ namespace CubeController
 		/// </summary>
 		/// <param name="axis">Axis.</param>
 		/// <param name="direction">Direction.</param>
-		public void Shift(AXIS axis, DIRECTION direction)
+		internal void Shift(AXIS axis, DIRECTION direction)
 		{
 			bool[,] tmpplane;
 
