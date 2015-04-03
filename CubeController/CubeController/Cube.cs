@@ -199,24 +199,34 @@ namespace CubeController
 		{
 			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
 
-			if (axis == AXIS.AXIS_X) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [y, z] = _cubeState [i, y, z];
-					}
-				}
-			} else if (axis == AXIS.AXIS_Y) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x, z] = _cubeState [x, i, z];
-					}
-				}
-			} else {	// Otherwise, Z axis.
-				for (int x = 0; x < DIMENSION; ++x) {
+			switch (axis)
+			{
+				case AXIS.AXIS_X: 
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x, y] = _cubeState [x, y, i];
+						for (int z = 0; z < DIMENSION; ++z) {
+							tmpplane [y, z] = _cubeState [i, y, z];
+						}
 					}
-				}
+					break;
+
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							tmpplane [x, z] = _cubeState [x, i, z];
+						}
+					}
+					break;
+
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							tmpplane [x, y] = _cubeState [x, y, i];
+						}
+					}
+					break;
+
+				default:
+					break;
 			}
 
 			return tmpplane;
@@ -231,25 +241,34 @@ namespace CubeController
 		/// <param name="pattern">The pattern to fill the plane with.</param>
 		internal void PatternSetPlane(AXIS axis, int i, bool [,] pattern)
 		{
-			if (axis == AXIS.AXIS_X) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [i, y, z] = pattern [y, z];
-					}
-				}
-			} else if (axis == AXIS.AXIS_Y) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, i, z] = pattern [x, z];
-					}
-				}
-			} else {
-				for (int x = 0; x < DIMENSION; ++x) {
+			switch (axis)
+			{
+				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x, y, i] = pattern [x, y];
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [i, y, z] = pattern [y, z];
+						}
 					}
-				}
+					break;
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [x, i, z] = pattern [x, z];
+						}
+					}
+					break;
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							_cubeState [x, y, i] = pattern [x, y];
+						}
+					}
+					break;
+
+				default:
+					break;
 			}
+
 		}
 
 		/// <summary>
