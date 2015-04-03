@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading;
 using System.Security.Policy;
 
 namespace CubeController
@@ -10,6 +11,9 @@ namespace CubeController
 	{
 		private bool[,,] _cubeState;
 		private const int DIMENSION = 8;
+
+		private enum AXES { AXIS_X, AXIS_Y, AXIS_Z };
+		private enum DIRECTION { UP, DOWN };
 
 		public Cube ()
 		{
@@ -184,6 +188,25 @@ namespace CubeController
 					}
 				}
 			}
+		}
+
+		/// <summary>
+		/// Delays the drawing buffer from updating for x milliseconds.
+		/// </summary>
+		/// <param name="x">The number of milliseconds to sleep.</param>
+		private void DelayMS(int x)
+		{
+			Thread.Sleep (x);
+		}
+
+		/// <summary>
+		/// Shift the specified axis in the specified direction.
+		/// </summary>
+		/// <param name="axis">Axis.</param>
+		/// <param name="direction">Direction.</param>
+		private void Shift(AXES axis, DIRECTION direction)
+		{
+
 		}
 
 		#endregion
