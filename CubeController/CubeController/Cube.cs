@@ -30,7 +30,7 @@ namespace CubeController
 
 		/// <summary>
 		/// Determines if the specified coordinates are in range
-		/// of the cube dimensions. 
+		/// of the cube dimensions.
 		/// </summary>
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
@@ -89,7 +89,7 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Performs logical NOT on voxel value. 
+		/// Performs logical NOT on voxel value.
 		/// </summary>
 		/// <param name="x">The x coordinate.</param>
 		/// <param name="y">The y coordinate.</param>
@@ -158,7 +158,7 @@ namespace CubeController
 				}
 			}
 		}
-			
+
 		/// <summary>
 		/// Turns on all voxels on the plane indexed by z.
 		/// </summary>
@@ -190,83 +190,81 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Gets a plane by axis, indexed by i.
+		/// Gets a plane by axis, indexed by pl.
 		/// </summary>
-		/// <returns>The plane indexed by i on the axis axis.</returns>
+		/// <returns>The plane indexed by pl on the axis axis.</returns>
 		/// <param name="axis">The axis of the plane.</param>
-		/// <param name="i">The index of the plane.</param>
-		internal bool[,] GetPlane(AXIS axis, int i)
+		/// <param name="pl">The index of the plane.</param>
+		public bool[,] GetPlane(AXIS axis, int pl)
 		{
 			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
 
-			switch (axis)
-			{
-				case AXIS.AXIS_X: 
+			switch (axis) {
+			case AXIS.AXIS_X:
+				for (int y = 0; y < DIMENSION; ++y) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						tmpplane [y, z] = _cubeState [pl, y, z];
+					}
+				}
+				break;
+
+			case AXIS.AXIS_Y:
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						tmpplane [x, z] = _cubeState [x, pl, z];
+					}
+				}
+				break;
+
+			case AXIS.AXIS_Z:
+				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						for (int z = 0; z < DIMENSION; ++z) {
-							tmpplane [y, z] = _cubeState [i, y, z];
-						}
+						tmpplane [x, y] = _cubeState [x, y, pl];
 					}
-					break;
+				}
+				break;
 
-				case AXIS.AXIS_Y:
-					for (int x = 0; x < DIMENSION; ++x) {
-						for (int z = 0; z < DIMENSION; ++z) {
-							tmpplane [x, z] = _cubeState [x, i, z];
-						}
-					}
-					break;
-
-				case AXIS.AXIS_Z:
-					for (int x = 0; x < DIMENSION; ++x) {
-						for (int y = 0; y < DIMENSION; ++y) {
-							tmpplane [x, y] = _cubeState [x, y, i];
-						}
-					}
-					break;
-
-				default:
-					break;
+			default:
+				break;
 			}
 
 			return tmpplane;
 		}
 
 		/// <summary>
-		/// Sets a plane indexed by i on the axis axis to a
+		/// Sets a plane indexed by pl on the axis axis to a
 		/// given pattern.
 		/// </summary>
 		/// <param name="axis">The axis to set the plane on.</param>
-		/// <param name="i">The index of the plane.</param>
+		/// <param name="pl">The index of the plane.</param>
 		/// <param name="pattern">The pattern to fill the plane with.</param>
-		internal void PatternSetPlane(AXIS axis, int i, bool [,] pattern)
+		public void PatternSetPlane(AXIS axis, int pl, bool [,] pattern)
 		{
-			switch (axis)
-			{
-				case AXIS.AXIS_X:
+			switch (axis) {
+			case AXIS.AXIS_X:
+				for (int y = 0; y < DIMENSION; ++y) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [pl, y, z] = pattern [y, z];
+					}
+				}
+				break;
+			case AXIS.AXIS_Y:
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int z = 0; z < DIMENSION; ++z) {
+						_cubeState [x, pl, z] = pattern [x, z];
+					}
+				}
+				break;
+			case AXIS.AXIS_Z:
+				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [i, y, z] = pattern [y, z];
-						}
+						_cubeState [x, y, pl] = pattern [x, y];
 					}
-					break;
-				case AXIS.AXIS_Y:
-					for (int x = 0; x < DIMENSION; ++x) {
-						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [x, i, z] = pattern [x, z];
-						}
-					}
-					break;
-				case AXIS.AXIS_Z:
-					for (int x = 0; x < DIMENSION; ++x) {
-						for (int y = 0; y < DIMENSION; ++y) {
-							_cubeState [x, y, i] = pattern [x, y];
-						}
-					}
-					break;
+				}
+				break;
 
-				default:
-					break;
+			default:
+				break;
 			}
 
 		}
@@ -285,12 +283,12 @@ namespace CubeController
 		/// </summary>
 		/// <param name="axis">Axis.</param>
 		/// <param name="direction">Direction.</param>
-		internal void Shift(AXIS axis, DIRECTION direction)
+		public void Shift(AXIS axis, DIRECTION direction)
 		{
 			bool[,] tmpplane;
 
 				if (direction == DIRECTION.FORWARD) {
-					// Save the last plane so that it may be rotated through as element 0. 
+					// Save the last plane so that it may be rotated through as element 0.
 					tmpplane = GetPlane (axis, DIMENSION - 1);
 					for (int i = DIMENSION - 1; i > 0; --i) {
 						// Set the ith plane to the plane before it.
@@ -302,12 +300,64 @@ namespace CubeController
 					// Save the first plane so it will rotate through as last element.
 					tmpplane = GetPlane (axis, 0);
 					for (int i = 0; i < DIMENSION - 1; ++i) {
-						// Set the i plane to the plane after it. 
+						// Set the i plane to the plane after it.
 						PatternSetPlane (axis, i, GetPlane (axis, i+1));
 					}
-					// Rotate the first plane through as the last element. 
+					// Rotate the first plane through as the last element.
 					PatternSetPlane (axis, DIMENSION - 1, tmpplane);
 				}
+		}
+
+		/// <summary>
+		/// Rotates the plane.
+		/// 
+		/// Rotate by +90:
+		/// 	Transpose matrix.
+		/// 	Reverse rows.
+		///
+		/// Rotate by +180:
+		/// 	Reverse each row, then each column. 
+		/// 
+		/// Rotate by +270:
+		/// 	Transpose matrix.
+		/// 	Reverse columns.
+		/// 
+		/// See: http://stackoverflow.com/a/8664879
+		/// </summary>
+		/// <returns>The plane.</returns>
+		/// <param name="axis">Axis.</param>
+		/// <param name="pl">Pl.</param>
+		/// <param name="theta">Theta.</param>
+		internal bool[,] RotatePlane(AXIS axis, int pl, int theta)
+		{
+			// Acquire the plane on the axis you intend to rotate. 
+			bool[,] plane = GetPlane (axis, pl);
+
+			switch (theta) {
+			case 90:
+				Transpose2D (ref plane);
+				foreach (bool[] row in plane) {
+					Array.Reverse (row);
+				}
+				break;
+			case 180:
+				break;
+			case 270:
+				break;
+			default:
+				break;
+			}
+		}
+
+		private void Transpose2D(ref bool[,] mtx)
+		{
+			for (int i = 1; i < DIMENSION; ++i) {
+				for (int j = 0; j < DIMENSION; ++j) {
+					bool temp = mtx [i, j];
+					mtx [i, j] = mtx [j, i];
+					mtx [j, i] = temp;
+				}
+			}
 		}
 
 		#endregion
