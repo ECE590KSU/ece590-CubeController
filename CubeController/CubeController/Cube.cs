@@ -320,25 +320,25 @@ namespace CubeController
 		{
 			bool[][] tmpplane;
 
-				if (direction == DIRECTION.FORWARD) {
-					// Save the last plane so that it may be rotated through as element 0.
-					tmpplane = GetPlane (axis, DIMENSION - 1);
-					for (int i = DIMENSION - 1; i > 0; --i) {
-						// Set the ith plane to the plane before it.
-						PatternSetPlane (axis, i, GetPlane(axis, i-1));
-					}
-					// Rotate the last plane through to the first element.
-					PatternSetPlane (axis, 0, tmpplane);
-				} else {
-					// Save the first plane so it will rotate through as last element.
-					tmpplane = GetPlane (axis, 0);
-					for (int i = 0; i < DIMENSION - 1; ++i) {
-						// Set the ith plane to the plane after it.
-						PatternSetPlane (axis, i, GetPlane (axis, i+1));
-					}
-					// Rotate the first plane through as the last element.
-					PatternSetPlane (axis, DIMENSION - 1, tmpplane);
+			if (direction == DIRECTION.FORWARD) {
+				// Save the last plane so that it may be rotated through as element 0.
+				tmpplane = GetPlane (axis, DIMENSION - 1);
+				for (int i = DIMENSION - 1; i > 0; --i) {
+					// Set the ith plane to the plane before it.
+					PatternSetPlane (axis, i, GetPlane(axis, i-1));
 				}
+				// Rotate the last plane through to the first element.
+				PatternSetPlane (axis, 0, tmpplane);
+			} else {
+				// Save the first plane so it will rotate through as last element.
+				tmpplane = GetPlane (axis, 0);
+				for (int i = 0; i < DIMENSION - 1; ++i) {
+					// Set the ith plane to the plane after it.
+					PatternSetPlane (axis, i, GetPlane (axis, i+1));
+				}
+				// Rotate the first plane through as the last element.
+				PatternSetPlane (axis, DIMENSION - 1, tmpplane);
+			}
 		}
 
 		/// <summary>
@@ -398,7 +398,7 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Transposes a 2D matrix.
+		/// Transposes a 2D square matrix.
 		/// </summary>
 		/// <param name="mtx">Matrix to transpose.</param>
 		private void Transpose2D(ref bool[][] mtx)
@@ -441,6 +441,9 @@ namespace CubeController
 
 		/// <summary>
 		/// Draws a line across the cube.
+		/// 
+		/// Line segment equations between two points:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
 		/// </summary>
 		/// <param name="x1">The first x coordinate.</param>
 		/// <param name="y1">The first y coordinate.</param>
@@ -448,9 +451,27 @@ namespace CubeController
 		/// <param name="x2">The second x coordinate.</param>
 		/// <param name="y2">The second y coordinate.</param>
 		/// <param name="z2">The second z coordinate.</param>
-		internal void DrawLine(int x1, int y1, int z1, int x2, int y2, int z2)
+		public void DrawLine(int x1, int y1, int z1, int x2, int y2, int z2)
 		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
 
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (x1) + (t * x2));
+				y = (int)((1 - t) * (y1) + (t * y2));
+				z = (int)((1 - t) * (z1) + (t * z2));
+				SetVoxel (x, y, z);
+				t += delta_t;
+			}
 		}
 
 		#endregion
