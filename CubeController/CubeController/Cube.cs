@@ -3,14 +3,13 @@ using System.Dynamic;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
-using System.Security.Policy;
-using System.Security.Cryptography.X509Certificates;
+using System.Collections.Generic;
 
 namespace CubeController
 {
 	public class Cube
 	{
-		private bool[,,] _cubeState;
+		private bool[][][] _cubeState;
 		private const int DIMENSION = 8;
 
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
@@ -18,10 +17,16 @@ namespace CubeController
 
 		public Cube ()
 		{
-			_cubeState = new bool[DIMENSION,DIMENSION,DIMENSION];
+			_cubeState = new bool[DIMENSION][][];
+			for (int i = 0; i < DIMENSION; ++i) {
+				_cubeState[i] = new bool[DIMENSION][];
+				for (int j = 0; j < DIMENSION; ++j) {
+					_cubeState [i] [j] = new bool[DIMENSION];
+				}
+			}
 		}
 
-		public bool[,,] GetCubeState()
+		public bool[][][] GetCubeState()
 		{
 			return _cubeState;
 		}
@@ -55,7 +60,7 @@ namespace CubeController
 		public void SetVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x, y, z] = true;
+				_cubeState [x] [y] [z] = true;
 			}
 		}
 
@@ -68,7 +73,7 @@ namespace CubeController
 		public void ClearVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x, y, z] = false;
+				_cubeState [x] [y] [z] = false;
 			}
 		}
 
@@ -84,7 +89,7 @@ namespace CubeController
 			if (!InRange (x, y, z)) {
 				return false;
 			} else {
-				return _cubeState [x, y, z];
+				return _cubeState [x] [y] [z];
 			}
 		}
 
@@ -96,19 +101,19 @@ namespace CubeController
 		/// <param name="z">The z coordinate.</param>
 		public void SwapVoxel(int x, int y, int z)
 		{
-			_cubeState [x, y, z] = !_cubeState [x, y, z];
+			_cubeState [x] [y] [z] = !_cubeState [x] [y] [z];
 		}
 
 		/// <summary>
 		/// Turns on all the voxels on the plane indexed by x.
 		/// </summary>
 		/// <param name="x">The x axis.</param>
-		internal void SetPlane_X(int x)
+		public void SetPlane_X(int x)
 		{
 			if (x >= 0 && x < DIMENSION) {
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, y, z] = true;
+						_cubeState [x] [y] [z] = true;
 					}
 				}
 			}
@@ -123,7 +128,7 @@ namespace CubeController
 			if (x >= 0 && x < DIMENSION) {
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, y, z] = false;
+						_cubeState [x] [y] [z] = false;
 					}
 				}
 			}
@@ -138,7 +143,7 @@ namespace CubeController
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, y, z] = true;
+						_cubeState [x] [y] [z] = true;
 					}
 				}
 			}
@@ -153,7 +158,7 @@ namespace CubeController
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, y, z] = false;
+						_cubeState [x] [y] [z] = false;
 					}
 				}
 			}
@@ -168,7 +173,7 @@ namespace CubeController
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x, y, z] = true;
+						_cubeState [x] [y] [z] = true;
 					}
 				}
 			}
@@ -183,10 +188,25 @@ namespace CubeController
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x, y, z] = false;
+						_cubeState [x] [y] [z] = false;
 					}
 				}
 			}
+		}
+
+		/// <summary>
+		/// Creates the empty plane.
+		/// </summary>
+		/// <returns>The empty plane.</returns>
+		/// <param name="size">Size.</param>
+		private bool[][] NewEmptyPlane(int size)
+		{
+			bool[][] tmpplane = new bool[size][];
+			for (int i = 0; i < size; ++i){
+				tmpplane [i] = new bool[size];
+			}
+
+			return tmpplane;
 		}
 
 		/// <summary>
@@ -195,15 +215,16 @@ namespace CubeController
 		/// <returns>The plane indexed by pl on the axis axis.</returns>
 		/// <param name="axis">The axis of the plane.</param>
 		/// <param name="pl">The index of the plane.</param>
-		public bool[,] GetPlane(AXIS axis, int pl)
+		public bool[][] GetPlane(AXIS axis, int pl)
 		{
-			bool[,] tmpplane = new bool[DIMENSION, DIMENSION];
+			bool[][] tmpplane = NewEmptyPlane(DIMENSION);
 
 			switch (axis) {
+
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [y, z] = _cubeState [pl, y, z];
+						tmpplane [y] [z] = _cubeState [pl] [y] [z];
 					}
 				}
 				break;
@@ -211,7 +232,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x, z] = _cubeState [x, pl, z];
+						tmpplane [x] [z] = _cubeState [x] [pl] [z];
 					}
 				}
 				break;
@@ -219,7 +240,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x, y] = _cubeState [x, y, pl];
+						tmpplane [x] [y] = _cubeState [x] [y] [pl];
 					}
 				}
 				break;
@@ -238,27 +259,30 @@ namespace CubeController
 		/// <param name="axis">The axis to set the plane on.</param>
 		/// <param name="pl">The index of the plane.</param>
 		/// <param name="pattern">The pattern to fill the plane with.</param>
-		public void PatternSetPlane(AXIS axis, int pl, bool [,] pattern)
+		public void PatternSetPlane(AXIS axis, int pl, bool [][] pattern)
 		{
 			switch (axis) {
+
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [pl, y, z] = pattern [y, z];
+						_cubeState [pl] [y] [z] = pattern [y] [z];
 					}
 				}
 				break;
+
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x, pl, z] = pattern [x, z];
+						_cubeState [x] [pl] [z] = pattern [x] [z];
 					}
 				}
 				break;
+
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x, y, pl] = pattern [x, y];
+						_cubeState [x] [y] [pl] = pattern [x] [y];
 					}
 				}
 				break;
@@ -285,7 +309,7 @@ namespace CubeController
 		/// <param name="direction">Direction.</param>
 		public void Shift(AXIS axis, DIRECTION direction)
 		{
-			bool[,] tmpplane;
+			bool[][] tmpplane;
 
 				if (direction == DIRECTION.FORWARD) {
 					// Save the last plane so that it may be rotated through as element 0.
@@ -324,40 +348,73 @@ namespace CubeController
 		/// 
 		/// See: http://stackoverflow.com/a/8664879
 		/// </summary>
-		/// <returns>The plane.</returns>
 		/// <param name="axis">Axis.</param>
 		/// <param name="pl">Pl.</param>
 		/// <param name="theta">Theta.</param>
-		internal bool[,] RotatePlane(AXIS axis, int pl, int theta)
+		public void RotatePlane(AXIS axis, int pl, int theta)
 		{
 			// Acquire the plane on the axis you intend to rotate. 
-			bool[,] plane = GetPlane (axis, pl);
+			bool[][] plane = GetPlane (axis, pl);
 
 			switch (theta) {
+
 			case 90:
 				Transpose2D (ref plane);
+				// Reverse each row of the 'matrix'.
 				foreach (bool[] row in plane) {
 					Array.Reverse (row);
 				}
 				break;
+
 			case 180:
+				Transpose2D (ref plane);
+				// Reverse each row of the 'matrix'. 
+				foreach (bool[] row in plane) {
+					Array.Reverse (row);
+				}
+				ColumnReversal2D (ref plane);
 				break;
+
 			case 270:
+				Transpose2D (ref plane);
+				ColumnReversal2D (ref plane);
 				break;
+
 			default:
 				break;
 			}
+
+			// Write your changes to the cube. 
+			PatternSetPlane (axis, pl, plane);
 		}
 
-		private void Transpose2D(ref bool[,] mtx)
+		/// <summary>
+		/// Transposes a 2D matrix.
+		/// </summary>
+		/// <param name="mtx">Matrix to transpose.</param>
+		private void Transpose2D(ref bool[][] mtx)
 		{
 			for (int i = 1; i < DIMENSION; ++i) {
 				for (int j = 0; j < DIMENSION; ++j) {
-					bool temp = mtx [i, j];
-					mtx [i, j] = mtx [j, i];
-					mtx [j, i] = temp;
+					bool temp = mtx [i] [j];
+					mtx [i] [j] = mtx [j] [i];
+					mtx [j] [i] = temp;
 				}
 			}
+		}
+
+		/// <summary>
+		/// Reverses the columns of a 2D matrix.
+		/// </summary>
+		/// <param name="mtx">Matrix source of columns.</param>
+		private void ColumnReversal2D(ref bool[][] mtx)
+		{
+			List<bool[]> rowList = new List<bool[]> ();
+			foreach (bool[] row in mtx) {
+				rowList.Add (row);
+			}
+			rowList.Reverse ();
+			mtx = rowList.ToArray ();
 		}
 
 		#endregion
