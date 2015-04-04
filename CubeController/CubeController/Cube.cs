@@ -9,14 +9,19 @@ namespace CubeController
 {
 	public class Cube
 	{
-		private bool[][][] _cubeState;
-		private const int DIMENSION = 8;
+		private bool[][][] _cubeState;		// A collection of voxels. 
+		private const int DIMENSION = 8;	// How many voxels per anode column. 
 
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 		public enum DIRECTION { FORWARD, REVERSE };
 
+		/// <summary>
+		/// Initializes a new instance of the Cube class.
+		/// Default public constructor. 
+		/// </summary>
 		public Cube ()
 		{
+			// Allocate space for a NxNxN cube, where N = DIMENSION.
 			_cubeState = new bool[DIMENSION][][];
 			for (int i = 0; i < DIMENSION; ++i) {
 				_cubeState[i] = new bool[DIMENSION][];
@@ -26,6 +31,10 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Gets the state of the cube.
+		/// </summary>
+		/// <returns>The cube state.</returns>
 		public bool[][][] GetCubeState()
 		{
 			return _cubeState;
@@ -324,7 +333,7 @@ namespace CubeController
 					// Save the first plane so it will rotate through as last element.
 					tmpplane = GetPlane (axis, 0);
 					for (int i = 0; i < DIMENSION - 1; ++i) {
-						// Set the i plane to the plane after it.
+						// Set the ith plane to the plane after it.
 						PatternSetPlane (axis, i, GetPlane (axis, i+1));
 					}
 					// Rotate the first plane through as the last element.
@@ -417,6 +426,10 @@ namespace CubeController
 			mtx = rowList.ToArray ();
 		}
 
+		/// <summary>
+		/// Mirrors the cube along a given axis.
+		/// </summary>
+		/// <param name="axis">Axis to mirror across.</param>
 		private void MirrorCubeByAxis(AXIS axis)
 		{
 			// Rotate every plane on the desired axis by 180 degrees.
@@ -424,6 +437,20 @@ namespace CubeController
 			for (int i = 0; i < DIMENSION; ++i) {
 				RotatePlane (axis, i, 180);
 			}
+		}
+
+		/// <summary>
+		/// Draws a line across the cube.
+		/// </summary>
+		/// <param name="x1">The first x coordinate.</param>
+		/// <param name="y1">The first y coordinate.</param>
+		/// <param name="z1">The first z coordinate.</param>
+		/// <param name="x2">The second x coordinate.</param>
+		/// <param name="y2">The second y coordinate.</param>
+		/// <param name="z2">The second z coordinate.</param>
+		internal void DrawLine(int x1, int y1, int z1, int x2, int y2, int z2)
+		{
+
 		}
 
 		#endregion

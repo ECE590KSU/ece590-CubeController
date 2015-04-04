@@ -12,6 +12,7 @@ namespace TestCubeController
 			cube.SetPlane_X (0);
 			cube.ClearVoxel (0, 0, 0);
 			cube.RotatePlane (Cube.AXIS.AXIS_X, 0, 90);
+			cube.Shift (Cube.AXIS.AXIS_X, Cube.DIRECTION.REVERSE);
 		}
 	}
 }
