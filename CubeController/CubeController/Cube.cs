@@ -417,6 +417,15 @@ namespace CubeController
 			mtx = rowList.ToArray ();
 		}
 
+		private void MirrorCubeByAxis(AXIS axis)
+		{
+			// Rotate every plane on the desired axis by 180 degrees.
+			// Should provide a clean mirror. 
+			for (int i = 0; i < DIMENSION; ++i) {
+				RotatePlane (axis, i, 180);
+			}
+		}
+
 		#endregion
 
 
