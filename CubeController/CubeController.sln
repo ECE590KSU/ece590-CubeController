@@ -20,4 +20,7 @@ Global
 		{BF75E4EF-EDAC-4B77-A87D-33A19C1B338D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF75E4EF-EDAC-4B77-A87D-33A19C1B338D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = TestCubeController\TestCubeController.csproj
+	EndGlobalSection
 EndGlobal

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Dynamic;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
@@ -369,18 +368,12 @@ namespace CubeController
 
 			case 90:
 				Transpose2D (ref plane);
-				// Reverse each row of the 'matrix'.
-				foreach (bool[] row in plane) {
-					Array.Reverse (row);
-				}
+				RowReversal2D (ref plane);
 				break;
 
 			case 180:
 				Transpose2D (ref plane);
-				// Reverse each row of the 'matrix'. 
-				foreach (bool[] row in plane) {
-					Array.Reverse (row);
-				}
+				RowReversal2D (ref plane);
 				ColumnReversal2D (ref plane);
 				break;
 
@@ -427,15 +420,29 @@ namespace CubeController
 		}
 
 		/// <summary>
+		/// Reverses the rows of a 2D matrix.
+		/// </summary>
+		/// <param name="mtx">Matrix source of rows.</param>
+		private void RowReversal2D(ref bool[][] mtx)
+		{
+			foreach (bool[] row in mtx) {
+				Array.Reverse (row);
+			}
+		}
+
+		/// <summary>
 		/// Mirrors the cube along a given axis.
 		/// </summary>
 		/// <param name="axis">Axis to mirror across.</param>
-		private void MirrorCubeByAxis(AXIS axis)
+		public void MirrorCubeByAxis(AXIS axis)
 		{
-			// Rotate every plane on the desired axis by 180 degrees.
-			// Should provide a clean mirror. 
+			// Reversing the each row of the matrix is the same as reflecting the
+			// matrix data from left to right. With the specified axis, this should provide
+			// a clean mirror.
 			for (int i = 0; i < DIMENSION; ++i) {
-				RotatePlane (axis, i, 180);
+				bool[][] tmpplane = GetPlane (axis, i);
+				RowReversal2D (ref tmpplane);
+				PatternSetPlane (axis, i, tmpplane);
 			}
 		}
 
