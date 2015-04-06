@@ -133,7 +133,7 @@ namespace CubeController
 		/// Clears the plane indexed by x.
 		/// </summary>
 		/// <param name="x">The x axis.</param>
-		internal void ClearPlane_X(int x)
+		public void ClearPlane_X(int x)
 		{
 			if (x >= 0 && x < DIMENSION) {
 				for (int y = 0; y < DIMENSION; ++y) {
@@ -148,7 +148,7 @@ namespace CubeController
 		/// Turns on all voxels on the plane indexed by y.
 		/// </summary>
 		/// <param name="y">The y axis.</param>
-		internal void SetPlane_Y(int y)
+		public void SetPlane_Y(int y)
 		{
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -163,7 +163,7 @@ namespace CubeController
 		/// Clears the plane y.
 		/// </summary>
 		/// <param name="y">The y axis.</param>
-		internal void ClearPlane_Y(int y)
+		public void ClearPlane_Y(int y)
 		{
 			if (y >= 0 && y < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -178,7 +178,7 @@ namespace CubeController
 		/// Turns on all voxels on the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		internal void SetPlane_Z(int z)
+		public void SetPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {
@@ -193,7 +193,7 @@ namespace CubeController
 		/// Clears the plane indexed by z.
 		/// </summary>
 		/// <param name="z">The z axis.</param>
-		internal void ClearPlane_Z(int z)
+		public void ClearPlane_Z(int z)
 		{
 			if (z >= 0 && z < DIMENSION) {
 				for (int x = 0; x < DIMENSION; ++x) {

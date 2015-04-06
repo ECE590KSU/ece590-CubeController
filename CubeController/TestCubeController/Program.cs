@@ -9,11 +9,6 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-
-			cube.DrawLine (0, 0, 0, 7, 7, 7);
-			RenderCube (cube.GetCubeState ());
-			cube.MirrorCubeByAxis (Cube.AXIS.AXIS_Z);
-			RenderCube (cube.GetCubeState ());
 		}
 
 		public static void RenderCube(bool[][][] cube)
@@ -34,6 +29,23 @@ namespace TestCubeController
 					}
 					Console.WriteLine ("\n");
 				}
+			}
+		}
+
+		public static void AllPlanesClearSet_Test(ref Cube cube)
+		{
+			for (int i = 0; i < 8; ++i) {
+				cube.SetPlane_X (i);
+				cube.SetPlane_Y (i);
+				cube.ClearPlane_Z (i);
+				RenderCube (cube.GetCubeState ());
+			}
+
+			for (int i = 7; i >= 0; --i) {
+				cube.ClearPlane_X (i);
+				cube.ClearPlane_Y (i);
+				cube.SetPlane_Z (i);
+				RenderCube (cube.GetCubeState ());
 			}
 		}
 	}
