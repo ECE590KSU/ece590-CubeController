@@ -14,6 +14,8 @@ namespace CubeController
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 		public enum DIRECTION { FORWARD, REVERSE };
 
+		public int Dimension { get; set; }
+
 		/// <summary>
 		/// Initializes a new instance of the Cube class.
 		/// Default public constructor. 
