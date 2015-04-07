@@ -42,6 +42,15 @@ namespace CubeController
 			return _cubeState;
 		}
 
+		/// <summary>
+		/// Delays the drawing buffer from updating for x milliseconds.
+		/// </summary>
+		/// <param name="x">The number of milliseconds to sleep.</param>
+		private void DelayMS(int x)
+		{
+			Thread.Sleep (x);
+		}
+
 		#region DRAW
 
 		/// <summary>
@@ -206,7 +215,7 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Creates the empty plane.
+		/// Creates an empty plane for use of filling. 
 		/// </summary>
 		/// <returns>The empty plane.</returns>
 		/// <param name="size">Size.</param>
@@ -309,16 +318,7 @@ namespace CubeController
 			}
 
 		}
-
-		/// <summary>
-		/// Delays the drawing buffer from updating for x milliseconds.
-		/// </summary>
-		/// <param name="x">The number of milliseconds to sleep.</param>
-		private void DelayMS(int x)
-		{
-			Thread.Sleep (x);
-		}
-
+			
 		/// <summary>
 		/// Shift the specified axis in the specified direction.
 		/// </summary>
@@ -465,6 +465,18 @@ namespace CubeController
 		}
 
 		/// <summary>
+		/// Rotates the entire cube along an axis.
+		/// </summary>
+		/// <param name="axis">Axis.</param>
+		/// <param name="theta">Angle of rotation</param>
+		public void RotateCubeAlongAxis(AXIS axis, int theta)
+		{
+			for (int i = 0; i < DIMENSION; ++i) {
+				RotatePlane (axis, i, theta);
+			}
+		}
+
+		/// <summary>
 		/// Provides symmetry of the cube along a given axis. 
 		/// You can reflect the axis either from origin or from the terminating
 		/// end. 
@@ -496,9 +508,9 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Draws a line across the cube.
+		/// Draws a line across the cube, in 3D.
 		/// 
-		/// Line segment equations between two points:
+		/// Line segment equations between two points in 3D:
 		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
 		/// </summary>
 		/// <param name="x1">The first x coordinate.</param>
@@ -530,13 +542,42 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Clears a line across the cube, in 3D. 
+		/// 
+		/// Line segment equations between two points in 3D:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
+		/// </summary>
+		/// <param name="x1">The first x value.</param>
+		/// <param name="y1">The first y value.</param>
+		/// <param name="z1">The first z value.</param>
+		/// <param name="x2">The second x value.</param>
+		/// <param name="y2">The second y value.</param>
+		/// <param name="z2">The second z value.</param>
+		public void ClearLine(int x1, int y1, int z1, int x2, int y2, int z2)
+		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
+
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (x1) + (t * x2));
+				y = (int)((1 - t) * (y1) + (t * y2));
+				z = (int)((1 - t) * (z1) + (t * z2));
+				ClearVoxel (x, y, z);
+				t += delta_t;
+			}
+		}
+
 		#endregion
-
-
-		#region DRAW_3D
-
-		#endregion
-
 
 		#region EFFECT
 
