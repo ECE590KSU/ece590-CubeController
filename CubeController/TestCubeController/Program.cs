@@ -10,10 +10,12 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
-			cube.DrawLine (0, 0, 0, 0, 7, 0);
+			cube.DrawLine (0, 0, 0, 7,7,7);
 			RenderCube (cube.GetCubeState ());
 
-			cube.MirrorCubeAlongAxis (Cube.AXIS.AXIS_X);
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Z, Cube.REFLECTION.TERMINUS);
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Y, Cube.REFLECTION.TERMINUS);
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_X, Cube.REFLECTION.TERMINUS);
 			RenderCube (cube.GetCubeState ());
 		}
 

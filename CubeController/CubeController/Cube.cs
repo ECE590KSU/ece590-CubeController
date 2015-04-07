@@ -13,6 +13,7 @@ namespace CubeController
 
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 		public enum DIRECTION { FORWARD, REVERSE };
+		public enum REFLECTION { ORIGIN, TERMINUS };
 
 		public int Dimension { get; set; }
 
@@ -460,6 +461,37 @@ namespace CubeController
 
 				PatternSetPlane (axis, i, plane2);	// Put plane2 at the beginning.
 				PatternSetPlane (axis, DIMENSION - 1 - i, plane1);	// Put plane1 at the end. 
+			}
+		}
+
+		/// <summary>
+		/// Provides symmetry of the cube along a given axis. 
+		/// You can reflect the axis either from origin or from the terminating
+		/// end. 
+		/// </summary>
+		/// <param name="axis">Axis to provide symmetry along.</param>
+		/// <param name="refl">Reflection direction.</param>
+		public void SymmetryAlongAxis(AXIS axis, REFLECTION refl)
+		{
+			bool[][] plane_source;
+
+			switch (refl) {
+			// Reflect the cube along the plane along the specified axis, starting
+			// from origin. The closest planes to 0,0,0 are what source the symmetry.
+			case REFLECTION.ORIGIN:
+				for (int i = 0; i < (DIMENSION / 2); ++i) {
+					plane_source = GetPlane (axis, i);
+					PatternSetPlane (axis, DIMENSION - 1 - i, plane_source);
+				}
+				break;
+			case REFLECTION.TERMINUS:
+				for (int i = 0; i < (DIMENSION / 2); ++i) {
+					plane_source = GetPlane (axis, DIMENSION - 1 - i);
+					PatternSetPlane (axis, i, plane_source);
+				}
+				break;
+			default:
+				break;
 			}
 		}
 
