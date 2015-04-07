@@ -220,7 +220,13 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Gets a plane by axis, indexed by pl.
+		/// Gets a plane by axis, indexed by pl. 
+		/// 
+		/// For instance: 
+		/// GetPlane(AXIS_Y, 1) --> return the X-Z plane at Y=1.
+		/// GetPlane(AXIS_X, 0) --> return the Y-Z plane at X=0.
+		/// GetPlane(AXIS_Z, 3) --> return the X-Y plane at Z=3.
+		/// 
 		/// </summary>
 		/// <returns>The plane indexed by pl on the axis axis.</returns>
 		/// <param name="axis">The axis of the plane.</param>
@@ -434,17 +440,26 @@ namespace CubeController
 
 		/// <summary>
 		/// Mirrors the cube along a given axis.
+		/// 
+		/// If a cube is mirrored along it's Z-axis, the voxels at the top will
+		/// now become the voxels at the bottom. They DO NOT change x-y positions
+		/// though within the x-y plane from that Z-slice. 
 		/// </summary>
 		/// <param name="axis">Axis to mirror across.</param>
-		public void MirrorCubeByAxis(AXIS axis)
+		public void MirrorCubeAlongAxis(AXIS axis)
 		{
-			// Reversing the each row of the matrix is the same as reflecting the
-			// matrix data from left to right. With the specified axis, this should provide
-			// a clean mirror.
-			for (int i = 0; i < DIMENSION; ++i) {
-				bool[][] tmpplane = GetPlane (axis, i);
-				RowReversal2D (ref tmpplane);
-				PatternSetPlane (axis, i, tmpplane);
+			// Get the outer-two most planes along the given axis. Swap them. 
+			// Then move on to the next inner-two. Swap them as well.
+			// Repeat until no planes are left!
+			bool[][] plane1;
+			bool[][] plane2;
+
+			for (int i = 0; i < (DIMENSION / 2); ++i) {
+				plane1 = GetPlane (axis, i);				 // Get the plane closest to origin.
+				plane2 = GetPlane (axis, DIMENSION - 1 - i); // Get the plane closest to terminus.
+
+				PatternSetPlane (axis, i, plane2);	// Put plane2 at the beginning.
+				PatternSetPlane (axis, DIMENSION - 1 - i, plane1);	// Put plane1 at the end. 
 			}
 		}
 

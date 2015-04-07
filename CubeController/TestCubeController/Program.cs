@@ -9,6 +9,12 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
+
+			cube.DrawLine (0, 0, 0, 0, 7, 0);
+			RenderCube (cube.GetCubeState ());
+
+			cube.MirrorCubeAlongAxis (Cube.AXIS.AXIS_X);
+			RenderCube (cube.GetCubeState ());
 		}
 
 		public static void RenderCube(bool[][][] cube)
@@ -46,6 +52,22 @@ namespace TestCubeController
 				cube.ClearPlane_Y (i);
 				cube.SetPlane_Z (i);
 				RenderCube (cube.GetCubeState ());
+			}
+		}
+
+		public static void RenderPlane(bool[][] plane)
+		{
+			if (plane != null) {
+				for (int i = 0; i < 8; ++i) {
+					for (int j = 0; j < 8; ++j) {
+						if (plane [i] [j]) {
+							Console.Write ("# ");
+						} else {
+							Console.Write ("- ");
+						}
+					}
+					Console.WriteLine ();
+				}
 			}
 		}
 	}
