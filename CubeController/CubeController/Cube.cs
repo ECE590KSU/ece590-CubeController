@@ -51,7 +51,7 @@ namespace CubeController
 			Thread.Sleep (x);
 		}
 
-		#region DRAW
+#region DRAW
 
 		/// <summary>
 		/// Determines if the specified coordinates are in range
@@ -318,6 +318,10 @@ namespace CubeController
 			}
 
 		}
+
+#endregion // DRAW
+
+#region ADVANCED_DRAW
 			
 		/// <summary>
 		/// Shift the specified axis in the specified direction.
@@ -577,11 +581,21 @@ namespace CubeController
 			}
 		}
 
-		#endregion
+		/// <summary>
+		/// Gets the character specified by 'c'. 
+		/// </summary>
+		/// <returns>The char.</returns>
+		/// <param name="c">C.</param>
+		public bool[][] GetChar(char c)
+		{
 
-		#region EFFECT
+		}
 
-		#endregion
+#endregion // ADVANCED_DRAW
+
+#region EFFECT
+
+#endregion
 
 	}
 }
