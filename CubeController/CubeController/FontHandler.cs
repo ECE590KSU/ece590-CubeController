@@ -7,13 +7,15 @@ namespace CubeController
 {
 	public class FontHandler
 	{
-		private Dictionary<char, bool[][]> Alphabet;
-		private static string pathDictionarySource = "alphabitmap.txt";
+		private Dictionary<char, bool[][]> _alphabet;
+		private static string pathDictionarySource = @"../../alphabitmap.txt";
+		private Cube _cube;
 
-		public FontHandler ()
+		public FontHandler (Cube cube)
 		{
-			Alphabet = new Dictionary<char, bool[][]> ();
-			InitializeAlphabet (ref Alphabet);
+			_alphabet = new Dictionary<char, bool[][]> ();
+			_cube = cube;
+			InitializeAlphabet (ref _alphabet);
 		}
 
 		private void InitializeAlphabet (ref Dictionary<char, bool[][]> alpha)
@@ -23,16 +25,34 @@ namespace CubeController
 			string line = "";
 
 			if (txtReader != null) {
+				// Pull in line by line from the alphabitmap.txt.
 				while ( (line = txtReader.ReadLine()) != null ){
+					// Establish a new character map.
+					bool[][] charMap = _cube.NewEmptyPlane (8);
+
+					// Each character key is surrounded by square brackets, e.g.,
+					// 	[A]. 
+					// Pull out the middle, or, line[1]. 
 					char key = line [1];
+
+					// Each character bitmap is 8 rows in height. 
 					for (int i = 0; i < 8; ++i) {
 						line = txtReader.ReadLine ();
-						bool[] characterRow = line.Select (chr => Convert.ToBoolean (chr));
+						// Convert bit string to boolean array using LINQ.
+						charMap[i] = line.Select (c => c == '1').ToArray ();
 					}
+
+					// Add the key and its character bitmap to the dictionary. 
+					alpha.Add (key, charMap);
 				}
 
 				txtReader.Close ();
 			}
+		}
+
+		public bool[][] LookupByKey(char key)
+		{
+			return _alphabet [key];
 		}
 	}
 }

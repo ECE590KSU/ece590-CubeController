@@ -11,6 +11,8 @@ namespace CubeController
 		private bool[][][] _cubeState;		// A collection of voxels. 
 		private const int DIMENSION = 8;	// How many voxels per anode column. 
 
+		private FontHandler _fontHandler;
+
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 		public enum DIRECTION { FORWARD, REVERSE };
 		public enum REFLECTION { ORIGIN, TERMINUS };
@@ -31,6 +33,8 @@ namespace CubeController
 					_cubeState [i] [j] = new bool[DIMENSION];
 				}
 			}
+
+			_fontHandler = new FontHandler (this);
 		}
 
 		/// <summary>
@@ -219,7 +223,7 @@ namespace CubeController
 		/// </summary>
 		/// <returns>The empty plane.</returns>
 		/// <param name="size">Size.</param>
-		private bool[][] NewEmptyPlane(int size)
+		internal bool[][] NewEmptyPlane(int size)
 		{
 			bool[][] tmpplane = new bool[size][];
 			for (int i = 0; i < size; ++i){
@@ -588,7 +592,7 @@ namespace CubeController
 		/// <param name="c">C.</param>
 		public bool[][] GetChar(char c)
 		{
-
+			return _fontHandler.LookupByKey (c);
 		}
 
 #endregion // ADVANCED_DRAW
