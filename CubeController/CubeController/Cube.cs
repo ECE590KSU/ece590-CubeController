@@ -407,19 +407,39 @@ namespace CubeController
 			PatternSetPlane (axis, pl, plane);
 		}
 
+		public void RenderPlane(bool[][] plane)
+		{
+			if (plane != null) {
+				for (int i = 0; i < 8; ++i) {
+					for (int j = 0; j < 8; ++j) {
+						if (plane [i] [j]) {
+							Console.Write ("# ");
+						} else {
+							Console.Write ("- ");
+						}
+					}
+					Console.WriteLine ();
+				}
+				Console.WriteLine ();
+				Console.WriteLine ();
+			}
+		}
+
 		/// <summary>
 		/// Transposes a 2D square matrix.
 		/// </summary>
 		/// <param name="mtx">Matrix to transpose.</param>
 		private void Transpose2D(ref bool[][] mtx)
 		{
+			bool[][] temp = NewEmptyPlane (DIMENSION);
+
 			for (int i = 0; i < DIMENSION; ++i) {
 				for (int j = 0; j < DIMENSION; ++j) {
-					bool temp = mtx [i] [j];
-					mtx [i] [j] = mtx [j] [i];
-					mtx [j] [i] = temp;
+					temp[j][i] = mtx [i] [j];
 				}
 			}
+
+			mtx = temp;
 		}
 
 		/// <summary>
