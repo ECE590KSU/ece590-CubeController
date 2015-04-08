@@ -41,7 +41,6 @@
     <None Include="cpp Code\draw.cpp" />
     <None Include="cpp Code\draw_3d.cpp" />
     <None Include="cpp Code\effect.cpp" />
-    <None Include="alphabitmap.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cpp Code\" />

@@ -34,7 +34,7 @@ namespace CubeController
 				}
 			}
 
-			_fontHandler = new FontHandler (this);
+			_fontHandler = new FontHandler ();
 		}
 
 		/// <summary>
@@ -223,7 +223,7 @@ namespace CubeController
 		/// </summary>
 		/// <returns>The empty plane.</returns>
 		/// <param name="size">Size.</param>
-		internal bool[][] NewEmptyPlane(int size)
+		private bool[][] NewEmptyPlane(int size)
 		{
 			bool[][] tmpplane = new bool[size][];
 			for (int i = 0; i < size; ++i){
@@ -585,17 +585,32 @@ namespace CubeController
 			}
 		}
 
+#endregion // ADVANCED_DRAW
+
+#region FONT
+
+		/// <summary>
+		/// Writes a specified to a plane along axis. 
+		/// </summary>
+		/// <param name="axis">Axis to write along.</param>
+		/// <param name="pl">Plane to modify.</param>
+		/// <param name="c">Character to write (lookup bitmap).</param>
+		public void PutChar(AXIS axis, int pl, char c)
+		{
+			PatternSetPlane (axis, pl, GetChar (c));
+		}
+
 		/// <summary>
 		/// Gets the character specified by 'c'. 
 		/// </summary>
 		/// <returns>The char.</returns>
 		/// <param name="c">C.</param>
-		public bool[][] GetChar(char c)
+		private bool[][] GetChar(char c)
 		{
 			return _fontHandler.LookupByKey (c);
 		}
 
-#endregion // ADVANCED_DRAW
+#endregion // FONT
 
 #region EFFECT
 

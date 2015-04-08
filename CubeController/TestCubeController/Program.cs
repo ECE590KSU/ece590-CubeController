@@ -10,8 +10,6 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
-			cube.PatternSetPlane (Cube.AXIS.AXIS_Z, 0, cube.GetChar ('A'));
-
 			RenderCube (cube.GetCubeState ());
 		}
 

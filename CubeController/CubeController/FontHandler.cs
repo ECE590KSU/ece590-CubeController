@@ -9,15 +9,22 @@ namespace CubeController
 	{
 		private Dictionary<char, bool[][]> _alphabet;
 		private static string pathDictionarySource = @"../../alphabitmap.txt";
-		private Cube _cube;
 
-		public FontHandler (Cube cube)
+		/// <summary>
+		/// Initializes a new instance of the FontHandler class.
+		/// 
+		/// Non-default public constructor. 
+		/// </summary>
+		public FontHandler ()
 		{
 			_alphabet = new Dictionary<char, bool[][]> ();
-			_cube = cube;
 			InitializeAlphabet (ref _alphabet);
 		}
 
+		/// <summary>
+		/// Initializes the alphabet lookup Dictionary.
+		/// </summary>
+		/// <param name="alpha">A reference to the alphabet lookup Dictionary.</param>
 		private void InitializeAlphabet (ref Dictionary<char, bool[][]> alpha)
 		{
 			TextReader txtReader = File.OpenText (pathDictionarySource);
@@ -28,7 +35,7 @@ namespace CubeController
 				// Pull in line by line from the alphabitmap.txt.
 				while ( (line = txtReader.ReadLine()) != null ){
 					// Establish a new character map.
-					bool[][] charMap = _cube.NewEmptyPlane (8);
+					bool[][] charMap = NewEmptyPlane (8);
 
 					// Each character key is surrounded by square brackets, e.g.,
 					// 	[A]. 
@@ -50,9 +57,29 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Public method to lookup the private Dictionary values by key.
+		/// </summary>
+		/// <returns>The the character bitmap for the char key.</returns>
+		/// <param name="key">The character key to lookup the character bitmap by.</param>
 		public bool[][] LookupByKey(char key)
 		{
 			return _alphabet [key];
+		}
+
+		/// <summary>
+		/// Creates an empty plane for use of filling. 
+		/// </summary>
+		/// <returns>The empty plane.</returns>
+		/// <param name="size">Size.</param>
+		private bool[][] NewEmptyPlane(int size)
+		{
+			bool[][] tmpplane = new bool[size][];
+			for (int i = 0; i < size; ++i){
+				tmpplane [i] = new bool[size];
+			}
+
+			return tmpplane;
 		}
 	}
 }
