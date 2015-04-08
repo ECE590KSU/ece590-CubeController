@@ -413,7 +413,7 @@ namespace CubeController
 		/// <param name="mtx">Matrix to transpose.</param>
 		private void Transpose2D(ref bool[][] mtx)
 		{
-			for (int i = 1; i < DIMENSION; ++i) {
+			for (int i = 0; i < DIMENSION; ++i) {
 				for (int j = 0; j < DIMENSION; ++j) {
 					bool temp = mtx [i] [j];
 					mtx [i] [j] = mtx [j] [i];
