@@ -12,7 +12,14 @@ namespace TestCubeController
 
 			cube.PutChar (Cube.AXIS.AXIS_Z, 0, '?');
 			RenderCube (cube.GetCubeState ());
-			cube.RenderPlane (cube.GetPlane (Cube.AXIS.AXIS_Z, 0));
+
+			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
+			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
+			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
+
+			RenderCube (cube.GetCubeState ());
+
+			cube.RenderPlane (cube.GetPlane (Cube.AXIS.AXIS_Z, 3));
 		}
 
 		public static void RenderCube(bool[][][] cube)
