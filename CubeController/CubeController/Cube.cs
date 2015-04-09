@@ -263,7 +263,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x] [z] = _cubeState [x] [pl] [DIMENSION - 1 - z];
+						tmpplane [x] [z] = _cubeState [z] [pl] [DIMENSION - 1 - x];
 					}
 				}
 				break;
@@ -271,7 +271,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x] [y] = _cubeState [x] [DIMENSION - 1 - y] [pl];
+						tmpplane [x] [y] = _cubeState [y] [DIMENSION - 1 - x] [pl];
 					}
 				}
 				break;
