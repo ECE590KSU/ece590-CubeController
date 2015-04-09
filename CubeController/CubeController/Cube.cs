@@ -518,18 +518,6 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Rotates the entire cube along an axis.
-		/// </summary>
-		/// <param name="axis">Axis.</param>
-		/// <param name="theta">Angle of rotation</param>
-		public void RotateCubeAlongAxis(AXIS axis, int theta)
-		{
-			for (int i = 0; i < DIMENSION; ++i) {
-				RotatePlane (axis, i, theta);
-			}
-		}
-
-		/// <summary>
 		/// Provides symmetry of the cube along a given axis. 
 		/// You can reflect the axis either from origin or from the terminating
 		/// end. 
