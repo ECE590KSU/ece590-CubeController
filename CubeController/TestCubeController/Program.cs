@@ -10,9 +10,9 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
-			cube.PutChar (Cube.AXIS.AXIS_Z, 0, 'B');
-			cube.RotateCubeAlongAxis (Cube.AXIS.AXIS_Z, 90);
+			cube.PutChar (Cube.AXIS.AXIS_X, 0, 'B');
 			RenderCube (cube.GetCubeState ());
+			cube.RenderPlane (cube.GetPlane (Cube.AXIS.AXIS_X, 0));
 		}
 
 		public static void RenderCube(bool[][][] cube)

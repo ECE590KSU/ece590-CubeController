@@ -234,7 +234,8 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Gets a plane by axis, indexed by pl. 
+		/// Gets a plane by axis, indexed by pl. See documentation for graphical
+		/// explanation. Complications arise due to cube orientation towards end user.
 		/// 
 		/// For instance: 
 		/// GetPlane(AXIS_Y, 1) --> return the X-Z plane at Y=1.
@@ -254,7 +255,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [y] [z] = _cubeState [pl] [y] [z];
+						tmpplane [y] [z] = _cubeState [pl] [DIMENSION - 1 - y] [DIMENSION - 1 - z];
 					}
 				}
 				break;
@@ -262,7 +263,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x] [z] = _cubeState [x] [pl] [z];
+						tmpplane [x] [z] = _cubeState [x] [pl] [DIMENSION - 1 - z];
 					}
 				}
 				break;
@@ -270,7 +271,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x] [y] = _cubeState [x] [y] [pl];
+						tmpplane [x] [y] = _cubeState [x] [DIMENSION - 1 - y] [pl];
 					}
 				}
 				break;
@@ -285,6 +286,9 @@ namespace CubeController
 		/// <summary>
 		/// Sets a plane indexed by pl on the axis axis to a
 		/// given pattern.
+		/// 
+		/// See documentation for graphical explanation. Complications arise due 
+		/// to cube orientation towards end user.
 		/// </summary>
 		/// <param name="axis">The axis to set the plane on.</param>
 		/// <param name="pl">The index of the plane.</param>
@@ -296,15 +300,16 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [pl] [y] [z] = pattern [y] [z];
+						_cubeState [pl] [y] [z] = pattern [DIMENSION - 1 - z] [DIMENSION - 1 - y];
 					}
 				}
 				break;
-
+			
+			// 
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [pl] [z] = pattern [x] [z];
+						_cubeState [x] [pl] [z] = pattern [DIMENSION - 1 - z] [x];
 					}
 				}
 				break;
@@ -312,7 +317,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [pl] = pattern [x] [y];
+						_cubeState [x] [y] [pl] = pattern [DIMENSION - 1 - y] [x];
 					}
 				}
 				break;
