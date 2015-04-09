@@ -16,10 +16,21 @@ namespace TestCubeController
 			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
 			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
 			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-
 			RenderCube (cube.GetCubeState ());
 
-			cube.RenderPlane (cube.GetPlane (Cube.AXIS.AXIS_Z, 3));
+			cube.MirrorCubeAlongAxis (Cube.AXIS.AXIS_X);
+			RenderCube (cube.GetCubeState ());
+
+			cube.ClearEntireCube ();
+
+			cube.DrawLine (0, 0, 0, 7, 7, 7);
+			RenderCube (cube.GetCubeState ());
+
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Z, Cube.REFLECTION.TERMINUS);
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Y, Cube.REFLECTION.TERMINUS);
+			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_X, Cube.REFLECTION.TERMINUS);
+
+			RenderCube (cube.GetCubeState ());
 		}
 
 		public static void RenderCube(bool[][][] cube)

@@ -55,6 +55,26 @@ namespace CubeController
 			Thread.Sleep (x);
 		}
 
+		/// <summary>
+		/// Clears the entire cube by erasing Z-Planes.
+		/// </summary>
+		public void ClearEntireCube()
+		{
+			for (int i = 0; i < DIMENSION; ++i) {
+				ClearPlane_Z (i);
+			}
+		}
+
+		/// <summary>
+		/// Sets the entire cube by setting Z-Planes.
+		/// </summary>
+		public void SetEntireCube()
+		{
+			for (int i = 0; i < DIMENSION; ++i) {
+				SetPlane_Z (i);
+			}
+		}
+
 #region DRAW
 
 		/// <summary>
