@@ -10,6 +10,7 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
+			/*
 			cube.PutChar (Cube.AXIS.AXIS_Z, 0, '?');
 			RenderCube (cube.GetCubeState ());
 
@@ -22,8 +23,14 @@ namespace TestCubeController
 			RenderCube (cube.GetCubeState ());
 
 			cube.ClearEntireCube ();
+			*/
 
-			cube.DrawLine (0, 0, 0, 7, 7, 7);
+			Point p1 = new Point { X = 0, Y = 0, Z = 0 };
+			Point p2 = new Point { X = 7, Y = 7, Z = 7 };
+
+			Point p3 = new Point (0, 2, 4);
+			//cube.DrawLine (0, 0, 0, 7, 7, 7);
+			cube.DrawLine (p1, p2);
 			RenderCube (cube.GetCubeState ());
 
 			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Z, Cube.REFLECTION.TERMINUS);

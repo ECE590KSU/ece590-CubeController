@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
+using CubeController;
+using System.Runtime.CompilerServices;
 
 namespace CubeController
 {
@@ -584,6 +586,37 @@ namespace CubeController
 		}
 
 		/// <summary>
+		/// Draws a line across the cube, in 3D.
+		/// 
+		/// Line segment equations between two points in 3D:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
+		/// </summary>
+		/// <param name="p1">The source x,y,z point</param>
+		/// <param name="p2">The destination x,y,z point</param>
+		public void DrawLine(Point p1, Point p2)
+		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
+
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (p1.X) + (t * p2.X));
+				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
+				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
+				SetVoxel (x, y, z);
+				t += delta_t;
+			}
+		}
+
+		/// <summary>
 		/// Clears a line across the cube, in 3D. 
 		/// 
 		/// Line segment equations between two points in 3D:
@@ -613,6 +646,37 @@ namespace CubeController
 				x = (int)((1 - t) * (x1) + (t * x2));
 				y = (int)((1 - t) * (y1) + (t * y2));
 				z = (int)((1 - t) * (z1) + (t * z2));
+				ClearVoxel (x, y, z);
+				t += delta_t;
+			}
+		}
+
+		/// <summary>
+		/// Clears a line across the cube, in 3D.
+		/// 
+		/// Line segment equations between two points in 3D:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
+		/// </summary>
+		/// <param name="p1">The source x,y,z point</param>
+		/// <param name="p2">The destination x,y,z point</param>
+		public void ClearLine(Point p1, Point p2)
+		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
+
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (p1.X) + (t * p2.X));
+				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
+				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
 				ClearVoxel (x, y, z);
 				t += delta_t;
 			}
@@ -649,6 +713,29 @@ namespace CubeController
 
 #endregion
 
+	}
+
+	/// <summary>
+	/// Helper class. Defines a point in x,y,z space. Used to
+	/// eliminate function calling signatures with many x,y,z args needed.
+	/// </summary>
+	public class Point
+	{
+		public int X { get; set; }
+		public int Y { get; set; }
+		public int Z { get; set; }
+
+		public Point()
+		{
+
+		}
+
+		public Point(int x, int y, int z) : base()
+		{
+			X = x;
+			Y = y;
+			Z = z;
+		}
 	}
 }
 
