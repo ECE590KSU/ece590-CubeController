@@ -75,6 +75,30 @@ namespace CubeController
 				ClearPlane (AXIS.AXIS_Z, i);
 			}
 		}
+
+		/// <summary>
+		/// Renders the cube by Z-Planes.
+		/// </summary>
+		public void RenderCube()
+		{
+			if (_cubeState != null) {
+				// Print each z plane. 
+				for (int z = 0; z < 8; ++z) {
+					Console.WriteLine ("PLANE {0}", z);
+					for (int x = 0; x < 8; ++x) {
+						for (int y = 0; y < 8; ++y) {
+							if (_cubeState [x] [y] [z]) {
+								Console.Write ("# ");
+							} else {
+								Console.Write ("  ");
+							}
+						}
+						Console.WriteLine ();
+					}
+					Console.WriteLine ("\n");
+				}
+			}
+		}
 			
 
 #region DRAW
@@ -858,7 +882,21 @@ namespace CubeController
 		/// <param name="speed">Speed.</param>
 		public void AxisBoing(AXIS axis, int speed)
 		{
+			// Always set the ORIGIN plane first. 
+			SetPlane (axis, 0);
 
+			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
+			for (int i = 0; i < DIMENSION-1; ++i) {
+				Shift (axis, DIRECTION.FORWARD);
+				RenderCube ();
+				DelayMS (speed);
+			}
+			DelayMS (speed);
+			for (int i = 0; i < DIMENSION-1; ++i) {
+				Shift (axis, DIRECTION.REVERSE);
+				RenderCube ();
+				DelayMS (speed);
+			}
 		}
 
 #endregion

@@ -9,6 +9,7 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
+			cube.AxisBoing (Cube.AXIS.AXIS_Z, 200);
 		}
 
 		public static void RenderCube(bool[][][] cube)
@@ -22,7 +23,7 @@ namespace TestCubeController
 							if (cube [x] [y] [z]) {
 								Console.Write ("# ");
 							} else {
-								Console.Write ("- ");
+								Console.Write ("  ");
 							}
 						}
 						Console.WriteLine ();
