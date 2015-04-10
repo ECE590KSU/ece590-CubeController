@@ -57,24 +57,25 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Clears the entire cube by erasing Z-Planes.
-		/// </summary>
-		public void ClearEntireCube()
-		{
-			for (int i = 0; i < DIMENSION; ++i) {
-				ClearPlane_Z (i);
-			}
-		}
-
-		/// <summary>
 		/// Sets the entire cube by setting Z-Planes.
 		/// </summary>
 		public void SetEntireCube()
 		{
 			for (int i = 0; i < DIMENSION; ++i) {
-				SetPlane_Z (i);
+				SetPlane (AXIS.AXIS_Z, i);
 			}
 		}
+
+		/// <summary>
+		/// Clears the entire cube by erasing Z-Planes.
+		/// </summary>
+		public void ClearEntireCube()
+		{
+			for (int i = 0; i < DIMENSION; ++i) {
+				ClearPlane (AXIS.AXIS_Z, i);
+			}
+		}
+			
 
 #region DRAW
 
@@ -150,91 +151,82 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Turns on all the voxels on the plane indexed by x.
+		/// Turns on all voxels on a given plane of the specified axis.
 		/// </summary>
-		/// <param name="x">The x axis.</param>
-		public void SetPlane_X(int x)
+		/// <param name="axis">Axis to manipulate.</param>
+		/// <param name="pl">Plane index on axis.</param>
+		public void SetPlane(AXIS axis, int pl)
 		{
-			if (x >= 0 && x < DIMENSION) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = true;
-					}
-				}
-			}
-		}
+			if (pl >= 0 && pl < DIMENSION) {
 
-		/// <summary>
-		/// Clears the plane indexed by x.
-		/// </summary>
-		/// <param name="x">The x axis.</param>
-		public void ClearPlane_X(int x)
-		{
-			if (x >= 0 && x < DIMENSION) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = false;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Turns on all voxels on the plane indexed by y.
-		/// </summary>
-		/// <param name="y">The y axis.</param>
-		public void SetPlane_Y(int y)
-		{
-			if (y >= 0 && y < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = true;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Clears the plane y.
-		/// </summary>
-		/// <param name="y">The y axis.</param>
-		public void ClearPlane_Y(int y)
-		{
-			if (y >= 0 && y < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = false;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Turns on all voxels on the plane indexed by z.
-		/// </summary>
-		/// <param name="z">The z axis.</param>
-		public void SetPlane_Z(int z)
-		{
-			if (z >= 0 && z < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
+				switch (axis) {
+				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [z] = true;
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [pl] [y] [z] = true;
+						}
 					}
+					break;
+
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [x] [pl] [z] = true;
+						}
+					}
+					break;
+
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							_cubeState [x] [y] [pl] = true;
+						}
+					}
+					break;
+
+				default:
+					break;
 				}
 			}
+
 		}
 
 		/// <summary>
-		/// Clears the plane indexed by z.
+		/// Turns off all voxels on a given plane of the specified axis.
 		/// </summary>
-		/// <param name="z">The z axis.</param>
-		public void ClearPlane_Z(int z)
+		/// <param name="axis">Axis to manipulate.</param>
+		/// <param name="pl">Plane index on axis.</param>
+		public void ClearPlane(AXIS axis, int pl)
 		{
-			if (z >= 0 && z < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
+			if (pl >= 0 && pl < DIMENSION) {
+
+				switch (axis) {
+				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [z] = false;
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [pl] [y] [z] = false;
+						}
 					}
+					break;
+
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [x] [pl] [z] = false;
+						}
+					}
+					break;
+
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							_cubeState [x] [y] [pl] = false;
+						}
+					}
+					break;
+
+				default:
+					break;
 				}
 			}
 		}
@@ -855,6 +847,19 @@ namespace CubeController
 #endregion // FONT
 
 #region EFFECT
+
+		/// <summary>
+		/// A single plane of all-set voxels is sent along
+		/// [axis] away from ORIGIN towards TERMINUS. 
+		/// 
+		/// When the plane reaches TERMINUS, it delays for [speed] milliseconds.
+		/// </summary>
+		/// <param name="axis">Axis.</param>
+		/// <param name="speed">Speed.</param>
+		public void AxisBoing(AXIS axis, int speed)
+		{
+
+		}
 
 #endregion
 

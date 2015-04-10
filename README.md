@@ -10,7 +10,9 @@ The target platform is Windows x86_64, and cannot support the original calls to 
 - [ ] BoxFilled()
 - [ ] BoxWalls()
 - [x] BoxWireframe()
-- [ ] CharFly()
+~~- [ ] CharFly()~~
+- [x] MessageFlyOnAxis()
+- [x] MesssageBanner() [PARTIAL]
 - [x] ClearLine()
 - [x] ClearPlane()
 - [x] ClearVoxel()
@@ -47,7 +49,8 @@ The target platform is Windows x86_64, and cannot support the original calls to 
 - [ ] PathText()
 - [ ] PathMove()
 - [ ] PathSpiral()
-- [ ] PlaneBoing()
+~~- [ ] PlaneBoing()~~
+- [ ] AxisBoing()
 - [ ] Rain()
 - [ ] RandAround()
 - [ ] RandFiller()

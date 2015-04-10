@@ -32,23 +32,6 @@ namespace TestCubeController
 			}
 		}
 
-		public static void AllPlanesClearSet_Test(ref Cube cube)
-		{
-			for (int i = 0; i < 8; ++i) {
-				cube.SetPlane_X (i);
-				cube.SetPlane_Y (i);
-				cube.ClearPlane_Z (i);
-				RenderCube (cube.GetCubeState ());
-			}
-
-			for (int i = 7; i >= 0; --i) {
-				cube.ClearPlane_X (i);
-				cube.ClearPlane_Y (i);
-				cube.SetPlane_Z (i);
-				RenderCube (cube.GetCubeState ());
-			}
-		}
-
 		public static void RenderPlane(bool[][] plane)
 		{
 			if (plane != null) {
