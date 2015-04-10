@@ -899,6 +899,40 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Creates sinewaves that travel from face to face.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void SineLines(int iterations, int delay)
+		{
+
+		}
+
+		/// <summary>
+		/// Creates a sine wave that ripples from the center of the cube.
+		/// </summary>
+		/// <param name="iterations">Iterations to run to.</param>
+		/// <param name="delay">Animation speed (delay between frames).</param>
+		public void Ripples(int iterations, int delay)
+		{
+			double distance 		= 0.0,
+				   height 		   	= 0.0,
+				   ripple_interval 	= 0.0;
+
+			int x = 0,
+				y = 0;
+
+			for (int i = 0; i < iterations; ++i) {
+				for (x = 0; x < DIMENSION; ++x) {
+					for (y = 0; y < DIMENSION; ++y) {
+
+					}
+				}
+			}
+
+		}
+
 #endregion
 
 	}
@@ -923,6 +957,27 @@ namespace CubeController
 			X = x;
 			Y = y;
 			Z = z;
+		}
+
+		/// <summary>
+		/// Calculates the distance between two points.
+		/// </summary>
+		/// <returns>The d.</returns>
+		/// <param name="x1">The first x value.</param>
+		/// <param name="x2">The second x value.</param>
+		/// <param name="y1">The first y value.</param>
+		/// <param name="y2">The second y value.</param>
+		/// <param name="zcoords">Z coordinates (if provided) for a 3D distance calculation</param>
+		public static double Distance(int x1, int x2, int y1, int y2, params int[] zcoords)
+		{
+			double distance = 0.0;
+
+			if (zcoords != null) {
+				distance += ((zcoords [1] - zcoords [0]) * (zcoords [1] - zcoords [0]));
+			}
+			distance += ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
+
+			return Math.Sqrt(distance);
 		}
 	}
 }
