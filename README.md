@@ -9,7 +9,7 @@ The target platform is Windows x86_64, and cannot support the original calls to 
 ##### Draw To-Do:
 - [ ] BoxFilled()
 - [ ] BoxWalls()
-- [ ] BoxWireframe()
+- [x] BoxWireframe()
 - [ ] CharFly()
 - [x] ClearLine()
 - [x] ClearPlane()
