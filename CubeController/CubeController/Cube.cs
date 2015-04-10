@@ -803,7 +803,7 @@ namespace CubeController
 		public void MessageBanner(string message, DIRECTION direction)
 		{
 
-			// A message will be sent: LAST CHARACTER --> around cube --> gone.
+			// A message will be sent: LAST CHARACTER --> around cube R-L --> gone.
 			// And then each character preceding it will be sent in quick succession.
 			// At any given point up to three characters will be printed out.
 			if (direction == DIRECTION.FORWARD) {
@@ -818,29 +818,36 @@ namespace CubeController
 				for (int i = 0; i < message.Length; ++i) {
 					// Put the ith character on the LEFT-FACE of CUBE.
 					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
-
-					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
+					DelayMS (400);
 
 					// Take the character from the LEFT-FACE, and put it on FRONT-FACE.
 					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 0));
-
-					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
+					DelayMS (400);
 
 					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
 					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
-
-					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
-					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
-
 					DelayMS (400);
 				}
-
+			
+			// A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone.
+			// And then each character following it will be sent in quick session.
 			} else {
+
+				message += "   ";
+
+				for (int i = 0; i < message.Length; ++i) {
+					// Put the ith character on the RIGHT-FACE of CUBE.
+					PatternSetPlane (AXIS.AXIS_X, 7, GetChar (message [i]));
+					DelayMS (400);
+
+					// Take the character from the RIGHT-FACE, and put it on FRONT-FACE.
+					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 7));
+					DelayMS (400);
+
+					// Take the character from the FRONT-FACE, and put it on the LEFT-FACE.
+					PatternSetPlane (AXIS.AXIS_X, 0, GetPlane (AXIS.AXIS_Y, 0));
+					DelayMS (400);
+				}
 
 			}
 		}
