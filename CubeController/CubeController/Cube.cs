@@ -4,7 +4,6 @@ using System.IO;
 using System.Threading;
 using System.Collections.Generic;
 using CubeController;
-using System.Runtime.CompilerServices;
 
 namespace CubeController
 {
@@ -347,7 +346,6 @@ namespace CubeController
 			default:
 				break;
 			}
-
 		}
 
 #endregion // DRAW
@@ -680,6 +678,56 @@ namespace CubeController
 				ClearVoxel (x, y, z);
 				t += delta_t;
 			}
+		}
+
+		/// <summary>
+		/// Draws a wireframe box. The length of each side is
+		/// dist. The box will have its closest corner to the cube's origin (0,0,0)
+		/// as the source vertex. 
+		/// 
+		///       F * - - - - - * C
+		///    	   /|          /|
+		///   	  / |         / |
+		///  	 /  |        /  |
+		///   E * - | - - - * D |
+		///  	| G * - - - |- -* B
+		/// 	| /         |  /
+		/// 	|/          | /
+		///   S * - - - - - */ A
+		/// 
+		///     
+		///  Z|  /Y
+		///   | /
+		///   |/_ _ _X
+		/// (0,0)
+		/// 
+		/// Vertices are labeled in the diagram above. 
+		/// </summary>
+		/// <param name="S">Source vertex.</param>
+		/// <param name="dist">Distance between vertices (side length).</param>
+		public void BoxWireFrame(Point S, int dist)
+		{
+			Point A, B, C, D, E, F, G;
+			A = new Point (S.X + dist, 	S.Y, 		S.Z);
+			B = new Point (S.X + dist, 	S.Y + dist, S.Z);
+			C = new Point (S.X + dist, 	S.Y + dist, S.Z + dist);
+			D = new Point (S.X + dist, 	S.Y, 		S.Z + dist);
+			E = new Point (S.X, 		S.Y, 		S.Z + dist);
+			F = new Point (S.X, 		S.Y + dist,	S.Z + dist);
+			G = new Point (S.X, 		S.Y + dist, S.Z);
+
+			DrawLine (S, A);
+			DrawLine (S, G);
+			DrawLine (S, E);
+			DrawLine (E, F);
+			DrawLine (E, D);
+			DrawLine (F, C);
+			DrawLine (F, G);
+			DrawLine (C, B);
+			DrawLine (C, D);
+			DrawLine (B, G);
+			DrawLine (B, A);
+			DrawLine (A, D);
 		}
 
 #endregion // ADVANCED_DRAW
