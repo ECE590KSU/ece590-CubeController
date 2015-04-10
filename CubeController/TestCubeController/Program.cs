@@ -9,28 +9,6 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-
-			cube.PutChar (Cube.AXIS.AXIS_Z, 0, '?');
-			RenderCube (cube.GetCubeState ());
-
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			RenderCube (cube.GetCubeState ());
-
-			cube.MirrorCubeAlongAxis (Cube.AXIS.AXIS_X);
-			RenderCube (cube.GetCubeState ());
-
-			cube.ClearEntireCube ();
-
-			cube.DrawLine (0, 0, 0, 7, 7, 7);
-			RenderCube (cube.GetCubeState ());
-
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Z, Cube.REFLECTION.TERMINUS);
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Y, Cube.REFLECTION.TERMINUS);
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_X, Cube.REFLECTION.TERMINUS);
-
-			RenderCube (cube.GetCubeState ());
 		}
 
 		public static void RenderCube(bool[][][] cube)
@@ -51,23 +29,6 @@ namespace TestCubeController
 					}
 					Console.WriteLine ("\n");
 				}
-			}
-		}
-
-		public static void AllPlanesClearSet_Test(ref Cube cube)
-		{
-			for (int i = 0; i < 8; ++i) {
-				cube.SetPlane_X (i);
-				cube.SetPlane_Y (i);
-				cube.ClearPlane_Z (i);
-				RenderCube (cube.GetCubeState ());
-			}
-
-			for (int i = 7; i >= 0; --i) {
-				cube.ClearPlane_X (i);
-				cube.ClearPlane_Y (i);
-				cube.SetPlane_Z (i);
-				RenderCube (cube.GetCubeState ());
 			}
 		}
 

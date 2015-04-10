@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
+using CubeController;
 
 namespace CubeController
 {
@@ -56,24 +57,25 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Clears the entire cube by erasing Z-Planes.
-		/// </summary>
-		public void ClearEntireCube()
-		{
-			for (int i = 0; i < DIMENSION; ++i) {
-				ClearPlane_Z (i);
-			}
-		}
-
-		/// <summary>
 		/// Sets the entire cube by setting Z-Planes.
 		/// </summary>
 		public void SetEntireCube()
 		{
 			for (int i = 0; i < DIMENSION; ++i) {
-				SetPlane_Z (i);
+				SetPlane (AXIS.AXIS_Z, i);
 			}
 		}
+
+		/// <summary>
+		/// Clears the entire cube by erasing Z-Planes.
+		/// </summary>
+		public void ClearEntireCube()
+		{
+			for (int i = 0; i < DIMENSION; ++i) {
+				ClearPlane (AXIS.AXIS_Z, i);
+			}
+		}
+			
 
 #region DRAW
 
@@ -149,91 +151,82 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Turns on all the voxels on the plane indexed by x.
+		/// Turns on all voxels on a given plane of the specified axis.
 		/// </summary>
-		/// <param name="x">The x axis.</param>
-		public void SetPlane_X(int x)
+		/// <param name="axis">Axis to manipulate.</param>
+		/// <param name="pl">Plane index on axis.</param>
+		public void SetPlane(AXIS axis, int pl)
 		{
-			if (x >= 0 && x < DIMENSION) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = true;
-					}
-				}
-			}
-		}
+			if (pl >= 0 && pl < DIMENSION) {
 
-		/// <summary>
-		/// Clears the plane indexed by x.
-		/// </summary>
-		/// <param name="x">The x axis.</param>
-		public void ClearPlane_X(int x)
-		{
-			if (x >= 0 && x < DIMENSION) {
-				for (int y = 0; y < DIMENSION; ++y) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = false;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Turns on all voxels on the plane indexed by y.
-		/// </summary>
-		/// <param name="y">The y axis.</param>
-		public void SetPlane_Y(int y)
-		{
-			if (y >= 0 && y < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = true;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Clears the plane y.
-		/// </summary>
-		/// <param name="y">The y axis.</param>
-		public void ClearPlane_Y(int y)
-		{
-			if (y >= 0 && y < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
-					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [y] [z] = false;
-					}
-				}
-			}
-		}
-
-		/// <summary>
-		/// Turns on all voxels on the plane indexed by z.
-		/// </summary>
-		/// <param name="z">The z axis.</param>
-		public void SetPlane_Z(int z)
-		{
-			if (z >= 0 && z < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
+				switch (axis) {
+				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [z] = true;
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [pl] [y] [z] = true;
+						}
 					}
+					break;
+
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [x] [pl] [z] = true;
+						}
+					}
+					break;
+
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							_cubeState [x] [y] [pl] = true;
+						}
+					}
+					break;
+
+				default:
+					break;
 				}
 			}
+
 		}
 
 		/// <summary>
-		/// Clears the plane indexed by z.
+		/// Turns off all voxels on a given plane of the specified axis.
 		/// </summary>
-		/// <param name="z">The z axis.</param>
-		public void ClearPlane_Z(int z)
+		/// <param name="axis">Axis to manipulate.</param>
+		/// <param name="pl">Plane index on axis.</param>
+		public void ClearPlane(AXIS axis, int pl)
 		{
-			if (z >= 0 && z < DIMENSION) {
-				for (int x = 0; x < DIMENSION; ++x) {
+			if (pl >= 0 && pl < DIMENSION) {
+
+				switch (axis) {
+				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [z] = false;
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [pl] [y] [z] = false;
+						}
 					}
+					break;
+
+				case AXIS.AXIS_Y:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int z = 0; z < DIMENSION; ++z) {
+							_cubeState [x] [pl] [z] = false;
+						}
+					}
+					break;
+
+				case AXIS.AXIS_Z:
+					for (int x = 0; x < DIMENSION; ++x) {
+						for (int y = 0; y < DIMENSION; ++y) {
+							_cubeState [x] [y] [pl] = false;
+						}
+					}
+					break;
+
+				default:
+					break;
 				}
 			}
 		}
@@ -345,7 +338,6 @@ namespace CubeController
 			default:
 				break;
 			}
-
 		}
 
 #endregion // DRAW
@@ -584,6 +576,37 @@ namespace CubeController
 		}
 
 		/// <summary>
+		/// Draws a line across the cube, in 3D.
+		/// 
+		/// Line segment equations between two points in 3D:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
+		/// </summary>
+		/// <param name="p1">The source x,y,z point</param>
+		/// <param name="p2">The destination x,y,z point</param>
+		public void DrawLine(Point p1, Point p2)
+		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
+
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (p1.X) + (t * p2.X));
+				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
+				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
+				SetVoxel (x, y, z);
+				t += delta_t;
+			}
+		}
+
+		/// <summary>
 		/// Clears a line across the cube, in 3D. 
 		/// 
 		/// Line segment equations between two points in 3D:
@@ -618,6 +641,93 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Clears a line across the cube, in 3D.
+		/// 
+		/// Line segment equations between two points in 3D:
+		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
+		/// </summary>
+		/// <param name="p1">The source x,y,z point</param>
+		/// <param name="p2">The destination x,y,z point</param>
+		public void ClearLine(Point p1, Point p2)
+		{
+			// Parametric equations for line segments between two points in
+			// 3D Euclidean Space + Cartesian Plane. 
+
+			// x = (1-t) x_1 + t * x_2
+			// y = (1-t) y_1 + t * y_2
+			// z = (1-t) z_1 + t * z_2
+			//
+			//	t ismember { [0,1] }. Divide into DIMENSION segments.
+			float delta_t = 1.0f / (float)(DIMENSION);
+			float t = 0.0f;
+			int x = 0, y = 0, z = 0;
+
+			for (int i=0; i <= DIMENSION; ++i){
+				x = (int)((1 - t) * (p1.X) + (t * p2.X));
+				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
+				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
+				ClearVoxel (x, y, z);
+				t += delta_t;
+			}
+		}
+
+		/// <summary>
+		/// Draws a wireframe box. The length of each side is
+		/// dist. The box will have its closest corner to the cube's origin (0,0,0)
+		/// as the source vertex. 
+		/// 
+		///       F * - - - - - * C
+		///    	   /|          /|
+		///   	  / |         / |
+		///  	 /  |        /  |
+		///   E * - | - - - * D |
+		///  	| G * - - - |- -* B
+		/// 	| /         |  /
+		/// 	|/          | /
+		///   S * - - - - - */ A
+		/// 
+		///     
+		///  Z|  /Y
+		///   | /
+		///   |/_ _ _X
+		/// (0,0)
+		/// 
+		/// Vertices are labeled in the diagram above. 
+		/// </summary>
+		/// <param name="S">Source vertex.</param>
+		/// <param name="dist">Distance between vertices (side length).</param>
+		public void BoxWireFrame(Point S, int dist)
+		{
+			Point A, B, C, D, E, F, G;
+						// X-coordinate  Y-coordinate	Z-Coordinate
+			A = new Point (S.X + dist, 	 S.Y, 			S.Z);
+			B = new Point (S.X + dist, 	 S.Y + dist, 	S.Z);
+			C = new Point (S.X + dist, 	 S.Y + dist, 	S.Z + dist);
+			D = new Point (S.X + dist, 	 S.Y, 			S.Z + dist);
+			E = new Point (S.X, 		 S.Y, 			S.Z + dist);
+			F = new Point (S.X, 		 S.Y + dist,	S.Z + dist);
+			G = new Point (S.X, 		 S.Y + dist, 	S.Z);
+
+			DrawLine (S, A);
+			DrawLine (S, G);
+			DrawLine (S, E);
+
+			DrawLine (E, F);
+			DrawLine (E, D);
+
+			DrawLine (F, C);
+			DrawLine (F, G);
+
+			DrawLine (C, B);
+			DrawLine (C, D);
+
+			DrawLine (B, G);
+			DrawLine (B, A);
+
+			DrawLine (A, D);
+		}
+
 #endregion // ADVANCED_DRAW
 
 #region FONT
@@ -643,12 +753,139 @@ namespace CubeController
 			return _fontHandler.LookupByKey (c);
 		}
 
+		/// <summary>
+		/// Prints a message character by character on a given axis, and sends it flying
+		/// either front-to-back or back-to-front. 
+		/// 
+		/// NOTE: front-to-back is relative to axis, specifically from ORIGIN-to-TERMINUS,
+		/// or as close as possible. 
+		/// </summary>
+		/// <param name="message">Message to transmit.</param>
+		/// <param name="axis">Axis to send message along.</param>
+		/// <param name="direction">Direction of travel.</param>
+		public void MessageFlyOnAxis(string message, AXIS axis, DIRECTION direction)
+		{
+			// Make sure that the string is a valid message. If it is null or empty, then we
+			// have no message to transmit. 
+			if (String.IsNullOrEmpty (message)) {
+				message = "INVALID TEXT";
+			}
+
+			foreach (char c in message) {
+				PutChar (axis, 0, c);
+				for (int i = 0; i < DIMENSION; ++i) {
+					RenderPlane (GetPlane (axis, i));
+					Shift (axis, direction);
+					DelayMS (200);
+				}
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Sends a message "around" the cube in a banner-like manner (rhyme!). 
+		/// 
+		/// A character is put on either the 0th X plane, or th 7th X plane, and
+		/// then is printed out character by character, and rotated around the cube. 
+		/// Only three characters will be printed at a time (see documentation 
+		/// for explanation). 
+		/// </summary>
+		/// <param name="message">Message to print.</param>
+		/// <param name="direction">Direction to send around cube.</param>
+		public void MessageBanner(string message, DIRECTION direction)
+		{
+
+			// A message will be sent: LAST CHARACTER --> around cube R-L --> gone.
+			// And then each character preceding it will be sent in quick succession.
+			// At any given point up to three characters will be printed out.
+			if (direction == DIRECTION.FORWARD) {
+				// The message needs to be reversed to send the last character out first. 
+				var chars = message.ToCharArray ();
+				Array.Reverse (chars);
+				// Tack on three extra blank characters, so that the actual last
+				// character will "fall-off" the cube. 
+				message = new string(chars);
+				message += "   ";
+
+				for (int i = 0; i < message.Length; ++i) {
+					// Put the ith character on the LEFT-FACE of CUBE.
+					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
+					DelayMS (400);
+
+					// Take the character from the LEFT-FACE, and put it on FRONT-FACE.
+					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 0));
+					DelayMS (400);
+
+					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
+					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
+					DelayMS (400);
+				}
+			
+			// A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone.
+			// And then each character following it will be sent in quick session.
+			} else {
+
+				message += "   ";
+
+				for (int i = 0; i < message.Length; ++i) {
+					// Put the ith character on the RIGHT-FACE of CUBE.
+					PatternSetPlane (AXIS.AXIS_X, 7, GetChar (message [i]));
+					DelayMS (400);
+
+					// Take the character from the RIGHT-FACE, and put it on FRONT-FACE.
+					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 7));
+					DelayMS (400);
+
+					// Take the character from the FRONT-FACE, and put it on the LEFT-FACE.
+					PatternSetPlane (AXIS.AXIS_X, 0, GetPlane (AXIS.AXIS_Y, 0));
+					DelayMS (400);
+				}
+
+			}
+		}
+
 #endregion // FONT
 
 #region EFFECT
 
+		/// <summary>
+		/// A single plane of all-set voxels is sent along
+		/// [axis] away from ORIGIN towards TERMINUS. 
+		/// 
+		/// When the plane reaches TERMINUS, it delays for [speed] milliseconds.
+		/// </summary>
+		/// <param name="axis">Axis.</param>
+		/// <param name="speed">Speed.</param>
+		public void AxisBoing(AXIS axis, int speed)
+		{
+
+		}
+
 #endregion
 
+	}
+
+	/// <summary>
+	/// Helper class. Defines a point in x,y,z space. Used to
+	/// eliminate function calling signatures with many x,y,z args needed.
+	/// </summary>
+	public class Point
+	{
+		public int X { get; set; }
+		public int Y { get; set; }
+		public int Z { get; set; }
+
+		public Point()
+		{
+
+		}
+
+		public Point(int x, int y, int z) : base()
+		{
+			X = x;
+			Y = y;
+			Z = z;
+		}
 	}
 }
 
