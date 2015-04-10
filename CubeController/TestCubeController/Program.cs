@@ -10,34 +10,7 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
-			/*
-			cube.PutChar (Cube.AXIS.AXIS_Z, 0, '?');
-			RenderCube (cube.GetCubeState ());
-
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			cube.Shift (Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
-			RenderCube (cube.GetCubeState ());
-
-			cube.MirrorCubeAlongAxis (Cube.AXIS.AXIS_X);
-			RenderCube (cube.GetCubeState ());
-
-			cube.ClearEntireCube ();
-			*/
-
-			Point p1 = new Point { X = 0, Y = 0, Z = 0 };
-			Point p2 = new Point { X = 7, Y = 7, Z = 7 };
-
-			Point p3 = new Point (0, 2, 4);
-			//cube.DrawLine (0, 0, 0, 7, 7, 7);
-			cube.DrawLine (p1, p2);
-			RenderCube (cube.GetCubeState ());
-
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Z, Cube.REFLECTION.TERMINUS);
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_Y, Cube.REFLECTION.TERMINUS);
-			cube.SymmetryAlongAxis (Cube.AXIS.AXIS_X, Cube.REFLECTION.TERMINUS);
-
-			RenderCube (cube.GetCubeState ());
+			cube.MessageFlyOnAxis ("Test Message", Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
 		}
 
 		public static void RenderCube(bool[][][] cube)

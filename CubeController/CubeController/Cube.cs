@@ -708,25 +708,31 @@ namespace CubeController
 		public void BoxWireFrame(Point S, int dist)
 		{
 			Point A, B, C, D, E, F, G;
-			A = new Point (S.X + dist, 	S.Y, 		S.Z);
-			B = new Point (S.X + dist, 	S.Y + dist, S.Z);
-			C = new Point (S.X + dist, 	S.Y + dist, S.Z + dist);
-			D = new Point (S.X + dist, 	S.Y, 		S.Z + dist);
-			E = new Point (S.X, 		S.Y, 		S.Z + dist);
-			F = new Point (S.X, 		S.Y + dist,	S.Z + dist);
-			G = new Point (S.X, 		S.Y + dist, S.Z);
+						// X-coordinate  Y-coordinate	Z-Coordinate
+			A = new Point (S.X + dist, 	 S.Y, 			S.Z);
+			B = new Point (S.X + dist, 	 S.Y + dist, 	S.Z);
+			C = new Point (S.X + dist, 	 S.Y + dist, 	S.Z + dist);
+			D = new Point (S.X + dist, 	 S.Y, 			S.Z + dist);
+			E = new Point (S.X, 		 S.Y, 			S.Z + dist);
+			F = new Point (S.X, 		 S.Y + dist,	S.Z + dist);
+			G = new Point (S.X, 		 S.Y + dist, 	S.Z);
 
 			DrawLine (S, A);
 			DrawLine (S, G);
 			DrawLine (S, E);
+
 			DrawLine (E, F);
 			DrawLine (E, D);
+
 			DrawLine (F, C);
 			DrawLine (F, G);
+
 			DrawLine (C, B);
 			DrawLine (C, D);
+
 			DrawLine (B, G);
 			DrawLine (B, A);
+
 			DrawLine (A, D);
 		}
 
@@ -753,6 +759,50 @@ namespace CubeController
 		private bool[][] GetChar(char c)
 		{
 			return _fontHandler.LookupByKey (c);
+		}
+
+		/// <summary>
+		/// Prints a message character by character on a given axis, and sends it flying
+		/// either front-to-back or back-to-front. 
+		/// 
+		/// NOTE: front-to-back is relative to axis, specifically from ORIGIN-to-TERMINUS,
+		/// or as close as possible. 
+		/// </summary>
+		/// <param name="message">Message to transmit.</param>
+		/// <param name="axis">Axis to send message along.</param>
+		/// <param name="direction">Direction of travel.</param>
+		public void MessageFlyOnAxis(string message, AXIS axis, DIRECTION direction)
+		{
+			// Make sure that the string is a valid message. If it is null or empty, then we
+			// have no message to transmit. 
+			if (String.IsNullOrEmpty (message)) {
+				message = "INVALID TEXT";
+			}
+
+			foreach (char c in message) {
+				PutChar (axis, 0, c);
+				for (int i = 0; i < DIMENSION; ++i) {
+					RenderPlane (GetPlane (axis, i));
+					Shift (axis, direction);
+					DelayMS (200);
+				}
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Sends a message "around" the cube in a banner-like manner (rhyme!). 
+		/// 
+		/// A character is put on either the 0th X plane, or th 7th X plane, and
+		/// then is printed out character by character, and rotated around the cube. 
+		/// Only three characters will be printed at a time (see documentation 
+		/// for explanation). 
+		/// </summary>
+		/// <param name="message">Message to print.</param>
+		/// <param name="direction">Direction to send around cube.</param>
+		public void MessageBanner(string message, AXIS axis, DIRECTION direction)
+		{
+
 		}
 
 #endregion // FONT
