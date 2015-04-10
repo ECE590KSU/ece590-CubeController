@@ -10,7 +10,8 @@ namespace TestCubeController
 		{
 			Cube cube = new Cube ();
 
-			cube.MessageFlyOnAxis ("Test Message", Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
+			//cube.MessageFlyOnAxis ("Test Message", Cube.AXIS.AXIS_Z, Cube.DIRECTION.FORWARD);
+			cube.MessageBanner ("My Name Is Tyler", Cube.DIRECTION.FORWARD);
 		}
 
 		public static void RenderCube(bool[][][] cube)

@@ -800,9 +800,49 @@ namespace CubeController
 		/// </summary>
 		/// <param name="message">Message to print.</param>
 		/// <param name="direction">Direction to send around cube.</param>
-		public void MessageBanner(string message, AXIS axis, DIRECTION direction)
+		public void MessageBanner(string message, DIRECTION direction)
 		{
 
+			// A message will be sent: LAST CHARACTER --> around cube --> gone.
+			// And then each character preceding it will be sent in quick succession.
+			// At any given point up to three characters will be printed out.
+			if (direction == DIRECTION.FORWARD) {
+				// The message needs to be reversed to send the last character out first. 
+				var chars = message.ToCharArray ();
+				Array.Reverse (chars);
+				// Tack on three extra blank characters, so that the actual last
+				// character will "fall-off" the cube. 
+				message = new string(chars);
+				message += "   ";
+
+				for (int i = 0; i < message.Length; ++i) {
+					// Put the ith character on the LEFT-FACE of CUBE.
+					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
+
+					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
+
+					// Take the character from the LEFT-FACE, and put it on FRONT-FACE.
+					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 0));
+
+					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
+
+					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
+					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
+
+					RenderPlane (GetPlane (AXIS.AXIS_X, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_Y, 0));
+					RenderPlane (GetPlane (AXIS.AXIS_X, 7));
+
+					DelayMS (400);
+				}
+
+			} else {
+
+			}
 		}
 
 #endregion // FONT
