@@ -19,7 +19,10 @@ namespace CubeController
 		/// X = sqrt(7^2 + 7^2) ~= 9.899495
 		/// </summary>
 		public const double WAVE_CONSTANT = 9.899495;
-		public const double PI = 4.0 * Math.Atan(1.0);
+		public const double RIPPLE_INTERVAL = 1.3;
+		public static double PI = 4.0 * Math.Atan(1.0);
+		public const double HELIX_BRAID_LENGTH = 0.05;
+
 	}
 }
 

@@ -9,7 +9,9 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-			cube.AxisBoing (Cube.AXIS.AXIS_Z, 200);
+			//cube.AxisBoing (Cube.AXIS.AXIS_Z, 200);
+			//cube.Ripples (100, 100);
+			cube.MismatchedSines (500, 100, 0.75);
 		}
 
 		public static void RenderCube(bool[][][] cube)

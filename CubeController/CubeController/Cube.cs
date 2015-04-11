@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
-using CubeController;
 
 namespace CubeController
 {
@@ -456,7 +455,7 @@ namespace CubeController
 						if (plane [i] [j]) {
 							Console.Write ("# ");
 						} else {
-							Console.Write ("- ");
+							Console.Write ("  ");
 						}
 					}
 					Console.WriteLine ();
@@ -903,7 +902,7 @@ namespace CubeController
 		/// Creates sinewaves that travel from face to face.
 		/// </summary>
 		/// <param name="iterations">Iterations.</param>
-		/// <param name="delay">Delay.</param>
+		/// <param name="delay">Delay in milliseconds.</param>
 		public void SineLines(int iterations, int delay)
 		{
 
@@ -913,12 +912,12 @@ namespace CubeController
 		/// Creates a sine wave that ripples from the center of the cube.
 		/// </summary>
 		/// <param name="iterations">Iterations to run to.</param>
-		/// <param name="delay">Animation speed (delay between frames).</param>
+		/// <param name="delay">Animation speed (delay between frames in milliseconds).</param>
 		public void Ripples(int iterations, int delay)
 		{
-			double distance 		= 0.0,
-				   height 		   	= 0.0,
-				   ripple_interval 	= 0.0;
+			double 	distance = 0.0,
+				   	height = 0.0,
+					ripple_interval = Effect.RIPPLE_INTERVAL;
 
 			int x = 0,
 				y = 0;
@@ -926,11 +925,61 @@ namespace CubeController
 			for (int i = 0; i < iterations; ++i) {
 				for (x = 0; x < DIMENSION; ++x) {
 					for (y = 0; y < DIMENSION; ++y) {
+						// Calculate distance of this point from the center of cube in 
+						// relation to the sine wave. 
+						distance = Point.Distance ( 
+							(double)((DIMENSION - 1) / 2), // First x is center of 0:7. 
+							(double)x,					 
+							(double)((DIMENSION - 1) / 2), // First y is center of 0:7.
+							(double)(y / Effect.WAVE_CONSTANT)) // Second y is distance to hypotenous 
+							* 8.0; 
+															 
 
+						height = 4.0 + (Math.Sin ((distance / ripple_interval) + (i / 50.0)) * 3.0);
+						SetVoxel (x, y, (int)height);
 					}
 				}
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
 			}
+		}
 
+		/// <summary>
+		/// Shows sinusoidal waves with mismatching periods in different planes. 
+		/// Therefore, they'll appear to be overlapping in some parts, with a neat
+		/// effect. 
+		/// 
+		/// Will only be shown from the front of the cube, i.e. the X-Z plane. 
+		/// </summary>
+		/// <param name="iterations">Iterations to run the effect to.</param>
+		/// <param name="delay">Delay between frames (in milliseconds).</param>
+		public void MismatchedSines(int iterations, int delay, double delta_t)
+		{
+			Random r = new Random ();
+
+			double t = 0.0;
+			double[] xvals = new double[8];
+			double[] zvals = new double[8];
+
+			for (int i = 0; i < iterations; ++i) {
+				for (int j = 0; j < DIMENSION; ++j){
+					for (int k = 0; k < DIMENSION; ++k) {
+						xvals [k] = t;
+						t += delta_t;
+					}
+					zvals [j] = 3.5 + (Math.Sin (i+xvals[j]))*4.0;
+
+					// Purposefully backwards for testing purposes. 
+					SetVoxel (j,(int)zvals [j], 0);
+					SetVoxel (j,(int)zvals [j], 2);
+					SetVoxel (j,(int)zvals [j], 4);
+					SetVoxel (j,(int)zvals [j], 6);
+				}
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
 		}
 
 #endregion
@@ -968,11 +1017,11 @@ namespace CubeController
 		/// <param name="y1">The first y value.</param>
 		/// <param name="y2">The second y value.</param>
 		/// <param name="zcoords">Z coordinates (if provided) for a 3D distance calculation</param>
-		public static double Distance(int x1, int x2, int y1, int y2, params int[] zcoords)
+		public static double Distance(double x1, double x2, double y1, double y2, params double[] zcoords)
 		{
 			double distance = 0.0;
 
-			if (zcoords != null) {
+			if (zcoords.Length > 0) {
 				distance += ((zcoords [1] - zcoords [0]) * (zcoords [1] - zcoords [0]));
 			}
 			distance += ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
