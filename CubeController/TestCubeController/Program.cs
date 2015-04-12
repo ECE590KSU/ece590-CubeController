@@ -1,6 +1,7 @@
 ﻿using System;
 using CubeController;
 using System.IO;
+using System.Threading;
 
 namespace TestCubeController
 {
@@ -9,9 +10,7 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-			//cube.AxisBoing (Cube.AXIS.AXIS_Z, 200);
-			//cube.Ripples (100, 100);
-			cube.MismatchedSines (500, 100, 0.75);
+			cube.VoxelTest (100);
 		}
 
 		public static void RenderCube(bool[][][] cube)

@@ -831,17 +831,26 @@ namespace CubeController
 				message += "   ";
 
 				for (int i = 0; i < message.Length; ++i) {
-					// Put the ith character on the LEFT-FACE of CUBE.
-					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
-					DelayMS (400);
+					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
+					ClearPlane (AXIS.AXIS_X, 7);
+					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
 
 					// Take the character from the LEFT-FACE, and put it on FRONT-FACE.
+					ClearPlane (AXIS.AXIS_Y, 0);
 					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 0));
-					DelayMS (400);
 
-					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
-					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
-					DelayMS (400);
+					// Put the ith character on the LEFT-FACE of CUBE.
+					ClearPlane (AXIS.AXIS_X, 0);
+					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
+
+					Console.WriteLine ("LEFT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_X, 0)); DelayMS (800);
+					Console.WriteLine ("FRONT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_Y, 0)); DelayMS (800);
+					Console.WriteLine ("RIGHT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_X, 7)); DelayMS (800);
+
+					Console.WriteLine ("NEXT ITERATION\n\n\n");
 				}
 			
 			// A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone.
@@ -935,7 +944,7 @@ namespace CubeController
 							* 8.0; 
 															 
 
-						height = 4.0 + (Math.Sin ((distance / ripple_interval) + (i / 50.0)) * 3.0);
+						height = 4.0 + (Math.Sin ((distance / ripple_interval) + (i / 50.0)) * 4.0);
 						SetVoxel (x, y, (int)height);
 					}
 				}
@@ -946,18 +955,13 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Shows sinusoidal waves with mismatching periods in different planes. 
-		/// Therefore, they'll appear to be overlapping in some parts, with a neat
-		/// effect. 
-		/// 
+		/// Shows sinusoidal wave.
 		/// Will only be shown from the front of the cube, i.e. the X-Z plane. 
 		/// </summary>
 		/// <param name="iterations">Iterations to run the effect to.</param>
 		/// <param name="delay">Delay between frames (in milliseconds).</param>
-		public void MismatchedSines(int iterations, int delay, double delta_t)
+		public void SineWave(int iterations, int delay, double delta_t)
 		{
-			Random r = new Random ();
-
 			double t = 0.0;
 			double[] xvals = new double[8];
 			double[] zvals = new double[8];
@@ -968,17 +972,40 @@ namespace CubeController
 						xvals [k] = t;
 						t += delta_t;
 					}
-					zvals [j] = 3.5 + (Math.Sin (i+xvals[j]))*4.0;
+					zvals [j] = 3.5 + (Math.Sin (i+xvals[j]))*3.0;
 
 					// Purposefully backwards for testing purposes. 
-					SetVoxel (j,(int)zvals [j], 0);
-					SetVoxel (j,(int)zvals [j], 2);
-					SetVoxel (j,(int)zvals [j], 4);
-					SetVoxel (j,(int)zvals [j], 6);
+					for (int z = 0; z < DIMENSION; ++z) {
+						SetVoxel (j, (int)zvals [j], z);
+					}
 				}
 				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Set every voxel on the cube, but plane by plane. 
+		/// </summary>
+		/// <param name="delay">Delay between plane refreshes.</param>
+		public void VoxelTest(int delay)
+		{
+			ClearEntireCube ();
+
+			// Go Z-plane by Z-plane.
+			for (int z = 0; z < DIMENSION; ++z) {
+				// Set every voxel on this Z-plane, 1x1.
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						SetVoxel (x, y, z);
+						DelayMS (15);
+						RenderCube ();
+					}
+					DelayMS (delay);
+				}
+				// Clear out the entire plane.
+				ClearPlane (AXIS.AXIS_Z, z);
 			}
 		}
 
