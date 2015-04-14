@@ -24,6 +24,7 @@ namespace CubeController
 		public const double HELIX_BRAID_LENGTH_DELTA_T = 0.05;
 		public const double NICE_SINE_WAVE_DELTA_T = 0.75;
 
+		public const int COMFORTABLE_BOX_WOOP_WOOP_DELAY = 200;
 	}
 }
 

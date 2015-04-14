@@ -12,7 +12,13 @@ namespace TestCubeController
 			Cube cube = new Cube ();
 
 			//cube.LineSpin (2000, 50);
-			cube.SideWaves (2000, 40);
+			//cube.SideWaves (2000, 40);
+
+			int i = 0;
+			while (i++ < 2000) {
+				cube.BoxWoopWoop (1, Effect.COMFORTABLE_BOX_WOOP_WOOP_DELAY, true);
+				cube.BoxWoopWoop (1, Effect.COMFORTABLE_BOX_WOOP_WOOP_DELAY, false);
+			}
 		}
 
 		public static void RenderCube(bool[][][] cube)

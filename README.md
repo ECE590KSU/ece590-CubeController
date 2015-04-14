@@ -40,7 +40,7 @@ The target platform is Windows x86_64, and cannot support the original calls to 
 - [ ] BoingBoing()
 - [ ] BoxShrinkGrow()
 - [ ] BoxSideRandSend()
-- [ ] BoxWoopWoop()
+- [x] BoxWoopWoop()
 - [ ] DrawPositions()
 - [ ] Hollow1()
 - [ ] Hollow2()

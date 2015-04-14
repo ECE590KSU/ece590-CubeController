@@ -1082,7 +1082,29 @@ namespace CubeController
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
+		}
 
+		public void BoxWoopWoop(int iterations, int delay, bool grow)
+		{
+			ClearEntireCube ();
+
+			for (int k = 0; k < iterations; ++k) {
+				if (grow) {
+					for (int i = 0; i < (DIMENSION / 2); ++i) {
+						BoxWireFrame (new Point (i, i, i), (4 - i));
+						RenderCube ();
+						DelayMS (delay);
+						ClearEntireCube ();
+					}
+				} else {
+					for (int i = 3; i >= 0; --i) {
+						BoxWireFrame (new Point (i, i, i), (4 - i));
+						RenderCube ();
+						DelayMS (delay);
+						ClearEntireCube ();
+					}
+				}
+			}
 		}
 
 		/// <summary>
