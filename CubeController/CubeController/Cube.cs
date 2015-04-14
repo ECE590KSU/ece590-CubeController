@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
 using System.Collections.Generic;
-using CubeController;
 
 namespace CubeController
 {
@@ -18,7 +17,13 @@ namespace CubeController
 		public enum DIRECTION { FORWARD, REVERSE };
 		public enum REFLECTION { ORIGIN, TERMINUS };
 
-		public int Dimension { get; set; }
+		public int Dimension
+		{
+			get 
+			{
+				return DIMENSION;
+			}
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the Cube class.
@@ -73,6 +78,30 @@ namespace CubeController
 		{
 			for (int i = 0; i < DIMENSION; ++i) {
 				ClearPlane (AXIS.AXIS_Z, i);
+			}
+		}
+
+		/// <summary>
+		/// Renders the cube by Z-Planes.
+		/// </summary>
+		public void RenderCube()
+		{
+			if (_cubeState != null) {
+				// Print each z plane. 
+				for (int z = 0; z < 8; ++z) {
+					//Console.WriteLine ("PLANE {0}", z);
+					for (int x = 0; x < 8; ++x) {
+						for (int y = 0; y < 8; ++y) {
+							if (_cubeState [x] [y] [z]) {
+								Console.Write ("# ");
+							} else {
+								Console.Write ("  ");
+							}
+						}
+						Console.WriteLine ();
+					}
+					Console.WriteLine ("\n");
+				}
 			}
 		}
 			
@@ -432,7 +461,7 @@ namespace CubeController
 						if (plane [i] [j]) {
 							Console.Write ("# ");
 						} else {
-							Console.Write ("- ");
+							Console.Write ("  ");
 						}
 					}
 					Console.WriteLine ();
@@ -808,17 +837,26 @@ namespace CubeController
 				message += "   ";
 
 				for (int i = 0; i < message.Length; ++i) {
-					// Put the ith character on the LEFT-FACE of CUBE.
-					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
-					DelayMS (400);
+					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
+					ClearPlane (AXIS.AXIS_X, 7);
+					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
 
 					// Take the character from the LEFT-FACE, and put it on FRONT-FACE.
+					ClearPlane (AXIS.AXIS_Y, 0);
 					PatternSetPlane (AXIS.AXIS_Y, 0, GetPlane (AXIS.AXIS_X, 0));
-					DelayMS (400);
 
-					// Take the character from the FRONT-FACE, and put it on the RIGHT-FACE.
-					PatternSetPlane (AXIS.AXIS_X, 7, GetPlane (AXIS.AXIS_Y, 0));
-					DelayMS (400);
+					// Put the ith character on the LEFT-FACE of CUBE.
+					ClearPlane (AXIS.AXIS_X, 0);
+					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
+
+					Console.WriteLine ("LEFT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_X, 0)); DelayMS (800);
+					Console.WriteLine ("FRONT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_Y, 0)); DelayMS (800);
+					Console.WriteLine ("RIGHT FACE");
+					RenderPlane (GetPlane (AXIS.AXIS_X, 7)); DelayMS (800);
+
+					Console.WriteLine ("NEXT ITERATION\n\n\n");
 				}
 			
 			// A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone.
@@ -858,7 +896,276 @@ namespace CubeController
 		/// <param name="speed">Speed.</param>
 		public void AxisBoing(AXIS axis, int speed)
 		{
+			// Always set the ORIGIN plane first. 
+			SetPlane (axis, 0);
 
+			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
+			for (int i = 0; i < DIMENSION-1; ++i) {
+				Shift (axis, DIRECTION.FORWARD);
+				RenderCube ();
+				DelayMS (speed);
+			}
+			DelayMS (speed);
+			for (int i = 0; i < DIMENSION-1; ++i) {
+				Shift (axis, DIRECTION.REVERSE);
+				RenderCube ();
+				DelayMS (speed);
+			}
+		}
+
+		/// <summary>
+		/// Spins a line in a sinusoidal fashion. Implementation nearly directly
+		/// taken from 3d.cpp::linespin(). Some of the values have been arbitrarily chosen
+		/// by the team from CHR, so I've chosen not to mess with them too much.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void LineSpin(int iterations, int delay)
+		{
+			double top_x = 0.0, top_y = 0.0, bot_x = 0.0, bot_y = 0.0;
+			double sine_base = 0.0;
+			double center_x = 4.0, center_y = 4.0;
+
+			for (int i = 0; i < iterations; ++i) {
+
+				// For each plane
+				for (int z = 0; z < DIMENSION; ++z) {
+					sine_base = (double)(i / (double)20) + 
+						(double)(z / ((double)(10 + (7.0 * Math.Sin ((double)i / 20)))));
+
+					top_x = center_x + Math.Sin (sine_base) * 5;
+					top_y = center_y + Math.Cos(sine_base) * 5;
+
+					bot_x = center_x + Math.Sin (sine_base + Effect.PI) * 10;
+					bot_y = center_y + Math.Cos (sine_base + Effect.PI) * 10;
+
+					DrawLine ((int)top_x, (int)top_y, z,
+						(int)bot_x, (int)bot_y, z);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Pretty much like line spin, but with a twist on
+		/// which axis dominates the DrawLine() invocation. Leads
+		/// to some interesting effects.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void VertSpiral(int iterations, int delay)
+		{
+			double top_x = 0.0, top_y = 0.0, bot_x = 0.0, bot_y = 0.0;
+			double sine_base = 0.0;
+			double center_x = 4.0, center_y = 4.0;
+
+			for (int i = 0; i < iterations; ++i) {
+
+				// For each plane
+				for (int z = 0; z < DIMENSION; ++z) {
+					sine_base = (double)(i / (double)20) + 
+						(double)(z / ((double)(10 + (7.0 * Math.Sin ((double)i / 20)))));
+
+					top_x = center_x + Math.Sin (sine_base) * 5;
+					top_y = center_y + Math.Cos(sine_base) * 5;
+
+					bot_x = center_x + Math.Sin (sine_base + Effect.PI) * 10;
+					bot_y = center_y + Math.Cos (sine_base + Effect.PI) * 10;
+
+					DrawLine (z, (int)top_x, (int)top_y,
+						z, (int)bot_x, (int)bot_y);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Creates a sine wave that ripples from the center of the cube.
+		/// </summary>
+		/// <param name="iterations">Iterations to run to.</param>
+		/// <param name="delay">Animation speed (delay between frames in milliseconds).</param>
+		public void Ripples(int iterations, int delay)
+		{
+			double 	distance = 0.0,
+				   	height = 0.0,
+					ripple_interval = Effect.RIPPLE_INTERVAL;
+
+			int x = 0,
+				y = 0;
+
+			for (int i = 0; i < iterations; ++i) {
+				for (x = 0; x < DIMENSION; ++x) {
+					for (y = 0; y < DIMENSION; ++y) {
+						// Calculate distance of this point from the center of cube in 
+						// relation to the sine wave. 
+						distance = Point.Distance ( 
+							(double)((DIMENSION - 1) / 2), // First x is center of 0:7. 
+							(double)x,					 
+							(double)((DIMENSION - 1) / 2), // First y is center of 0:7.
+							(double)(y / Effect.WAVE_CONSTANT)) // Second y is distance to hypotenous 
+							* 8.0; 
+															 
+
+						height = 4.0 + (Math.Sin ((distance / ripple_interval) + (i / 50.0)) * 4.0);
+						SetVoxel (x, y, (int)height);
+					}
+				}
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Shows sinusoidal wave.
+		/// Will only be shown from the front of the cube, i.e. the X-Z plane. 
+		/// </summary>
+		/// <param name="iterations">Iterations to run the effect to.</param>
+		/// <param name="delay">Delay between frames (in milliseconds).</param>
+		public void SineWave(int iterations, int delay, double delta_t)
+		{
+			double t = 0.0;
+			double[] xvals = new double[8];
+			double[] zvals = new double[8];
+
+			for (int i = 0; i < iterations; ++i) {
+				for (int j = 0; j < DIMENSION; ++j){
+					for (int k = 0; k < DIMENSION; ++k) {
+						xvals [k] = t;
+						t += delta_t;
+					}
+					zvals [j] = 3.5 + (Math.Sin (i+xvals[j]))*3.0;
+
+					// Purposefully backwards for testing purposes. 
+					for (int z = 0; z < DIMENSION; ++z) {
+						SetVoxel (j, (int)zvals [j], z);
+					}
+				}
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Generates waves that spin from side-to-side. 
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void SideWaves(int iterations, int delay)
+		{
+			double origin_x = 0.0, origin_y = 0.0, 
+				distance = 0.0, height = 0.0;
+
+			ClearEntireCube ();
+
+			for (int i = 0; i < iterations; ++i) {
+				origin_x = 3.5 + Math.Sin ((double)i / 500) * 4.0;
+				origin_y = 3.5 + Math.Cos ((double)i / 500) * 4.0;
+
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						distance = Point.Distance (origin_x, origin_y, (double)x, (double)y / Effect.WAVE_CONSTANT) * 8.0;
+						height = 4.0 + Math.Sin ((distance / 2.0) + ((double)i / 500)) * 3.6;
+
+						SetVoxel (x, y, (int)height);
+					}
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Takes a voxel and sends it from one face of the cube
+		/// to another along the Z-axis. 
+		/// </summary>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="z">The z coordinate.</param>
+		/// <param name="delay">Delay between frames.</param>
+		public void SendVoxelZ(int x, int y, int z, int delay)
+		{
+			int dest = 0;
+			for (int i = 0; i < DIMENSION; ++i) {
+				if (z == (DIMENSION - 1)) {
+					dest = DIMENSION - 1 - i;
+					ClearVoxel (x, y, dest+1);
+				} else {
+					dest = i;
+					ClearVoxel (x, y, dest-1);
+				}
+				SetVoxel (x, y, dest);
+				RenderCube ();
+				DelayMS (delay);
+			}
+		}
+
+		/// <summary>
+		/// Grows or shrinks a wireframe box given the value
+		/// of [grow]. A really neat effect if used in the following
+		/// manner:
+		/// 	while (iteration < max){
+		/// 		BoxWoopWoop(1, delay, true);	// Grow
+		/// 		BoxWoopWoop(1, delay, false);	// Shrink
+		/// 	} // Repeatedly
+		/// </summary>
+		/// <param name="iterations">Iterations to run to.</param>
+		/// <param name="delay">Delay between animation frames.</param>
+		/// <param name="grow">If set to <c>true</c>, then grow.</param>
+		public void BoxWoopWoop(int iterations, int delay, bool grow)
+		{
+			ClearEntireCube ();
+
+			for (int k = 0; k < iterations; ++k) {
+				if (grow) {
+					for (int i = 0; i < (DIMENSION / 2); ++i) {
+						BoxWireFrame (new Point (i, i, i), (4 - i));
+						RenderCube ();
+						DelayMS (delay);
+						ClearEntireCube ();
+					}
+				} else {
+					for (int i = 3; i >= 0; --i) {
+						BoxWireFrame (new Point (i, i, i), (4 - i));
+						RenderCube ();
+						DelayMS (delay);
+						ClearEntireCube ();
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// Set every voxel on the cube, but plane by plane. 
+		/// </summary>
+		/// <param name="delay">Delay between plane refreshes.</param>
+		public void VoxelTest(int delay)
+		{
+			ClearEntireCube ();
+
+			// Go Z-plane by Z-plane.
+			for (int z = 0; z < DIMENSION; ++z) {
+				// Set every voxel on this Z-plane, 1x1.
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						SetVoxel (x, y, z);
+						DelayMS (15);
+						RenderCube ();
+					}
+					DelayMS (delay);
+				}
+				// Clear out the entire plane.
+				ClearPlane (AXIS.AXIS_Z, z);
+			}
 		}
 
 #endregion
@@ -885,6 +1192,27 @@ namespace CubeController
 			X = x;
 			Y = y;
 			Z = z;
+		}
+
+		/// <summary>
+		/// Calculates the distance between two points.
+		/// </summary>
+		/// <returns>The d.</returns>
+		/// <param name="x1">The first x value.</param>
+		/// <param name="x2">The second x value.</param>
+		/// <param name="y1">The first y value.</param>
+		/// <param name="y2">The second y value.</param>
+		/// <param name="zcoords">Z coordinates (if provided) for a 3D distance calculation</param>
+		public static double Distance(double x1, double x2, double y1, double y2, params double[] zcoords)
+		{
+			double distance = 0.0;
+
+			if (zcoords.Length > 0) {
+				distance += ((zcoords [1] - zcoords [0]) * (zcoords [1] - zcoords [0]));
+			}
+			distance += ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
+
+			return Math.Sqrt(distance);
 		}
 	}
 }
