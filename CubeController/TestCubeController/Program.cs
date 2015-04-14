@@ -14,10 +14,19 @@ namespace TestCubeController
 			//cube.LineSpin (2000, 50);
 			//cube.SideWaves (2000, 40);
 
+			/*
 			int i = 0;
 			while (i++ < 2000) {
 				cube.BoxWoopWoop (1, Effect.COMFORTABLE_BOX_WOOP_WOOP_DELAY, true);
 				cube.BoxWoopWoop (1, Effect.COMFORTABLE_BOX_WOOP_WOOP_DELAY, false);
+			}
+			*/
+
+			cube.SetPlane (Cube.AXIS.AXIS_Z, 0);
+			for (int i = 0; i < cube.Dimension; ++i) {
+				for (int j = 0; j < cube.Dimension; ++j) {
+					cube.SendVoxelZ (i, j, 0, 100);
+				}
 			}
 		}
 

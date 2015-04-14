@@ -1084,6 +1084,43 @@ namespace CubeController
 			}
 		}
 
+		/// <summary>
+		/// Takes a voxel and sends it from one face of the cube
+		/// to another along the Z-axis. 
+		/// </summary>
+		/// <param name="x">The x coordinate.</param>
+		/// <param name="y">The y coordinate.</param>
+		/// <param name="z">The z coordinate.</param>
+		/// <param name="delay">Delay between frames.</param>
+		public void SendVoxelZ(int x, int y, int z, int delay)
+		{
+			int dest = 0;
+			for (int i = 0; i < DIMENSION; ++i) {
+				if (z == (DIMENSION - 1)) {
+					dest = DIMENSION - 1 - i;
+					ClearVoxel (x, y, dest+1);
+				} else {
+					dest = i;
+					ClearVoxel (x, y, dest-1);
+				}
+				SetVoxel (x, y, dest);
+				RenderCube ();
+				DelayMS (delay);
+			}
+		}
+
+		/// <summary>
+		/// Grows or shrinks a wireframe box given the value
+		/// of [grow]. A really neat effect if used in the following
+		/// manner:
+		/// 	while (iteration < max){
+		/// 		BoxWoopWoop(1, delay, true);	// Grow
+		/// 		BoxWoopWoop(1, delay, false);	// Shrink
+		/// 	} // Repeatedly
+		/// </summary>
+		/// <param name="iterations">Iterations to run to.</param>
+		/// <param name="delay">Delay between animation frames.</param>
+		/// <param name="grow">If set to <c>true</c>, then grow.</param>
 		public void BoxWoopWoop(int iterations, int delay, bool grow)
 		{
 			ClearEntireCube ();
