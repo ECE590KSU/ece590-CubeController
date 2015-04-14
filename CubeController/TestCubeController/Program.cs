@@ -10,7 +10,9 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-			cube.VoxelTest (100);
+
+			//cube.LineSpin (2000, 50);
+			cube.SideWaves (2000, 40);
 		}
 
 		public static void RenderCube(bool[][][] cube)

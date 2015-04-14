@@ -17,7 +17,13 @@ namespace CubeController
 		public enum DIRECTION { FORWARD, REVERSE };
 		public enum REFLECTION { ORIGIN, TERMINUS };
 
-		public int Dimension { get; set; }
+		public int Dimension
+		{
+			get 
+			{
+				return DIMENSION;
+			}
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the Cube class.
@@ -83,7 +89,7 @@ namespace CubeController
 			if (_cubeState != null) {
 				// Print each z plane. 
 				for (int z = 0; z < 8; ++z) {
-					Console.WriteLine ("PLANE {0}", z);
+					//Console.WriteLine ("PLANE {0}", z);
 					for (int x = 0; x < 8; ++x) {
 						for (int y = 0; y < 8; ++y) {
 							if (_cubeState [x] [y] [z]) {
@@ -908,13 +914,75 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Creates sinewaves that travel from face to face.
+		/// Spins a line in a sinusoidal fashion. Implementation nearly directly
+		/// taken from 3d.cpp::linespin(). Some of the values have been arbitrarily chosen
+		/// by the team from CHR, so I've chosen not to mess with them too much.
 		/// </summary>
 		/// <param name="iterations">Iterations.</param>
-		/// <param name="delay">Delay in milliseconds.</param>
-		public void SineLines(int iterations, int delay)
+		/// <param name="delay">Delay.</param>
+		public void LineSpin(int iterations, int delay)
 		{
+			double top_x = 0.0, top_y = 0.0, bot_x = 0.0, bot_y = 0.0;
+			double sine_base = 0.0;
+			double center_x = 4.0, center_y = 4.0;
 
+			for (int i = 0; i < iterations; ++i) {
+
+				// For each plane
+				for (int z = 0; z < DIMENSION; ++z) {
+					sine_base = (double)(i / (double)20) + 
+						(double)(z / ((double)(10 + (7.0 * Math.Sin ((double)i / 20)))));
+
+					top_x = center_x + Math.Sin (sine_base) * 5;
+					top_y = center_y + Math.Cos(sine_base) * 5;
+
+					bot_x = center_x + Math.Sin (sine_base + Effect.PI) * 10;
+					bot_y = center_y + Math.Cos (sine_base + Effect.PI) * 10;
+
+					DrawLine ((int)top_x, (int)top_y, z,
+						(int)bot_x, (int)bot_y, z);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Pretty much like line spin, but with a twist on
+		/// which axis dominates the DrawLine() invocation. Leads
+		/// to some interesting effects.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void VertSpiral(int iterations, int delay)
+		{
+			double top_x = 0.0, top_y = 0.0, bot_x = 0.0, bot_y = 0.0;
+			double sine_base = 0.0;
+			double center_x = 4.0, center_y = 4.0;
+
+			for (int i = 0; i < iterations; ++i) {
+
+				// For each plane
+				for (int z = 0; z < DIMENSION; ++z) {
+					sine_base = (double)(i / (double)20) + 
+						(double)(z / ((double)(10 + (7.0 * Math.Sin ((double)i / 20)))));
+
+					top_x = center_x + Math.Sin (sine_base) * 5;
+					top_y = center_y + Math.Cos(sine_base) * 5;
+
+					bot_x = center_x + Math.Sin (sine_base + Effect.PI) * 10;
+					bot_y = center_y + Math.Cos (sine_base + Effect.PI) * 10;
+
+					DrawLine (z, (int)top_x, (int)top_y,
+						z, (int)bot_x, (int)bot_y);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
 		}
 
 		/// <summary>
@@ -983,6 +1051,38 @@ namespace CubeController
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
+		}
+
+		/// <summary>
+		/// Generates waves that spin from side-to-side. 
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void SideWaves(int iterations, int delay)
+		{
+			double origin_x = 0.0, origin_y = 0.0, 
+				distance = 0.0, height = 0.0;
+
+			ClearEntireCube ();
+
+			for (int i = 0; i < iterations; ++i) {
+				origin_x = 3.5 + Math.Sin ((double)i / 500) * 4.0;
+				origin_y = 3.5 + Math.Cos ((double)i / 500) * 4.0;
+
+				for (int x = 0; x < DIMENSION; ++x) {
+					for (int y = 0; y < DIMENSION; ++y) {
+						distance = Point.Distance (origin_x, origin_y, (double)x, (double)y / Effect.WAVE_CONSTANT) * 8.0;
+						height = 4.0 + Math.Sin ((distance / 2.0) + ((double)i / 500)) * 3.6;
+
+						SetVoxel (x, y, (int)height);
+					}
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ClearEntireCube ();
+			}
+
 		}
 
 		/// <summary>
