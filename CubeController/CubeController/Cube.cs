@@ -10,6 +10,7 @@ namespace CubeController
 	{
 		private bool[][][] _cubeState;		// A collection of voxels. 
 		private const int DIMENSION = 8;	// How many voxels per anode column. 
+		private Random _rgen;
 
 		private FontHandler _fontHandler;
 
@@ -41,6 +42,7 @@ namespace CubeController
 			}
 
 			_fontHandler = new FontHandler ();
+			_rgen = new Random ();
 		}
 
 		/// <summary>
@@ -374,11 +376,12 @@ namespace CubeController
 #region ADVANCED_DRAW
 			
 		/// <summary>
-		/// Shift the specified axis in the specified direction.
-		/// </summary>
+		/// Shift the specified axis in the specified direction. Roll planes
+		/// through (do not discard planes). 
+		/// </summary> 
 		/// <param name="axis">Axis.</param>
 		/// <param name="direction">Direction.</param>
-		public void Shift(AXIS axis, DIRECTION direction)
+		public void ShiftAndRoll(AXIS axis, DIRECTION direction)
 		{
 			bool[][] tmpplane;
 
@@ -400,6 +403,28 @@ namespace CubeController
 				}
 				// Rotate the first plane through as the last element.
 				PatternSetPlane (axis, DIMENSION - 1, tmpplane);
+			}
+		}
+
+		/// <summary>
+		/// Shift the specified axis in the specified direction. Discard planes
+		/// as they reach the boundary. 
+		/// </summary> 
+		/// <param name="axis">Axis.</param>
+		/// <param name="direction">Direction.</param>
+		public void ShiftNoRoll(AXIS axis, DIRECTION direction)
+		{
+			if (direction == DIRECTION.FORWARD) {
+				for (int i = DIMENSION - 1; i > 0; --i) {
+					// Set the ith plane to the plane before it.
+					PatternSetPlane (axis, i, GetPlane(axis, i-1));
+				}
+				ClearPlane (axis, 0);
+			} else {
+				for (int i = 0; i < DIMENSION - 1; ++i) {
+					PatternSetPlane (axis, i, GetPlane (axis, i+1));
+				}
+				ClearPlane (axis, DIMENSION - 1);
 			}
 		}
 
@@ -804,7 +829,7 @@ namespace CubeController
 				PutChar (axis, 0, c);
 				for (int i = 0; i < DIMENSION; ++i) {
 					RenderPlane (GetPlane (axis, i));
-					Shift (axis, direction);
+					ShiftAndRoll (axis, direction);
 					DelayMS (200);
 				}
 				ClearEntireCube ();
@@ -901,13 +926,13 @@ namespace CubeController
 
 			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
 			for (int i = 0; i < DIMENSION-1; ++i) {
-				Shift (axis, DIRECTION.FORWARD);
+				ShiftAndRoll (axis, DIRECTION.FORWARD);
 				RenderCube ();
 				DelayMS (speed);
 			}
 			DelayMS (speed);
 			for (int i = 0; i < DIMENSION-1; ++i) {
-				Shift (axis, DIRECTION.REVERSE);
+				ShiftAndRoll (axis, DIRECTION.REVERSE);
 				RenderCube ();
 				DelayMS (speed);
 			}
@@ -948,7 +973,7 @@ namespace CubeController
 				ClearEntireCube ();
 			}
 		}
-
+			
 		/// <summary>
 		/// Pretty much like line spin, but with a twist on
 		/// which axis dominates the DrawLine() invocation. Leads
@@ -982,6 +1007,32 @@ namespace CubeController
 				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Create a rain-shower for the specified iterations, with [delay] ms
+		/// between each frame.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void Rain(int iterations, int delay)
+		{
+			int rnd_x = 0, rnd_y = 0;
+
+			for (int j = 0; j < iterations; ++j){
+				int randnum = _rgen.Next () % 4;
+
+				for (int i = 0; i < randnum; ++i) {
+					rnd_x = _rgen.Next () % 8;
+					rnd_y = _rgen.Next () % 8;
+					SetVoxel (rnd_x, rnd_y, 7);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ShiftNoRoll (Cube.AXIS.AXIS_Z, Cube.DIRECTION.REVERSE);
+				RenderCube ();
 			}
 		}
 

@@ -5,3 +5,10 @@
 /home/yetijones/Projects/ece590-CubeController/CubeController/TestCubeController/bin/Debug/TestCubeController.exe
 /home/yetijones/Projects/ece590-CubeController/CubeController/TestCubeController/obj/Debug/TestCubeController.exe
 /home/yetijones/Projects/ece590-CubeController/CubeController/TestCubeController/obj/Debug/TestCubeController.exe.mdb
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/bin/Debug/TestCubeController.exe.mdb
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/bin/Debug/TestCubeController.exe
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/obj/Debug/TestCubeController.exe
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/obj/Debug/TestCubeController.exe.mdb
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/bin/Debug/CubeController.dll
+/home/yetijones/gitprojects/ece590-CubeController/CubeController/TestCubeController/bin/Debug/CubeController.dll.mdb
