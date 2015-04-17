@@ -478,6 +478,34 @@ namespace CubeController
 			PatternSetPlane (axis, pl, plane);
 		}
 
+		/// <summary>
+		/// Partially rotates a given plane, not based on strictly 90°, 180°, or
+		/// -90° turns. 
+		/// </summary>
+		/// <param name="axis">Axis to rotate along.</param>
+		/// <param name="pl">Plane of axis to rotate.</param>
+		/// <param name="theta">Degree of rotation.</param>
+		public void PartialRotation(AXIS axis, int pl, double theta)
+		{
+			// Get the plane that you need to rotate. 
+			bool tmpplane = GetPlane (axis, pl);
+
+			// Parital rotation is accomplished via the following matrix expansion:
+			// | x' | = | cos(θ) - sin(θ) | | x |
+			// | y' | = | sin(θ) + cos(θ) | | y |
+			//		Therefore
+			// x' = x * cos(θ) - y * sin(θ)
+			// y' = x * sin(θ) + y * cos(θ)
+			double sin_t = Math.Sin (theta);
+			double cos_t = Math.Cos (theta);
+
+			double x_prime = 0.0, y_prime = 0.0;
+
+
+
+
+		}
+
 		public void RenderPlane(bool[][] plane)
 		{
 			if (plane != null) {
