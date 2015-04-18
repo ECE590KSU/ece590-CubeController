@@ -490,6 +490,11 @@ namespace CubeController
 			// Get the plane that you need to rotate. 
 			bool tmpplane = GetPlane (axis, pl);
 
+			// List of coordinates of voxels that are set, and which need to
+			// be rotated through. 
+			var coords = new List<Point> ();
+			var rotated = new List<Point> ();
+
 			// Parital rotation is accomplished via the following matrix expansion:
 			// | x' | = | cos(θ) - sin(θ) | | x |
 			// | y' | = | sin(θ) + cos(θ) | | y |
@@ -499,11 +504,68 @@ namespace CubeController
 			double sin_t = Math.Sin (theta);
 			double cos_t = Math.Cos (theta);
 
-			double x_prime = 0.0, y_prime = 0.0;
+			int x_prime = 0;
+			int y_prime = 0;
 
+			// Determine which voxels are currently set on this plane. 
+			switch (axis) {
+			case AXIS.AXIS_X:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (pl, i, j));
+						}
+					}
+				}
 
+				foreach (Point P in coords) {
+					x_prime = (int)((P.Y * cos_t) - (P.Z * sin_t));
+					y_prime = (int)((P.Y * sin_t) + (P.Z * cos_t));
 
+					rotated.Add (new Point (pl, x_prime, y_prime));
+				}
 
+				break;
+
+			case AXIS.AXIS_Y:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (i, pl, j));
+						}
+					}
+				}
+
+				foreach (Point P in coords) {
+					x_prime = (int)((P.X * cos_t) - (P.Z * sin_t));
+					y_prime = (int)((P.X * sin_t) + (P.Z * cos_t));
+
+					rotated.Add (new Point (x_prime, pl, y_prime));
+				}
+
+				break;
+
+			case AXIS.AXIS_Z:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (i, j, pl));
+						}
+					}
+				}
+
+				foreach (Point P in coords) {
+					x_prime = (int)((P.X * cos_t) - (P.Y * sin_t));
+					y_prime = (int)((P.X * sin_t) + (P.Y * cos_t));
+
+					rotated.Add (new Point (x_prime, y_prime, pl));
+				}
+
+				break;
+
+			default:
+				break;
+			}
 		}
 
 		public void RenderPlane(bool[][] plane)
