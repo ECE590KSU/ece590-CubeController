@@ -10,6 +10,7 @@ namespace CubeController
 	{
 		private bool[][][] _cubeState;		// A collection of voxels. 
 		private const int DIMENSION = 8;	// How many voxels per anode column. 
+		private Random _rgen;
 
 		private FontHandler _fontHandler;
 
@@ -41,6 +42,7 @@ namespace CubeController
 			}
 
 			_fontHandler = new FontHandler ();
+			_rgen = new Random ();
 		}
 
 		/// <summary>
@@ -374,11 +376,12 @@ namespace CubeController
 #region ADVANCED_DRAW
 			
 		/// <summary>
-		/// Shift the specified axis in the specified direction.
-		/// </summary>
+		/// Shift the specified axis in the specified direction. Roll planes
+		/// through (do not discard planes). 
+		/// </summary> 
 		/// <param name="axis">Axis.</param>
 		/// <param name="direction">Direction.</param>
-		public void Shift(AXIS axis, DIRECTION direction)
+		public void ShiftAndRoll(AXIS axis, DIRECTION direction)
 		{
 			bool[][] tmpplane;
 
@@ -400,6 +403,28 @@ namespace CubeController
 				}
 				// Rotate the first plane through as the last element.
 				PatternSetPlane (axis, DIMENSION - 1, tmpplane);
+			}
+		}
+
+		/// <summary>
+		/// Shift the specified axis in the specified direction. Discard planes
+		/// as they reach the boundary. 
+		/// </summary> 
+		/// <param name="axis">Axis.</param>
+		/// <param name="direction">Direction.</param>
+		public void ShiftNoRoll(AXIS axis, DIRECTION direction)
+		{
+			if (direction == DIRECTION.FORWARD) {
+				for (int i = DIMENSION - 1; i > 0; --i) {
+					// Set the ith plane to the plane before it.
+					PatternSetPlane (axis, i, GetPlane(axis, i-1));
+				}
+				ClearPlane (axis, 0);
+			} else {
+				for (int i = 0; i < DIMENSION - 1; ++i) {
+					PatternSetPlane (axis, i, GetPlane (axis, i+1));
+				}
+				ClearPlane (axis, DIMENSION - 1);
 			}
 		}
 
@@ -451,6 +476,96 @@ namespace CubeController
 
 			// Write your changes to the cube. 
 			PatternSetPlane (axis, pl, plane);
+		}
+
+		/// <summary>
+		/// Partially rotates a given plane, not based on strictly 90°, 180°, or
+		/// -90° turns. 
+		/// </summary>
+		/// <param name="axis">Axis to rotate along.</param>
+		/// <param name="pl">Plane of axis to rotate.</param>
+		/// <param name="theta">Degree of rotation.</param>
+		public void PartialRotation(AXIS axis, int pl, double theta)
+		{
+			// Get the plane that you need to rotate. 
+			bool tmpplane = GetPlane (axis, pl);
+
+			// List of coordinates of voxels that are set, and which need to
+			// be rotated through. 
+			var coords = new List<Point> ();
+			var rotated = new List<Point> ();
+
+			// Parital rotation is accomplished via the following matrix expansion:
+			// | x' | = | cos(θ) - sin(θ) | | x |
+			// | y' | = | sin(θ) + cos(θ) | | y |
+			//		Therefore
+			// x' = x * cos(θ) - y * sin(θ)
+			// y' = x * sin(θ) + y * cos(θ)
+			double sin_t = Math.Sin (theta);
+			double cos_t = Math.Cos (theta);
+
+			int x_prime = 0;
+			int y_prime = 0;
+
+			// Determine which voxels are currently set on this plane. 
+			switch (axis) {
+			case AXIS.AXIS_X:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (pl, i, j));
+						}
+					}
+				}
+
+				foreach (Point P in coords) {
+					x_prime = (int)((P.Y * cos_t) - (P.Z * sin_t));
+					y_prime = (int)((P.Y * sin_t) + (P.Z * cos_t));
+
+					rotated.Add (new Point (pl, x_prime, y_prime));
+				}
+
+				break;
+
+			case AXIS.AXIS_Y:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (i, pl, j));
+						}
+					}
+				}
+
+				foreach (Point P in coords) {
+					x_prime = (int)((P.X * cos_t) - (P.Z * sin_t));
+					y_prime = (int)((P.X * sin_t) + (P.Z * cos_t));
+
+					rotated.Add (new Point (x_prime, pl, y_prime));
+				}
+
+				break;
+
+			case AXIS.AXIS_Z:
+				for (int i = 0; i < DIMENSION; ++i) {
+					for (int j = 0; j < DIMENSION; ++j) {
+						if (tmpplane [i] [j]) {
+							coords.Add (new Point (i, j, pl));
+						}
+					}
+				}
+
+				foreach (Point P in coords) {
+					x_prime = (int)((P.X * cos_t) - (P.Y * sin_t));
+					y_prime = (int)((P.X * sin_t) + (P.Y * cos_t));
+
+					rotated.Add (new Point (x_prime, y_prime, pl));
+				}
+
+				break;
+
+			default:
+				break;
+			}
 		}
 
 		public void RenderPlane(bool[][] plane)
@@ -804,7 +919,7 @@ namespace CubeController
 				PutChar (axis, 0, c);
 				for (int i = 0; i < DIMENSION; ++i) {
 					RenderPlane (GetPlane (axis, i));
-					Shift (axis, direction);
+					ShiftAndRoll (axis, direction);
 					DelayMS (200);
 				}
 				ClearEntireCube ();
@@ -901,13 +1016,13 @@ namespace CubeController
 
 			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
 			for (int i = 0; i < DIMENSION-1; ++i) {
-				Shift (axis, DIRECTION.FORWARD);
+				ShiftAndRoll (axis, DIRECTION.FORWARD);
 				RenderCube ();
 				DelayMS (speed);
 			}
 			DelayMS (speed);
 			for (int i = 0; i < DIMENSION-1; ++i) {
-				Shift (axis, DIRECTION.REVERSE);
+				ShiftAndRoll (axis, DIRECTION.REVERSE);
 				RenderCube ();
 				DelayMS (speed);
 			}
@@ -948,7 +1063,7 @@ namespace CubeController
 				ClearEntireCube ();
 			}
 		}
-
+			
 		/// <summary>
 		/// Pretty much like line spin, but with a twist on
 		/// which axis dominates the DrawLine() invocation. Leads
@@ -982,6 +1097,32 @@ namespace CubeController
 				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
+			}
+		}
+
+		/// <summary>
+		/// Create a rain-shower for the specified iterations, with [delay] ms
+		/// between each frame.
+		/// </summary>
+		/// <param name="iterations">Iterations.</param>
+		/// <param name="delay">Delay.</param>
+		public void Rain(int iterations, int delay)
+		{
+			int rnd_x = 0, rnd_y = 0;
+
+			for (int j = 0; j < iterations; ++j){
+				int randnum = _rgen.Next () % 4;
+
+				for (int i = 0; i < randnum; ++i) {
+					rnd_x = _rgen.Next () % 8;
+					rnd_y = _rgen.Next () % 8;
+					SetVoxel (rnd_x, rnd_y, 7);
+				}
+
+				RenderCube ();
+				DelayMS (delay);
+				ShiftNoRoll (Cube.AXIS.AXIS_Z, Cube.DIRECTION.REVERSE);
+				RenderCube ();
 			}
 		}
 
