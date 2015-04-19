@@ -9,8 +9,12 @@ namespace CubeController
 	public class FontHandler
 	{
 		private Dictionary<char, bool[][]> _alphabet;
-		private static string pathDictionarySource = @"../../alphabitmap.txt";
 
+#if !LINUX
+		private static string pathDictionarySource = @"..\..\alphabitmap.txt";
+#else
+        private static string pathDictionarySource = @"../../alphabitmap.txt";
+#endif
 		/// <summary>
 		/// Initializes a new instance of the FontHandler class.
 		/// 
