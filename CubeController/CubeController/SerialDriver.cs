@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CubeController
 {
-    class SerialDriver
+    public class SerialDriver
     {
         /// <summary>
         /// Cube dimension.
@@ -22,7 +22,7 @@ namespace CubeController
         /// <summary>
         /// Default constructor for SerialDriver.
         /// </summary>
-        public SerialDriver (Cube cube)
+        public SerialDriver ()
         {
             _serialPort = new SerialPort ();
 
@@ -72,6 +72,12 @@ namespace CubeController
         {
             _serialPort.BaudRate = baudRate;
             _serialPort.WriteTimeout = writeTimeout;
+        }
+
+        public void SendEscapeSequence()
+        {
+            byte[] buffer = new byte[] { 0xff, 0x00 };
+            _serialPort.Write(buffer, 0, 2);
         }
 
         /// <summary>
