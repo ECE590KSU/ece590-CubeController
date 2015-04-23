@@ -74,6 +74,9 @@ namespace CubeController
             _serialPort.WriteTimeout = writeTimeout;
         }
 
+        /// <summary>
+        /// Sends escape sequence to the cube to ready it for a new draw at (0,0,0)
+        /// </summary>
         public void SendEscapeSequence()
         {
             byte[] buffer = new byte[] { 0xff, 0x00 };
@@ -81,7 +84,7 @@ namespace CubeController
         }
 
         /// <summary>
-        /// 
+        /// Converts the triple boolean array into a buffer
         /// </summary>
         /// <param name="cubeState">The voxel state you wish to send to the cube.</param>
         /// <returns>A buffer to be sent over serial comm</returns>
