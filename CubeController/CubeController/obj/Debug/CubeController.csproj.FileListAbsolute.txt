@@ -2,3 +2,4 @@ C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeControl
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\bin\Debug\CubeController.pdb
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\obj\Debug\CubeController.dll
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\obj\Debug\CubeController.pdb
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\obj\Debug\CubeController.csprojResolveAssemblyReference.cache

@@ -299,7 +299,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [y] [z] = _cubeState [pl] [z] [y];
+						tmpplane [y] [z] = _cubeState [pl] [y] [z];
 					}
 				}
 				break;
@@ -307,7 +307,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x] [z] = _cubeState [z] [pl] [DIMENSION - 1 - x];
+						tmpplane [x] [z] = _cubeState [x] [pl] [z];
 					}
 				}
 				break;
@@ -315,7 +315,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x] [y] = _cubeState [y] [DIMENSION - 1 - x] [pl];
+						tmpplane [x] [y] = _cubeState [y] [x] [pl];
 					}
 				}
 				break;
@@ -344,7 +344,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [pl] [y] [z] = pattern [z] [y];
+						_cubeState [pl] [y] [z] = pattern [y] [z];
 					}
 				}
 				break;
@@ -353,7 +353,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [pl] [z] = pattern [DIMENSION - 1 - z] [x];
+						_cubeState [x] [pl] [z] = pattern [x] [z];
 					}
 				}
 				break;
@@ -361,7 +361,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [pl] = pattern [DIMENSION - 1 - y] [x];
+						_cubeState [x] [y] [pl] = pattern [x] [y];
 					}
 				}
 				break;
@@ -488,7 +488,7 @@ namespace CubeController
 		public void PartialRotation(AXIS axis, int pl, double theta)
 		{
 			// Get the plane that you need to rotate. 
-			bool tmpplane = GetPlane (axis, pl);
+			bool [][] tmpplane = GetPlane (axis, pl);
 
 			// List of coordinates of voxels that are set, and which need to
 			// be rotated through. 
