@@ -684,7 +684,7 @@ namespace CubeController
             // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
             else
             {
-
+                BresenhamsLine3D(x1, y1, z1, x2, y2, z2, true);
             }
 		}
 
@@ -740,7 +740,7 @@ namespace CubeController
             // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
             else
             {
-
+                BresenhamsLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, true);
             }
 		}
 
@@ -801,7 +801,7 @@ namespace CubeController
             // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
             else
             {
-
+                BresenhamsLine3D(x1, y1, z1, x2, y2, z2, false);
             }
 		}
 
@@ -859,7 +859,7 @@ namespace CubeController
             // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
             else
             {
-
+                BresenhamsLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, false);
             }
 		}
 
@@ -871,18 +871,18 @@ namespace CubeController
         /// Basic idea in 2D:
         ///     Let A = 2 times change in Y
         ///     Let B = A - 2 times change in X
-        ///     Let P = A - change in X
+        ///     Let M = A - change in X
         /// 
         ///     Set the starting point. 
         ///     
         ///     Then, for every position along X:
         ///     while (!atEnd):
-        ///         P < 0
+        ///         M < 0
         ///             new pixel on same line as last pixel; 
-        ///             P += A;
-        ///         P >= 0
+        ///             M += A;
+        ///         M >= 0
         ///             new pixel on line higher than last pixel; 
-        ///             P += B;
+        ///             M += B;
         ///
         /// </summary>
         /// <param name="x1"></param>
@@ -891,17 +891,16 @@ namespace CubeController
         /// <param name="x2"></param>
         /// <param name="y2"></param>
         /// <param name="z2"></param>
-        private void BresenhamsLine3D(int x1, int y1, int z1, int x2, int y2, int z2)
+        private void BresenhamsLine3D(int x1, int y1, int z1, int x2, int y2, int z2, bool setting)
         {
+            #region setup
             // First you need to determine the changes in the x, y, and z coordinates.
             int dx = x2 - x1;
             int dy = y2 - y1;
             int dz = z2 - z1;
 
-            int[] voxel = new int[3];
-            voxel[0] = x1;
-            voxel[1] = y1;
-            voxel[2] = z2;
+            // The voxel to draw through each step of the algorithm. 
+            CubeController.Point v = new Point(x1, y1, z1);
 
             // Determines which way to "increment", depending on the slope of the line.
             // The increment will ALWAYS be by one voxel, whether 'up' or 'down'. 
@@ -909,14 +908,114 @@ namespace CubeController
             int y_inc = (dy < 0) ? -1 : 1;
             int z_inc = (dz < 0) ? -1 : 1;
 
-            int dist_x = Math.Abs(dx);
-            int dist_y = Math.Abs(dy);
-            int dist_z = Math.Abs(dz);
+            int len_x = Math.Abs(dx);
+            int len_y = Math.Abs(dy);
+            int len_z = Math.Abs(dz);
 
             // Twice the change in value. 
-            int two_dx = 2 * dist_x;
-            int two_dy = 2 * dist_y;
-            int two_dz = 2 * dist_z;
+            int two_dx = 2 * len_x;
+            int two_dy = 2 * len_y;
+            int two_dz = 2 * len_z;
+
+            // M1 and M2
+            int m1 = 0;
+            int m2 = 0;
+            #endregion
+
+            // BEGIN ALGORITHM
+            // If the distance to travel in x is the largest...
+            if ((len_x >= len_y) && (len_x >= len_z))
+            {
+                m1 = two_dy - len_x;    // M = A - dx = (2 * dy) - dx
+                m2 = two_dz - len_x;    // Now perform for other axis
+
+                for (int i = 0; i < len_x; ++i)
+                {
+                    if (setting) {
+                        SetVoxel(v.X, v.Y, v.Z);
+                    } else {
+                        ClearVoxel(v.X, v.Y, v.Z);
+                    }
+
+                    if (m1 > 0)
+                    {
+                        v.Y += y_inc;
+                        m1 -= two_dx;
+                    }
+                    if (m2 > 0)
+                    {
+                        v.Z += z_inc;
+                        m2 -= two_dx;
+                    }
+                    m1 += two_dy;
+                    m2 += two_dz;
+                    v.X += x_inc;
+                }
+            }
+            // Or if the distance to travel in y is the largest...
+            else if ((len_y >= len_x) && (len_y >= len_z))
+            {
+                m1 = two_dx - len_y;
+                m2 = two_dz - len_y;
+
+                for (int i = 0; i < len_y; ++i)
+                {
+                    if (setting) {
+                        SetVoxel(v.X, v.Y, v.Z);
+                    } else {
+                        ClearVoxel(v.X, v.Y, v.Z);
+                    }
+
+                    if (m1 > 0)
+                    {
+                        v.X += x_inc;
+                        m1 -= two_dy;
+                    }
+                    if (m2 > 0)
+                    {
+                        v.Z += z_inc;
+                        m2 -= two_dy;
+                    }
+                    m1 += two_dx;
+                    m2 += two_dz;
+                    v.Y += y_inc;
+                }
+            }
+            // Otherwise, z is the largest distance to travel...
+            else
+            {
+                m1 = two_dy - len_z;
+                m2 = two_dx - len_z;
+
+                for (int i = 0; i < len_z; ++i)
+                {
+                    if (setting) {
+                        SetVoxel(v.X, v.Y, v.Z);
+                    } else {
+                        ClearVoxel(v.X, v.Y, v.Z);
+                    }
+
+                    if (m1 > 0)
+                    {
+                        v.Y += y_inc;
+                        m1 -= two_dz;
+                    }
+                    if (m2 > 0)
+                    {
+                        v.X += x_inc;
+                        m2 -= two_dz;
+                    }
+                    m1 += two_dy;
+                    m2 += two_dx;
+                    v.Z += z_inc;
+                }
+
+            }
+            if (setting) {
+                SetVoxel(v.X, v.Y, v.Z);
+            } else {
+                ClearVoxel(v.X, v.Y, v.Z);
+            }
         }
 
         /// <summary>
