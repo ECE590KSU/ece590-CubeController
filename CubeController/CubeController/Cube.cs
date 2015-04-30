@@ -45,7 +45,8 @@ namespace CubeController
 			_rgen = new Random ();
 		}
 
-		/// <summary>
+#region UTILITY
+        /// <summary>
 		/// Gets the state of the cube.
 		/// </summary>
 		/// <returns>The cube state.</returns>
@@ -106,11 +107,11 @@ namespace CubeController
 				}
 			}
 		}
-			
+#endregion 
 
 #region DRAW
 
-		/// <summary>
+        /// <summary>
 		/// Determines if the specified coordinates are in range
 		/// of the cube dimensions.
 		/// </summary>
@@ -485,88 +486,32 @@ namespace CubeController
 		/// <param name="axis">Axis to rotate along.</param>
 		/// <param name="pl">Plane of axis to rotate.</param>
 		/// <param name="theta">Degree of rotation.</param>
-		public void PartialRotation(AXIS axis, int pl, double theta)
-		{
-			// Get the plane that you need to rotate. 
-			bool [][] tmpplane = GetPlane (axis, pl);
+        public void PartialRotation(AXIS axis, int pl, double theta)
+        {
+            // Get the plane that you need to rotate. 
+            bool[][] tmpplane = GetPlane(axis, pl);
 
-			// List of coordinates of voxels that are set, and which need to
-			// be rotated through. 
-			var coords = new List<Point> ();
-			var rotated = new List<Point> ();
+            // List of coordinates of voxels that are set, and which need to
+            // be rotated through. 
+            var coords = new List<Point>();
+            var rotated = new List<Point>();
 
-			// Parital rotation is accomplished via the following matrix expansion:
-			// | x' | = | cos(θ) - sin(θ) | | x |
-			// | y' | = | sin(θ) + cos(θ) | | y |
-			//		Therefore
-			// x' = x * cos(θ) - y * sin(θ)
-			// y' = x * sin(θ) + y * cos(θ)
-			double sin_t = Math.Sin (theta);
-			double cos_t = Math.Cos (theta);
+            // Parital rotation is accomplished via the following matrix expansion:
+            // | x' | = | cos(θ) - sin(θ) | | x |
+            // | y' | = | sin(θ) + cos(θ) | | y |
+            //		Therefore
+            // x' = x * cos(θ) - y * sin(θ)
+            // y' = x * sin(θ) + y * cos(θ)
+            double sin_t = Math.Sin(theta);
+            double cos_t = Math.Cos(theta);
 
-			int x_prime = 0;
-			int y_prime = 0;
+            int x_prime = 0;
+            int y_prime = 0;
 
-			// Determine which voxels are currently set on this plane. 
-			switch (axis) {
-			case AXIS.AXIS_X:
-				for (int i = 0; i < DIMENSION; ++i) {
-					for (int j = 0; j < DIMENSION; ++j) {
-						if (tmpplane [i] [j]) {
-							coords.Add (new Point (pl, i, j));
-						}
-					}
-				}
-
-				foreach (Point P in coords) {
-					x_prime = (int)((P.Y * cos_t) - (P.Z * sin_t));
-					y_prime = (int)((P.Y * sin_t) + (P.Z * cos_t));
-
-					rotated.Add (new Point (pl, x_prime, y_prime));
-				}
-
-				break;
-
-			case AXIS.AXIS_Y:
-				for (int i = 0; i < DIMENSION; ++i) {
-					for (int j = 0; j < DIMENSION; ++j) {
-						if (tmpplane [i] [j]) {
-							coords.Add (new Point (i, pl, j));
-						}
-					}
-				}
-
-				foreach (Point P in coords) {
-					x_prime = (int)((P.X * cos_t) - (P.Z * sin_t));
-					y_prime = (int)((P.X * sin_t) + (P.Z * cos_t));
-
-					rotated.Add (new Point (x_prime, pl, y_prime));
-				}
-
-				break;
-
-			case AXIS.AXIS_Z:
-				for (int i = 0; i < DIMENSION; ++i) {
-					for (int j = 0; j < DIMENSION; ++j) {
-						if (tmpplane [i] [j]) {
-							coords.Add (new Point (i, j, pl));
-						}
-					}
-				}
-
-				foreach (Point P in coords) {
-					x_prime = (int)((P.X * cos_t) - (P.Y * sin_t));
-					y_prime = (int)((P.X * sin_t) + (P.Y * cos_t));
-
-					rotated.Add (new Point (x_prime, y_prime, pl));
-				}
-
-				break;
-
-			default:
-				break;
-			}
-		}
+            // Determine which voxels are currently set on this plane. 
+            //	x_prime = (int)((P.Y * cos_t) - (P.Z * sin_t));
+            //	y_prime = (int)((P.Y * sin_t) + (P.Z * cos_t));
+        }
 
 		public void RenderPlane(bool[][] plane)
 		{
@@ -687,8 +632,6 @@ namespace CubeController
 		/// <summary>
 		/// Draws a line across the cube, in 3D.
 		/// 
-		/// Line segment equations between two points in 3D:
-		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
 		/// </summary>
 		/// <param name="x1">The first x coordinate.</param>
 		/// <param name="y1">The first y coordinate.</param>
@@ -698,56 +641,107 @@ namespace CubeController
 		/// <param name="z2">The second z coordinate.</param>
 		public void DrawLine(int x1, int y1, int z1, int x2, int y2, int z2)
 		{
-			// Parametric equations for line segments between two points in
-			// 3D Euclidean Space + Cartesian Plane. 
+            // Check if there are any matched pairs of coordinates. You can reduce the
+            // complexity of the pixelated line by making this check.
+            if ((x1 == x2) && (y1 == y2))
+            {
+                // Always start from lower z and go to upper z. 
+                int zStart = (z1 < z2) ? z1 : z2;
+                int zEnd = (z1 < z2) ? z2 : z1;
 
-			// x = (1-t) x_1 + t * x_2
-			// y = (1-t) y_1 + t * y_2
-			// z = (1-t) z_1 + t * z_2
-			//
-			//	t ismember { [0,1] }. Divide into DIMENSION segments.
-			float delta_t = 1.0f / (float)(DIMENSION);
-			float t = 0.0f;
-			int x = 0, y = 0, z = 0;
+                for (int i = zStart; i <= zEnd; ++i)
+                {
+                    // X and Y are equal between the points. Arbitrary choice of x1 or x2.
+                    SetVoxel(x1, y1, i);
+                }
+            }
+            else if ((y1 == y2) && (z1 == z2))
+            {
+                // Always start from lower x and go to upper x. 
+                int xStart = (x1 < x2) ? x1 : x2;
+                int xEnd = (x1 < x2) ? x2 : x1;
 
-			for (int i=0; i <= DIMENSION; ++i){
-				x = (int)((1 - t) * (x1) + (t * x2));
-				y = (int)((1 - t) * (y1) + (t * y2));
-				z = (int)((1 - t) * (z1) + (t * z2));
-				SetVoxel (x, y, z);
-				t += delta_t;
-			}
+                for (int i = xStart; i <= xEnd; ++i)
+                {
+                    // Y and Z are equal between the points. Arbitrary choice of y1 or y2.
+                    SetVoxel(i, y1, z1);
+                }
+            }
+            else if ((z1 == z2) && (x1 == x2))
+            {
+                // Always start from lower y and go to upper y.
+                int yStart = (y1 < y2) ? y1 : y2;
+                int yEnd = (y1 < y2) ? y2 : y1;
+
+                for (int i = yStart; i <= yEnd; ++i)
+                {
+                    // X and Z are equal between the points. Arbitrary choice of x1 or x2.
+                    SetVoxel(x1, i, z1);
+                }
+            }
+            // Otherwise, there are no straight lines, and we have to use
+            // Bresenham's Line Algorithm:
+            // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
+            else
+            {
+
+            }
 		}
 
 		/// <summary>
 		/// Draws a line across the cube, in 3D.
 		/// 
-		/// Line segment equations between two points in 3D:
-		/// http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg.4, eq(1.13).
 		/// </summary>
 		/// <param name="p1">The source x,y,z point</param>
 		/// <param name="p2">The destination x,y,z point</param>
 		public void DrawLine(Point p1, Point p2)
 		{
-			// Parametric equations for line segments between two points in
-			// 3D Euclidean Space + Cartesian Plane. 
+            // Check if there are any matched pairs of coordinates. You can reduce the
+            // complexity of the pixelated line by making this check.
+            if ((p1.X == p2.X) && (p1.Y == p2.Y))
+            {
+                // Always start from lower z and go to upper z. 
+                int zStart = (p1.Z < p2.Z) ? p1.Z : p2.Z;
+                int zEnd   = (p1.Z < p2.Z) ? p2.Z : p1.Z;
 
-			// x = (1-t) x_1 + t * x_2
-			// y = (1-t) y_1 + t * y_2
-			// z = (1-t) z_1 + t * z_2
-			//
-			//	t ismember { [0,1] }. Divide into DIMENSION segments.
-			float delta_t = 1.0f / (float)(DIMENSION);
-			float t = 0.0f;
-			int x = 0, y = 0, z = 0;
+                for (int i = zStart; i <= zEnd; ++i)
+                {
+                    // X and Y are equal between the points. Arbitrary choice.
+                    SetVoxel(p1.X, p1.Y, i);
+                }
+            }
+            else if ((p1.Y == p2.Y) && (p1.Z == p2.Z)) 
+            {
+                // Always start from lower x and go to upper x. 
+                int xStart = (p1.X < p2.X) ? p1.X : p2.X;
+                int xEnd   = (p1.X < p2.X) ? p2.X : p1.X;
 
-			for (int i=0; i <= DIMENSION; ++i){
-				x = (int)((1 - t) * (p1.X) + (t * p2.X));
-				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
-				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
-				SetVoxel (x, y, z);
-				t += delta_t;
-			}
+                for (int i = xStart; i <= xEnd; ++i)
+                {
+                    // Y and Z are equal between the points. Arbitrary choice.
+                    SetVoxel(i, p1.Y, p1.Z);
+                }
+
+            }
+            else if ((p1.Z == p2.Z) && (p1.X == p2.X))
+            {
+                // Always start from lower y and go to upper y.
+                int yStart = (p1.Y < p2.Y) ? p1.Y : p2.Y;
+                int yEnd = (p1.Y < p2.Y) ? p2.Y : p1.Y;
+
+                for (int i = yStart; i <= yEnd; ++i)
+                {
+                    // X and Z are equal between the points. Arbitrary choice.
+                    SetVoxel(p1.X, i, p1.Z);
+                }
+            }
+            // Otherwise, there are no straight lines, and we have to use
+            // Bresenham's Line Algorithm:
+            // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
+            else
+            {
+
+            }
 		}
 
 		/// <summary>
@@ -764,25 +758,51 @@ namespace CubeController
 		/// <param name="z2">The second z value.</param>
 		public void ClearLine(int x1, int y1, int z1, int x2, int y2, int z2)
 		{
-			// Parametric equations for line segments between two points in
-			// 3D Euclidean Space + Cartesian Plane. 
+            // Check if there are any matched pairs of coordinates. You can reduce the
+            // complexity of the pixelated line by making this check.
+            if ((x1 == x2) && (y1 == y2))
+            {
+                // Always start from lower z and go to upper z. 
+                int zStart = (z1 < z2) ? z1 : z2;
+                int zEnd = (z1 < z2) ? z2 : z1;
 
-			// x = (1-t) x_1 + t * x_2
-			// y = (1-t) y_1 + t * y_2
-			// z = (1-t) z_1 + t * z_2
-			//
-			//	t ismember { [0,1] }. Divide into DIMENSION segments.
-			float delta_t = 1.0f / (float)(DIMENSION);
-			float t = 0.0f;
-			int x = 0, y = 0, z = 0;
+                for (int i = zStart; i <= zEnd; ++i)
+                {
+                    // X and Y are equal between the points. Arbitrary choice of x1 or x2.
+                    ClearVoxel(x1, y1, i);
+                }
+            }
+            else if ((y1 == y2) && (z1 == z2))
+            {
+                // Always start from lower x and go to upper x. 
+                int xStart = (x1 < x2) ? x1 : x2;
+                int xEnd = (x1 < x2) ? x2 : x1;
 
-			for (int i=0; i <= DIMENSION; ++i){
-				x = (int)((1 - t) * (x1) + (t * x2));
-				y = (int)((1 - t) * (y1) + (t * y2));
-				z = (int)((1 - t) * (z1) + (t * z2));
-				ClearVoxel (x, y, z);
-				t += delta_t;
-			}
+                for (int i = xStart; i <= xEnd; ++i)
+                {
+                    // Y and Z are equal between the points. Arbitrary choice of y1 or y2.
+                    ClearVoxel(i, y1, z1);
+                }
+            }
+            else if ((z1 == z2) && (x1 == x2))
+            {
+                // Always start from lower y and go to upper y.
+                int yStart = (y1 < y2) ? y1 : y2;
+                int yEnd = (y1 < y2) ? y2 : y1;
+
+                for (int i = yStart; i <= yEnd; ++i)
+                {
+                    // X and Z are equal between the points. Arbitrary choice of x1 or x2.
+                    ClearVoxel(x1, i, z1);
+                }
+            }
+            // Otherwise, there are no straight lines, and we have to use
+            // Bresenham's Line Algorithm:
+            // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
+            else
+            {
+
+            }
 		}
 
 		/// <summary>
@@ -795,26 +815,151 @@ namespace CubeController
 		/// <param name="p2">The destination x,y,z point</param>
 		public void ClearLine(Point p1, Point p2)
 		{
-			// Parametric equations for line segments between two points in
-			// 3D Euclidean Space + Cartesian Plane. 
+            // Check if there are any matched pairs of coordinates. You can reduce the
+            // complexity of the pixelated line by making this check.
+            if ((p1.X == p2.X) && (p1.Y == p2.Y))
+            {
+                // Always start from lower z and go to upper z. 
+                int zStart = (p1.Z < p2.Z) ? p1.Z : p2.Z;
+                int zEnd = (p1.Z < p2.Z) ? p2.Z : p1.Z;
 
-			// x = (1-t) x_1 + t * x_2
-			// y = (1-t) y_1 + t * y_2
-			// z = (1-t) z_1 + t * z_2
-			//
-			//	t ismember { [0,1] }. Divide into DIMENSION segments.
-			float delta_t = 1.0f / (float)(DIMENSION);
-			float t = 0.0f;
-			int x = 0, y = 0, z = 0;
+                for (int i = zStart; i <= zEnd; ++i)
+                {
+                    // X and Y are equal between the points. Arbitrary choice.
+                    ClearVoxel(p1.X, p1.Y, i);
+                }
+            }
+            else if ((p1.Y == p2.Y) && (p1.Z == p2.Z))
+            {
+                // Always start from lower x and go to upper x. 
+                int xStart = (p1.X < p2.X) ? p1.X : p2.X;
+                int xEnd = (p1.X < p2.X) ? p2.X : p1.X;
 
-			for (int i=0; i <= DIMENSION; ++i){
-				x = (int)((1 - t) * (p1.X) + (t * p2.X));
-				y = (int)((1 - t) * (p1.Y) + (t * p2.Y));
-				z = (int)((1 - t) * (p1.Z) + (t * p2.Z));
-				ClearVoxel (x, y, z);
-				t += delta_t;
-			}
+                for (int i = xStart; i <= xEnd; ++i)
+                {
+                    // Y and Z are equal between the points. Arbitrary choice.
+                    ClearVoxel(i, p1.Y, p1.Z);
+                }
+
+            }
+            else if ((p1.Z == p2.Z) && (p1.X == p2.X))
+            {
+                // Always start from lower y and go to upper y.
+                int yStart = (p1.Y < p2.Y) ? p1.Y : p2.Y;
+                int yEnd = (p1.Y < p2.Y) ? p2.Y : p1.Y;
+
+                for (int i = yStart; i <= yEnd; ++i)
+                {
+                    // X and Z are equal between the points. Arbitrary choice.
+                    ClearVoxel(p1.X, i, p1.Z);
+                }
+            }
+            // Otherwise, there are no straight lines, and we have to use
+            // Bresenham's Line Algorithm:
+            // http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf
+            else
+            {
+
+            }
 		}
+
+        /// <summary>
+        /// This is an attempt to characterize Bresenham's Line Algorithm in 3D, extrapolating
+        /// information from the 2D version. A 3D implementation has been modified from it's source:
+        /// https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs
+        /// 
+        /// Basic idea in 2D:
+        ///     Let A = 2 times change in Y
+        ///     Let B = A - 2 times change in X
+        ///     Let P = A - change in X
+        /// 
+        ///     Set the starting point. 
+        ///     
+        ///     Then, for every position along X:
+        ///     while (!atEnd):
+        ///         P < 0
+        ///             new pixel on same line as last pixel; 
+        ///             P += A;
+        ///         P >= 0
+        ///             new pixel on line higher than last pixel; 
+        ///             P += B;
+        ///
+        /// </summary>
+        /// <param name="x1"></param>
+        /// <param name="y1"></param>
+        /// <param name="z1"></param>
+        /// <param name="x2"></param>
+        /// <param name="y2"></param>
+        /// <param name="z2"></param>
+        private void BresenhamsLine3D(int x1, int y1, int z1, int x2, int y2, int z2)
+        {
+            // First you need to determine the changes in the x, y, and z coordinates.
+            int dx = x2 - x1;
+            int dy = y2 - y1;
+            int dz = z2 - z1;
+
+            int[] voxel = new int[3];
+            voxel[0] = x1;
+            voxel[1] = y1;
+            voxel[2] = z2;
+
+            // Determines which way to "increment", depending on the slope of the line.
+            // The increment will ALWAYS be by one voxel, whether 'up' or 'down'. 
+            int x_inc = (dx < 0) ? -1 : 1;
+            int y_inc = (dy < 0) ? -1 : 1;
+            int z_inc = (dz < 0) ? -1 : 1;
+
+            int dist_x = Math.Abs(dx);
+            int dist_y = Math.Abs(dy);
+            int dist_z = Math.Abs(dz);
+
+            // Twice the change in value. 
+            int two_dx = 2 * dist_x;
+            int two_dy = 2 * dist_y;
+            int two_dz = 2 * dist_z;
+        }
+
+        /// <summary>
+        /// Draws a rectangle using point A and point D. 
+        /// 
+        /// Rectangle must be drawn on the coordinate that the points share, i.e., you
+        /// cannot (or should not) draw a rectangle between a point at (0,0,7) and (1,2,3),
+        /// as they have no common plane to drawn cleanly across at 90° angles.
+        ///
+        /// </summary>
+        /// <param name="A">The first point to draw from (inside-originating corner).</param>
+        /// <param name="D">The terminating point (outside-opposing corner).</param>
+        public void DrawRectangle(Cube.AXIS axis, CubeController.Point A, CubeController.Point D)
+        {
+            // Draw the lines to the non-named points:
+            //
+            //                SIDE 1
+            //         A _______________ B
+            //          |               |
+            // SIDE 4   |               |   SIDE 2
+            //          |_______________|
+            //          C               D
+            //                SIDE 3
+            switch (axis)
+            {
+                case AXIS.AXIS_X:
+                    // Draw SIDE 1
+                    DrawLine(A, new Point(A.X, A.Y, D.Z));
+                    // Draw SIDE 2
+                    DrawLine(D, new Point(A.X, A.Y, D.Z));
+                    // Draw SIDE 3
+                    DrawLine(D, new Point(A.X, D.Y, A.Z));
+                    // Draw SIDE 4
+                    DrawLine(A, new Point(A.X, D.Y, A.Z));
+                    break;
+                case AXIS.AXIS_Y:
+                    break;
+                case AXIS.AXIS_Z:
+                    break;
+                default:
+                    break;
+            }
+        }
 
 		/// <summary>
 		/// Draws a wireframe box. The length of each side is
