@@ -46,6 +46,7 @@ namespace CubeController
 		}
 
 #region UTILITY
+
         /// <summary>
 		/// Gets the state of the cube.
 		/// </summary>
@@ -84,6 +85,50 @@ namespace CubeController
 			}
 		}
 
+        /// <summary>
+        /// Creates an empty plane for use of filling. 
+        /// </summary>
+        /// <returns>The empty plane.</returns>
+        /// <param name="size">Size.</param>
+        private bool[][] NewEmptyPlane(int size)
+        {
+            bool[][] tmpplane = new bool[size][];
+            for (int i = 0; i < size; ++i)
+            {
+                tmpplane[i] = new bool[size];
+            }
+
+            return tmpplane;
+        }
+        
+        /// <summary>
+        /// Renders a specified plane. 
+        /// </summary>
+        /// <param name="plane"></param>
+        public void RenderPlane(bool[][] plane)
+        {
+            if (plane != null)
+            {
+                for (int i = 0; i < 8; ++i)
+                {
+                    for (int j = 0; j < 8; ++j)
+                    {
+                        if (plane[i][j])
+                        {
+                            Console.Write("# ");
+                        }
+                        else
+                        {
+                            Console.Write("  ");
+                        }
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+        }
+
 		/// <summary>
 		/// Renders the cube by Z-Planes.
 		/// </summary>
@@ -107,7 +152,8 @@ namespace CubeController
 				}
 			}
 		}
-#endregion 
+
+#endregion // UTILITY
 
 #region DRAW
 
@@ -264,28 +310,13 @@ namespace CubeController
 		}
 
 		/// <summary>
-		/// Creates an empty plane for use of filling. 
-		/// </summary>
-		/// <returns>The empty plane.</returns>
-		/// <param name="size">Size.</param>
-		private bool[][] NewEmptyPlane(int size)
-		{
-			bool[][] tmpplane = new bool[size][];
-			for (int i = 0; i < size; ++i){
-				tmpplane [i] = new bool[size];
-			}
-
-			return tmpplane;
-		}
-
-		/// <summary>
 		/// Gets a plane by axis, indexed by pl. See documentation for graphical
 		/// explanation. Complications arise due to cube orientation towards end user.
 		/// 
 		/// For instance: 
-		/// GetPlane(AXIS_Y, 1) --> return the X-Z plane at Y=1.
-		/// GetPlane(AXIS_X, 0) --> return the Y-Z plane at X=0.
-		/// GetPlane(AXIS_Z, 3) --> return the X-Y plane at Z=3.
+		/// GetPlane(AXIS_Y, 1) --> return the A-Z plane at B=1.
+		/// GetPlane(AXIS_X, 0) --> return the B-Z plane at A=0.
+		/// GetPlane(AXIS_Z, 3) --> return the A-B plane at Z=3.
 		/// 
 		/// </summary>
 		/// <returns>The plane indexed by pl on the axis axis.</returns>
@@ -509,27 +540,9 @@ namespace CubeController
             int y_prime = 0;
 
             // Determine which voxels are currently set on this plane. 
-            //	x_prime = (int)((P.Y * cos_t) - (P.Z * sin_t));
-            //	y_prime = (int)((P.Y * sin_t) + (P.Z * cos_t));
+            //	x_prime = (int)((P.B * cos_t) - (P.Z * sin_t));
+            //	y_prime = (int)((P.B * sin_t) + (P.Z * cos_t));
         }
-
-		public void RenderPlane(bool[][] plane)
-		{
-			if (plane != null) {
-				for (int i = 0; i < 8; ++i) {
-					for (int j = 0; j < 8; ++j) {
-						if (plane [i] [j]) {
-							Console.Write ("# ");
-						} else {
-							Console.Write ("  ");
-						}
-					}
-					Console.WriteLine ();
-				}
-				Console.WriteLine ();
-				Console.WriteLine ();
-			}
-		}
 
 		/// <summary>
 		/// Transposes a 2D square matrix.
@@ -651,7 +664,7 @@ namespace CubeController
 
                 for (int i = zStart; i <= zEnd; ++i)
                 {
-                    // X and Y are equal between the points. Arbitrary choice of x1 or x2.
+                    // A and B are equal between the points. Arbitrary choice of x1 or x2.
                     SetVoxel(x1, y1, i);
                 }
             }
@@ -663,7 +676,7 @@ namespace CubeController
 
                 for (int i = xStart; i <= xEnd; ++i)
                 {
-                    // Y and Z are equal between the points. Arbitrary choice of y1 or y2.
+                    // B and Z are equal between the points. Arbitrary choice of y1 or y2.
                     SetVoxel(i, y1, z1);
                 }
             }
@@ -675,7 +688,7 @@ namespace CubeController
 
                 for (int i = yStart; i <= yEnd; ++i)
                 {
-                    // X and Z are equal between the points. Arbitrary choice of x1 or x2.
+                    // A and Z are equal between the points. Arbitrary choice of x1 or x2.
                     SetVoxel(x1, i, z1);
                 }
             }
@@ -706,7 +719,7 @@ namespace CubeController
 
                 for (int i = zStart; i <= zEnd; ++i)
                 {
-                    // X and Y are equal between the points. Arbitrary choice.
+                    // A and B are equal between the points. Arbitrary choice.
                     SetVoxel(p1.X, p1.Y, i);
                 }
             }
@@ -718,7 +731,7 @@ namespace CubeController
 
                 for (int i = xStart; i <= xEnd; ++i)
                 {
-                    // Y and Z are equal between the points. Arbitrary choice.
+                    // B and Z are equal between the points. Arbitrary choice.
                     SetVoxel(i, p1.Y, p1.Z);
                 }
 
@@ -731,7 +744,7 @@ namespace CubeController
 
                 for (int i = yStart; i <= yEnd; ++i)
                 {
-                    // X and Z are equal between the points. Arbitrary choice.
+                    // A and Z are equal between the points. Arbitrary choice.
                     SetVoxel(p1.X, i, p1.Z);
                 }
             }
@@ -768,7 +781,7 @@ namespace CubeController
 
                 for (int i = zStart; i <= zEnd; ++i)
                 {
-                    // X and Y are equal between the points. Arbitrary choice of x1 or x2.
+                    // A and B are equal between the points. Arbitrary choice of x1 or x2.
                     ClearVoxel(x1, y1, i);
                 }
             }
@@ -780,7 +793,7 @@ namespace CubeController
 
                 for (int i = xStart; i <= xEnd; ++i)
                 {
-                    // Y and Z are equal between the points. Arbitrary choice of y1 or y2.
+                    // B and Z are equal between the points. Arbitrary choice of y1 or y2.
                     ClearVoxel(i, y1, z1);
                 }
             }
@@ -792,7 +805,7 @@ namespace CubeController
 
                 for (int i = yStart; i <= yEnd; ++i)
                 {
-                    // X and Z are equal between the points. Arbitrary choice of x1 or x2.
+                    // A and Z are equal between the points. Arbitrary choice of x1 or x2.
                     ClearVoxel(x1, i, z1);
                 }
             }
@@ -825,7 +838,7 @@ namespace CubeController
 
                 for (int i = zStart; i <= zEnd; ++i)
                 {
-                    // X and Y are equal between the points. Arbitrary choice.
+                    // A and B are equal between the points. Arbitrary choice.
                     ClearVoxel(p1.X, p1.Y, i);
                 }
             }
@@ -837,7 +850,7 @@ namespace CubeController
 
                 for (int i = xStart; i <= xEnd; ++i)
                 {
-                    // Y and Z are equal between the points. Arbitrary choice.
+                    // B and Z are equal between the points. Arbitrary choice.
                     ClearVoxel(i, p1.Y, p1.Z);
                 }
 
@@ -850,7 +863,7 @@ namespace CubeController
 
                 for (int i = yStart; i <= yEnd; ++i)
                 {
-                    // X and Z are equal between the points. Arbitrary choice.
+                    // A and Z are equal between the points. Arbitrary choice.
                     ClearVoxel(p1.X, i, p1.Z);
                 }
             }
@@ -869,13 +882,13 @@ namespace CubeController
         /// https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs
         /// 
         /// Basic idea in 2D:
-        ///     Let A = 2 times change in Y
-        ///     Let B = A - 2 times change in X
-        ///     Let M = A - change in X
+        ///     Let A = 2 times change in B
+        ///     Let B = A - 2 times change in A
+        ///     Let M = A - change in A
         /// 
         ///     Set the starting point. 
         ///     
-        ///     Then, for every position along X:
+        ///     Then, for every position along A:
         ///     while (!atEnd):
         ///         M < 0
         ///             new pixel on same line as last pixel; 
@@ -1060,6 +1073,101 @@ namespace CubeController
             }
         }
 
+        /// <summary>
+        /// Draws a circle at [center] with radius [radius]. 
+        /// 
+        /// Follows the Midpoint Circle Algorithm:
+        /// http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf, pg 9.
+        /// </summary>
+        /// <param name="center"></param>
+        /// <param name="radius"></param>
+        public void DrawCircle(Cube.AXIS axis, CubeController.Point center, CubeController.Point rad)
+        {
+            int radius = int.MinValue;
+            int E;  // E = -radius
+            int A;  // A = +radius
+            int B = 0;
+
+            // Until B becomes greater than A, repeat the following rules in order:
+            // Fill the pixel at coordinate (A + center.A, B+Center.B)
+
+            // Increase E by (2*B + 1)
+            // Increase B by 1
+            // If E >= 0
+            //      E -= (2 * A - 1)
+            //      --A
+
+            // In three dimensions:
+            switch (axis)
+            {
+                // On the Y-Z plane, fix to X coordinate
+                // and draw for Y-Z. 
+                case AXIS.AXIS_X:
+                    radius = (int)(Point.Distance(center.Y, rad.Y, center.Z, rad.Z));
+                    E = -radius;
+                    A = radius;
+                    while (B < A)
+                    {
+                        SetVoxel(center.X, A + center.Y, B + center.Z); 
+                        SetVoxel(center.X, A + center.Y, -B + center.Z);
+                        SetVoxel(center.X, -A + center.Y, B + center.Z);
+                        SetVoxel(center.X, -A + center.Y, -B + center.Z);
+                        
+                        SetVoxel(center.X, B + center.Y, A + center.Z);
+                        SetVoxel(center.X, B + center.Y, -A + center.Z);
+                        SetVoxel(center.X, -B + center.Y, A + center.Z);
+                        SetVoxel(center.X, -B + center.Y, -A + center.Z);
+
+                        E += ((2 * B) + 1);
+                        ++B;
+                        if (E >= 0)
+                        {
+                            E -= ((2 * A) - 1);
+                            --A;
+                        }
+                    }
+                    break;
+                // On the X-Z plane, fix to Y coordinate
+                // and draw for X-Z.
+                case AXIS.AXIS_Y:
+                    radius = (int)(Point.Distance(center.X, rad.X, center.Z, rad.Z));
+                    E = -radius;
+                    A = radius;
+                    while (B < A)
+                    {
+                        SetVoxel(A + center.X, center.Y, B + center.Z);
+                        E += ((2 * B) + 1);
+                        ++B;
+                        if (E >= 0)
+                        {
+                            E -= ((2 * A) - 1);
+                            --A;
+                        }
+                    }
+                    break;
+                // On the X-Y plane, fix to Z coordinate
+                // and draw for X-Y.
+                case AXIS.AXIS_Z:
+                    radius = (int)(Point.Distance(center.X, rad.X, center.Y, rad.Y));
+                    E = -radius;
+                    A = radius;
+                    while (B < A)
+                    {
+                        SetVoxel(A + center.X, B + center.Y, center.Z);
+                        E += ((2 * B) + 1);
+                        ++B;
+                        if (E >= 0)
+                        {
+                            E -= ((2 * A) - 1);
+                            --A;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
 		/// <summary>
 		/// Draws a wireframe box. The length of each side is
 		/// dist. The box will have its closest corner to the cube's origin (0,0,0)
@@ -1076,7 +1184,7 @@ namespace CubeController
 		///   S * - - - - - */ A
 		/// 
 		///     
-		///  Z|  /Y
+		///  Z|  /B
 		///   | /
 		///   |/_ _ _X
 		/// (0,0)
@@ -1088,7 +1196,7 @@ namespace CubeController
 		public void BoxWireFrame(Point S, int dist)
 		{
 			Point A, B, C, D, E, F, G;
-						// X-coordinate  Y-coordinate	Z-Coordinate
+						// A-coordinate  B-coordinate	Z-Coordinate
 			A = new Point (S.X + dist, 	 S.Y, 			S.Z);
 			B = new Point (S.X + dist, 	 S.Y + dist, 	S.Z);
 			C = new Point (S.X + dist, 	 S.Y + dist, 	S.Z + dist);
@@ -1173,7 +1281,7 @@ namespace CubeController
 		/// <summary>
 		/// Sends a message "around" the cube in a banner-like manner (rhyme!). 
 		/// 
-		/// A character is put on either the 0th X plane, or th 7th X plane, and
+		/// A character is put on either the 0th A plane, or th 7th A plane, and
 		/// then is printed out character by character, and rotated around the cube. 
 		/// Only three characters will be printed at a time (see documentation 
 		/// for explanation). 
@@ -1409,7 +1517,7 @@ namespace CubeController
 
 		/// <summary>
 		/// Shows sinusoidal wave.
-		/// Will only be shown from the front of the cube, i.e. the X-Z plane. 
+		/// Will only be shown from the front of the cube, i.e. the A-Z plane. 
 		/// </summary>
 		/// <param name="iterations">Iterations to run the effect to.</param>
 		/// <param name="delay">Delay between frames (in milliseconds).</param>

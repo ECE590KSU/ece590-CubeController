@@ -13,10 +13,10 @@ namespace CubeController
 		/// 
 		/// The actual definition comes from the original author doing the following:
 		///   7	| \
-		///     |  \ X?
+		///     |  \ A?
 		/// 	|___\ 
 		///       7
-		/// X = sqrt(7^2 + 7^2) ~= 9.899495
+		/// A = sqrt(7^2 + 7^2) ~= 9.899495
 		/// </summary>
 		public const double WAVE_CONSTANT = 9.899495;
 		public const double RIPPLE_INTERVAL = 1.3;
