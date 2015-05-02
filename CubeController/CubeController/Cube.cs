@@ -1055,19 +1055,27 @@ namespace CubeController
             switch (axis)
             {
                 case AXIS.AXIS_X:
-                    // Draw SIDE 1
-                    DrawLine(A, new Point(A.X, A.Y, D.Z));
-                    // Draw SIDE 2
-                    DrawLine(D, new Point(A.X, A.Y, D.Z));
-                    // Draw SIDE 3
-                    DrawLine(D, new Point(A.X, D.Y, A.Z));
-                    // Draw SIDE 4
-                    DrawLine(A, new Point(A.X, D.Y, A.Z));
+                                       // X IS FIXED FOR BOTH A AND D
+                    DrawLine(A, new Point(A.X, A.Y, D.Z));  // Draw SIDE 1
+                    DrawLine(D, new Point(A.X, A.Y, D.Z));  // Draw SIDE 2
+                    DrawLine(D, new Point(A.X, D.Y, A.Z));  // Draw SIDE 3
+                    DrawLine(A, new Point(A.X, D.Y, A.Z));  // Draw SIDE 4
                     break;
-                case AXIS.AXIS_Y:
+
+                case AXIS.AXIS_Y:           // Y IS FIXED FOR BOTH A AND D
+                    DrawLine(A, new Point(A.X, A.Y, D.Z));  // Draw SIDE 1
+                    DrawLine(D, new Point(A.X, A.Y, D.Z));  // Draw SIDE 2
+                    DrawLine(D, new Point(D.X, A.Y, A.Z));  // Draw SIDE 3
+                    DrawLine(A, new Point(D.X, A.Y, A.Z));  // Draw SIDE 4
                     break;
-                case AXIS.AXIS_Z:
+
+                case AXIS.AXIS_Z:                // Z IS FIXED FOR BOTH A AND D
+                    DrawLine(A, new Point(D.X, A.Y, A.Z));  // Draw SIDE 1
+                    DrawLine(D, new Point(D.X, A.Y, A.Z));  // Draw SIDE 2
+                    DrawLine(D, new Point(A.X, D.Y, A.Z));  // Draw SIDE 3
+                    DrawLine(A, new Point(A.X, D.Y, A.Z));  // Draw SIDE 4
                     break;
+
                 default:
                     break;
             }
