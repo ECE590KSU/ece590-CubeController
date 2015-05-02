@@ -1105,6 +1105,9 @@ namespace CubeController
             //      E -= (2 * A - 1)
             //      --A
 
+            // This covers one octave, you must repeat 7 times with varying reflections
+            // in order to cover the circle. 
+
             // In three dimensions:
             switch (axis)
             {
@@ -1116,14 +1119,14 @@ namespace CubeController
                     A = radius;
                     while (B < A)
                     {
-                        SetVoxel(center.X, A + center.Y, B + center.Z); 
-                        SetVoxel(center.X, A + center.Y, -B + center.Z);
-                        SetVoxel(center.X, -A + center.Y, B + center.Z);
+                        SetVoxel(center.X,  A + center.Y,  B + center.Z); 
+                        SetVoxel(center.X,  A + center.Y, -B + center.Z);
+                        SetVoxel(center.X, -A + center.Y,  B + center.Z);
                         SetVoxel(center.X, -A + center.Y, -B + center.Z);
                         
-                        SetVoxel(center.X, B + center.Y, A + center.Z);
-                        SetVoxel(center.X, B + center.Y, -A + center.Z);
-                        SetVoxel(center.X, -B + center.Y, A + center.Z);
+                        SetVoxel(center.X,  B + center.Y,  A + center.Z);
+                        SetVoxel(center.X,  B + center.Y, -A + center.Z);
+                        SetVoxel(center.X, -B + center.Y,  A + center.Z);
                         SetVoxel(center.X, -B + center.Y, -A + center.Z);
 
                         E += ((2 * B) + 1);
@@ -1143,7 +1146,15 @@ namespace CubeController
                     A = radius;
                     while (B < A)
                     {
-                        SetVoxel(A + center.X, center.Y, B + center.Z);
+                        SetVoxel( A + center.X, center.Y,  B + center.Z);
+                        SetVoxel( A + center.X, center.Y, -B + center.Z);
+                        SetVoxel(-A + center.X, center.Y,  B + center.Z);
+                        SetVoxel(-A + center.X, center.Y, -B + center.Z);
+
+                        SetVoxel( B + center.X, center.Y,  A + center.Z);
+                        SetVoxel( B + center.X, center.Y, -A + center.Z);
+                        SetVoxel(-B + center.X, center.Y,  A + center.Z);
+                        SetVoxel(-B + center.X, center.Y, -A + center.Z);
                         E += ((2 * B) + 1);
                         ++B;
                         if (E >= 0)
@@ -1161,7 +1172,15 @@ namespace CubeController
                     A = radius;
                     while (B < A)
                     {
-                        SetVoxel(A + center.X, B + center.Y, center.Z);
+                        SetVoxel( A + center.X,  B + center.Y, center.Z);
+                        SetVoxel( A + center.X, -B + center.Y, center.Z);
+                        SetVoxel(-A + center.X,  B + center.Y, center.Z);
+                        SetVoxel(-A + center.X, -B + center.Y, center.Z);
+
+                        SetVoxel( B + center.X,  A + center.Y, center.Z);
+                        SetVoxel( B + center.X, -A + center.Y, center.Z);
+                        SetVoxel(-B + center.X,  A + center.Y, center.Z);
+                        SetVoxel(-B + center.X, -A + center.Y, center.Z);
                         E += ((2 * B) + 1);
                         ++B;
                         if (E >= 0)
