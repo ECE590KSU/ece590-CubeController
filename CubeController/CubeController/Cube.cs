@@ -14,6 +14,10 @@ namespace CubeController
 
 		private FontHandler _fontHandler;
 
+        private Timer _serialDriverTimer;
+        private TimerCallback _writeCubeCallback;
+        private SerialDriver _serialDriver;
+
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 		public enum DIRECTION { FORWARD, REVERSE };
 		public enum REFLECTION { ORIGIN, TERMINUS };
@@ -43,7 +47,16 @@ namespace CubeController
 
 			_fontHandler = new FontHandler ();
 			_rgen = new Random ();
+            _writeCubeCallback = WriteCube;
+            _serialDriverTimer = new Timer(WriteCube, null, 0, 5);
+            _serialDriver = new SerialDriver();
+            _serialDriver.OpenPort();
 		}
+
+        private void WriteCube(object stateInfo)
+        {
+
+        }
 
 #region UTILITY
 
