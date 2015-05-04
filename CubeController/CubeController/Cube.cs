@@ -1736,8 +1736,7 @@ namespace CubeController
         /// </summary>
         /// <param name="invert"></param>
         /// <param name="delay"></param>
-        /// <param name="val"></param>
-        public void TelcStairs(bool invert, int delay, int val)
+        public void TelcStairs(bool invert, int delay)
         {
             int x = 0;
 
@@ -1774,6 +1773,7 @@ namespace CubeController
                     SetVoxel(x, y, z);
                 }
             }
+            RenderCube();
             DelayMS(delay);
             return z;
         }
