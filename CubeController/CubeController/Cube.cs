@@ -1731,6 +1731,53 @@ namespace CubeController
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="invert"></param>
+        /// <param name="delay"></param>
+        /// <param name="val"></param>
+        public void TelcStairs(bool invert, int delay, int val)
+        {
+            int x = 0;
+
+            if (invert)
+            {
+                for (x = DIMENSION * 2; x >= 0; --x)
+                {
+                    x = TelcStairsDo(x, delay);
+                }
+            }
+            else
+            { 
+                for(x = 0; x < (DIMENSION*2); ++x)
+                {
+                    x = TelcStairsDo(x, delay);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        private int TelcStairsDo(int x, int delay)
+        {
+            int y = 0, z = 0;
+
+            for (y = 0, z = x; y <= z; ++y, --x)
+            {
+                if (x < DIMENSION && y < DIMENSION)
+                {
+                    SetVoxel(x, y, z);
+                }
+            }
+            DelayMS(delay);
+            return z;
+        }
+
 #endregion
 
 	}
