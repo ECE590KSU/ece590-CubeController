@@ -1468,9 +1468,49 @@ namespace CubeController
             }
         }
 
+        /// <summary>
+        /// A helper function for AxisUpDownRandSusp. 
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="positions"></param>
+        /// <param name="invert"></param>
         private void DrawPositionsAxis(Cube.AXIS axis, int[] positions, bool invert)
         {
+            int p = 0;
 
+            ClearEntireCube();
+
+            for (int x = 0; x < DIMENSION; ++x)
+            {
+                for (int y = 0; y < DIMENSION; ++y)
+                {
+                    if (invert)
+                    {
+                        p = (DIMENSION - 1 - positions[(x * DIMENSION) + y]);
+                    }
+                    else
+                    {
+                        p = positions[(x*DIMENSION) + y];
+                    }
+
+                    switch (axis)
+                    {
+                        case AXIS.AXIS_X:
+                            SetVoxel(p, x, y);
+                            break;
+                        case AXIS.AXIS_Y:
+                            SetVoxel(x, p, y);
+                            break;
+                        case AXIS.AXIS_Z:
+                            SetVoxel(x, y, p);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            RenderCube();
         }
 
 		/// <summary>
