@@ -5,3 +5,10 @@ C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeCon
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.csprojResolveAssemblyReference.cache
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.exe
 C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.pdb
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\bin\Debug\TestCubeController.exe
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\bin\Debug\TestCubeController.pdb
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\bin\Debug\CubeController.dll
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\bin\Debug\CubeController.pdb
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.csprojResolveAssemblyReference.cache
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.exe
+C:\Users\yetijones\Source\Repos\ece590-CubeController\CubeController\TestCubeController\obj\Debug\TestCubeController.pdb
