@@ -10,7 +10,6 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
-            cube.RandomSparkle(30, 50);
 		}
 
 		public static void DIAMOND_MOVER(ref Cube cube)
