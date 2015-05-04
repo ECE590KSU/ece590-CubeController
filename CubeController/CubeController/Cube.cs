@@ -1407,6 +1407,112 @@ namespace CubeController
 			}
 		}
 
+        /// <summary>
+        /// Shamelessy "inspired" (edit: copied) from CHR's original code. 
+        /// </summary>
+        /// <param name="axis">Axis to randomly suspend along.</param>
+        /// <param name="delay">Delay between animation frames.</param>
+        /// <param name="sleep">Time to hold the frozen suspensions.</param>
+        /// <param name="invert">Inversion?</param>
+        public void AxisUpDownRandSups(Cube.AXIS axis, int delay, int sleep, bool invert)
+        {
+            int length = DIMENSION * DIMENSION;
+            int[] positions = new int[length];
+            int[] destinations = new int[length];
+
+            for (int i = 0; i < length; ++i)
+            {
+                positions[i] = 0;
+                destinations[i] = _rgen.Next() % (DIMENSION);
+            }
+
+            for (int i = 0; i < DIMENSION; ++i)
+            {
+                for (int px = 0; px < DIMENSION; ++px)
+                {
+                    if (positions[px] < destinations[px])
+                    {
+                        positions[px]++;
+                    }
+                    if (positions[px] > destinations[px])
+                    {
+                        positions[px]--;
+                    }
+                }
+                DrawPositionsAxis(axis, positions, invert);
+                DelayMS(delay);
+            }
+
+            for (int i = 0; i < length; ++i)
+            {
+                destinations[i] = (DIMENSION - 1);
+            }
+
+            DelayMS(sleep);
+
+            for (int i = 0; i < DIMENSION; ++i)
+            {
+                for (int px = 0; px < length; ++px)
+                {
+                    if (positions[px] < destinations[px])
+                    {
+                        positions[px]++;
+                    }
+                    if (positions[px] > destinations[px])
+                    {
+                        positions[px]--;
+                    }
+                }
+                DrawPositionsAxis(axis, positions, invert);
+                DelayMS(delay);
+            }
+        }
+
+        /// <summary>
+        /// A helper function for AxisUpDownRandSusp. 
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="positions"></param>
+        /// <param name="invert"></param>
+        private void DrawPositionsAxis(Cube.AXIS axis, int[] positions, bool invert)
+        {
+            int p = 0;
+
+            ClearEntireCube();
+
+            for (int x = 0; x < DIMENSION; ++x)
+            {
+                for (int y = 0; y < DIMENSION; ++y)
+                {
+                    if (invert)
+                    {
+                        p = (DIMENSION - 1 - positions[(x * DIMENSION) + y]);
+                    }
+                    else
+                    {
+                        p = positions[(x*DIMENSION) + y];
+                    }
+
+                    switch (axis)
+                    {
+                        case AXIS.AXIS_X:
+                            SetVoxel(p, x, y);
+                            break;
+                        case AXIS.AXIS_Y:
+                            SetVoxel(x, p, y);
+                            break;
+                        case AXIS.AXIS_Z:
+                            SetVoxel(x, y, p);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            RenderCube();
+        }
+
 		/// <summary>
 		/// Spins a line in a sinusoidal fashion. Implementation nearly directly
 		/// taken from 3d.cpp::linespin(). Some of the values have been arbitrarily chosen
