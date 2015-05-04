@@ -1688,6 +1688,49 @@ namespace CubeController
 			}
 		}
 
+        /// <summary>
+        /// Blink an increasing number of random voxels, and then
+        /// blink in a decreasing number back down to 1 again. 
+        /// </summary>
+        public void RandomSparkle(int sparkleCount, int delay)
+        {
+            if ((sparkleCount >= 0) && (sparkleCount <= 512))
+            {
+                for (int i = 0; i <= sparkleCount; ++i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
+
+                for (int i = sparkleCount; i >= 0; --i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Set a given number of voxels at random positions.
+        /// </summary>
+        /// <param name="iterations">Number of animation frames.</param>
+        /// <param name="voxels">Number of voxels to set.</param>
+        /// <param name="delay">Animation delay between frame updates.</param>
+        private void RandomSparkleFlash(int iterations, int voxels, int delay)
+        {
+            for (int i = 0; i < iterations; ++i)
+            {
+                for (int v = 0; v <= voxels; ++v)
+                {
+                    // Set a random voxel based. 
+                    SetVoxel(_rgen.Next() % DIMENSION, 
+                        _rgen.Next() % DIMENSION, 
+                        _rgen.Next() % DIMENSION);
+
+                    DelayMS(delay);
+                    ClearEntireCube();
+                }
+            }
+        }
+
 #endregion
 
 	}
