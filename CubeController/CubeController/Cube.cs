@@ -1692,9 +1692,20 @@ namespace CubeController
         /// Blink an increasing number of random voxels, and then
         /// blink in a decreasing number back down to 1 again. 
         /// </summary>
-        public void RandomSparkle()
+        public void RandomSparkle(int sparkleCount, int delay)
         {
+            if ((sparkleCount >= 0) && (sparkleCount <= 512))
+            {
+                for (int i = 0; i <= sparkleCount; ++i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
 
+                for (int i = sparkleCount; i >= 0; --i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
+            }
         }
 
         /// <summary>
