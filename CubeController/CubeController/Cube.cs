@@ -1396,13 +1396,11 @@ namespace CubeController
 			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
 			for (int i = 0; i < DIMENSION-1; ++i) {
 				ShiftAndRoll (axis, DIRECTION.FORWARD);
-				RenderCube ();
 				DelayMS (speed);
 			}
-			DelayMS (speed);
+			DelayMS (speed*2);
 			for (int i = 0; i < DIMENSION-1; ++i) {
 				ShiftAndRoll (axis, DIRECTION.REVERSE);
-				RenderCube ();
 				DelayMS (speed);
 			}
 		}
