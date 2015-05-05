@@ -1513,6 +1513,67 @@ namespace CubeController
             RenderCube();
         }
 
+	    public void Firework(int iterations, int explosionSize, int delay)
+	    {
+	        var particles = new double[explosionSize,6];
+
+	        for (int i = 0; i < iterations; i++)
+	        {
+	            int randX, randY, randZ;
+	            double originX = (double) (_rgen.Next()%4);
+	            double originY = (double) (_rgen.Next()%4);
+	            double originZ = (double) (_rgen.Next()%2);
+	            originZ += 5.0;
+	            originX += 2.0;
+	            originY += 2.0;
+
+	            // Shoot a particle up in the air
+	            for (int j = 0; j < originZ; j++)
+	            {
+	                SetVoxel((int) originX, (int) originY, j);
+	                DelayMS(600 + (500*j));
+	                ClearEntireCube();
+	            }
+
+	            // Fill particle array
+	            for (int k = 0; k < explosionSize; k++)
+	            {
+	                // Position
+	                particles[k, 0] = originX;
+	                particles[k, 1] = originY;
+	                particles[k, 2] = originZ;
+
+	                randX = _rgen.Next()%200;
+	                randY = _rgen.Next()%200;
+	                randZ = _rgen.Next()%200;
+
+	                // Movement
+	                particles[k, 3] = 1 - (double) randX/100.0; //dx
+	                particles[k, 4] = 1 - (double) randY/100.0; //dx
+	                particles[k, 5] = 1 - (double) randZ/100.0; //dx
+	            }
+
+	            // Explode
+	            for (int e = 0; e < 25; e++)
+	            {
+	                double slowRate = 1.0 + (Math.Tan((e + 1.0)/20.0)*10.0);
+	                double gravity = Math.Tan((e + 0.1)/20)/2.0;
+
+	                for (int k = 0; k < explosionSize; k++)
+	                {
+                        particles[k,0] += particles[k,3] / slowRate;
+                        particles[k,1] += particles[k,4] / slowRate;
+                        particles[k,2] += particles[k,5] / slowRate;
+                        particles[k,2] -= gravity;
+
+                        SetVoxel((int)particles[k, 0], (int)particles[k, 1], (int)particles[k, 2]);
+	                }
+                    DelayMS(delay);
+                    ClearEntireCube();
+	            }
+	        }
+	    }
+
 		/// <summary>
 		/// Spins a line in a sinusoidal fashion. Implementation nearly directly
 		/// taken from 3d.cpp::linespin(). Some of the values have been arbitrarily chosen
