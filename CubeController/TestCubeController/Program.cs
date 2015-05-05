@@ -10,6 +10,8 @@ namespace TestCubeController
 		public static void Main (string[] args)
 		{
 			Cube cube = new Cube ();
+
+            int i = 0;
 		}
 
 		public static void DIAMOND_MOVER(ref Cube cube)
