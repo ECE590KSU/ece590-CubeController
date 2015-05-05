@@ -8,3 +8,7 @@
 #Visual Studio
 *.pdb
 */DesignTimeResolveAssemblyReferencesInput.cache
+*.suo
+*.csproj.FileListAbsolute.txt
+*.csprojResolveAssemblyReference.cache
+*/TemporaryGeneratedFile_*.cs
