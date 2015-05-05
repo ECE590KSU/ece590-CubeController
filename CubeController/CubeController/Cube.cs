@@ -1513,6 +1513,15 @@ namespace CubeController
             RenderCube();
         }
 
+        /// <summary>
+        /// This function will shoot a specified number of "fireworks"
+        /// up from the bottom layer. These explode and rain down.
+        /// The function is more-or-less copied form 3d.cpp. We need to
+        /// experiment with it some on the cube to get it to our liking.
+        /// </summary>
+        /// <param name="iterations">The number of fireworks to shoot</param>
+        /// <param name="explosionSize">The size of the explosion</param>
+        /// <param name="delay">The delay</param>
 	    public void Firework(int iterations, int explosionSize, int delay)
 	    {
 	        var particles = new double[explosionSize,6];
