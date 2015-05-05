@@ -1602,10 +1602,8 @@ namespace CubeController
 					SetVoxel (rnd_x, rnd_y, 7);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ShiftNoRoll (Cube.AXIS.AXIS_Z, Cube.DIRECTION.REVERSE);
-				RenderCube ();
 			}
 		}
 
