@@ -1507,8 +1507,6 @@ namespace CubeController
                     }
                 }
             }
-
-            RenderCube();
         }
 
         /// <summary>
@@ -1611,7 +1609,6 @@ namespace CubeController
 						(int)bot_x, (int)bot_y, z);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
@@ -1647,11 +1644,42 @@ namespace CubeController
 						z, (int)bot_x, (int)bot_y);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
 		}
+
+        /// <summary>
+        /// Light all LEDs layer by layer in strips, and then unset in the 
+        /// opposite pattern. 
+        /// </summary>
+        /// <param name="delay"></param>
+        public void LoadBar(int delay)
+        {
+            ClearEntireCube();
+            
+            for (int z = 0; z < DIMENSION; ++z)
+            {
+                for (int y = 0; y < DIMENSION; ++y)
+                {
+                    DrawLine(0, y, z, DIMENSION - 1, y, z);
+                    DelayMS(delay);
+                    RenderCube();
+                }
+            }
+
+            DelayMS(delay * 2);
+
+            for (int z = (DIMENSION - 1); z >= 0; --z)
+            {
+                for (int y = (DIMENSION - 1); y >= 0; --y)
+                {
+                    ClearLine(0, y, z, DIMENSION - 1, y, z);
+                    DelayMS(delay);
+                    RenderCube();
+                }
+            }
+        }
 
 		/// <summary>
 		/// Create a rain-shower for the specified iterations, with [delay] ms
@@ -1672,10 +1700,8 @@ namespace CubeController
 					SetVoxel (rnd_x, rnd_y, 7);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ShiftNoRoll (Cube.AXIS.AXIS_Z, Cube.DIRECTION.REVERSE);
-				RenderCube ();
 			}
 		}
 

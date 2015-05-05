@@ -35,32 +35,32 @@ The target platform is Windows x86_64, and cannot support the original calls to 
 - [x] Transpose2D()
 
 ##### Effects To-Do:
-- [ ] AxisUpDownRandSups()
+- [x] AxisUpDownRandSups()
 - [ ] Blinky()
 - [ ] BoingBoing()
 - [ ] BoxShrinkGrow()
 - [ ] BoxSideRandSend()
 - [x] BoxWoopWoop()
-- [ ] DrawPositions()
+- [x] DrawPositions()
 - [ ] Hollow1()
 - [ ] Hollow2()
-- [ ] LoadBar()
+- [x] LoadBar()
 - [ ] PathBitmap()
 - [ ] PathText()
 - [ ] PathMove()
 - [ ] PathSpiral()
   ~~- [ ] PlaneBoing()~~
 - [x] AxisBoing()
-- [ ] Rain()
+- [x] Rain()
 - [ ] RandAround()
 - [ ] RandFiller()
-- [ ] RandSparkle()
-- [ ] RandSparkleFlash()
+- [x] RandSparkle()
+- [x] RandSparkleFlash()
 - [x] SendVoxel
 - [ ] SmileySpin()
 - [ ] StringFly()
-- [ ] TelcStairs()
-- [ ] WormSqueez()
+- [x] TelcStairs()
+- [x] WormSqueez()
 - [ ] ZUpDown
 
 ##### Font To-Do:
