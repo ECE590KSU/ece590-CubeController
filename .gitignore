@@ -4,3 +4,7 @@
 *.dll.mdb
 *.exe
 *.mdb
+
+#Visual Studio
+*.pdb
+*/DesignTimeResolveAssemblyReferencesInput.cache
