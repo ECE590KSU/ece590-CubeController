@@ -1740,34 +1740,40 @@ namespace CubeController
 		/// of [grow]. A really neat effect if used in the following
 		/// manner:
 		/// 	while (iteration < max){
-		/// 		BoxWoopWoop(1, delay, true);	// Grow
-		/// 		BoxWoopWoop(1, delay, false);	// Shrink
+		/// 		BoxWoopWoop(1, delay, true, size);	// Grow
+		/// 		BoxWoopWoop(1, delay, false, size);	// Shrink
 		/// 	} // Repeatedly
 		/// </summary>
 		/// <param name="iterations">Iterations to run to.</param>
 		/// <param name="delay">Delay between animation frames.</param>
 		/// <param name="grow">If set to <c>true</c>, then grow.</param>
-		public void BoxWoopWoop(int iterations, int delay, bool grow)
+		public void BoxWoopWoop(int iterations, int delay, bool grow, int size)
 		{
 			ClearEntireCube ();
-
-			for (int k = 0; k < iterations; ++k) {
-				if (grow) {
-					for (int i = 0; i < (DIMENSION / 2); ++i) {
-						BoxWireFrame (new Point (i, i, i), (4 - i));
-						RenderCube ();
-						DelayMS (delay);
-						ClearEntireCube ();
-					}
-				} else {
-					for (int i = 3; i >= 0; --i) {
-						BoxWireFrame (new Point (i, i, i), (4 - i));
-						RenderCube ();
-						DelayMS (delay);
-						ClearEntireCube ();
-					}
-				}
-			}
+            if (size <= DIMENSION && size >= 0)
+            {
+                for (int k = 0; k < iterations; ++k)
+                {
+                    if (grow)
+                    {
+                        for (int i = 0; i < size; ++i)
+                        {
+                            BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+                            DelayMS(delay);
+                            ClearEntireCube();
+                        }
+                    }
+                    else
+                    {
+                        for (int i = size - 1; i >= 0; --i)
+                        {
+                            BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+                            DelayMS(delay);
+                            ClearEntireCube();
+                        }
+                    }
+                }
+            }
 		}
 
 		/// <summary>
