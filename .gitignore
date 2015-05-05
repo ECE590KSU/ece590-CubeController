@@ -11,4 +11,4 @@
 *.suo
 *.csproj.FileListAbsolute.txt
 *.csprojResolveAssemblyReference.cache
-*/TemporaryGeneratedFile_*.cs
+*TemporaryGeneratedFile_*.cs
