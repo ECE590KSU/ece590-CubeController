@@ -1888,6 +1888,66 @@ namespace CubeController
             return z;
         }
 
+        /// <summary>
+        /// Not quite sure of the effect. 
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="axis"></param>
+        /// <param name="direction"></param>
+        /// <param name="iterations"></param>
+        /// <param name="delay"></param>
+        public void WormSqueeze(int size, Cube.AXIS axis, Cube.DIRECTION direction, int iterations, int delay)
+        {
+            int cubeSize = DIMENSION - size - 1;
+            // If the direction is forward, start from ORIGIN.
+            // Otherwise, start from TERMINUS.
+            int origin = direction == DIRECTION.FORWARD ? 0 : (DIMENSION - 1);
+
+            int x = _rgen.Next() % cubeSize;
+            int y = _rgen.Next() % cubeSize;
+
+            for (int i = 0; i < iterations; ++i)
+            {
+                // Random change in x and y. 
+                int dx = (_rgen.Next() % 3) - 1;
+                int dy = (_rgen.Next() % 3) - 1;
+
+                if ((x + dx) > 0 && (x + dx) < cubeSize)
+                {
+                    x += dx;
+                }
+                if ((y+dy) > 0 && (y+dy) < cubeSize)
+                {
+                    y += dy;
+                }
+
+                ShiftNoRoll(axis, direction);
+
+                for (int j = 0; j < size; ++j)
+                {
+                    for (int k = 0; k < size; ++k)
+                    {
+                        switch (axis)
+                        {
+                            case AXIS.AXIS_X:
+                                SetVoxel(origin, x + j, y + k);
+                                break;
+                            case AXIS.AXIS_Y:
+                                SetVoxel(x + j, origin, y + k);
+                                break;
+                            case AXIS.AXIS_Z:
+                                SetVoxel(x + j, y + k, origin);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                DelayMS(delay);
+            }
+        }
+
 #endregion
 
 	}
