@@ -25,17 +25,17 @@ namespace CubeController
         public SerialDriver ()
         {
             // Explicitly set for clarity
-            _serialPort = new SerialPort
-            {
-                PortName = SerialPort.GetPortNames()[0],
-                BaudRate = 9600,
-                Parity = Parity.None,
-                DataBits = 8,
-                StopBits = StopBits.One,
-                Handshake = Handshake.None,
-                ReadTimeout = SerialPort.InfiniteTimeout,
-                WriteTimeout = SerialPort.InfiniteTimeout
-            };
+            _serialPort = new SerialPort();
+                _serialPort.PortName = SerialPort.GetPortNames()[0];
+                _serialPort.RtsEnable = true;
+                _serialPort.DtrEnable = true;
+                _serialPort.BaudRate = 9600;
+                _serialPort.Parity = Parity.None;
+                _serialPort.DataBits = 8;
+                _serialPort.StopBits = StopBits.One;
+                _serialPort.Handshake = Handshake.None;
+                _serialPort.ReadTimeout = SerialPort.InfiniteTimeout;
+                _serialPort.WriteTimeout = SerialPort.InfiniteTimeout;
 
             // Explicitly set for clarity
         }
