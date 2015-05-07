@@ -29,11 +29,11 @@ namespace CubeController
                 _serialPort.PortName = SerialPort.GetPortNames()[0];
                 _serialPort.RtsEnable = true;
                 _serialPort.DtrEnable = true;
-                _serialPort.BaudRate = 9600;
+                _serialPort.BaudRate = 115200;
                 _serialPort.Parity = Parity.None;
                 _serialPort.DataBits = 8;
-                _serialPort.StopBits = StopBits.One;
                 _serialPort.Handshake = Handshake.None;
+                _serialPort.StopBits = StopBits.One;
                 _serialPort.ReadTimeout = SerialPort.InfiniteTimeout;
                 _serialPort.WriteTimeout = SerialPort.InfiniteTimeout;
 
@@ -103,7 +103,7 @@ namespace CubeController
                     for (int z = 0; z < DIMENSION; z++)
                     {
                         if (cubeState[x][y][z])
-                            row |= (byte) (0x1 << z);
+                            row |= (byte) (1 << z);
                     }
 
                     cubeStateBuffer.Add (row);

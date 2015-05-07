@@ -48,14 +48,14 @@ namespace CubeController
 			_fontHandler = new FontHandler ();
 			_rgen = new Random ();
             _writeCubeCallback = WriteCube;
-            _serialDriverTimer = new Timer(_writeCubeCallback, null, 10000, 5);
-            _serialDriver = new SerialDriver();
-            _serialDriver.OpenPort();
+            //_serialDriverTimer = new Timer(_writeCubeCallback, null, 10000, 1);
+            //_serialDriver = new SerialDriver();
+            //_serialDriver.OpenPort();
 		}
 
         private void WriteCube(object stateInfo)
         {
-            _serialDriver.WriteCube(_cubeState);
+            //_serialDriver.WriteCube(_cubeState);
         }
         
 #region UTILITY
