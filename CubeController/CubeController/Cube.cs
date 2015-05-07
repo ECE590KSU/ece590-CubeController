@@ -1409,16 +1409,188 @@ namespace CubeController
 			// Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times.
 			for (int i = 0; i < DIMENSION-1; ++i) {
 				ShiftAndRoll (axis, DIRECTION.FORWARD);
-				RenderCube ();
 				DelayMS (speed);
 			}
-			DelayMS (speed);
+			DelayMS (speed*2);
 			for (int i = 0; i < DIMENSION-1; ++i) {
 				ShiftAndRoll (axis, DIRECTION.REVERSE);
-				RenderCube ();
 				DelayMS (speed);
 			}
 		}
+
+        /// <summary>
+        /// Shamelessy "inspired" (edit: copied) from CHR's original code. 
+        /// </summary>
+        /// <param name="axis">Axis to randomly suspend along.</param>
+        /// <param name="delay">Delay between animation frames.</param>
+        /// <param name="sleep">Time to hold the frozen suspensions.</param>
+        /// <param name="invert">Inversion?</param>
+        public void AxisUpDownRandSups(Cube.AXIS axis, int delay, int sleep, bool invert)
+        {
+            int length = DIMENSION * DIMENSION;
+            int[] positions = new int[length];
+            int[] destinations = new int[length];
+
+            for (int i = 0; i < length; ++i)
+            {
+                positions[i] = 0;
+                destinations[i] = _rgen.Next() % (DIMENSION);
+            }
+
+            for (int i = 0; i < DIMENSION; ++i)
+            {
+                for (int px = 0; px < DIMENSION; ++px)
+                {
+                    if (positions[px] < destinations[px])
+                    {
+                        positions[px]++;
+                    }
+                    if (positions[px] > destinations[px])
+                    {
+                        positions[px]--;
+                    }
+                }
+                DrawPositionsAxis(axis, positions, invert);
+                DelayMS(delay);
+            }
+
+            for (int i = 0; i < length; ++i)
+            {
+                destinations[i] = (DIMENSION - 1);
+            }
+
+            DelayMS(sleep);
+
+            for (int i = 0; i < DIMENSION; ++i)
+            {
+                for (int px = 0; px < length; ++px)
+                {
+                    if (positions[px] < destinations[px])
+                    {
+                        positions[px]++;
+                    }
+                    if (positions[px] > destinations[px])
+                    {
+                        positions[px]--;
+                    }
+                }
+                DrawPositionsAxis(axis, positions, invert);
+                DelayMS(delay);
+            }
+        }
+
+        /// <summary>
+        /// A helper function for AxisUpDownRandSusp. 
+        /// </summary>
+        /// <param name="axis"></param>
+        /// <param name="positions"></param>
+        /// <param name="invert"></param>
+        private void DrawPositionsAxis(Cube.AXIS axis, int[] positions, bool invert)
+        {
+            int p = 0;
+
+            ClearEntireCube();
+
+            for (int x = 0; x < DIMENSION; ++x)
+            {
+                for (int y = 0; y < DIMENSION; ++y)
+                {
+                    if (invert)
+                    {
+                        p = (DIMENSION - 1 - positions[(x * DIMENSION) + y]);
+                    }
+                    else
+                    {
+                        p = positions[(x*DIMENSION) + y];
+                    }
+
+                    switch (axis)
+                    {
+                        case AXIS.AXIS_X:
+                            SetVoxel(p, x, y);
+                            break;
+                        case AXIS.AXIS_Y:
+                            SetVoxel(x, p, y);
+                            break;
+                        case AXIS.AXIS_Z:
+                            SetVoxel(x, y, p);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// This function will shoot a specified number of "fireworks"
+        /// up from the bottom layer. These explode and rain down.
+        /// The function is more-or-less copied form 3d.cpp. We need to
+        /// experiment with it some on the cube to get it to our liking.
+        /// </summary>
+        /// <param name="iterations">The number of fireworks to shoot</param>
+        /// <param name="explosionSize">The size of the explosion</param>
+        /// <param name="delay">The delay</param>
+	    public void Firework(int iterations, int explosionSize, int delay)
+	    {
+	        var particles = new double[explosionSize,6];
+
+	        for (int i = 0; i < iterations; i++)
+	        {
+	            int randX, randY, randZ;
+	            double originX = (double) (_rgen.Next()%4);
+	            double originY = (double) (_rgen.Next()%4);
+	            double originZ = (double) (_rgen.Next()%2);
+	            originZ += 5.0;
+	            originX += 2.0;
+	            originY += 2.0;
+
+	            // Shoot a particle up in the air
+	            for (int j = 0; j < originZ; j++)
+	            {
+	                SetVoxel((int) originX, (int) originY, j);
+	                DelayMS(600 + (500*j));
+	                ClearEntireCube();
+	            }
+
+	            // Fill particle array
+	            for (int k = 0; k < explosionSize; k++)
+	            {
+	                // Position
+	                particles[k, 0] = originX;
+	                particles[k, 1] = originY;
+	                particles[k, 2] = originZ;
+
+	                randX = _rgen.Next()%200;
+	                randY = _rgen.Next()%200;
+	                randZ = _rgen.Next()%200;
+
+	                // Movement
+	                particles[k, 3] = 1 - (double) randX/100.0; //dx
+	                particles[k, 4] = 1 - (double) randY/100.0; //dx
+	                particles[k, 5] = 1 - (double) randZ/100.0; //dx
+	            }
+
+	            // Explode
+	            for (int e = 0; e < 25; e++)
+	            {
+	                double slowRate = 1.0 + (Math.Tan((e + 1.0)/20.0)*10.0);
+	                double gravity = Math.Tan((e + 0.1)/20)/2.0;
+
+	                for (int k = 0; k < explosionSize; k++)
+	                {
+                        particles[k,0] += particles[k,3] / slowRate;
+                        particles[k,1] += particles[k,4] / slowRate;
+                        particles[k,2] += particles[k,5] / slowRate;
+                        particles[k,2] -= gravity;
+
+                        SetVoxel((int)particles[k, 0], (int)particles[k, 1], (int)particles[k, 2]);
+	                }
+                    DelayMS(delay);
+                    ClearEntireCube();
+	            }
+	        }
+	    }
 
 		/// <summary>
 		/// Spins a line in a sinusoidal fashion. Implementation nearly directly
@@ -1450,7 +1622,6 @@ namespace CubeController
 						(int)bot_x, (int)bot_y, z);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
@@ -1486,11 +1657,42 @@ namespace CubeController
 						z, (int)bot_x, (int)bot_y);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
 		}
+
+        /// <summary>
+        /// Light all LEDs layer by layer in strips, and then unset in the 
+        /// opposite pattern. 
+        /// </summary>
+        /// <param name="delay"></param>
+        public void LoadBar(int delay)
+        {
+            ClearEntireCube();
+            
+            for (int z = 0; z < DIMENSION; ++z)
+            {
+                for (int y = 0; y < DIMENSION; ++y)
+                {
+                    DrawLine(0, y, z, DIMENSION - 1, y, z);
+                    DelayMS(delay);
+                    RenderCube();
+                }
+            }
+
+            DelayMS(delay * 2);
+
+            for (int z = (DIMENSION - 1); z >= 0; --z)
+            {
+                for (int y = (DIMENSION - 1); y >= 0; --y)
+                {
+                    ClearLine(0, y, z, DIMENSION - 1, y, z);
+                    DelayMS(delay);
+                    RenderCube();
+                }
+            }
+        }
 
 		/// <summary>
 		/// Create a rain-shower for the specified iterations, with [delay] ms
@@ -1511,10 +1713,8 @@ namespace CubeController
 					SetVoxel (rnd_x, rnd_y, 7);
 				}
 
-				RenderCube ();
 				DelayMS (delay);
 				ShiftNoRoll (Cube.AXIS.AXIS_Z, Cube.DIRECTION.REVERSE);
-				RenderCube ();
 			}
 		}
 
@@ -1647,34 +1847,40 @@ namespace CubeController
 		/// of [grow]. A really neat effect if used in the following
 		/// manner:
 		/// 	while (iteration < max){
-		/// 		BoxWoopWoop(1, delay, true);	// Grow
-		/// 		BoxWoopWoop(1, delay, false);	// Shrink
+		/// 		BoxWoopWoop(1, delay, true, size);	// Grow
+		/// 		BoxWoopWoop(1, delay, false, size);	// Shrink
 		/// 	} // Repeatedly
 		/// </summary>
 		/// <param name="iterations">Iterations to run to.</param>
 		/// <param name="delay">Delay between animation frames.</param>
 		/// <param name="grow">If set to <c>true</c>, then grow.</param>
-		public void BoxWoopWoop(int iterations, int delay, bool grow)
+		public void BoxWoopWoop(int iterations, int delay, bool grow, int size)
 		{
 			ClearEntireCube ();
-
-			for (int k = 0; k < iterations; ++k) {
-				if (grow) {
-					for (int i = 0; i < (DIMENSION / 2); ++i) {
-						BoxWireFrame (new Point (i, i, i), (4 - i));
-						RenderCube ();
-						DelayMS (delay);
-						ClearEntireCube ();
-					}
-				} else {
-					for (int i = 3; i >= 0; --i) {
-						BoxWireFrame (new Point (i, i, i), (4 - i));
-						RenderCube ();
-						DelayMS (delay);
-						ClearEntireCube ();
-					}
-				}
-			}
+            if (size <= DIMENSION && size >= 0)
+            {
+                for (int k = 0; k < iterations; ++k)
+                {
+                    if (grow)
+                    {
+                        for (int i = 0; i < size; ++i)
+                        {
+                            BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+                            DelayMS(delay);
+                            ClearEntireCube();
+                        }
+                    }
+                    else
+                    {
+                        for (int i = size - 1; i >= 0; --i)
+                        {
+                            BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+                            DelayMS(delay);
+                            ClearEntireCube();
+                        }
+                    }
+                }
+            }
 		}
 
 		/// <summary>
@@ -1700,6 +1906,156 @@ namespace CubeController
 				ClearPlane (AXIS.AXIS_Z, z);
 			}
 		}
+
+        /// <summary>
+        /// Blink an increasing number of random voxels, and then
+        /// blink in a decreasing number back down to 1 again. 
+        /// </summary>
+        public void RandomSparkle(int sparkleCount, int delay)
+        {
+            if ((sparkleCount >= 0) && (sparkleCount <= 512))
+            {
+                for (int i = 0; i <= sparkleCount; ++i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
+
+                for (int i = sparkleCount; i >= 0; --i)
+                {
+                    RandomSparkleFlash(5, i, delay);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Set a given number of voxels at random positions.
+        /// </summary>
+        /// <param name="iterations">Number of animation frames.</param>
+        /// <param name="voxels">Number of voxels to set.</param>
+        /// <param name="delay">Animation delay between frame updates.</param>
+        private void RandomSparkleFlash(int iterations, int voxels, int delay)
+        {
+            for (int i = 0; i < iterations; ++i)
+            {
+                for (int v = 0; v <= voxels; ++v)
+                {
+                    // Set a random voxel based. 
+                    SetVoxel(_rgen.Next() % DIMENSION, 
+                        _rgen.Next() % DIMENSION, 
+                        _rgen.Next() % DIMENSION);
+
+                    DelayMS(delay);
+                    ClearEntireCube();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="invert"></param>
+        /// <param name="delay"></param>
+        public void TelcStairs(bool invert, int delay)
+        {
+            int x = 0;
+
+            if (invert)
+            {
+                for (x = DIMENSION * 2; x >= 0; --x)
+                {
+                    x = TelcStairsDo(x, delay);
+                }
+            }
+            else
+            { 
+                for(x = 0; x < (DIMENSION*2); ++x)
+                {
+                    x = TelcStairsDo(x, delay);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="delay"></param>
+        /// <returns></returns>
+        private int TelcStairsDo(int x, int delay)
+        {
+            int y = 0, z = 0;
+
+            for (y = 0, z = x; y <= z; ++y, --x)
+            {
+                if (x < DIMENSION && y < DIMENSION)
+                {
+                    SetVoxel(x, y, z);
+                }
+            }
+            RenderCube();
+            DelayMS(delay);
+            return z;
+        }
+
+        /// <summary>
+        /// Not quite sure of the effect. 
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="axis"></param>
+        /// <param name="direction"></param>
+        /// <param name="iterations"></param>
+        /// <param name="delay"></param>
+        public void WormSqueeze(int size, Cube.AXIS axis, Cube.DIRECTION direction, int iterations, int delay)
+        {
+            int cubeSize = DIMENSION - size - 1;
+            // If the direction is forward, start from ORIGIN.
+            // Otherwise, start from TERMINUS.
+            int origin = direction == DIRECTION.FORWARD ? 0 : (DIMENSION - 1);
+
+            int x = _rgen.Next() % cubeSize;
+            int y = _rgen.Next() % cubeSize;
+
+            for (int i = 0; i < iterations; ++i)
+            {
+                // Random change in x and y. 
+                int dx = (_rgen.Next() % 3) - 1;
+                int dy = (_rgen.Next() % 3) - 1;
+
+                if ((x + dx) > 0 && (x + dx) < cubeSize)
+                {
+                    x += dx;
+                }
+                if ((y+dy) > 0 && (y+dy) < cubeSize)
+                {
+                    y += dy;
+                }
+
+                ShiftNoRoll(axis, direction);
+
+                for (int j = 0; j < size; ++j)
+                {
+                    for (int k = 0; k < size; ++k)
+                    {
+                        switch (axis)
+                        {
+                            case AXIS.AXIS_X:
+                                SetVoxel(origin, x + j, y + k);
+                                break;
+                            case AXIS.AXIS_Y:
+                                SetVoxel(x + j, origin, y + k);
+                                break;
+                            case AXIS.AXIS_Z:
+                                SetVoxel(x + j, y + k, origin);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+
+                DelayMS(delay);
+            }
+        }
 
 #endregion
 
