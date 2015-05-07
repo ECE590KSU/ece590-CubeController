@@ -1,0 +1,7 @@
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\bin\Release\TestCubeController.exe
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\bin\Release\TestCubeController.pdb
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\bin\Release\CubeController.dll
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\bin\Release\CubeController.pdb
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Release\TestCubeController.csprojResolveAssemblyReference.cache
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Release\TestCubeController.exe
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\TestCubeController\obj\Release\TestCubeController.pdb

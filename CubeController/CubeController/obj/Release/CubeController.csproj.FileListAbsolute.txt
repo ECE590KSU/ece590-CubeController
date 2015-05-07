@@ -1,0 +1,4 @@
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\bin\Release\CubeController.dll
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\bin\Release\CubeController.pdb
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\obj\Release\CubeController.dll
+C:\Users\Tyler\Documents\GitHub\ece590-CubeController\CubeController\CubeController\obj\Release\CubeController.pdb
