@@ -238,7 +238,9 @@ namespace CubeController
 		/// <param name="z">The z coordinate.</param>
 		public void SwapVoxel(int x, int y, int z)
 		{
+            if (InRange(x, y, z)) {
 			_cubeState [x] [y] [z] = !_cubeState [x] [y] [z];
+            }
 		}
 
 		/// <summary>
