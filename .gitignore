@@ -7,7 +7,7 @@
 
 #Visual Studio
 *.pdb
-*/DesignTimeResolveAssemblyReferencesInput.cache
+*DesignTimeResolveAssemblyReferencesInput.cache
 *.suo
 *.csproj.FileListAbsolute.txt
 *.csprojResolveAssemblyReference.cache
