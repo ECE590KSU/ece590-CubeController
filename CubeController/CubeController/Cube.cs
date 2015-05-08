@@ -8,20 +8,59 @@ namespace CubeController
 {
 	public class Cube
 	{
-		private bool[][][] _cubeState;		// A collection of voxels. 
-		private const int DIMENSION = 8;	// How many voxels per anode column. 
+        /// <summary>
+        /// A 3D collection of voxels.
+        /// </summary>
+		private bool[][][] _cubeState;
+
+        /// <summary>
+        /// The number of voxels per anode column. 
+        /// </summary>
+		private const int DIMENSION = 8;
+
+        /// <summary>
+        /// Random number generator for the class (effects, advanced drawing, etc.).
+        /// </summary>
 		private Random _rgen;
 
+        /// <summary>
+        /// A font handler, which will translate character bitmpas into plane patterns.
+        /// </summary>
 		private FontHandler _fontHandler;
 
+        /// <summary>
+        /// A timer for the SerialDriver object.
+        /// </summary>
         private Timer _serialDriverTimer;
+
+        /// <summary>
+        /// A timer callback for the SerialDriver object's Write() thread invocation.
+        /// </summary>
         private TimerCallback _writeCubeCallback;
+
+        /// <summary>
+        /// An object capable of transmitting cube frames via TTL. 
+        /// </summary>
         private SerialDriver _serialDriver;
 
+        /// <summary>
+        /// An enumeration of the axes upon which the cube can be oriented.
+        /// </summary>
 		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
+
+        /// <summary>
+        /// An enumeration of the directions that effects can be propagated.
+        /// </summary>
 		public enum DIRECTION { FORWARD, REVERSE };
+
+        /// <summary>
+        /// An enumeration of the reflection parameters of some cube effects.
+        /// </summary>
 		public enum REFLECTION { ORIGIN, TERMINUS };
 
+        /// <summary>
+        /// Get the DIMENSION of the cube.
+        /// </summary>
 		public int Dimension
 		{
 			get 
@@ -48,11 +87,17 @@ namespace CubeController
 			_fontHandler = new FontHandler ();
 			_rgen = new Random ();
             _writeCubeCallback = WriteCube;
+
+            // NEED TO HANDLE CASES WHERE NO SERIAL CABLE IS ATTACHED
             //_serialDriverTimer = new Timer(_writeCubeCallback, null, 10000, 1);
             //_serialDriver = new SerialDriver();
             //_serialDriver.OpenPort();
 		}
 
+        /// <summary>
+        /// A callback for the SerialDriver thread responsible for pushing cube frames via TTL.
+        /// </summary>
+        /// <param name="stateInfo"></param>
         private void WriteCube(object stateInfo)
         {
             //_serialDriver.WriteCube(_cubeState);
@@ -115,7 +160,7 @@ namespace CubeController
         }
         
         /// <summary>
-        /// Renders a specified plane. 
+        /// Renders a specified plane. DEBUGGING PURPOSES ONLY.
         /// </summary>
         /// <param name="plane"></param>
         public void RenderPlane(bool[][] plane)
@@ -143,7 +188,7 @@ namespace CubeController
         }
 
 		/// <summary>
-		/// Renders the cube by Z-Planes.
+		/// Renders the cube by Z-Planes. DEBUGGING PURPOSES ONLY.
 		/// </summary>
 		public void RenderCube()
 		{
@@ -893,7 +938,7 @@ namespace CubeController
 
         /// <summary>
         /// This is an attempt to characterize Bresenham's Line Algorithm in 3D, extrapolating
-        /// information from the 2D version. A 3D implementation has been modified from it's source:
+        /// information from the 2D version. A 3D implementation has been modified from its source:
         /// https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs
         /// 
         /// Basic idea in 2D:
@@ -1312,7 +1357,6 @@ namespace CubeController
 			foreach (char c in message) {
 				PutChar (axis, 0, c);
 				for (int i = 0; i < DIMENSION; ++i) {
-					RenderPlane (GetPlane (axis, i));
 					ShiftAndRoll (axis, direction);
 					DelayMS (200);
 				}
@@ -1357,15 +1401,6 @@ namespace CubeController
 					// Put the ith character on the LEFT-FACE of CUBE.
 					ClearPlane (AXIS.AXIS_X, 0);
 					PatternSetPlane (AXIS.AXIS_X, 0, GetChar (message [i]));
-
-					Console.WriteLine ("LEFT FACE");
-					RenderPlane (GetPlane (AXIS.AXIS_X, 0)); DelayMS (800);
-					Console.WriteLine ("FRONT FACE");
-					RenderPlane (GetPlane (AXIS.AXIS_Y, 0)); DelayMS (800);
-					Console.WriteLine ("RIGHT FACE");
-					RenderPlane (GetPlane (AXIS.AXIS_X, 7)); DelayMS (800);
-
-					Console.WriteLine ("NEXT ITERATION\n\n\n");
 				}
 			
 			// A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone.
@@ -1679,7 +1714,6 @@ namespace CubeController
                 {
                     DrawLine(0, y, z, DIMENSION - 1, y, z);
                     DelayMS(delay);
-                    RenderCube();
                 }
             }
 
@@ -1691,7 +1725,6 @@ namespace CubeController
                 {
                     ClearLine(0, y, z, DIMENSION - 1, y, z);
                     DelayMS(delay);
-                    RenderCube();
                 }
             }
         }
@@ -1751,7 +1784,6 @@ namespace CubeController
 						SetVoxel (x, y, (int)height);
 					}
 				}
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
@@ -1782,7 +1814,6 @@ namespace CubeController
 						SetVoxel (j, (int)zvals [j], z);
 					}
 				}
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
@@ -1812,8 +1843,6 @@ namespace CubeController
 						SetVoxel (x, y, (int)height);
 					}
 				}
-
-				RenderCube ();
 				DelayMS (delay);
 				ClearEntireCube ();
 			}
@@ -1839,7 +1868,6 @@ namespace CubeController
 					ClearVoxel (x, y, dest-1);
 				}
 				SetVoxel (x, y, dest);
-				RenderCube ();
 				DelayMS (delay);
 			}
 		}
@@ -1900,7 +1928,6 @@ namespace CubeController
 					for (int y = 0; y < DIMENSION; ++y) {
 						SetVoxel (x, y, z);
 						DelayMS (15);
-						RenderCube ();
 					}
 					DelayMS (delay);
 				}
@@ -1953,7 +1980,7 @@ namespace CubeController
         }
 
         /// <summary>
-        /// 
+        /// Not quite sure what this does, in all reality.
         /// </summary>
         /// <param name="invert"></param>
         /// <param name="delay"></param>
@@ -1978,7 +2005,7 @@ namespace CubeController
         }
 
         /// <summary>
-        /// 
+        /// Again, not quite sure what this does!
         /// </summary>
         /// <param name="x"></param>
         /// <param name="delay"></param>
@@ -1994,7 +2021,6 @@ namespace CubeController
                     SetVoxel(x, y, z);
                 }
             }
-            RenderCube();
             DelayMS(delay);
             return z;
         }
