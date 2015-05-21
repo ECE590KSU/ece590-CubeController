@@ -253,6 +253,20 @@ namespace CubeController
 			}
 		}
 
+        /// <summary>
+        /// Sets or clears a voxel based on the given state. 
+        /// </summary>
+        /// <param name="x">The x coordinate.</param>
+        /// <param name="y">The y coordinate.</param>
+        /// <param name="z">The z coordinate.</param>
+        /// <param name="state">State to set voxel to.</param>
+        private void SetVoxelFrom(int x, int y, int z, bool state)
+        {
+            if (InRange(x, y, z)) {
+                _cubeState[z][x][y] = state;
+            }
+        }
+
 		/// <summary>
 		/// Clears the voxel.
 		/// </summary>
@@ -443,7 +457,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [z] [y] [pl] = pattern [y] [z];
+                        SetVoxelFrom(z, y, pl, pattern[y][z]);
 					}
 				}
 				break;
@@ -452,7 +466,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [z] [pl] [x] = pattern [x] [z];
+                        SetVoxelFrom(z, pl, x, pattern[x][z]);
 					}
 				}
 				break;
@@ -460,7 +474,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [pl] [y] [x] = pattern [x] [y];
+                        SetVoxelFrom(pl, y, x, pattern[x][y]);
 					}
 				}
 				break;

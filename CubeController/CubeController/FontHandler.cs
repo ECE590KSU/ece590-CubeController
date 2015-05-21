@@ -54,7 +54,9 @@ namespace CubeController
 						charMap[i] = line.Select (c => c == '1').ToArray ();
 					}
 
-					// Add the key and its character bitmap to the dictionary. 
+                    // Re-orient the character bitmap and then
+					// add the key and its character bitmap to the dictionary.
+                    RotateBitMap(ref charMap);
 					alpha.Add (key, charMap);
 				}
 
@@ -71,6 +73,33 @@ namespace CubeController
 		{
 			return _alphabet [key];
 		}
+
+        /// <summary>
+        /// Rotates a character bitmap by 90°. Necessary, as the character maps are
+        /// read-in along a different orientation than they'll be accessed.
+        /// </summary>
+        /// <param name="charmap"></param>
+        private void RotateBitMap(ref bool[][] charmap)
+        {
+            bool[][] temp = NewEmptyPlane(8);
+
+            // Transpose the character matrix.
+            for (int i = 0; i < 8; ++i)
+            {
+                for (int j = 0; j < 8; ++j)
+                {
+                    temp[j][i] = charmap[i][j];
+                }
+            }
+
+            // Reverse the rows.
+            foreach (bool[] row in temp)
+            {
+                Array.Reverse(row);
+            }
+
+            charmap = temp;
+        }
 
 		/// <summary>
 		/// Creates an empty plane for use of filling. 
