@@ -1,0 +1,1704 @@
+.TH "effect.cpp" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+effect.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'effect\&.hpp'\fP
+.br
+\fC#include 'draw\&.hpp'\fP
+.br
+\fC#include 'font\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBeffect_test\fP (void)"
+.br
+.ti -1c
+.RI "void \fBeffect_stringfly2\fP (char *str)"
+.br
+.ti -1c
+.RI "void \fBeffect_planboing\fP (int plane, int speed)"
+.br
+.ti -1c
+.RI "void \fBeffect_blinky2\fP ()"
+.br
+.ti -1c
+.RI "void \fBeffect_box_shrink_grow\fP (int iterations, int mode, int direction, uint16_t delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_box_woopwoop\fP (int delay, int grow)"
+.br
+.ti -1c
+.RI "void \fBsendvoxel_z\fP (unsigned char x, unsigned char y, unsigned char z, int delay)"
+.br
+.ti -1c
+.RI "void \fBsendplane_rand_z\fP (unsigned char z, int delay, int wait)"
+.br
+.ti -1c
+.RI "void \fBsendvoxels_rand_z\fP (int iterations, int delay, int wait)"
+.br
+.ti -1c
+.RI "void \fBboingboing\fP (uint16_t iterations, int delay, unsigned char mode, unsigned char drawmode)"
+.br
+.ti -1c
+.RI "void \fBeffect_random_filler\fP (int delay, int state)"
+.br
+.ti -1c
+.RI "void \fBeffect_rain\fP (int iterations)"
+.br
+.ti -1c
+.RI "void \fBeffect_z_updown\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_z_updown_move\fP (unsigned char positions[64], unsigned char destinations[64], char axis)"
+.br
+.ti -1c
+.RI "void \fBeffect_axis_updown_randsuspend\fP (char axis, int delay, int sleep, int invert)"
+.br
+.ti -1c
+.RI "void \fBdraw_positions_axis\fP (char axis, unsigned char positions[64], int invert)"
+.br
+.ti -1c
+.RI "void \fBeffect_boxside_randsend_parallel\fP (char axis, int origin, int delay, int mode)"
+.br
+.ti -1c
+.RI "void \fBeffect_loadbar\fP (int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_random_sparkle_flash\fP (int iterations, int voxels, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_random_sparkle\fP (void)"
+.br
+.ti -1c
+.RI "int \fBeffect_telcstairs_do\fP (int x, int val, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_telcstairs\fP (int invert, int delay, int val)"
+.br
+.ti -1c
+.RI "void \fBeffect_wormsqueeze\fP (int size, int axis, int direction, int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_smileyspin\fP (int count, int delay, char bitmap)"
+.br
+.ti -1c
+.RI "void \fBeffect_pathmove\fP (unsigned char *path, int length)"
+.br
+.ti -1c
+.RI "void \fBeffect_rand_patharound\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_pathspiral\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_path_text\fP (int delay, char *str)"
+.br
+.ti -1c
+.RI "void \fBeffect_path_bitmap\fP (int delay, char bitmap, int iterations)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void boingboing (uint16_titerations, intdelay, unsigned charmode, unsigned chardrawmode)"
+
+.PP
+Definition at line 439 of file effect\&.cpp\&.
+.PP
+.nf
+440 {
+441     fill(0x00);     // Blank the cube
+442 
+443     int x, y, z;        // Current coordinates for the point
+444     int dx, dy, dz; // Direction of movement
+445     int lol, i;     // lol?
+446     unsigned char crash_x, crash_y, crash_z;
+447 
+448     // Coordinate array for the snake\&.
+449     int snake[8][3];
+450     for (i=0;i<8;i++)
+451     {
+452         snake[i][0] = 4;
+453         snake[i][1] = 4;
+454         snake[i][2] = 4;
+455     }
+456     
+457     y = rand()%8;
+458     x = rand()%8;
+459     z = rand()%8;
+460     
+461     dx = 1;
+462     dy = 1;
+463     dz = 1;
+464     
+465     while(iterations)
+466     {
+467         crash_x = 0;
+468         crash_y = 0;
+469         crash_z = 0;
+470     
+471 
+472         // Let's mix things up a little:
+473         if (rand()%3 == 0)
+474         {
+475             // Pick a random axis, and set the speed to a random number\&.
+476             lol = rand()%3;
+477             if (lol == 0)
+478                 dx = rand()%3 - 1;
+479             
+480             if (lol == 1)
+481                 dy = rand()%3 - 1;
+482                 
+483             if (lol == 2)
+484                 dz = rand()%3 - 1;
+485         }
+486 
+487     
+488         if (dx == -1 && x == 0)
+489         {
+490             crash_x = 0x01;
+491             if (rand()%3 == 1)
+492             {
+493                 dx = 1;
+494             } else
+495             {
+496                 dx = 0;
+497             }
+498         }
+499         
+500         if (dy == -1 && y == 0)
+501         {
+502             crash_y = 0x01;
+503             if (rand()%3 == 1)
+504             {
+505                 dy = 1;
+506             } else
+507             {
+508                 dy = 0;
+509             }
+510         }
+511         
+512         if (dz == -1 && z == 0)
+513         {
+514             crash_z = 0x01;
+515             if (rand()%3 == 1)
+516             {
+517                 dz = 1;
+518             } else
+519             {
+520                 dz = 0;
+521             }
+522         }
+523             
+524         if (dx == 1 && x == 7)
+525         {
+526             crash_x = 0x01;
+527             if (rand()%3 == 1)
+528             {
+529                 dx = -1;
+530             } else
+531             {
+532                 dx = 0;
+533             }
+534         }
+535         
+536         if (dy == 1 && y == 7)
+537         {
+538             crash_y = 0x01;
+539             if (rand()%3 == 1)
+540             {
+541                 dy = -1;
+542             } else
+543             {
+544                 dy = 0;
+545             }
+546         }
+547         
+548         if (dz == 1 && z == 7)
+549         {
+550             crash_z = 0x01;
+551             if (rand()%3 == 1)
+552             {
+553                 dz = -1;
+554             } else
+555             {
+556                 dz = 0;
+557             }
+558         }
+559         
+560         // mode bit 0 sets crash action enable
+561         if (mode | 0x01)
+562         {
+563             if (crash_x)
+564             {
+565                 if (dy == 0)
+566                 {
+567                     if (y == 7)
+568                     {
+569                         dy = -1;
+570                     } else if (y == 0)
+571                     {
+572                         dy = +1;
+573                     } else
+574                     {
+575                         if (rand()%2 == 0)
+576                         {
+577                             dy = -1;
+578                         } else
+579                         {
+580                             dy = 1;
+581                         }
+582                     }
+583                 }
+584                 if (dz == 0)
+585                 {
+586                     if (z == 7)
+587                     {
+588                         dz = -1;
+589                     } else if (z == 0)
+590                     {
+591                         dz = 1;
+592                     } else
+593                     {
+594                         if (rand()%2 == 0)
+595                         {
+596                             dz = -1;
+597                         } else
+598                         {
+599                             dz = 1;
+600                         }
+601                     }   
+602                 }
+603             }
+604             
+605             if (crash_y)
+606             {
+607                 if (dx == 0)
+608                 {
+609                     if (x == 7)
+610                     {
+611                         dx = -1;
+612                     } else if (x == 0)
+613                     {
+614                         dx = 1;
+615                     } else
+616                     {
+617                         if (rand()%2 == 0)
+618                         {
+619                             dx = -1;
+620                         } else
+621                         {
+622                             dx = 1;
+623                         }
+624                     }
+625                 }
+626                 if (dz == 0)
+627                 {
+628                     if (z == 3)
+629                     {
+630                         dz = -1;
+631                     } else if (z == 0)
+632                     {
+633                         dz = 1;
+634                     } else
+635                     {
+636                         if (rand()%2 == 0)
+637                         {
+638                             dz = -1;
+639                         } else
+640                         {
+641                             dz = 1;
+642                         }
+643                     }   
+644                 }
+645             }
+646             
+647             if (crash_z)
+648             {
+649                 if (dy == 0)
+650                 {
+651                     if (y == 7)
+652                     {
+653                         dy = -1;
+654                     } else if (y == 0)
+655                     {
+656                         dy = 1;
+657                     } else
+658                     {
+659                         if (rand()%2 == 0)
+660                         {
+661                             dy = -1;
+662                         } else
+663                         {
+664                             dy = 1;
+665                         }
+666                     }   
+667                 }
+668                 if (dx == 0)
+669                 {
+670                     if (x == 7)
+671                     {
+672                         dx = -1;
+673                     } else if (x == 0)
+674                     {
+675                         dx = 1;
+676                     } else
+677                     {
+678                         if (rand()%2 == 0)
+679                         {
+680                             dx = -1;
+681                         } else
+682                         {
+683                             dx = 1;
+684                         }
+685                     }   
+686                 }
+687             }
+688         }
+689         
+690         // mode bit 1 sets corner avoid enable
+691         if (mode | 0x02)
+692         {
+693             if (    // We are in one of 8 corner positions
+694                 (x == 0 && y == 0 && z == 0) ||
+695                 (x == 0 && y == 0 && z == 7) ||
+696                 (x == 0 && y == 7 && z == 0) ||
+697                 (x == 0 && y == 7 && z == 7) ||
+698                 (x == 7 && y == 0 && z == 0) ||
+699                 (x == 7 && y == 0 && z == 7) ||
+700                 (x == 7 && y == 7 && z == 0) ||
+701                 (x == 7 && y == 7 && z == 7)
+702             )
+703             {
+704                 // At this point, the voxel would bounce
+705                 // back and forth between this corner,
+706                 // and the exact opposite corner
+707                 // We don't want that!
+708             
+709                 // So we alter the trajectory a bit,
+710                 // to avoid corner stickyness
+711                 lol = rand()%3;
+712                 if (lol == 0)
+713                     dx = 0;
+714                 
+715                 if (lol == 1)
+716                     dy = 0;
+717                     
+718                 if (lol == 2)
+719                     dz = 0;
+720             }
+721         }
+722     
+723         // Finally, move the voxel\&.
+724         x = x + dx;
+725         y = y + dy;
+726         z = z + dz;
+727         
+728         if (drawmode == 0x01) // show one voxel at time
+729         {
+730             setvoxel(x,y,z);
+731             delay_ms(delay);
+732             clrvoxel(x,y,z);    
+733         } else if (drawmode == 0x02) // flip the voxel in question
+734         {
+735             flpvoxel(x,y,z);
+736             delay_ms(delay);
+737         } if (drawmode == 0x03)
+738         {
+739             for (i=7;i>=0;i--)
+740             {
+741                 snake[i][0] = snake[i-1][0];
+742                 snake[i][1] = snake[i-1][1];
+743                 snake[i][2] = snake[i-1][2];
+744             }
+745             snake[0][0] = x;
+746             snake[0][1] = y;
+747             snake[0][2] = z;
+748                 
+749             for (i=0;i<8;i++)
+750             {
+751                 setvoxel(snake[i][0],snake[i][1],snake[i][2]);
+752             }
+753             delay_ms(delay);
+754             for (i=0;i<8;i++)
+755             {
+756                 clrvoxel(snake[i][0],snake[i][1],snake[i][2]);
+757             }
+758         }
+759         
+760     
+761         iterations--;
+762     }
+763 }
+.fi
+.SS "void draw_positions_axis (charaxis, unsigned charpositions[64], intinvert)"
+
+.PP
+Definition at line 934 of file effect\&.cpp\&.
+.PP
+.nf
+935 {
+936     int x, y, p;
+937     
+938     fill(0x00);
+939     
+940     for (x=0; x<8; x++)
+941     {
+942         for (y=0; y<8; y++)
+943         {
+944             if (invert)
+945             {
+946                 p = (7-positions[(x*8)+y]);
+947             } else
+948             {
+949                 p = positions[(x*8)+y];
+950             }
+951         
+952             if (axis == AXIS_Z)
+953                 setvoxel(x,y,p);
+954                 
+955             if (axis == AXIS_Y)
+956                 setvoxel(x,p,y);
+957                 
+958             if (axis == AXIS_X)
+959                 setvoxel(p,y,x);
+960         }
+961     }
+962     
+963 }
+.fi
+.SS "void effect_axis_updown_randsuspend (charaxis, intdelay, intsleep, intinvert)"
+
+.PP
+Definition at line 876 of file effect\&.cpp\&.
+.PP
+.nf
+877 {
+878     unsigned char positions[64];
+879     unsigned char destinations[64];
+880 
+881     int i,px;
+882     
+883     for (i=0; i<64; i++)
+884     {
+885         positions[i] = 0;
+886         destinations[i] = rand()%8;
+887     }
+888 
+889     for (i=0; i<8; i++)
+890     {
+891         for (px=0; px<64; px++)
+892         {
+893             if (positions[px]<destinations[px])
+894             {
+895                 positions[px]++;
+896             }
+897             if (positions[px]>destinations[px])
+898             {
+899                 positions[px]--;
+900             }
+901         }
+902         draw_positions_axis (axis, positions,invert);
+903         delay_ms(delay);
+904     }
+905     
+906     for (i=0; i<64; i++)
+907     {
+908         destinations[i] = 7;
+909     }
+910     
+911     delay_ms(sleep);
+912     
+913     for (i=0; i<8; i++)
+914     {
+915         for (px=0; px<64; px++)
+916         {
+917             if (positions[px]<destinations[px])
+918             {
+919                 positions[px]++;
+920             }
+921             if (positions[px]>destinations[px])
+922             {
+923                 positions[px]--;
+924             }
+925         }
+926         draw_positions_axis (axis, positions,invert);
+927         delay_ms(delay);
+928     }
+929     
+930     
+931 
+932 }
+.fi
+.SS "void effect_blinky2 ()"
+
+.PP
+Definition at line 131 of file effect\&.cpp\&.
+.PP
+.nf
+132 {
+133     int i,r;
+134     fill(0x00);
+135     
+136     for (r=0;r<2;r++)
+137     {
+138         i = 750;
+139         while (i>0)
+140         {
+141             fill(0x00);
+142             delay_ms(i);
+143             
+144             fill(0xff);
+145             delay_ms(100);
+146             
+147             i = i - (15+(1000/(i/10)));
+148         }
+149         
+150         delay_ms(1000);
+151         
+152         i = 750;
+153         while (i>0)
+154         {
+155             fill(0x00);
+156             delay_ms(751-i);
+157             
+158             fill(0xff);
+159             delay_ms(100);
+160             
+161             i = i - (15+(1000/(i/10)));
+162         }
+163     }
+164 
+165 }
+.fi
+.SS "void effect_box_shrink_grow (intiterations, intmode, intdirection, uint16_tdelay)"
+
+.PP
+Definition at line 167 of file effect\&.cpp\&.
+.PP
+.nf
+168 {
+169     int x;
+170     int i;
+171     
+172     int x1 = 0;
+173     int y1 = 0;
+174     int z1 = 0;
+175     int x2 = 0;
+176     int y2 = 0;
+177     int z2 = 0;
+178     
+179     
+180     for (x=0;x<iterations;x++)
+181     {
+182         for (i=7;i>=0;i--)
+183         {
+184             if(direction == 0)
+185             {
+186                 // Dette funker også.\&.
+187                 // memcpy(test, (int[]){1, 2, 3, 4, 5, 6}, 6 * sizeof(int));
+188                 x1=0; y1=0; z1=0; x2=i; y2=i; z2=i;
+189             }
+190 
+191             if(direction == 1) // fail
+192             {
+193                 x1=0; y1=0; z1=7-i; x2=i; y2=i; z2=7;
+194             }
+195 
+196             if(direction == 2)
+197             {
+198                 x1=0; y1=7; z1=0; x2=i; y2=7-i; z2=i;
+199             }
+200 
+201             if(direction == 3) //fail
+202             {
+203                 x1=0; y1=7; z1=7; x2=i; y2=7-i; z2=7-i;
+204             }
+205 
+206             if(direction == 4) //fail
+207             {
+208                 x1=7; y1=0; z1=0; x2=7-i; y2=i; z2=i;
+209             }
+210 
+211             if(direction == 5)
+212             {
+213                 x1=7; y1=0; z1=7; x2=7-i; y2=i; z2=7-i;
+214             }
+215 
+216             if(direction == 6) //fail
+217             {
+218                 x1=7; y1=7; z1=0; x2=7-i; y2=7-i; z2=i;
+219             }
+220 
+221             if(direction == 7)
+222             {
+223                 x1=7; y1=7; z1=7; x2=7-i; y2=7-i; z2=7-i;
+224             }
+225 
+226             if (mode == 3)
+227             {
+228                 box_filled(x1,y1,z1,x2,y2,z2);
+229             }
+230             else if (mode == 2)
+231             {
+232                 box_walls(x1,y1,z1,x2,y2,z2);
+233             }
+234             else
+235             {
+236                 box_wireframe(x1,y1,z1,x2,y2,z2);
+237             }
+238 
+239             delay_ms(delay);
+240             fill(0x00);
+241         }
+242         for (i=0;i<8;i++)
+243         {
+244             if(direction == 0)
+245             {
+246                 x1=0; y1=0; z1=0; x2=i; y2=i; z2=i;
+247             }
+248 
+249             if(direction == 1) // fail
+250             {
+251                 x1=0; y1=0; z1=7-i; x2=i; y2=i; z2=7;
+252             }
+253 
+254             if(direction == 2)
+255             {
+256                 x1=0; y1=7; z1=0; x2=i; y2=7-i; z2=i;
+257             }
+258 
+259             if(direction == 3) //fail
+260             {
+261                 x1=0; y1=7; z1=7; x2=i; y2=7-i; z2=7-i;
+262             }
+263 
+264             if(direction == 4) //fail
+265             {
+266                 x1=7; y1=0; z1=0; x2=7-i; y2=i; z2=i;
+267             }
+268 
+269             if(direction == 5)
+270             {
+271                 x1=7; y1=0; z1=7; x2=7-i; y2=i; z2=7-i;
+272             }
+273 
+274             if(direction == 6) //fail
+275             {
+276                 x1=7; y1=7; z1=0; x2=7-i; y2=7-i; z2=i;
+277             }
+278 
+279             if(direction == 7)
+280             {
+281                 x1=7; y1=7; z1=7; x2=7-i; y2=7-i; z2=7-i;
+282             }
+283 
+284             if (mode == 3)
+285             {
+286                 box_filled(x1,y1,z1,x2,y2,z2);
+287             }
+288             else if (mode == 2)
+289             {
+290                 box_walls(x1,y1,z1,x2,y2,z2);
+291             }
+292             else
+293             {
+294                 box_wireframe(x1,y1,z1,x2,y2,z2);
+295             }
+296             
+297             delay_ms(delay);
+298             fill(0x00);
+299                 }
+300         }
+301 }
+.fi
+.SS "void effect_box_woopwoop (intdelay, intgrow)"
+
+.PP
+Definition at line 304 of file effect\&.cpp\&.
+.PP
+.nf
+305 {
+306     int i;
+307     
+308     fill(0x00);
+309     if (grow == 1)
+310     {
+311         for (i=0;i<4;i++)
+312         {
+313             box_wireframe(4+i,4+i,4+i,3-i,3-i,3-i);
+314             delay_ms(delay);
+315             fill(0x00);
+316         }
+317     } else
+318     {
+319         for (i=3;i>=0;i--)
+320         {
+321             box_wireframe(4+i,4+i,4+i,3-i,3-i,3-i);
+322             delay_ms(delay);
+323             fill(0x00);
+324         }
+325     }
+326 }
+.fi
+.SS "void effect_boxside_randsend_parallel (charaxis, intorigin, intdelay, intmode)"
+
+.PP
+Definition at line 966 of file effect\&.cpp\&.
+.PP
+.nf
+967 {
+968     int i;
+969     int done;
+970     unsigned char cubepos[64];
+971     unsigned char pos[64];
+972     int notdone = 1;
+973     int notdone2 = 1;
+974     int sent = 0;
+975     
+976     for (i=0;i<64;i++)
+977     {
+978         pos[i] = 0;
+979     }
+980     
+981     while (notdone)
+982     {
+983         if (mode == 1)
+984         {
+985             notdone2 = 1;
+986             while (notdone2 && sent<64)
+987             {
+988                 i = rand()%64;
+989                 if (pos[i] == 0)
+990                 {
+991                     sent++;
+992                     pos[i] += 1;
+993                     notdone2 = 0;
+994                 }
+995             }
+996         } else if (mode == 2)
+997         {
+998             if (sent<64)
+999             {
+1000                 pos[sent] += 1;
+1001                 sent++;
+1002             }
+1003         }
+1004         
+1005         done = 0;
+1006         for (i=0;i<64;i++)
+1007         {
+1008             if (pos[i] > 0 && pos[i] <7)
+1009             {
+1010                 pos[i] += 1;
+1011             }
+1012                 
+1013             if (pos[i] == 7)
+1014                 done++;
+1015         }
+1016         
+1017         if (done == 64)
+1018             notdone = 0;
+1019         
+1020         for (i=0;i<64;i++)
+1021         {
+1022             if (origin == 0)
+1023             {
+1024                 cubepos[i] = pos[i];
+1025             } else
+1026             {
+1027                 cubepos[i] = (7-pos[i]);
+1028             }
+1029         }
+1030         
+1031         
+1032         delay_ms(delay);
+1033         draw_positions_axis(axis,cubepos,0);
+1034         LED_PORT ^= LED_RED;
+1035     }
+1036     
+1037 }
+.fi
+.SS "void effect_loadbar (intdelay)"
+
+.PP
+Definition at line 1044 of file effect\&.cpp\&.
+.PP
+.nf
+1045 {
+1046     fill(0x00);
+1047     
+1048     int z,y;
+1049     
+1050     for (z=0;z<8;z++)
+1051     {
+1052         for (y=0;y<8;y++)
+1053             cube[z][y] = 0xff;
+1054             
+1055         delay_ms(delay);
+1056     }
+1057     
+1058     delay_ms(delay*3);
+1059     
+1060     for (z=0;z<8;z++)
+1061     {
+1062         for (y=0;y<8;y++)
+1063             cube[z][y] = 0x00;
+1064             
+1065         delay_ms(delay);
+1066     }
+1067 }
+.fi
+.SS "void effect_path_bitmap (intdelay, charbitmap, intiterations)"
+
+.PP
+Definition at line 1439 of file effect\&.cpp\&.
+.PP
+.nf
+1440 {
+1441     int z, i, ii;
+1442     z = 4;
+1443     unsigned char path[28];
+1444     font_getpath(0,path,28);
+1445     
+1446     for (i=0; i < iterations; i++)
+1447     {   
+1448         for (ii=0;ii<8;ii++)
+1449         {       
+1450             for (z=0;z<8;z++)
+1451             {
+1452                 if (font_getbitmappixel(bitmap,(7-z),ii))
+1453                 {
+1454                     setvoxel(0,7,z);
+1455                 } else
+1456                 {
+1457                     clrvoxel(0,7,z);
+1458                 }
+1459                 
+1460             }
+1461             delay_ms(delay);
+1462             effect_pathmove(path, 28);
+1463         }
+1464     
+1465         for (ii=0;ii<20;ii++)
+1466         {
+1467             delay_ms(delay);
+1468             effect_pathmove(path, 28);
+1469         }
+1470     }
+1471     for (ii=0;ii<10;ii++)
+1472     {
+1473         delay_ms(delay);
+1474         effect_pathmove(path, 28);
+1475     }
+1476 }
+.fi
+.SS "void effect_path_text (intdelay, char *str)"
+
+.PP
+Definition at line 1392 of file effect\&.cpp\&.
+.PP
+.nf
+1393 {
+1394     int z, i,ii;
+1395     z = 4;
+1396     unsigned char path[28];
+1397     font_getpath(0,path,28);
+1398     
+1399     unsigned char chr[5];
+1400     unsigned char stripe;
+1401     
+1402     while (*str)
+1403     {
+1404         //charfly(*str++, direction, axis, mode, delay);
+1405         
+1406         
+1407         font_getchar(*str++, chr);
+1408         
+1409         for (ii=0;ii<5;ii++)
+1410         {
+1411             //stripe = pgm_read_byte(&font[(chr*5)+ii]);
+1412             stripe = chr[ii];
+1413             
+1414             for (z=0;z<8;z++)
+1415             {
+1416                 if ((stripe>>(7-z)) & 0x01)
+1417                 {
+1418                     setvoxel(0,7,z);
+1419                 } else
+1420                 {
+1421                     clrvoxel(0,7,z);
+1422                 }
+1423                 
+1424             }
+1425             effect_pathmove(path, 28);
+1426             delay_ms(delay);
+1427         }
+1428     
+1429         effect_pathmove(path, 28);
+1430         delay_ms(delay);
+1431     }
+1432     for (i=0;i<28;i++)
+1433     {
+1434         effect_pathmove(path, 28);
+1435         delay_ms(delay);
+1436     }
+1437 }
+.fi
+.SS "void effect_pathmove (unsigned char *path, intlength)"
+
+.PP
+Definition at line 1332 of file effect\&.cpp\&.
+.PP
+.nf
+1333 {
+1334     int i,z;
+1335     unsigned char state;
+1336     
+1337     for (i=(length-1);i>=1;i--)
+1338     {
+1339         for (z=0;z<8;z++)
+1340         {
+1341         
+1342             state = getvoxel(((path[(i-1)]>>4) & 0x0f), (path[(i-1)] & 0x0f), z);
+1343             altervoxel(((path[i]>>4) & 0x0f), (path[i] & 0x0f), z, state);
+1344         }
+1345     }
+1346     for (i=0;i<8;i++)
+1347         clrvoxel(((path[0]>>4) & 0x0f), (path[0] & 0x0f),i);
+1348 }
+.fi
+.SS "void effect_pathspiral (intiterations, intdelay)"
+
+.PP
+Definition at line 1375 of file effect\&.cpp\&.
+.PP
+.nf
+1376 {
+1377     int z, i;
+1378     z = 4;
+1379     unsigned char path[16];
+1380     
+1381     font_getpath(1,path,16);
+1382     
+1383     for (i = 0; i < iterations; i++)
+1384     {
+1385         setvoxel(4,0,i%8);
+1386         delay_ms(delay);
+1387         effect_pathmove(path, 28);
+1388         
+1389     }
+1390 }
+.fi
+.SS "void effect_planboing (intplane, intspeed)"
+
+.PP
+Definition at line 97 of file effect\&.cpp\&.
+.PP
+.nf
+98 {
+99     int i;
+100     for (i=0;i<8;i++)
+101     {
+102         fill(0x00);
+103         if (plane == AXIS_Z)
+104             setplane_z(i);
+105         
+106         if (plane == AXIS_X)
+107             setplane_x(i);
+108         
+109         if (plane == AXIS_Y)
+110             setplane_y(i);
+111         
+112         delay_ms(speed);
+113     }
+114     
+115     for (i=7;i>=0;i--)
+116     {
+117         fill(0x00);
+118         if (plane == AXIS_Z)
+119             setplane_z(i);
+120         
+121         if (plane == AXIS_X)
+122             setplane_x(i);
+123         
+124         if (plane == AXIS_Y)
+125             setplane_y(i);
+126             
+127         delay_ms(speed);
+128     }
+129 }
+.fi
+.SS "void effect_rain (intiterations)"
+
+.PP
+Definition at line 796 of file effect\&.cpp\&.
+.PP
+.nf
+797 {
+798     int i, ii;
+799     int rnd_x;
+800     int rnd_y;
+801     int rnd_num;
+802     
+803     for (ii=0;ii<iterations;ii++)
+804     {
+805         rnd_num = rand()%4;
+806         
+807         for (i=0; i < rnd_num;i++)
+808         {
+809             rnd_x = rand()%8;
+810             rnd_y = rand()%8;
+811             setvoxel(rnd_x,rnd_y,7);
+812         }
+813         
+814         delay_ms(1000);
+815         shift(AXIS_Z,-1);
+816     }
+817 }
+.fi
+.SS "void effect_rand_patharound (intiterations, intdelay)"
+
+.PP
+Definition at line 1350 of file effect\&.cpp\&.
+.PP
+.nf
+1351 {
+1352     int z, dz, i;
+1353     z = 4;
+1354     unsigned char path[28];
+1355     
+1356     font_getpath(0,path,28);
+1357     
+1358     for (i = 0; i < iterations; i++)
+1359     {
+1360         dz = ((rand()%3)-1);
+1361         z += dz;
+1362         
+1363         if (z>7)
+1364             z = 7;
+1365             
+1366         if (z<0)
+1367             z = 0;
+1368         
+1369         effect_pathmove(path, 28);
+1370         setvoxel(0,7,z);
+1371         delay_ms(delay);
+1372     }
+1373 }
+.fi
+.SS "void effect_random_filler (intdelay, intstate)"
+
+.PP
+Definition at line 766 of file effect\&.cpp\&.
+.PP
+.nf
+767 {
+768     int x,y,z;
+769     int loop = 0;
+770     
+771     
+772     if (state == 1)
+773     {
+774         fill(0x00);
+775     } else
+776     {
+777         fill(0xff);
+778     }
+779     
+780     while (loop<511)
+781     {
+782         x = rand()%8;
+783         y = rand()%8;
+784         z = rand()%8;
+785 
+786         if ((state == 0 && getvoxel(x,y,z) == 0x01) || (state == 1 && getvoxel(x,y,z) == 0x00))
+787         {
+788             altervoxel(x,y,z,state);
+789             delay_ms(delay);
+790             loop++;
+791         }   
+792     }
+793 }
+.fi
+.SS "void effect_random_sparkle (void)"
+
+.PP
+Definition at line 1087 of file effect\&.cpp\&.
+.PP
+.nf
+1088 {
+1089     int i;
+1090     
+1091     for (i=1;i<20;i++)
+1092     {
+1093         effect_random_sparkle_flash(5,i,200);
+1094     }
+1095     
+1096     for (i=20;i>=1;i--)
+1097     {
+1098         effect_random_sparkle_flash(5,i,200);
+1099     }
+1100     
+1101 }
+.fi
+.SS "void effect_random_sparkle_flash (intiterations, intvoxels, intdelay)"
+
+.PP
+Definition at line 1071 of file effect\&.cpp\&.
+.PP
+.nf
+1072 {
+1073     int i;
+1074     int v;
+1075     for (i = 0; i < iterations; i++)
+1076     {
+1077         for (v=0;v<=voxels;v++)
+1078             setvoxel(rand()%8,rand()%8,rand()%8);
+1079             
+1080         delay_ms(delay);
+1081         fill(0x00);
+1082     }
+1083 }
+.fi
+.SS "void effect_smileyspin (intcount, intdelay, charbitmap)"
+
+.PP
+Definition at line 1185 of file effect\&.cpp\&.
+.PP
+.nf
+1186 {
+1187     unsigned char dybde[] = {0,1,2,3,4,5,6,7,1,1,2,3,4,5,6,6,2,2,3,3,4,4,5,5,3,3,3,3,4,4,4,4};
+1188     int d = 0;
+1189     int flip = 0;
+1190     int x, y, off;
+1191     int i, s;
+1192     for (i = 0; i<count; i++)
+1193     {
+1194         flip = 0;
+1195         d = 0;
+1196         off = 0;
+1197         // front:
+1198         for (s=0;s<7;s++){
+1199             if(!flip){
+1200                 off++;
+1201                 if (off == 4){
+1202                     flip = 1;
+1203                     off = 0;
+1204                 }
+1205             } else {
+1206                 off++;
+1207             }
+1208                 for (x=0; x<8; x++)
+1209                 {
+1210                 d = 0;
+1211                         for (y=0; y<8; y++)
+1212                         {
+1213                     if (font_getbitmappixel ( bitmap, 7-x, y)){
+1214                         if (!flip)
+1215                             setvoxel(y,dybde[8 * off + d++],x);
+1216                         else
+1217                             setvoxel(y,dybde[31 - 8 * off - d++],x);
+1218                     } else {
+1219                         d++;
+1220                     }
+1221                 }
+1222             }
+1223             delay_ms(delay);
+1224             fill(0x00);
+1225         }
+1226 
+1227         // side:
+1228         off = 0;
+1229         flip = 0;
+1230         d = 0;
+1231         int s;
+1232         for (s=0;s<7;s++){
+1233             if(!flip){
+1234                 off++;
+1235                 if (off == 4){
+1236                     flip = 1;
+1237                     off = 0;
+1238                 }
+1239             } else {
+1240                 off++;
+1241             }
+1242                 for (x=0; x<8; x++)
+1243                 {
+1244                 d = 0;
+1245                         for (y=0; y<8; y++)
+1246                         {
+1247                     if (font_getbitmappixel ( bitmap, 7-x, y)){
+1248                         if (!flip)
+1249                             setvoxel(dybde[8 * off + d++], 7 - y,x);
+1250                         else
+1251                             setvoxel(dybde[31 - 8 * off - d++],7 - y,x);
+1252                     } else {
+1253                         d++;
+1254                     }
+1255                 }
+1256             }
+1257             delay_ms(delay);
+1258             fill(0x00);
+1259         }
+1260 
+1261 
+1262         flip = 0;
+1263         d = 0;
+1264         off = 0;
+1265         // back:
+1266         for (s=0;s<7;s++){
+1267             if(!flip){
+1268                 off++;
+1269                 if (off == 4){
+1270                     flip = 1;
+1271                     off = 0;
+1272                 }
+1273             } else {
+1274                 off++;
+1275             }
+1276                 for (x=0; x<8; x++)
+1277                 {
+1278                 d = 0;
+1279                         for (y=0; y<8; y++)
+1280                         {
+1281                     if (font_getbitmappixel ( bitmap, 7-x, 7-y)){
+1282                         if (!flip)
+1283                             setvoxel(y,dybde[8 * off + d++],x);
+1284                         else
+1285                             setvoxel(y,dybde[31 - 8 * off - d++],x);
+1286                     } else {
+1287                         d++;
+1288                     }
+1289                 }
+1290             }
+1291             delay_ms(delay);
+1292             fill(0x00);
+1293         }
+1294 
+1295         // other side:
+1296         off = 0;
+1297         flip = 0;
+1298         d = 0;
+1299         for (s=0;s<7;s++){
+1300             if(!flip){
+1301                 off++;
+1302                 if (off == 4){
+1303                     flip = 1;
+1304                     off = 0;
+1305                 }
+1306             } else {
+1307                 off++;
+1308             }
+1309                 for (x=0; x<8; x++)
+1310                 {
+1311                 d = 0;
+1312                         for (y=0; y<8; y++)
+1313                         {
+1314                     if (font_getbitmappixel ( bitmap, 7-x, 7-y)){
+1315                         if (!flip)
+1316                             setvoxel(dybde[8 * off + d++], 7 - y,x);
+1317                         else
+1318                             setvoxel(dybde[31 - 8 * off - d++],7 - y,x);
+1319                     } else {
+1320                         d++;
+1321                     }
+1322                 }
+1323             }
+1324             delay_ms(delay);
+1325             fill(0x00);
+1326         }
+1327 
+1328     }
+1329 }
+.fi
+.SS "void effect_stringfly2 (char *str)"
+
+.PP
+Definition at line 27 of file effect\&.cpp\&.
+.PP
+.nf
+28 {
+29     int x,y,i,ii;
+30     int state;
+31     
+32     unsigned char chr[5];
+33     
+34     while (*str)
+35     {
+36         font_getchar(*str++, chr);
+37         
+38         for (x = 0; x < 5; x++)
+39         {
+40             for (y = 0; y < 8; y++)
+41             {
+42                 if ((chr[x] & (0x80>>y)))
+43                 {
+44                     setvoxel(7,x+2,y);
+45                 }
+46             }
+47         }
+48         
+49         for (ii = 0; ii<6; ii++)
+50         {
+51             delay_ms(1500);
+52             for (i = 0; i < 7; i++)
+53             {
+54                 for (x = 0; x < 8; x++)
+55                 {
+56                     for (y = 0; y < 8; y++)
+57                     {
+58                         state = getvoxel(i+1,x,y);
+59                         altervoxel(i,x,y,state);
+60                     }
+61                 }
+62             }
+63             for (x = 0; x < 8; x++)
+64             {
+65                 for (y = 0; y < 8; y++)
+66                 {
+67                     clrvoxel(7,x,y);
+68                 }
+69             }
+70         }
+71     }
+72     for (ii = 0; ii<8; ii++)
+73     {
+74         delay_ms(1500);
+75         for (i = 0; i < 7; i++)
+76         {
+77             for (x = 0; x < 8; x++)
+78             {
+79                 for (y = 0; y < 8; y++)
+80                 {
+81                     state = getvoxel(i+1,x,y);
+82                     altervoxel(i,x,y,state);
+83                 }
+84             }
+85         }
+86         for (x = 0; x < 8; x++)
+87         {
+88             for (y = 0; y < 8; y++)
+89             {
+90                 clrvoxel(7,x,y);
+91             }
+92         }
+93     }
+94     
+95 }
+.fi
+.SS "void effect_telcstairs (intinvert, intdelay, intval)"
+
+.PP
+Definition at line 1118 of file effect\&.cpp\&.
+.PP
+.nf
+1119 {
+1120     int x;
+1121 
+1122     if(invert)
+1123     {
+1124         for(x = CUBE_SIZE*2; x >= 0; x--)
+1125         {
+1126             x = effect_telcstairs_do(x,val,delay);
+1127         }
+1128     }
+1129     else
+1130     {
+1131         for(x = 0; x < CUBE_SIZE*2; x++)
+1132         {
+1133             x = effect_telcstairs_do(x,val,delay);
+1134         }
+1135     }
+1136 }
+.fi
+.SS "int effect_telcstairs_do (intx, intval, intdelay)"
+
+.PP
+Definition at line 1103 of file effect\&.cpp\&.
+.PP
+.nf
+1104 {
+1105     int y,z;
+1106 
+1107     for(y = 0, z = x; y <= z; y++, x--)
+1108     {
+1109         if(x < CUBE_SIZE && y < CUBE_SIZE)
+1110         {
+1111             cube[x][y] = val;
+1112         }
+1113     }
+1114     delay_ms(delay);
+1115     return z;
+1116 }
+.fi
+.SS "void effect_test (void)"
+
+.PP
+Definition at line 6 of file effect\&.cpp\&.
+.PP
+.nf
+7 {
+8 
+9     int x,y,i;
+10 
+11     for (i=0;i<1000;i++)
+12     {
+13         x = (int)(sin(i/8\&.0)*2+3\&.5);
+14         y = (int)(cos(i/8\&.0)*2+3\&.5);
+15 
+16         setvoxel(x,y,1);
+17         setvoxel(x,y,1);
+18         
+19         delay_ms(1000);
+20         fill(0x00);
+21     }
+22 
+23 }
+.fi
+.SS "void effect_wormsqueeze (intsize, intaxis, intdirection, intiterations, intdelay)"
+
+.PP
+Definition at line 1138 of file effect\&.cpp\&.
+.PP
+.nf
+1139 {
+1140     int x, y, i,j,k, dx, dy;
+1141     int cube_size;
+1142     int origin = 0;
+1143     
+1144     if (direction == -1)
+1145         origin = 7;
+1146     
+1147     cube_size = 8-(size-1);
+1148     
+1149     x = rand()%cube_size;
+1150     y = rand()%cube_size;
+1151     
+1152     for (i=0; i<iterations; i++)
+1153     {
+1154         dx = ((rand()%3)-1);
+1155         dy = ((rand()%3)-1);
+1156     
+1157         if ((x+dx) > 0 && (x+dx) < cube_size)
+1158             x += dx;
+1159             
+1160         if ((y+dy) > 0 && (y+dy) < cube_size)
+1161             y += dy;
+1162     
+1163         shift(axis, direction);
+1164         
+1165 
+1166         for (j=0; j<size;j++)
+1167         {
+1168             for (k=0; k<size;k++)
+1169             {
+1170                 if (axis == AXIS_Z)
+1171                     setvoxel(x+j,y+k,origin);
+1172                     
+1173                 if (axis == AXIS_Y)
+1174                     setvoxel(x+j,origin,y+k);
+1175                     
+1176                 if (axis == AXIS_X)
+1177                     setvoxel(origin,y+j,x+k);
+1178             }
+1179         }
+1180         
+1181         delay_ms(delay);
+1182     }
+1183 }
+.fi
+.SS "void effect_z_updown (intiterations, intdelay)"
+
+.PP
+Definition at line 819 of file effect\&.cpp\&.
+.PP
+.nf
+820 {
+821     unsigned char positions[64];
+822     unsigned char destinations[64];
+823 
+824     int i,y,move;
+825     
+826     for (i=0; i<64; i++)
+827     {
+828         positions[i] = 4;
+829         destinations[i] = rand()%8;
+830     }
+831 
+832     for (i=0; i<8; i++)
+833     {
+834         effect_z_updown_move(positions, destinations, AXIS_Z);
+835         delay_ms(delay);
+836     }
+837     
+838     for (i=0;i<iterations;i++)
+839     {
+840         for (move=0;move<8;move++)
+841         {
+842             effect_z_updown_move(positions, destinations, AXIS_Z);
+843             delay_ms(delay);
+844         }
+845 
+846         delay_ms(delay*4);
+847 
+848 
+849         for (y=0;y<10;y++)
+850         {
+851                 destinations[rand()%64] = rand()%8;
+852         }
+853         
+854     }
+855 
+856 }
+.fi
+.SS "void effect_z_updown_move (unsigned charpositions[64], unsigned chardestinations[64], charaxis)"
+
+.PP
+Definition at line 858 of file effect\&.cpp\&.
+.PP
+.nf
+859 {
+860     int px;
+861     for (px=0; px<64; px++)
+862     {
+863         if (positions[px]<destinations[px])
+864         {
+865             positions[px]++;
+866         }
+867         if (positions[px]>destinations[px])
+868         {
+869             positions[px]--;
+870         }
+871     }
+872         
+873     draw_positions_axis (AXIS_Z, positions,0);
+874 }
+.fi
+.SS "void sendplane_rand_z (unsigned charz, intdelay, intwait)"
+
+.PP
+Definition at line 353 of file effect\&.cpp\&.
+.PP
+.nf
+354 {
+355     unsigned char loop = 16;
+356     unsigned char x, y;
+357 
+358     fill(0x00);
+359 
+360     setplane_z(z);
+361     
+362     // Send voxels at random untill all 16 have crossed the cube\&.
+363     while(loop)
+364     {
+365         x = rand()%4;
+366         y = rand()%4;
+367         if (getvoxel(x,y,z))
+368         {
+369             // Send the voxel flying
+370             sendvoxel_z(x,y,z,delay);
+371             delay_ms(wait);
+372             loop--; // one down, loop-- to go\&. when this hits 0, the loop exits\&. 
+373         }
+374     }
+375 }
+.fi
+.SS "void sendvoxel_z (unsigned charx, unsigned chary, unsigned charz, intdelay)"
+
+.PP
+Definition at line 331 of file effect\&.cpp\&.
+.PP
+.nf
+332 {
+333     int i, ii;
+334     for (i=0; i<8; i++)
+335     {
+336         if (z == 7)
+337         {
+338             ii = 7-i;
+339             clrvoxel(x,y,ii+1);
+340         } else
+341         {
+342             ii = i;
+343             clrvoxel(x,y,ii-1);
+344         }
+345         setvoxel(x,y,ii);
+346         delay_ms(delay);
+347     }
+348 }
+.fi
+.SS "void sendvoxels_rand_z (intiterations, intdelay, intwait)"
+
+.PP
+Definition at line 379 of file effect\&.cpp\&.
+.PP
+.nf
+380 {
+381     unsigned char x, y, last_x, last_y, i;
+382 
+383     last_x = 0;
+384     last_y = 0;
+385 
+386     fill(0x00);
+387     
+388     //srand(123);
+389 
+390     // Loop through all the X and Y coordinates
+391     for (x=0;x<8;x++)
+392     {
+393         for (y=0;y<8;y++)
+394         {
+395             // Then set a voxel either at the top or at the bottom
+396             if (rand()%2 == 0)
+397             {
+398                 
+399                 setvoxel(x,y,0);
+400             } else
+401             {
+402                 setvoxel(x,y,7);
+403             }
+404             
+405             
+406         }
+407     }
+408 
+409     for (i=0;i<iterations;i++)
+410     {
+411         // Pick a random x,y position
+412         x = rand()%8;
+413         y = rand()%8;
+414         // but not the sameone twice in a row
+415         if (y != last_y && x != last_x)
+416         {
+417             // If the voxel at this x,y is at the bottom
+418             if (getvoxel(x,y,0))
+419             {
+420                 // send it to the top
+421                 sendvoxel_z(x,y,0,delay);
+422             } else
+423             {
+424                 // if its at the top, send it to the bottom
+425                 sendvoxel_z(x,y,7,delay);
+426             }
+427             delay_ms(wait);
+428             
+429             // Remember the last move
+430             last_y = y;
+431             last_x = x;
+432         }
+433     }
+434 
+435 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

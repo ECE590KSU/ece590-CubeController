@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="_effect_8cs" kind="file">
+    <compoundname>Effect.cs</compoundname>
+    <innerclass refid="class_cube_controller_1_1_effect" prot="public">CubeController::Effect</innerclass>
+    <innernamespace refid="namespace_cube_controller">CubeController</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using</highlight><highlight class="normal"><sp/>System;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">CubeController</highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5" refid="class_cube_controller_1_1_effect" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_cube_controller_1_1_effect" kindref="compound">Effect</ref></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="7" refid="class_cube_controller_1_1_effect_1af2f23cddaf032617573d46642b14bc76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1af2f23cddaf032617573d46642b14bc76" kindref="member">TEST_WAVE_ITERATIONS</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="class_cube_controller_1_1_effect_1aea4ab35024dd6e92f36199862aedc829" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1aea4ab35024dd6e92f36199862aedc829" kindref="member">WAVE_CONSTANT</ref><sp/>=<sp/>9.899495;</highlight></codeline>
+<codeline lineno="22" refid="class_cube_controller_1_1_effect_1ac2aa211f00a7ac4dfd9fdc5ee6f67c14" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1ac2aa211f00a7ac4dfd9fdc5ee6f67c14" kindref="member">RIPPLE_INTERVAL</ref><sp/>=<sp/>1.3;</highlight></codeline>
+<codeline lineno="23" refid="class_cube_controller_1_1_effect_1aca0941e884dbcae4f82b151840ca53d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1aca0941e884dbcae4f82b151840ca53d6" kindref="member">PI</ref><sp/>=<sp/>4.0<sp/>*<sp/>Math.Atan(1.0);</highlight></codeline>
+<codeline lineno="24" refid="class_cube_controller_1_1_effect_1ada4abaf428db0ddfe7966c50b20a36b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1ada4abaf428db0ddfe7966c50b20a36b9" kindref="member">HELIX_BRAID_LENGTH_DELTA_T</ref><sp/>=<sp/>0.05;</highlight></codeline>
+<codeline lineno="25" refid="class_cube_controller_1_1_effect_1a3cb2c5bf52b3d30f3ba89a53f7c2db74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1a3cb2c5bf52b3d30f3ba89a53f7c2db74" kindref="member">NICE_SINE_WAVE_DELTA_T</ref><sp/>=<sp/>0.75;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_cube_controller_1_1_effect_1a21d45a2f9419ab9237a25ae0cbe5af33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_cube_controller_1_1_effect_1a21d45a2f9419ab9237a25ae0cbe5af33" kindref="member">COMFORTABLE_BOX_WOOP_WOOP_DELAY</ref><sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs"/>
+  </compounddef>
+</doxygen>

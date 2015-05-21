@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['sendescapesequence',['SendEscapeSequence',['../class_cube_controller_1_1_serial_driver.html#a56b9086165052ea7b13080c2e87a4a7b',1,'CubeController::SerialDriver']]],
+  ['sendplane_5frand_5fz',['sendplane_rand_z',['../effect_8cpp.html#a92b9ac889604bb5f5b2b21e5ad28ae8a',1,'effect.cpp']]],
+  ['sendvoxel_5fz',['sendvoxel_z',['../effect_8cpp.html#a1b90100679313be86bd5f717d0dee338',1,'effect.cpp']]],
+  ['sendvoxels_5frand_5fz',['sendvoxels_rand_z',['../effect_8cpp.html#a05a9bd57e4b84f6545d0628bb62aa65e',1,'effect.cpp']]],
+  ['sendvoxelz',['SendVoxelZ',['../class_cube_controller_1_1_cube.html#ab8e7d7047fbd82930b494e6a3814c251',1,'CubeController::Cube']]],
+  ['serialdriver',['SerialDriver',['../class_cube_controller_1_1_serial_driver.html#a3bbfd56c7eea9cb06ab866a8d9177d12',1,'CubeController::SerialDriver']]],
+  ['serialdriver',['SerialDriver',['../class_cube_controller_1_1_serial_driver.html',1,'CubeController']]],
+  ['serialdriver_2ecs',['SerialDriver.cs',['../_serial_driver_8cs.html',1,'']]],
+  ['setentirecube',['SetEntireCube',['../class_cube_controller_1_1_cube.html#a7eed1a6432f4c80f6f9169f95fb4e096',1,'CubeController::Cube']]],
+  ['setplane',['SetPlane',['../class_cube_controller_1_1_cube.html#a1da60272e09fd88ebbd5366b4c7a2121',1,'CubeController::Cube']]],
+  ['setplane_5fx',['setplane_x',['../draw_8cpp.html#a79e1cd1aa078e4b91c118b3e74f816e0',1,'draw.cpp']]],
+  ['setplane_5fy',['setplane_y',['../draw_8cpp.html#ae494331db20f7f2812c583f059bd4d46',1,'draw.cpp']]],
+  ['setplane_5fz',['setplane_z',['../draw_8cpp.html#a1155c8a3004dc27ed396447d9bf52f51',1,'draw.cpp']]],
+  ['setvoxel',['SetVoxel',['../class_cube_controller_1_1_cube.html#ae6764b8c60a8eb39603bd0e0a77e8e93',1,'CubeController.Cube.SetVoxel()'],['../draw_8cpp.html#a8ad494a4970c6ade91a70cd0ce6db075',1,'setvoxel():&#160;draw.cpp']]],
+  ['shift',['shift',['../draw_8cpp.html#ad5af2c5bf477eaf37bfbd1232475ee1e',1,'draw.cpp']]],
+  ['shiftandroll',['ShiftAndRoll',['../class_cube_controller_1_1_cube.html#af4151687401470693d40b38708f2e4f0',1,'CubeController::Cube']]],
+  ['shiftnoroll',['ShiftNoRoll',['../class_cube_controller_1_1_cube.html#ae8fe40df6ad23a050fd9f13e3c633f20',1,'CubeController::Cube']]],
+  ['sidewaves',['SideWaves',['../class_cube_controller_1_1_cube.html#a5cf632c703acbfbf41e8e561f3cba8b0',1,'CubeController.Cube.SideWaves()'],['../3d_8cpp.html#a938da6780ac8fa2d4699695020221a3f',1,'sidewaves():&#160;3d.cpp']]],
+  ['sinelines',['sinelines',['../3d_8cpp.html#a3af37a0fb9ada060bf083e8e16be2a89',1,'3d.cpp']]],
+  ['sinewave',['SineWave',['../class_cube_controller_1_1_cube.html#a389b75c3b2b71320a332befe1d72b44c',1,'CubeController::Cube']]],
+  ['spheremove',['spheremove',['../3d_8cpp.html#a6cb4e5723993d035441943cd1c3ecdd8',1,'3d.cpp']]],
+  ['swapvoxel',['SwapVoxel',['../class_cube_controller_1_1_cube.html#ae70486fd7b425fa717fe226d6beae416',1,'CubeController::Cube']]],
+  ['symmetryalongaxis',['SymmetryAlongAxis',['../class_cube_controller_1_1_cube.html#a324c737c502eb55e0bd8c06072d8461e',1,'CubeController::Cube']]]
+];

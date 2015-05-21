@@ -1,0 +1,2502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_cube_controller_1_1_cube">
+<title>CubeController::Cube class Reference</title>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link>{<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aafb7ec808a21c7770ccd7060e715983ba">AXIS_X</link>, <link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa3e69e41ce011d74658d6ccce110e5f1a">AXIS_Y</link>, <link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa19aa520601d5d2f29571f14a3278216f">AXIS_Z</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">DIRECTION</link>{<link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158abfec72bb37910c61f36b6c29a1f7ec31">FORWARD</link>, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158a642e0b6684e6165e142c074f1cd8d55c">REVERSE</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597">REFLECTION</link>{<link linkend="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597a6d7b0f55d14f78a5611f7e00a2e3c2ec">ORIGIN</link>, <link linkend="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597aa60fa4ca41f91140a80531d4fcda8e11">TERMINUS</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][][] _cubeState<para><emphasis>&lt;summary&gt;
+A 3D collection of voxels.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const int DIMENSION<para><emphasis>&lt;summary&gt;
+The number of voxels per anode column. 
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Random _rgen<para><emphasis>&lt;summary&gt;
+Random number generator for the class (effects, advanced drawing, etc.).
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>FontHandler _fontHandler<para><emphasis>&lt;summary&gt;
+A font handler, which will translate character bitmpas into plane patterns.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Timer _serialDriverTimer<para><emphasis>&lt;summary&gt;
+A timer for the SerialDriver object.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>TimerCallback _writeCubeCallback<para><emphasis>&lt;summary&gt;
+A timer callback for the SerialDriver object&apos;s Write() thread invocation.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>SerialDriver _serialDriver<para><emphasis>&lt;summary&gt;
+An object capable of transmitting cube frames via TTL. 
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_cube_controller_1_1_cube_1aa5063999eb3d0028d2ed8d307b3d3843">Cube</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][][] <link linkend="class_cube_controller_1_1_cube_1aa87aeba0d386389035a4fce7d3be6549">GetCubeState</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a7eed1a6432f4c80f6f9169f95fb4e096">SetEntireCube</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1aa4313fe03c0a5f1a6ffb85b4b3fc68f3">ClearEntireCube</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a9b3a284e6260d70df58a4254f586a3e2">RenderPlane</link> (
+bool plane)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a1e2f9e4fcf2133bc9f071fda0834ec01">RenderCube</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae6764b8c60a8eb39603bd0e0a77e8e93">SetVoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a77a227f0c3d12a38b79362aa212d29c6">ClearVoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_cube_controller_1_1_cube_1aa8e927414815c791a65678b3a6ab6883">GetVoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae70486fd7b425fa717fe226d6beae416">SwapVoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a1da60272e09fd88ebbd5366b4c7a2121">SetPlane</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1af951ad9cd93e438bbcd56f2d99f482f9">ClearPlane</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][] <link linkend="class_cube_controller_1_1_cube_1a478ef408bdaaee6664279793d1c724ca">GetPlane</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1aec7dff8a9e7507dade41a1c35bcd1f83">PatternSetPlane</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl, bool pattern)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1af4151687401470693d40b38708f2e4f0">ShiftAndRoll</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">DIRECTION</link> direction)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae8fe40df6ad23a050fd9f13e3c633f20">ShiftNoRoll</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">DIRECTION</link> direction)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a27eb8c6f4e685b8347a3911525b198fc">RotatePlane</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl, int theta)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a0fd48140ff7bd947d0789aaa339ad352">PartialRotation</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl, double theta)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae95ad5a384b692de255b5f911ef91742">MirrorCubeAlongAxis</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a324c737c502eb55e0bd8c06072d8461e">SymmetryAlongAxis</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, <link linkend="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597">REFLECTION</link> refl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738">DrawLine</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a588b61625eb1eb79b7e5e8195ede5841">DrawLine</link> (
+<link linkend="class_cube_controller_1_1_point">Point</link> p1, <link linkend="class_cube_controller_1_1_point">Point</link> p2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae55ee3263b7e1777cacbd0925c5aeeb2">ClearLine</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a6011c9100abd5123127b20623fd9a6a0">ClearLine</link> (
+<link linkend="class_cube_controller_1_1_point">Point</link> p1, <link linkend="class_cube_controller_1_1_point">Point</link> p2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ad6844c1c7d39d5fe2a30df6a1238e5e4">DrawRectangle</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">Cube.AXIS</link> axis, <link linkend="class_cube_controller_1_1_point">CubeController.Point</link> A, <link linkend="class_cube_controller_1_1_point">CubeController.Point</link> D)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a6de7d776a7957463d759af960e877e2e">DrawCircle</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">Cube.AXIS</link> axis, <link linkend="class_cube_controller_1_1_point">CubeController.Point</link> center, <link linkend="class_cube_controller_1_1_point">CubeController.Point</link> rad)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a5e36a9cf11e8f793f628b62338bf1431">PutChar</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int pl, char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a084e7f4d8ebb0a5395c0b3b48c6130d8">MessageFlyOnAxis</link> (
+string message, <link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">DIRECTION</link> direction)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ab050db384e01dfbe0932f0bd7c3b158a">MessageBanner</link> (
+string message, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">DIRECTION</link> direction)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ade63ba8237e0ec3ec23bc7378792206d">AxisBoing</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">AXIS</link> axis, int speed)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a931320bdf48f03b3978c23e556771ec6">AxisUpDownRandSups</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">Cube.AXIS</link> axis, int delay, int sleep, bool invert)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a87dc1aaa75e54cb16274c70b9092ecaa">Firework</link> (
+int iterations, int explosionSize, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae9ce81ee202a87d3212a5486c733bfa7">LineSpin</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1aed74c8b833d6c124461d9680d19d25a2">VertSpiral</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ade1d35a7484ac9a305fac950b62c7604">LoadBar</link> (
+int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1acd56842b64469ddfb19c4dbdc70e3b9b">Rain</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a1cae6b7dab34520359fd954b583d4bf3">Ripples</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a389b75c3b2b71320a332befe1d72b44c">SineWave</link> (
+int iterations, int delay, double delta_t)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a5cf632c703acbfbf41e8e561f3cba8b0">SideWaves</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ab8e7d7047fbd82930b494e6a3814c251">SendVoxelZ</link> (
+int x, int y, int z, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ab50798d1cde4a84ac31a5308c93a2127">BoxWoopWoop</link> (
+int iterations, int delay, bool grow, int size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a04c0549d8b6f796293942edbf4e2b377">VoxelTest</link> (
+int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ae1beff582abbe4c2ce3d6d6c92491310">RandomSparkle</link> (
+int sparkleCount, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a995910183c0a0c8c7d4b27f1c593f7ec">TelcStairs</link> (
+bool invert, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ad9281b2f10850ac966e67738be6e1611">WormSqueeze</link> (
+int size, <link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">Cube.AXIS</link> axis, <link linkend="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">Cube.DIRECTION</link> direction, int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a34db28475ec05492c7577a9224ebd48c">WriteCube</link> (
+object stateInfo)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a9e0c61eb518c0fa9699501a30c923f29">DelayMS</link> (
+int x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][] <link linkend="class_cube_controller_1_1_cube_1a940366f41383f5c6976fd8540fbe0151">NewEmptyPlane</link> (
+int size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool <link linkend="class_cube_controller_1_1_cube_1aa832855a3a895c3a9fd135e29bc18395">InRange</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a509466d914ec42e2733cf7106cfb1ade">Transpose2D</link> (
+ref bool mtx)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a0dc94d83f8d7e9b31345c308a448bc36">ColumnReversal2D</link> (
+ref bool mtx)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a23fd27ab893a401fcb9a85698c2e7345">RowReversal2D</link> (
+ref bool mtx)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1ab5f5f731011afcd62d02621f96bfec6b">BresenhamsLine3D</link> (
+int x1, int y1, int z1, int x2, int y2, int z2, bool setting)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>A ***Z B **_ _ _X **Vertices are labeled in the diagram above.*&lt;/summary &gt; *&lt; paramname=&quot;S&quot;&gt; Source vertex.&lt;/param &gt; *&lt; paramname=&quot;dist&quot;&gt; Distance between <link linkend="class_cube_controller_1_1_cube_1ae075444e874717ae58ac87fcbd17fcaf">vertices</link> (
+side length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][] <link linkend="class_cube_controller_1_1_cube_1ac4885f97842e129acc0f028ba8591f6f">GetChar</link> (
+char c)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1a7d0f1c2bac4e5014ef209e0c7cc6eee3">DrawPositionsAxis</link> (
+<link linkend="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">Cube.AXIS</link> axis, int[] positions, bool invert)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_cube_1aa2f22e8ddcc15a7c16b0c9e74305cb9c">RandomSparkleFlash</link> (
+int iterations, int voxels, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="class_cube_controller_1_1_cube_1a143ec77de2186afbb3df7a28e377c09a">TelcStairsDo</link> (
+int x, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a">
+               <title>enum AXIS </title>
+               
+               <formalpara>
+                    <title>Enumerator:</title>
+                    <variablelist>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aafb7ec808a21c7770ccd7060e715983ba">
+                            <term>AXIS_X</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa3e69e41ce011d74658d6ccce110e5f1a">
+                            <term>AXIS_Y</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa19aa520601d5d2f29571f14a3278216f">
+                            <term>AXIS_Z</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                     </variablelist>
+                </formalpara>
+                <para>Definition at line 49 of file Cube.cs
+                    <programlisting>
+{
+AXIS_X, 
+AXIS_Y, 
+AXIS_Z, 
+}AXIS;
+                    </programlisting>
+                </para>
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158">
+               <title>enum DIRECTION </title>
+               
+               <formalpara>
+                    <title>Enumerator:</title>
+                    <variablelist>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158abfec72bb37910c61f36b6c29a1f7ec31">
+                            <term>FORWARD</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158a642e0b6684e6165e142c074f1cd8d55c">
+                            <term>REVERSE</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                     </variablelist>
+                </formalpara>
+                <para>Definition at line 54 of file Cube.cs
+                    <programlisting>
+{
+FORWARD, 
+REVERSE, 
+}DIRECTION;
+                    </programlisting>
+                </para>
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597">
+               <title>enum REFLECTION </title>
+               
+               <formalpara>
+                    <title>Enumerator:</title>
+                    <variablelist>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597a6d7b0f55d14f78a5611f7e00a2e3c2ec">
+                            <term>ORIGIN</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry xml:id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597aa60fa4ca41f91140a80531d4fcda8e11">
+                            <term>TERMINUS</term>
+                            <listitem>
+                                <para></para>
+                            </listitem>
+                        </varlistentry>
+                     </variablelist>
+                </formalpara>
+                <para>Definition at line 59 of file Cube.cs
+                    <programlisting>
+{
+ORIGIN, 
+TERMINUS, 
+}REFLECTION;
+                    </programlisting>
+                </para>
+            </section>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>bool [][][] CubeController.Cube._cubeState</title>                
+                <para>Definition at line 14 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>const int CubeController.Cube.DIMENSION</title>                
+                <para>Definition at line 19 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>Random CubeController.Cube._rgen</title>                
+                <para>Definition at line 24 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>FontHandler CubeController.Cube._fontHandler</title>                
+                <para>Definition at line 29 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>Timer CubeController.Cube._serialDriverTimer</title>                
+                <para>Definition at line 34 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>TimerCallback CubeController.Cube._writeCubeCallback</title>                
+                <para>Definition at line 39 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>SerialDriver CubeController.Cube._serialDriver</title>                
+                <para>Definition at line 44 of file Cube.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Cube.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+            <section xml:id="class_cube_controller_1_1_cube_1aa5063999eb3d0028d2ed8d307b3d3843">
+                <title>CubeController.Cube.Cube ()</title> <emphasis>&lt;summary&gt;
+Initializes a new instance of the Cube class.
+Default public constructor. 
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aa87aeba0d386389035a4fce7d3be6549">
+                <title>bool [][][] CubeController.Cube.GetCubeState ()</title> <emphasis>&lt;summary&gt;
+Gets the state of the cube.
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para>The cube state.</para>
+</formalpara>
+</para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a7eed1a6432f4c80f6f9169f95fb4e096">
+                <title>void CubeController.Cube.SetEntireCube ()</title> <emphasis>&lt;summary&gt;
+Sets the entire cube by setting Z-Planes.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aa4313fe03c0a5f1a6ffb85b4b3fc68f3">
+                <title>void CubeController.Cube.ClearEntireCube ()</title> <emphasis>&lt;summary&gt;
+Clears the entire cube by erasing Z-Planes.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a9b3a284e6260d70df58a4254f586a3e2">
+                <title>void CubeController.Cube.RenderPlane (bool[][] plane)</title> <emphasis>&lt;summary&gt;
+Renders a specified plane. DEBUGGING PURPOSES ONLY.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>plane</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a1e2f9e4fcf2133bc9f071fda0834ec01">
+                <title>void CubeController.Cube.RenderCube ()</title> <emphasis>&lt;summary&gt;
+Renders the cube by Z-Planes. DEBUGGING PURPOSES ONLY.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae6764b8c60a8eb39603bd0e0a77e8e93">
+                <title>void CubeController.Cube.SetVoxel (int x, int y, int z)</title> <emphasis>&lt;summary&gt;
+Sets the voxel.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a77a227f0c3d12a38b79362aa212d29c6">
+                <title>void CubeController.Cube.ClearVoxel (int x, int y, int z)</title> <emphasis>&lt;summary&gt;
+Clears the voxel.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aa8e927414815c791a65678b3a6ab6883">
+                <title>bool CubeController.Cube.GetVoxel (int x, int y, int z)</title> <emphasis>&lt;summary&gt;
+Gets the voxel.
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para><computeroutput>true</computeroutput>, if voxel was set, <computeroutput>false</computeroutput> otherwise.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae70486fd7b425fa717fe226d6beae416">
+                <title>void CubeController.Cube.SwapVoxel (int x, int y, int z)</title> <emphasis>&lt;summary&gt;
+Performs logical NOT on voxel value.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a1da60272e09fd88ebbd5366b4c7a2121">
+                <title>void CubeController.Cube.SetPlane (AXIS axis, int pl)</title> <emphasis>&lt;summary&gt;
+Turns on all voxels on a given plane of the specified axis.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to manipulate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>Plane index on axis.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1af951ad9cd93e438bbcd56f2d99f482f9">
+                <title>void CubeController.Cube.ClearPlane (AXIS axis, int pl)</title> <emphasis>&lt;summary&gt;
+Turns off all voxels on a given plane of the specified axis.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to manipulate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>Plane index on axis.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a478ef408bdaaee6664279793d1c724ca">
+                <title>bool [][] CubeController.Cube.GetPlane (AXIS axis, int pl)</title> <emphasis>&lt;summary&gt;
+Gets a plane by axis, indexed by pl. See documentation for graphical
+explanation. Complications arise due to cube orientation towards end user.</emphasis>
+                
+<para>For instance: GetPlane(AXIS_Y, 1) &#8211;&gt; return the A-Z plane at B=1. GetPlane(AXIS_X, 0) &#8211;&gt; return the B-Z plane at A=0. GetPlane(AXIS_Z, 3) &#8211;&gt; return the A-B plane at Z=3.</para>
+
+<para><formalpara><title>Returns: </title>
+
+<para>The plane indexed by pl on the axis axis.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>The axis of the plane.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>The index of the plane.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aec7dff8a9e7507dade41a1c35bcd1f83">
+                <title>void CubeController.Cube.PatternSetPlane (AXIS axis, int pl, bool[][] pattern)</title> <emphasis>&lt;summary&gt;
+Sets a plane indexed by pl on the axis axis to a
+given pattern.</emphasis>
+                
+<para>See documentation for graphical explanation. Complications arise due to cube orientation towards end user. </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>The axis to set the plane on.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>The index of the plane.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pattern</entry>
+                                <entry>
+<para>The pattern to fill the plane with.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1af4151687401470693d40b38708f2e4f0">
+                <title>void CubeController.Cube.ShiftAndRoll (AXIS axis, DIRECTION direction)</title> <emphasis>&lt;summary&gt;
+Shift the specified axis in the specified direction. Roll planes
+through (do not discard planes). 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>direction</entry>
+                                <entry>
+<para>Direction.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae8fe40df6ad23a050fd9f13e3c633f20">
+                <title>void CubeController.Cube.ShiftNoRoll (AXIS axis, DIRECTION direction)</title> <emphasis>&lt;summary&gt;
+Shift the specified axis in the specified direction. Discard planes
+as they reach the boundary. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>direction</entry>
+                                <entry>
+<para>Direction.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a27eb8c6f4e685b8347a3911525b198fc">
+                <title>void CubeController.Cube.RotatePlane (AXIS axis, int pl, int theta)</title> <emphasis>&lt;summary&gt;
+Rotates the plane.</emphasis>
+                
+<para>Rotate by +90: Transpose matrix. Reverse rows.</para>
+
+<para>Rotate by +180: Reverse each row, then each column.</para>
+
+<para>Rotate by +270: Transpose matrix. Reverse columns.</para>
+
+<para>See: <link xlink:href="http://stackoverflow.com/a/8664879">http://stackoverflow.com/a/8664879</link> </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>Pl.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>theta</entry>
+                                <entry>
+<para>Theta.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a0fd48140ff7bd947d0789aaa339ad352">
+                <title>void CubeController.Cube.PartialRotation (AXIS axis, int pl, double theta)</title> <emphasis>&lt;summary&gt;
+Partially rotates a given plane, not based on strictly 90°, 180°, or
+-90° turns. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to rotate along.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>Plane of axis to rotate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>theta</entry>
+                                <entry>
+<para>Degree of rotation.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae95ad5a384b692de255b5f911ef91742">
+                <title>void CubeController.Cube.MirrorCubeAlongAxis (AXIS axis)</title> <emphasis>&lt;summary&gt;
+Mirrors the cube along a given axis.</emphasis>
+                
+<para>If a cube is mirrored along it&apos;s Z-axis, the voxels at the top will now become the voxels at the bottom. They DO NOT change x-y positions though within the x-y plane from that Z-slice. </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to mirror across.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a324c737c502eb55e0bd8c06072d8461e">
+                <title>void CubeController.Cube.SymmetryAlongAxis (AXIS axis, REFLECTION refl)</title> <emphasis>&lt;summary&gt;
+Provides symmetry of the cube along a given axis. 
+You can reflect the axis either from origin or from the terminating
+end. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to provide symmetry along.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>refl</entry>
+                                <entry>
+<para>Reflection direction.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738">
+                <title>void CubeController.Cube.DrawLine (int x1, int y1, int z1, int x2, int y2, int z2)</title> <emphasis>&lt;summary&gt;
+Draws a line across the cube, in 3D.</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x1</entry>
+                                <entry>
+<para>The first x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y1</entry>
+                                <entry>
+<para>The first y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z1</entry>
+                                <entry>
+<para>The first z coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x2</entry>
+                                <entry>
+<para>The second x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y2</entry>
+                                <entry>
+<para>The second y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z2</entry>
+                                <entry>
+<para>The second z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a588b61625eb1eb79b7e5e8195ede5841">
+                <title>void CubeController.Cube.DrawLine (Point p1, Point p2)</title> <emphasis>&lt;summary&gt;
+Draws a line across the cube, in 3D.</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>p1</entry>
+                                <entry>
+<para>The source x,y,z point</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>p2</entry>
+                                <entry>
+<para>The destination x,y,z point</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae55ee3263b7e1777cacbd0925c5aeeb2">
+                <title>void CubeController.Cube.ClearLine (int x1, int y1, int z1, int x2, int y2, int z2)</title> <emphasis>&lt;summary&gt;
+Clears a line across the cube, in 3D.</emphasis>
+                
+<para>Line segment equations between two points in 3D: <link xlink:href="http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,">http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,</link> pg.4, eq(1.13). </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x1</entry>
+                                <entry>
+<para>The first x value.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y1</entry>
+                                <entry>
+<para>The first y value.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z1</entry>
+                                <entry>
+<para>The first z value.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>x2</entry>
+                                <entry>
+<para>The second x value.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y2</entry>
+                                <entry>
+<para>The second y value.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z2</entry>
+                                <entry>
+<para>The second z value.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a6011c9100abd5123127b20623fd9a6a0">
+                <title>void CubeController.Cube.ClearLine (Point p1, Point p2)</title> <emphasis>&lt;summary&gt;
+Clears a line across the cube, in 3D.</emphasis>
+                
+<para>Line segment equations between two points in 3D: <link xlink:href="http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,">http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,</link> pg.4, eq(1.13). </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>p1</entry>
+                                <entry>
+<para>The source x,y,z point</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>p2</entry>
+                                <entry>
+<para>The destination x,y,z point</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ad6844c1c7d39d5fe2a30df6a1238e5e4">
+                <title>void CubeController.Cube.DrawRectangle (Cube.AXIS axis, CubeController.Point A, CubeController.Point D)</title> <emphasis>&lt;summary&gt;
+Draws a rectangle using point A and point D.</emphasis>
+                
+<para>Rectangle must be drawn on the coordinate that the points share, i.e., you cannot (or should not) draw a rectangle between a point at (0,0,7) and (1,2,3), as they have no common plane to drawn cleanly across at 90° angles.</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>A</entry>
+                                <entry>
+<para>The first point to draw from (inside-originating corner).</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>D</entry>
+                                <entry>
+<para>The terminating point (outside-opposing corner).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a6de7d776a7957463d759af960e877e2e">
+                <title>void CubeController.Cube.DrawCircle (Cube.AXIS axis, CubeController.Point center, CubeController.Point rad)</title> <emphasis>&lt;summary&gt;
+Draws a circle at [center] with radius [radius].</emphasis>
+                
+<para>Follows the Midpoint Circle Algorithm: <link xlink:href="http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf,">http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf,</link> pg 9. </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>center</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>radius</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a5e36a9cf11e8f793f628b62338bf1431">
+                <title>void CubeController.Cube.PutChar (AXIS axis, int pl, char c)</title> <emphasis>&lt;summary&gt;
+Writes a specified to a plane along axis. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to write along.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>pl</entry>
+                                <entry>
+<para>Plane to modify.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>c</entry>
+                                <entry>
+<para>Character to write (lookup bitmap).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a084e7f4d8ebb0a5395c0b3b48c6130d8">
+                <title>void CubeController.Cube.MessageFlyOnAxis (string message, AXIS axis, DIRECTION direction)</title> <emphasis>&lt;summary&gt;
+Prints a message character by character on a given axis, and sends it flying
+either front-to-back or back-to-front.</emphasis>
+                
+<para>NOTE: front-to-back is relative to axis, specifically from ORIGIN-to-TERMINUS, or as close as possible. </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>message</entry>
+                                <entry>
+<para>Message to transmit.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to send message along.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>direction</entry>
+                                <entry>
+<para>Direction of travel.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ab050db384e01dfbe0932f0bd7c3b158a">
+                <title>void CubeController.Cube.MessageBanner (string message, DIRECTION direction)</title> <emphasis>&lt;summary&gt;
+Sends a message &quot;around&quot; the cube in a banner-like manner (rhyme!).</emphasis>
+                
+<para>A character is put on either the 0th A plane, or th 7th A plane, and then is printed out character by character, and rotated around the cube. Only three characters will be printed at a time (see documentation for explanation). </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>message</entry>
+                                <entry>
+<para>Message to print.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>direction</entry>
+                                <entry>
+<para>Direction to send around cube.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ade63ba8237e0ec3ec23bc7378792206d">
+                <title>void CubeController.Cube.AxisBoing (AXIS axis, int speed)</title> <emphasis>&lt;summary&gt;
+A single plane of all-set voxels is sent along
+[axis] away from ORIGIN towards TERMINUS.</emphasis>
+                
+<para>When the plane reaches TERMINUS, it delays for [speed] milliseconds. </para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>speed</entry>
+                                <entry>
+<para>Speed.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a931320bdf48f03b3978c23e556771ec6">
+                <title>void CubeController.Cube.AxisUpDownRandSups (Cube.AXIS axis, int delay, int sleep, bool invert)</title> <emphasis>&lt;summary&gt;
+Shamelessy &quot;inspired&quot; (edit: copied) from CHR&apos;s original code. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry>
+<para>Axis to randomly suspend along.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay between animation frames.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>sleep</entry>
+                                <entry>
+<para>Time to hold the frozen suspensions.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>invert</entry>
+                                <entry>
+<para>Inversion?</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a87dc1aaa75e54cb16274c70b9092ecaa">
+                <title>void CubeController.Cube.Firework (int iterations, int explosionSize, int delay)</title> <emphasis>&lt;summary&gt;
+This function will shoot a specified number of &quot;fireworks&quot;
+up from the bottom layer. These explode and rain down.
+The function is more-or-less copied form 3d.cpp. We need to
+experiment with it some on the cube to get it to our liking.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>The number of fireworks to shoot</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>explosionSize</entry>
+                                <entry>
+<para>The size of the explosion</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>The delay</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae9ce81ee202a87d3212a5486c733bfa7">
+                <title>void CubeController.Cube.LineSpin (int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Spins a line in a sinusoidal fashion. Implementation nearly directly
+taken from 3d.cpp::linespin(). Some of the values have been arbitrarily chosen
+by the team from CHR, so I&apos;ve chosen not to mess with them too much.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aed74c8b833d6c124461d9680d19d25a2">
+                <title>void CubeController.Cube.VertSpiral (int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Pretty much like line spin, but with a twist on
+which axis dominates the DrawLine() invocation. Leads
+to some interesting effects.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ade1d35a7484ac9a305fac950b62c7604">
+                <title>void CubeController.Cube.LoadBar (int delay)</title> <emphasis>&lt;summary&gt;
+Light all LEDs layer by layer in strips, and then unset in the 
+opposite pattern. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>delay</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1acd56842b64469ddfb19c4dbdc70e3b9b">
+                <title>void CubeController.Cube.Rain (int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Create a rain-shower for the specified iterations, with [delay] ms
+between each frame.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a1cae6b7dab34520359fd954b583d4bf3">
+                <title>void CubeController.Cube.Ripples (int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Creates a sine wave that ripples from the center of the cube.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations to run to.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Animation speed (delay between frames in milliseconds).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a389b75c3b2b71320a332befe1d72b44c">
+                <title>void CubeController.Cube.SineWave (int iterations, int delay, double delta_t)</title> <emphasis>&lt;summary&gt;
+Shows sinusoidal wave.
+Will only be shown from the front of the cube, i.e. the A-Z plane. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations to run the effect to.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay between frames (in milliseconds).</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a5cf632c703acbfbf41e8e561f3cba8b0">
+                <title>void CubeController.Cube.SideWaves (int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Generates waves that spin from side-to-side. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ab8e7d7047fbd82930b494e6a3814c251">
+                <title>void CubeController.Cube.SendVoxelZ (int x, int y, int z, int delay)</title> <emphasis>&lt;summary&gt;
+Takes a voxel and sends it from one face of the cube
+to another along the Z-axis. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay between frames.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ab50798d1cde4a84ac31a5308c93a2127">
+                <title>void CubeController.Cube.BoxWoopWoop (int iterations, int delay, bool grow, int size)</title> <emphasis>&lt;summary&gt;
+Grows or shrinks a wireframe box given the value
+of [grow]. A really neat effect if used in the following
+manner:
+    while (iteration &lt; max){
+        BoxWoopWoop(1, delay, true, size);  // Grow
+        BoxWoopWoop(1, delay, false, size); // Shrink
+    } // Repeatedly
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Iterations to run to.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay between animation frames.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>grow</entry>
+                                <entry>
+<para>If set to <computeroutput>true</computeroutput>, then grow.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a04c0549d8b6f796293942edbf4e2b377">
+                <title>void CubeController.Cube.VoxelTest (int delay)</title> <emphasis>&lt;summary&gt;
+Set every voxel on the cube, but plane by plane. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Delay between plane refreshes.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae1beff582abbe4c2ce3d6d6c92491310">
+                <title>void CubeController.Cube.RandomSparkle (int sparkleCount, int delay)</title> <emphasis>&lt;summary&gt;
+Blink an increasing number of random voxels, and then
+blink in a decreasing number back down to 1 again. 
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a995910183c0a0c8c7d4b27f1c593f7ec">
+                <title>void CubeController.Cube.TelcStairs (bool invert, int delay)</title> <emphasis>&lt;summary&gt;
+Not quite sure what this does, in all reality.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>invert</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ad9281b2f10850ac966e67738be6e1611">
+                <title>void CubeController.Cube.WormSqueeze (int size, Cube.AXIS axis, Cube.DIRECTION direction, int iterations, int delay)</title> <emphasis>&lt;summary&gt;
+Not quite sure of the effect. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>size</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>axis</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>direction</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a34db28475ec05492c7577a9224ebd48c">
+                <title>void CubeController.Cube.WriteCube (object stateInfo)</title> <emphasis>&lt;summary&gt;
+A callback for the SerialDriver thread responsible for pushing cube frames via TTL.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>stateInfo</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a9e0c61eb518c0fa9699501a30c923f29">
+                <title>void CubeController.Cube.DelayMS (int x)</title> <emphasis>&lt;summary&gt;
+Delays the drawing buffer from updating for x milliseconds.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The number of milliseconds to sleep.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a940366f41383f5c6976fd8540fbe0151">
+                <title>bool [][] CubeController.Cube.NewEmptyPlane (int size)</title> <emphasis>&lt;summary&gt;
+Creates an empty plane for use of filling. 
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para>The empty plane.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>size</entry>
+                                <entry>
+<para>Size.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aa832855a3a895c3a9fd135e29bc18395">
+                <title>bool CubeController.Cube.InRange (int x, int y, int z)</title> <emphasis>&lt;summary&gt;
+Determines if the specified coordinates are in range
+of the cube dimensions.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry>
+<para>The x coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>y</entry>
+                                <entry>
+<para>The y coordinate.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>z</entry>
+                                <entry>
+<para>The z coordinate.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a509466d914ec42e2733cf7106cfb1ade">
+                <title>void CubeController.Cube.Transpose2D (ref bool[][] mtx)</title> <emphasis>&lt;summary&gt;
+Transposes a 2D square matrix.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>mtx</entry>
+                                <entry>
+<para>Matrix to transpose.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a0dc94d83f8d7e9b31345c308a448bc36">
+                <title>void CubeController.Cube.ColumnReversal2D (ref bool[][] mtx)</title> <emphasis>&lt;summary&gt;
+Reverses the columns of a 2D matrix.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>mtx</entry>
+                                <entry>
+<para>Matrix source of columns.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a23fd27ab893a401fcb9a85698c2e7345">
+                <title>void CubeController.Cube.RowReversal2D (ref bool[][] mtx)</title> <emphasis>&lt;summary&gt;
+Reverses the rows of a 2D matrix.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>mtx</entry>
+                                <entry>
+<para>Matrix source of rows.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ab5f5f731011afcd62d02621f96bfec6b">
+                <title>void CubeController.Cube.BresenhamsLine3D (int x1, int y1, int z1, int x2, int y2, int z2, bool setting)</title> <emphasis>&lt;summary&gt;
+This is an attempt to characterize Bresenham&apos;s Line Algorithm in 3D, extrapolating
+information from the 2D version. A 3D implementation has been modified from its source:
+https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs</emphasis>
+                
+<para>Basic idea in 2D: Let A = 2 times change in B Let B = A - 2 times change in A Let M = A - change in A</para>
+
+<para>Set the starting point.</para>
+
+<para>Then, for every position along A: while (!atEnd): M &lt; 0 new pixel on same line as last pixel; M += A; M &gt;= 0 new pixel on line higher than last pixel; M += B;</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x1</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>y1</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>z1</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>x2</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>y2</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>z2</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ae075444e874717ae58ac87fcbd17fcaf">
+                <title>A* * * Z B* * _ _ _X * * Vertices are labeled in the diagram above.*&lt;/summary&gt; *&lt;paramname=&quot;S&quot;&gt; Source vertex.&lt;/param&gt; *&lt;paramname=&quot;dist&quot;&gt; Distance between CubeController.Cube.vertices (side length).&lt;/param &gt; */public void BoxWireFrame(Point S</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1ac4885f97842e129acc0f028ba8591f6f">
+                <title>bool [][] CubeController.Cube.GetChar (char c)</title> <emphasis>&lt;summary&gt;
+Gets the character specified by &apos;c&apos;. 
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para>The char.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>c</entry>
+                                <entry>
+<para>C.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a7d0f1c2bac4e5014ef209e0c7cc6eee3">
+                <title>void CubeController.Cube.DrawPositionsAxis (Cube.AXIS axis, int[] positions, bool invert)</title> <emphasis>&lt;summary&gt;
+A helper function for AxisUpDownRandSusp. 
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>axis</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>positions</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>invert</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1aa2f22e8ddcc15a7c16b0c9e74305cb9c">
+                <title>void CubeController.Cube.RandomSparkleFlash (int iterations, int voxels, int delay)</title> <emphasis>&lt;summary&gt;
+Set a given number of voxels at random positions.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>iterations</entry>
+                                <entry>
+<para>Number of animation frames.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>voxels</entry>
+                                <entry>
+<para>Number of voxels to set.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry>
+<para>Animation delay between frame updates.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_cube_1a143ec77de2186afbb3df7a28e377c09a">
+                <title>int CubeController.Cube.TelcStairsDo (int x, int delay)</title> <emphasis>&lt;summary&gt;
+Again, not quite sure what this does!
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>x</entry>
+                                <entry></entry>
+                            </row>
+                            <row>
+                                <entry>delay</entry>
+                                <entry></entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                <formalpara><title>Returns: </title>
+
+<para></para>
+</formalpara>
+</para>
+
+            </section>
+</section>

@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="dir_a44c26db532de6ea29c5b1e6b084a852">
+    <title>obj Directory Reference</title>
+        <simplesect>
+            <title> Directories </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>dir <link linkend="dir_e40248023c512d4d7b2ac17bd464baa9">Debug</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>dir <link linkend="dir_1e6b3c46f8162c17f4ea913a07b6799a">Release</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Directory location is C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/obj/</para>
+    </simplesect>
+</section>

@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="effect_8cpp">
+    <title>effect.cpp File Reference</title>
+    <programlisting>#include &lt;math.h&gt;</programlisting>
+    <programlisting>#include &quot;effect.hpp&quot;</programlisting>
+    <programlisting>#include &quot;draw.hpp&quot;</programlisting>
+    <programlisting>#include &quot;font.hpp&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aed4c49e66d09794947718c5ef0615a01">effect_test</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a953564c3380a66416b77fbedc7a3718f">effect_stringfly2</link> (
+char * str)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aecb1dbe29616bf7a39cc52356b2f90bb">effect_planboing</link> (
+int plane, int speed)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a96945eb686852f0f2fb2e0a60eb8a20d">effect_blinky2</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a31165aa0ee673b0ae24415bfb21e482d">effect_box_shrink_grow</link> (
+int iterations, int mode, int direction, uint16_t delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a3a457c62b54dda936812d9a64f32d28d">effect_box_woopwoop</link> (
+int delay, int grow)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a1b90100679313be86bd5f717d0dee338">sendvoxel_z</link> (
+unsigned char x, unsigned char y, unsigned char z, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a92b9ac889604bb5f5b2b21e5ad28ae8a">sendplane_rand_z</link> (
+unsigned char z, int delay, int wait)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a05a9bd57e4b84f6545d0628bb62aa65e">sendvoxels_rand_z</link> (
+int iterations, int delay, int wait)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a2b8cd1b272f51d98b33f1fd610955f8c">boingboing</link> (
+uint16_t iterations, int delay, unsigned char mode, unsigned char drawmode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1abeb35545cc2b89e05e9bc9a2a65086a1">effect_random_filler</link> (
+int delay, int state)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aa96f794a6e8546217dcfbe2f4b5d0fd2">effect_rain</link> (
+int iterations)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a6336a3e7066f5259eeb955e241074e77">effect_z_updown</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a67965620084652ed8abd32998b7f22b4">effect_z_updown_move</link> (
+unsigned char positions, unsigned char destinations, char axis)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a6a5e19f322ac0a0cfc3890dfd5c47c97">effect_axis_updown_randsuspend</link> (
+char axis, int delay, int sleep, int invert)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aea9225c18e543990b039c2a368cfe568">draw_positions_axis</link> (
+char axis, unsigned char positions, int invert)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1afb0c4b2cf784563c126a0145e190b5ba">effect_boxside_randsend_parallel</link> (
+char axis, int origin, int delay, int mode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a4d1a720efd27f7b78406d6e612316130">effect_loadbar</link> (
+int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aa70a5cebad4250a6e93f439bc5dc1fec">effect_random_sparkle_flash</link> (
+int iterations, int voxels, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a9b2e95aab72a602163d73ed19a109a49">effect_random_sparkle</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="effect_8cpp_1a91c298406c03d67c4516b55243c69f40">effect_telcstairs_do</link> (
+int x, int val, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1aa1e8a6e945378342d749067523274f9e">effect_telcstairs</link> (
+int invert, int delay, int val)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a8d88ac1e1ff108979c447f6fdacbab26">effect_wormsqueeze</link> (
+int size, int axis, int direction, int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1ab004dcc78c5bbe6cfb50952003d656f6">effect_smileyspin</link> (
+int count, int delay, char bitmap)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a11573aaadfdef6f118b2a81af399c65b">effect_pathmove</link> (
+unsigned char * path, int length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a74eb64e65c7c194d6dbba556f16ea543">effect_rand_patharound</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1ae190dfd6540f6002dddd6dbcb84dee9a">effect_pathspiral</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a046b208e94ea53191c0f575be9de247f">effect_path_text</link> (
+int delay, char * str)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="effect_8cpp_1a899ae8823e531cddd848f65de8703f27">effect_path_bitmap</link> (
+int delay, char bitmap, int iterations)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/effect.cpp</para>
+    </simplesect>
+</section>

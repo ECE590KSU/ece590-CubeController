@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_a44c26db532de6ea29c5b1e6b084a852" kind="dir">
+    <compoundname>obj</compoundname>
+    <innerdir refid="dir_e40248023c512d4d7b2ac17bd464baa9">Debug</innerdir>
+    <innerdir refid="dir_1e6b3c46f8162c17f4ea913a07b6799a">Release</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/obj/"/>
+  </compounddef>
+</doxygen>

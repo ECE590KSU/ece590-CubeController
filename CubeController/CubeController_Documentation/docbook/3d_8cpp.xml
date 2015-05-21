@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="3d_8cpp">
+    <title>3d.cpp File Reference</title>
+    <programlisting>#include &lt;math.h&gt;</programlisting>
+    <programlisting>#include &lt;stdlib.h&gt;</programlisting>
+    <programlisting>#include &lt;stdint.h&gt;</programlisting>
+    <programlisting>#include &lt;stdio.h&gt;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+    <programlisting>#include &quot;draw.hpp&quot;</programlisting>
+    <programlisting>#include &quot;draw_3d.hpp&quot;</programlisting>
+    <programlisting>#include &quot;3d.hpp&quot;</programlisting>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="3d_8cpp_1ae97152c48aaed0bd0518138ab882f04c">NUM_FIREWORK_COMPONENTS</link> 6</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const float <link linkend="3d_8cpp_1aa08a577393243b86dfd2a97e61443673">PI</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const float <link linkend="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957">WAVE_CONSTANT</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8">linespin</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a3af37a0fb9ada060bf083e8e16be2a89">sinelines</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a15c48e1b2565e2a696c7f10892f162f4">ripples</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a938da6780ac8fa2d4699695020221a3f">sidewaves</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a6cb4e5723993d035441943cd1c3ecdd8">spheremove</link> (
+int iterations, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a47d3fc1e87afd1adc254c4b83e9b5887">fireworks</link> (
+int iterations, int n, int delay)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="3d_8cpp_1a3b89e513975ccfe8a0b07be6c5403ac5">effect_rotate_random_pixels</link> (
+int iterations, int delay, int pixels)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>float <link linkend="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce">distance2d</link> (
+float x1, float y1, float x2, float y2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>float <link linkend="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db">distance3d</link> (
+float x1, float y1, float z1, float x2, float y2, float z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp</para>
+    </simplesect>
+</section>

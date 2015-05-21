@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="class_cube_controller_1_1_point" kind="class" prot="public">
+    <compoundname>CubeController::Point</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_cube_controller_1_1_point_1a5ead68badca46885c015fe3d99ed0772" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int CubeController.Point.X</definition>
+        <argsstring></argsstring>
+        <name>X</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2098" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2098" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_cube_controller_1_1_point_1ad952ae9b1f7be2b6e327f2977de7efc1" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int CubeController.Point.Y</definition>
+        <argsstring></argsstring>
+        <name>Y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2099" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2099" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_cube_controller_1_1_point_1a7cf4a9355a324048ae72cd8b38a42ac1" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="yes">
+        <type>int</type>
+        <definition>int CubeController.Point.Z</definition>
+        <argsstring></argsstring>
+        <name>Z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2100" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_point_1ae9456ff844c9cd52c3f041aaf6cedc22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CubeController.Point.Point</definition>
+        <argsstring>()</argsstring>
+        <name>Point</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2102" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2102" bodyend="2105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_point_1ac6148b303571f0df6954dd4982f7eae6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CubeController.Point.Point</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>Point</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2107" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2107" bodyend="2112"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_point_1af0f9e1fa9bc406c7adfb3b51e62f63dd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>static double CubeController.Point.Distance</definition>
+        <argsstring>(double x1, double x2, double y1, double y2, params double[] zcoords)</argsstring>
+        <name>Distance</name>
+        <param>
+          <type>double</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>params double[]</type>
+          <declname>zcoords</declname>
+        </param>
+        <briefdescription>
+<para>Calculates the distance between two points. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The d.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first x value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second x value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first y value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second y value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zcoords</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Z coordinates (if provided) for a 3D distance calculation</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2123" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2123" bodyend="2133"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Helper class. Defines a point in x,y,z space. Used to eliminate function calling signatures with many x,y,z args needed. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2097" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2096" bodyend="2134"/>
+    <listofallmembers>
+      <member refid="class_cube_controller_1_1_point_1af0f9e1fa9bc406c7adfb3b51e62f63dd" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>Distance</name></member>
+      <member refid="class_cube_controller_1_1_point_1ae9456ff844c9cd52c3f041aaf6cedc22" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>Point</name></member>
+      <member refid="class_cube_controller_1_1_point_1ac6148b303571f0df6954dd4982f7eae6" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>Point</name></member>
+      <member refid="class_cube_controller_1_1_point_1a5ead68badca46885c015fe3d99ed0772" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>X</name></member>
+      <member refid="class_cube_controller_1_1_point_1ad952ae9b1f7be2b6e327f2977de7efc1" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>Y</name></member>
+      <member refid="class_cube_controller_1_1_point_1a7cf4a9355a324048ae72cd8b38a42ac1" prot="public" virt="non-virtual"><scope>CubeController::Point</scope><name>Z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

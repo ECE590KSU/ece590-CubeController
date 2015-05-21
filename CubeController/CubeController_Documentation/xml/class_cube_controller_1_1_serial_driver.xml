@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="class_cube_controller_1_1_serial_driver" kind="class" prot="public">
+    <compoundname>CubeController::SerialDriver</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_serial_driver_1a0ea8959c46b0fd05621375461c4d00fc" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int CubeController.SerialDriver.DIMENSION</definition>
+        <argsstring></argsstring>
+        <name>DIMENSION</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para><ref refid="class_cube_controller_1_1_cube" kindref="compound">Cube</ref> dimension. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="15" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_serial_driver_1ae27f29d1663a0480b847bfe656fee915" prot="private" static="no" mutable="no">
+        <type>SerialPort</type>
+        <definition>SerialPort CubeController.SerialDriver._serialPort</definition>
+        <argsstring></argsstring>
+        <name>_serialPort</name>
+        <briefdescription>
+<para>Active serial port. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="20" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a3bbfd56c7eea9cb06ab866a8d9177d12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CubeController.SerialDriver.SerialDriver</definition>
+        <argsstring>()</argsstring>
+        <name>SerialDriver</name>
+        <briefdescription>
+<para>Default constructor for <ref refid="class_cube_controller_1_1_serial_driver" kindref="compound">SerialDriver</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="25" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="25" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1ab4f7cd418abdae1f6b124ec8cc5b3422" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.SerialDriver.WriteCube</definition>
+        <argsstring>(bool[][][] cubeState)</argsstring>
+        <name>WriteCube</name>
+        <param>
+          <type>bool</type>
+          <declname>cubeState</declname>
+          <array>[][][]</array>
+        </param>
+        <briefdescription>
+<para>Writes a buffer to the ATMega via the configured serial port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cubeState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The voxel state you wish to send to the cube.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="47" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a40ffa52da5db9f7c9f79e095674ab2e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.SerialDriver.ClosePort</definition>
+        <argsstring>()</argsstring>
+        <name>ClosePort</name>
+        <briefdescription>
+<para>Closes the serial port that has been opened. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="56" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a2d67b664a1d78f7856e2c5a666205b15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.SerialDriver.OpenPort</definition>
+        <argsstring>()</argsstring>
+        <name>OpenPort</name>
+        <briefdescription>
+<para>Opens a serial port. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="64" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a5e16087e2926a4047bf35f93402b8cd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.SerialDriver.ConfigurePort</definition>
+        <argsstring>(int baudRate, int writeTimeout)</argsstring>
+        <name>ConfigurePort</name>
+        <param>
+          <type>int</type>
+          <declname>baudRate</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>writeTimeout</declname>
+        </param>
+        <briefdescription>
+<para>Configures two serial settings on the port. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>baudRate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The serial baud rate to be set.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>writeTimeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of miliseconds before a time-out occurs when a write operation does not finish.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="74" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a56b9086165052ea7b13080c2e87a4a7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.SerialDriver.SendEscapeSequence</definition>
+        <argsstring>()</argsstring>
+        <name>SendEscapeSequence</name>
+        <briefdescription>
+<para>Sends escape sequence to the cube to ready it for a new draw at (0,0,0) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="83" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="83" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_serial_driver_1a1a03c793095eee4f4afe4140ed717de5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>byte[]</type>
+        <definition>byte [] CubeController.SerialDriver.ConvertCubeStateToByteArray</definition>
+        <argsstring>(bool[][][] cubeState)</argsstring>
+        <name>ConvertCubeStateToByteArray</name>
+        <param>
+          <type>bool</type>
+          <declname>cubeState</declname>
+          <array>[][][]</array>
+        </param>
+        <briefdescription>
+<para>Converts the triple boolean array into a buffer </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cubeState</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The voxel state you wish to send to the cube.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A buffer to be sent over serial comm</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="94" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="94" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" line="11" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/SerialDriver.cs" bodystart="10" bodyend="119"/>
+    <listofallmembers>
+      <member refid="class_cube_controller_1_1_serial_driver_1ae27f29d1663a0480b847bfe656fee915" prot="private" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>_serialPort</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a40ffa52da5db9f7c9f79e095674ab2e3" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>ClosePort</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a5e16087e2926a4047bf35f93402b8cd4" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>ConfigurePort</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a1a03c793095eee4f4afe4140ed717de5" prot="private" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>ConvertCubeStateToByteArray</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a0ea8959c46b0fd05621375461c4d00fc" prot="private" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>DIMENSION</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a2d67b664a1d78f7856e2c5a666205b15" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>OpenPort</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a56b9086165052ea7b13080c2e87a4a7b" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>SendEscapeSequence</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1a3bbfd56c7eea9cb06ab866a8d9177d12" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>SerialDriver</name></member>
+      <member refid="class_cube_controller_1_1_serial_driver_1ab4f7cd418abdae1f6b124ec8cc5b3422" prot="public" virt="non-virtual"><scope>CubeController::SerialDriver</scope><name>WriteCube</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="namespace_cube_controller">
+<title>CubeController</title>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_cube_controller_1_1_cube">CubeController::Cube</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_cube_controller_1_1_effect">CubeController::Effect</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_cube_controller_1_1_font_handler">CubeController::FontHandler</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_cube_controller_1_1_point">CubeController::Point</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="class_cube_controller_1_1_serial_driver">CubeController::SerialDriver</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+</section>

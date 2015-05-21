@@ -1,0 +1,212 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="draw__3d_8cpp" kind="file">
+    <compoundname>draw_3d.cpp</compoundname>
+    <includes local="no">math.h</includes>
+    <includes local="yes">draw_3d.hpp</includes>
+    <includes local="yes">draw.hpp</includes>
+    <incdepgraph>
+      <node id="23">
+        <label>draw_3d.cpp</label>
+        <link refid="draw_3d.cpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>draw_3d.hpp</label>
+      </node>
+      <node id="26">
+        <label>draw.hpp</label>
+      </node>
+      <node id="24">
+        <label>math.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>vertex</type>
+        <definition>vertex point_rotate_around_point</definition>
+        <argsstring>(vertex point, vertex center, float rotation_x, float rotation_y, float rotation_z)</argsstring>
+        <name>point_rotate_around_point</name>
+        <param>
+          <type>vertex</type>
+          <declname>point</declname>
+        </param>
+        <param>
+          <type>vertex</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rotation_x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rotation_y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rotation_z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" line="5" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" bodystart="5" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="draw__3d_8cpp_1a5f659fb1aa42d831deb1891310706e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate_cube_corners</definition>
+        <argsstring>(vertex pnt[8], vertex center, float size)</argsstring>
+        <name>calculate_cube_corners</name>
+        <param>
+          <type>vertex</type>
+          <declname>pnt</declname>
+          <array>[8]</array>
+        </param>
+        <param>
+          <type>vertex</type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" line="50" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" bodystart="50" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="draw__3d_8cpp_1a3357f0278e3ec1fce7ff22e5f10d4956" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void draw_cube_wireframe</definition>
+        <argsstring>(vertex pnt[8])</argsstring>
+        <name>draw_cube_wireframe</name>
+        <param>
+          <type>vertex</type>
+          <declname>pnt</declname>
+          <array>[8]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" line="71" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp" bodystart="71" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;draw_3d.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;draw.hpp&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>THIS<sp/>IS<sp/>ABSOLUTELY<sp/>CRITICAL,<sp/>as<sp/>it<sp/>contains<sp/>line_3d<sp/>declaration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5" refkind="member"><highlight class="normal">vertex<sp/><ref refid="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5" kindref="member">point_rotate_around_point</ref><sp/>(vertex<sp/>point,<sp/>vertex<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rotation_x,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rotation_y,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rotation_z)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>z;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sx,cx,<sp/>sy,cy,<sp/>sz,cz;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>xy,xz,<sp/>yx,yz,<sp/>zx,zy;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>vertex<sp/>newpoint;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Center<sp/>all<sp/>the<sp/>points<sp/>around<sp/>0,0,0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>x<sp/>=<sp/>point.x<sp/>-<sp/>center.x;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>y<sp/>=<sp/>point.y<sp/>-<sp/>center.y;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>z<sp/>=<sp/>point.z<sp/>-<sp/>center.z;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Precalculate<sp/>sinus<sp/>and<sp/>cosinus<sp/>for<sp/>each<sp/>axis<sp/>rotation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>sx<sp/>=<sp/>sin(rotation_x);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>cx<sp/>=<sp/>cos(rotation_x);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>sy<sp/>=<sp/>sin(rotation_y);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>cy<sp/>=<sp/>cos(rotation_y);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>sz<sp/>=<sp/>sin(rotation_z);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>cz<sp/>=<sp/>cos(rotation_z);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rotation<sp/>around<sp/>x</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>xy<sp/>=<sp/>cx*y<sp/>-<sp/>sx*z;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>xz<sp/>=<sp/>sx*y<sp/>+<sp/>cx*z;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rotation<sp/>around<sp/>y</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>yz<sp/>=<sp/>cy*xz<sp/>-<sp/>sy*x;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>yx<sp/>=<sp/>sy*xz<sp/>+<sp/>cy*x;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Rotation<sp/>around<sp/>z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>zx<sp/>=<sp/>cz*yx<sp/>-<sp/>sz*xy;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>zy<sp/>=<sp/>sz*yx<sp/>+<sp/>cz*xy;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>newpoint.x<sp/>=<sp/>zx<sp/>+<sp/>center.x;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>newpoint.y<sp/>=<sp/>zy<sp/>+<sp/>center.y;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>newpoint.z<sp/>=<sp/>yz<sp/>+<sp/>center.z;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>newpoint;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Calculate<sp/>all<sp/>8<sp/>corners<sp/>of<sp/>a<sp/>cube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="draw__3d_8cpp_1a5f659fb1aa42d831deb1891310706e97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="draw__3d_8cpp_1a5f659fb1aa42d831deb1891310706e97" kindref="member">calculate_cube_corners</ref><sp/>(vertex<sp/>pnt[8],<sp/>vertex<sp/>center,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>size)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Distance<sp/>from<sp/>center<sp/>on<sp/>any<sp/>axis.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dist<sp/>=<sp/>size/2;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Points</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>X<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Y<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Z</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[0].x<sp/>=<sp/>center.x+dist;<sp/><sp/><sp/>pnt[0].y<sp/>=<sp/>center.y+dist;<sp/><sp/><sp/>pnt[0].z<sp/>=<sp/>center.z+dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>right,<sp/>front,<sp/>upper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[1].x<sp/>=<sp/>center.x-dist;<sp/><sp/><sp/>pnt[1].y<sp/>=<sp/>center.y+dist;<sp/><sp/><sp/>pnt[1].z<sp/>=<sp/>center.z+dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>left,<sp/>front,<sp/>upper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[2].x<sp/>=<sp/>center.x+dist;<sp/><sp/><sp/>pnt[2].y<sp/>=<sp/>center.y-dist;<sp/><sp/><sp/>pnt[2].z<sp/>=<sp/>center.z+dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>2<sp/>right,<sp/>back,<sp/>upper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[3].x<sp/>=<sp/>center.x-dist;<sp/><sp/><sp/>pnt[3].y<sp/>=<sp/>center.y-dist;<sp/><sp/><sp/>pnt[3].z<sp/>=<sp/>center.z+dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>3<sp/>left,<sp/>back,<sp/>uppper</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[4].x<sp/>=<sp/>center.x+dist;<sp/><sp/><sp/>pnt[4].y<sp/>=<sp/>center.y+dist;<sp/><sp/><sp/>pnt[4].z<sp/>=<sp/>center.z-dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>4<sp/>right,<sp/>front,<sp/>lower</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[5].x<sp/>=<sp/>center.x-dist;<sp/><sp/><sp/>pnt[5].y<sp/>=<sp/>center.y+dist;<sp/><sp/><sp/>pnt[5].z<sp/>=<sp/>center.z-dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>5<sp/>left,<sp/>front,<sp/>lower</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[6].x<sp/>=<sp/>center.x+dist;<sp/><sp/><sp/>pnt[6].y<sp/>=<sp/>center.y-dist;<sp/><sp/><sp/>pnt[6].z<sp/>=<sp/>center.z-dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>6<sp/>right,<sp/>back,<sp/>lower</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>pnt[7].x<sp/>=<sp/>center.x-dist;<sp/><sp/><sp/>pnt[7].y<sp/>=<sp/>center.y-dist;<sp/><sp/><sp/>pnt[7].z<sp/>=<sp/>center.z-dist;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>7<sp/>left,<sp/>bakc,<sp/>lower</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="draw__3d_8cpp_1a3357f0278e3ec1fce7ff22e5f10d4956" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="draw__3d_8cpp_1a3357f0278e3ec1fce7ff22e5f10d4956" kindref="member">draw_cube_wireframe</ref><sp/>(vertex<sp/>pnt[8])</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//int<sp/>i;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>upper<sp/>&quot;lid&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].z);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].z);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].z);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].z);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>lower<sp/>&quot;lid&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].z);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].z);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].z);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].z);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>side<sp/>walls</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[0].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[4].z);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[1].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[5].z);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[2].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[6].z);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[3].z,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].x,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)pnt[7].z);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp"/>
+  </compounddef>
+</doxygen>

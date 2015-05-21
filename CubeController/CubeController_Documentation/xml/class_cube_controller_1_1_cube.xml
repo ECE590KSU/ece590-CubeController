@@ -1,0 +1,2522 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="class_cube_controller_1_1_cube" kind="class" prot="public">
+    <compoundname>CubeController::Cube</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" prot="public" static="no">
+        <name>AXIS</name>
+        <enumvalue id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aafb7ec808a21c7770ccd7060e715983ba" prot="public">
+          <name>AXIS_X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa3e69e41ce011d74658d6ccce110e5f1a" prot="public">
+          <name>AXIS_Y</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa19aa520601d5d2f29571f14a3278216f" prot="public">
+          <name>AXIS_Z</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the axes upon which the cube can be oriented. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="49" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" prot="public" static="no">
+        <name>DIRECTION</name>
+        <enumvalue id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158abfec72bb37910c61f36b6c29a1f7ec31" prot="public">
+          <name>FORWARD</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158a642e0b6684e6165e142c074f1cd8d55c" prot="public">
+          <name>REVERSE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the directions that effects can be propagated. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="54" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597" prot="public" static="no">
+        <name>REFLECTION</name>
+        <enumvalue id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597a6d7b0f55d14f78a5611f7e00a2e3c2ec" prot="public">
+          <name>ORIGIN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597aa60fa4ca41f91140a80531d4fcda8e11" prot="public">
+          <name>TERMINUS</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>An enumeration of the reflection parameters of some cube effects. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="59" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="59" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1ab865359a0e6b58e13185d5b06ddd78fd" prot="private" static="no" mutable="no">
+        <type>bool[][][]</type>
+        <definition>bool [][][] CubeController.Cube._cubeState</definition>
+        <argsstring></argsstring>
+        <name>_cubeState</name>
+        <briefdescription>
+<para>A 3D collection of voxels. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="14" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1af8b4bed33c4b80cc1de08583ec22ae04" prot="private" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int CubeController.Cube.DIMENSION</definition>
+        <argsstring></argsstring>
+        <name>DIMENSION</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+<para>The number of voxels per anode column. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="19" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1a98d2c6615fa541b8a32f3fd77e66cd24" prot="private" static="no" mutable="no">
+        <type>Random</type>
+        <definition>Random CubeController.Cube._rgen</definition>
+        <argsstring></argsstring>
+        <name>_rgen</name>
+        <briefdescription>
+<para>Random number generator for the class (effects, advanced drawing, etc.). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="24" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1aca45b07b1a8dfa10170d31b70cde15a6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_cube_controller_1_1_font_handler" kindref="compound">FontHandler</ref></type>
+        <definition>FontHandler CubeController.Cube._fontHandler</definition>
+        <argsstring></argsstring>
+        <name>_fontHandler</name>
+        <briefdescription>
+<para>A font handler, which will translate character bitmpas into plane patterns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="29" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1a0f1de4bd14615dd3988b49263949f043" prot="private" static="no" mutable="no">
+        <type>Timer</type>
+        <definition>Timer CubeController.Cube._serialDriverTimer</definition>
+        <argsstring></argsstring>
+        <name>_serialDriverTimer</name>
+        <briefdescription>
+<para>A timer for the <ref refid="class_cube_controller_1_1_serial_driver" kindref="compound">SerialDriver</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="34" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1abc9f9721e7613dfe408ed51acbe48c20" prot="private" static="no" mutable="no">
+        <type>TimerCallback</type>
+        <definition>TimerCallback CubeController.Cube._writeCubeCallback</definition>
+        <argsstring></argsstring>
+        <name>_writeCubeCallback</name>
+        <briefdescription>
+<para>A timer callback for the <ref refid="class_cube_controller_1_1_serial_driver" kindref="compound">SerialDriver</ref> object&apos;s Write() thread invocation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="39" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_cube_1a0d0378854720b76944d66c2c867fa0ca" prot="private" static="no" mutable="no">
+        <type><ref refid="class_cube_controller_1_1_serial_driver" kindref="compound">SerialDriver</ref></type>
+        <definition>SerialDriver CubeController.Cube._serialDriver</definition>
+        <argsstring></argsstring>
+        <name>_serialDriver</name>
+        <briefdescription>
+<para>An object capable of transmitting cube frames via TTL. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="44" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_cube_controller_1_1_cube_1afc581e9955e6d793ce0055e92c415473" prot="public" static="no" readable="no" writable="no" gettable="yes" settable="no">
+        <type>int</type>
+        <definition>int CubeController.Cube.Dimension</definition>
+        <argsstring></argsstring>
+        <name>Dimension</name>
+        <briefdescription>
+<para>Get the DIMENSION of the cube. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="64" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_cube_controller_1_1_cube_1aeb41c6a358f401c9a031da143c976a33" prot="private" static="no" readable="no" writable="no" gettable="no" settable="no">
+        <type>A ***Z B **_ _ _X **Vertices are labeled in the diagram above.*&lt;/summary &gt; *&lt; paramname=&quot;S&quot;&gt; Source vertex.&lt;/param &gt; *&lt; paramname=&quot;dist&quot;&gt; Distance between int</type>
+        <definition>A* * * Z B* * _ _ _X * * Vertices are labeled in the diagram above.*&lt;/summary&gt; *&lt;paramname=&quot;S&quot;&gt; Source vertex.&lt;/param&gt; *&lt;paramname=&quot;dist&quot;&gt; Distance between int CubeController.Cube.dist</definition>
+        <argsstring></argsstring>
+        <name>dist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1283" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1284" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa5063999eb3d0028d2ed8d307b3d3843" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CubeController.Cube.Cube</definition>
+        <argsstring>()</argsstring>
+        <name>Cube</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_cube_controller_1_1_cube" kindref="compound">Cube</ref> class. Default public constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="76" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="76" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa87aeba0d386389035a4fce7d3be6549" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][][]</type>
+        <definition>bool [][][] CubeController.Cube.GetCubeState</definition>
+        <argsstring>()</argsstring>
+        <name>GetCubeState</name>
+        <briefdescription>
+<para>Gets the state of the cube. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The cube state.</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="112" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a7eed1a6432f4c80f6f9169f95fb4e096" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SetEntireCube</definition>
+        <argsstring>()</argsstring>
+        <name>SetEntireCube</name>
+        <briefdescription>
+<para>Sets the entire cube by setting Z-Planes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="129" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="129" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa4313fe03c0a5f1a6ffb85b4b3fc68f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ClearEntireCube</definition>
+        <argsstring>()</argsstring>
+        <name>ClearEntireCube</name>
+        <briefdescription>
+<para>Clears the entire cube by erasing Z-Planes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="139" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="139" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a9b3a284e6260d70df58a4254f586a3e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RenderPlane</definition>
+        <argsstring>(bool[][] plane)</argsstring>
+        <name>RenderPlane</name>
+        <param>
+          <type>bool</type>
+          <declname>plane</declname>
+          <array>[][]</array>
+        </param>
+        <briefdescription>
+<para>Renders a specified plane. DEBUGGING PURPOSES ONLY. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plane</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="166" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="166" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a1e2f9e4fcf2133bc9f071fda0834ec01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RenderCube</definition>
+        <argsstring>()</argsstring>
+        <name>RenderCube</name>
+        <briefdescription>
+<para>Renders the cube by Z-Planes. DEBUGGING PURPOSES ONLY. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="193" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="193" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae6764b8c60a8eb39603bd0e0a77e8e93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SetVoxel</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>SetVoxel</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voxel. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="242" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="242" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a77a227f0c3d12a38b79362aa212d29c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ClearVoxel</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>ClearVoxel</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Clears the voxel. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="255" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="255" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa8e927414815c791a65678b3a6ab6883" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CubeController.Cube.GetVoxel</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>GetVoxel</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Gets the voxel. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><computeroutput>true</computeroutput>, if voxel was set, <computeroutput>false</computeroutput> otherwise.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="269" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="269" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae70486fd7b425fa717fe226d6beae416" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SwapVoxel</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>SwapVoxel</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Performs logical NOT on voxel value. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="284" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="284" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a1da60272e09fd88ebbd5366b4c7a2121" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SetPlane</definition>
+        <argsstring>(AXIS axis, int pl)</argsstring>
+        <name>SetPlane</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <briefdescription>
+<para>Turns on all voxels on a given plane of the specified axis. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to manipulate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane index on axis.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="296" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="296" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1af951ad9cd93e438bbcd56f2d99f482f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ClearPlane</definition>
+        <argsstring>(AXIS axis, int pl)</argsstring>
+        <name>ClearPlane</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <briefdescription>
+<para>Turns off all voxels on a given plane of the specified axis. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to manipulate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane index on axis.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="337" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="337" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a478ef408bdaaee6664279793d1c724ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][]</type>
+        <definition>bool [][] CubeController.Cube.GetPlane</definition>
+        <argsstring>(AXIS axis, int pl)</argsstring>
+        <name>GetPlane</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <briefdescription>
+<para>Gets a plane by axis, indexed by pl. See documentation for graphical explanation. Complications arise due to cube orientation towards end user. </para>        </briefdescription>
+        <detaileddescription>
+<para>For instance: GetPlane(AXIS_Y, 1) <ndash/>&gt; return the A-Z plane at B=1. GetPlane(AXIS_X, 0) <ndash/>&gt; return the B-Z plane at A=0. GetPlane(AXIS_Z, 3) <ndash/>&gt; return the A-B plane at Z=3.</para><para><simplesect kind="return"><para>The plane indexed by pl on the axis axis.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The axis of the plane.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the plane.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="385" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="385" bodyend="420"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aec7dff8a9e7507dade41a1c35bcd1f83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.PatternSetPlane</definition>
+        <argsstring>(AXIS axis, int pl, bool[][] pattern)</argsstring>
+        <name>PatternSetPlane</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pattern</declname>
+          <array>[][]</array>
+        </param>
+        <briefdescription>
+<para>Sets a plane indexed by pl on the axis axis to a given pattern. </para>        </briefdescription>
+        <detaileddescription>
+<para>See documentation for graphical explanation. Complications arise due to cube orientation towards end user. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The axis to set the plane on.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the plane.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pattern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pattern to fill the plane with.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="432" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="432" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1af4151687401470693d40b38708f2e4f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ShiftAndRoll</definition>
+        <argsstring>(AXIS axis, DIRECTION direction)</argsstring>
+        <name>ShiftAndRoll</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kindref="member">DIRECTION</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Shift the specified axis in the specified direction. Roll planes through (do not discard planes). </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="476" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="476" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae8fe40df6ad23a050fd9f13e3c633f20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ShiftNoRoll</definition>
+        <argsstring>(AXIS axis, DIRECTION direction)</argsstring>
+        <name>ShiftNoRoll</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kindref="member">DIRECTION</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Shift the specified axis in the specified direction. Discard planes as they reach the boundary. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="507" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="507" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a27eb8c6f4e685b8347a3911525b198fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RotatePlane</definition>
+        <argsstring>(AXIS axis, int pl, int theta)</argsstring>
+        <name>RotatePlane</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>theta</declname>
+        </param>
+        <briefdescription>
+<para>Rotates the plane. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rotate by +90: Transpose matrix. Reverse rows.</para><para>Rotate by +180: Reverse each row, then each column.</para><para>Rotate by +270: Transpose matrix. Reverse columns.</para><para>See: <ulink url="http://stackoverflow.com/a/8664879">http://stackoverflow.com/a/8664879</ulink> </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pl.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>theta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Theta.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="542" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="542" bodyend="571"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a0fd48140ff7bd947d0789aaa339ad352" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.PartialRotation</definition>
+        <argsstring>(AXIS axis, int pl, double theta)</argsstring>
+        <name>PartialRotation</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>theta</declname>
+        </param>
+        <briefdescription>
+<para>Partially rotates a given plane, not based on strictly 90°, 180°, or -90° turns. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to rotate along.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane of axis to rotate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>theta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Degree of rotation.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="580" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="580" bodyend="605"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae95ad5a384b692de255b5f911ef91742" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.MirrorCubeAlongAxis</definition>
+        <argsstring>(AXIS axis)</argsstring>
+        <name>MirrorCubeAlongAxis</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <briefdescription>
+<para>Mirrors the cube along a given axis. </para>        </briefdescription>
+        <detaileddescription>
+<para>If a cube is mirrored along it&apos;s Z-axis, the voxels at the top will now become the voxels at the bottom. They DO NOT change x-y positions though within the x-y plane from that Z-slice. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to mirror across.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="657" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="657" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a324c737c502eb55e0bd8c06072d8461e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SymmetryAlongAxis</definition>
+        <argsstring>(AXIS axis, REFLECTION refl)</argsstring>
+        <name>SymmetryAlongAxis</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597" kindref="member">REFLECTION</ref></type>
+          <declname>refl</declname>
+        </param>
+        <briefdescription>
+<para>Provides symmetry of the cube along a given axis. You can reflect the axis either from origin or from the terminating end. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to provide symmetry along.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>refl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reflection direction.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="681" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="681" bodyend="703"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DrawLine</definition>
+        <argsstring>(int x1, int y1, int z1, int x2, int y2, int z2)</argsstring>
+        <name>DrawLine</name>
+        <param>
+          <type>int</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z2</declname>
+        </param>
+        <briefdescription>
+<para>Draws a line across the cube, in 3D. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first z coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="715" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="715" bodyend="762"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a588b61625eb1eb79b7e5e8195ede5841" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DrawLine</definition>
+        <argsstring>(Point p1, Point p2)</argsstring>
+        <name>DrawLine</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">Point</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">Point</ref></type>
+          <declname>p2</declname>
+        </param>
+        <briefdescription>
+<para>Draws a line across the cube, in 3D. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source x,y,z point</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination x,y,z point</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="770" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="770" bodyend="818"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae55ee3263b7e1777cacbd0925c5aeeb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ClearLine</definition>
+        <argsstring>(int x1, int y1, int z1, int x2, int y2, int z2)</argsstring>
+        <name>ClearLine</name>
+        <param>
+          <type>int</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z2</declname>
+        </param>
+        <briefdescription>
+<para>Clears a line across the cube, in 3D. </para>        </briefdescription>
+        <detaileddescription>
+<para>Line segment equations between two points in 3D: <ulink url="http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,">http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,</ulink> pg.4, eq(1.13). </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first x value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first y value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first z value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second x value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second y value.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The second z value.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="832" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="832" bodyend="879"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a6011c9100abd5123127b20623fd9a6a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ClearLine</definition>
+        <argsstring>(Point p1, Point p2)</argsstring>
+        <name>ClearLine</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">Point</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">Point</ref></type>
+          <declname>p2</declname>
+        </param>
+        <briefdescription>
+<para>Clears a line across the cube, in 3D. </para>        </briefdescription>
+        <detaileddescription>
+<para>Line segment equations between two points in 3D: <ulink url="http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,">http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf,</ulink> pg.4, eq(1.13). </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>p1</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source x,y,z point</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>p2</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The destination x,y,z point</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="889" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="889" bodyend="937"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ad6844c1c7d39d5fe2a30df6a1238e5e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DrawRectangle</definition>
+        <argsstring>(Cube.AXIS axis, CubeController.Point A, CubeController.Point D)</argsstring>
+        <name>DrawRectangle</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">Cube.AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">CubeController.Point</ref></type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">CubeController.Point</ref></type>
+          <declname>D</declname>
+        </param>
+        <briefdescription>
+<para>Draws a rectangle using point A and point D. </para>        </briefdescription>
+        <detaileddescription>
+<para>Rectangle must be drawn on the coordinate that the points share, i.e., you cannot (or should not) draw a rectangle between a point at (0,0,7) and (1,2,3), as they have no common plane to drawn cleanly across at 90° angles.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>A</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first point to draw from (inside-originating corner).</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>D</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The terminating point (outside-opposing corner).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1104" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1104" bodyend="1142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a6de7d776a7957463d759af960e877e2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DrawCircle</definition>
+        <argsstring>(Cube.AXIS axis, CubeController.Point center, CubeController.Point rad)</argsstring>
+        <name>DrawCircle</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">Cube.AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">CubeController.Point</ref></type>
+          <declname>center</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_point" kindref="compound">CubeController.Point</ref></type>
+          <declname>rad</declname>
+        </param>
+        <briefdescription>
+<para>Draws a circle at [center] with radius [radius]. </para>        </briefdescription>
+        <detaileddescription>
+<para>Follows the Midpoint Circle Algorithm: <ulink url="http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf,">http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf,</ulink> pg 9. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>center</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>radius</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1152" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1152" bodyend="1256"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a5e36a9cf11e8f793f628b62338bf1431" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.PutChar</definition>
+        <argsstring>(AXIS axis, int pl, char c)</argsstring>
+        <name>PutChar</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pl</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Writes a specified to a plane along axis. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to write along.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pl</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Plane to modify.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to write (lookup bitmap).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1324" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1324" bodyend="1327"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a084e7f4d8ebb0a5395c0b3b48c6130d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.MessageFlyOnAxis</definition>
+        <argsstring>(string message, AXIS axis, DIRECTION direction)</argsstring>
+        <name>MessageFlyOnAxis</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kindref="member">DIRECTION</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Prints a message character by character on a given axis, and sends it flying either front-to-back or back-to-front. </para>        </briefdescription>
+        <detaileddescription>
+<para>NOTE: front-to-back is relative to axis, specifically from ORIGIN-to-TERMINUS, or as close as possible. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to transmit.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to send message along.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction of travel.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1349" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1349" bodyend="1365"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ab050db384e01dfbe0932f0bd7c3b158a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.MessageBanner</definition>
+        <argsstring>(string message, DIRECTION direction)</argsstring>
+        <name>MessageBanner</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kindref="member">DIRECTION</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Sends a message &quot;around&quot; the cube in a banner-like manner (rhyme!). </para>        </briefdescription>
+        <detaileddescription>
+<para>A character is put on either the 0th A plane, or th 7th A plane, and then is printed out character by character, and rotated around the cube. Only three characters will be printed at a time (see documentation for explanation). </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to print.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction to send around cube.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1377" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1377" bodyend="1427"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ade63ba8237e0ec3ec23bc7378792206d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.AxisBoing</definition>
+        <argsstring>(AXIS axis, int speed)</argsstring>
+        <name>AxisBoing</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>speed</declname>
+        </param>
+        <briefdescription>
+<para>A single plane of all-set voxels is sent along [axis] away from ORIGIN towards TERMINUS. </para>        </briefdescription>
+        <detaileddescription>
+<para>When the plane reaches TERMINUS, it delays for [speed] milliseconds. </para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>speed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Speed.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1441" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1441" bodyend="1456"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a931320bdf48f03b3978c23e556771ec6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.AxisUpDownRandSups</definition>
+        <argsstring>(Cube.AXIS axis, int delay, int sleep, bool invert)</argsstring>
+        <name>AxisUpDownRandSups</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">Cube.AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>sleep</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>invert</declname>
+        </param>
+        <briefdescription>
+<para>Shamelessy &quot;inspired&quot; (edit: copied) from CHR&apos;s original code. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Axis to randomly suspend along.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay between animation frames.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sleep</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to hold the frozen suspensions.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>invert</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inversion?</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1465" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1465" bodyend="1517"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a87dc1aaa75e54cb16274c70b9092ecaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.Firework</definition>
+        <argsstring>(int iterations, int explosionSize, int delay)</argsstring>
+        <name>Firework</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>explosionSize</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>This function will shoot a specified number of &quot;fireworks&quot; up from the bottom layer. These explode and rain down. The function is more-or-less copied form <ref refid="3d_8cpp" kindref="compound">3d.cpp</ref>. We need to experiment with it some on the cube to get it to our liking. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of fireworks to shoot</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>explosionSize</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The size of the explosion</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The delay</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1571" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1571" bodyend="1630"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae9ce81ee202a87d3212a5486c733bfa7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.LineSpin</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>LineSpin</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Spins a line in a sinusoidal fashion. Implementation nearly directly taken from <ref refid="3d_8cpp" kindref="compound">3d.cpp</ref><ref refid="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8" kindref="member">linespin()</ref>. Some of the values have been arbitrarily chosen by the team from CHR, so I&apos;ve chosen not to mess with them too much. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1639" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1639" bodyend="1665"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aed74c8b833d6c124461d9680d19d25a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.VertSpiral</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>VertSpiral</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Pretty much like line spin, but with a twist on which axis dominates the <ref refid="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738" kindref="member">DrawLine()</ref> invocation. Leads to some interesting effects. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1674" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1674" bodyend="1700"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ade1d35a7484ac9a305fac950b62c7604" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.LoadBar</definition>
+        <argsstring>(int delay)</argsstring>
+        <name>LoadBar</name>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Light all LEDs layer by layer in strips, and then unset in the opposite pattern. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1707" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1707" bodyend="1730"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1acd56842b64469ddfb19c4dbdc70e3b9b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.Rain</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>Rain</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Create a rain-shower for the specified iterations, with [delay] ms between each frame. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1738" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1738" bodyend="1754"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a1cae6b7dab34520359fd954b583d4bf3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.Ripples</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>Ripples</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Creates a sine wave that ripples from the center of the cube. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations to run to.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Animation speed (delay between frames in milliseconds).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1761" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1761" bodyend="1790"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a389b75c3b2b71320a332befe1d72b44c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SineWave</definition>
+        <argsstring>(int iterations, int delay, double delta_t)</argsstring>
+        <name>SineWave</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>delta_t</declname>
+        </param>
+        <briefdescription>
+<para>Shows sinusoidal wave. Will only be shown from the front of the cube, i.e. the A-Z plane. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations to run the effect to.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay between frames (in milliseconds).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1798" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1798" bodyend="1820"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a5cf632c703acbfbf41e8e561f3cba8b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SideWaves</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>SideWaves</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Generates waves that spin from side-to-side. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1827" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1827" bodyend="1849"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ab8e7d7047fbd82930b494e6a3814c251" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.SendVoxelZ</definition>
+        <argsstring>(int x, int y, int z, int delay)</argsstring>
+        <name>SendVoxelZ</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Takes a voxel and sends it from one face of the cube to another along the Z-axis. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay between frames.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1859" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1859" bodyend="1873"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ab50798d1cde4a84ac31a5308c93a2127" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.BoxWoopWoop</definition>
+        <argsstring>(int iterations, int delay, bool grow, int size)</argsstring>
+        <name>BoxWoopWoop</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>grow</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Grows or shrinks a wireframe box given the value of [grow]. A really neat effect if used in the following manner: while (iteration &lt; max){ BoxWoopWoop(1, delay, true, size); // Grow BoxWoopWoop(1, delay, false, size); // Shrink } // Repeatedly </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Iterations to run to.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay between animation frames.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>grow</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to <computeroutput>true</computeroutput>, then grow.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1887" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1887" bodyend="1914"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a04c0549d8b6f796293942edbf4e2b377" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.VoxelTest</definition>
+        <argsstring>(int delay)</argsstring>
+        <name>VoxelTest</name>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Set every voxel on the cube, but plane by plane. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Delay between plane refreshes.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1920" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1920" bodyend="1937"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae1beff582abbe4c2ce3d6d6c92491310" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RandomSparkle</definition>
+        <argsstring>(int sparkleCount, int delay)</argsstring>
+        <name>RandomSparkle</name>
+        <param>
+          <type>int</type>
+          <declname>sparkleCount</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Blink an increasing number of random voxels, and then blink in a decreasing number back down to 1 again. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1943" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1943" bodyend="1957"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a995910183c0a0c8c7d4b27f1c593f7ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.TelcStairs</definition>
+        <argsstring>(bool invert, int delay)</argsstring>
+        <name>TelcStairs</name>
+        <param>
+          <type>bool</type>
+          <declname>invert</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Not quite sure what this does, in all reality. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>invert</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1987" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1987" bodyend="2005"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ad9281b2f10850ac966e67738be6e1611" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.WormSqueeze</definition>
+        <argsstring>(int size, Cube.AXIS axis, Cube.DIRECTION direction, int iterations, int delay)</argsstring>
+        <name>WormSqueeze</name>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">Cube.AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kindref="member">Cube.DIRECTION</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Not quite sure of the effect. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2036" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2036" bodyend="2086"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a34db28475ec05492c7577a9224ebd48c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.WriteCube</definition>
+        <argsstring>(object stateInfo)</argsstring>
+        <name>WriteCube</name>
+        <param>
+          <type>object</type>
+          <declname>stateInfo</declname>
+        </param>
+        <briefdescription>
+<para>A callback for the <ref refid="class_cube_controller_1_1_serial_driver" kindref="compound">SerialDriver</ref> thread responsible for pushing cube frames via TTL. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stateInfo</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="101" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="101" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a9e0c61eb518c0fa9699501a30c923f29" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DelayMS</definition>
+        <argsstring>(int x)</argsstring>
+        <name>DelayMS</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Delays the drawing buffer from updating for x milliseconds. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of milliseconds to sleep.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="121" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a940366f41383f5c6976fd8540fbe0151" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][]</type>
+        <definition>bool [][] CubeController.Cube.NewEmptyPlane</definition>
+        <argsstring>(int size)</argsstring>
+        <name>NewEmptyPlane</name>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Creates an empty plane for use of filling. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The empty plane.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="151" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="151" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa832855a3a895c3a9fd135e29bc18395" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CubeController.Cube.InRange</definition>
+        <argsstring>(int x, int y, int z)</argsstring>
+        <name>InRange</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Determines if the specified coordinates are in range of the cube dimensions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The x coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The y coordinate.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The z coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="225" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="225" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a509466d914ec42e2733cf7106cfb1ade" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.Transpose2D</definition>
+        <argsstring>(ref bool[][] mtx)</argsstring>
+        <name>Transpose2D</name>
+        <param>
+          <type>ref bool</type>
+          <declname>mtx</declname>
+          <array>[][]</array>
+        </param>
+        <briefdescription>
+<para>Transposes a 2D square matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mtx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix to transpose.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="611" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="611" bodyend="622"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a0dc94d83f8d7e9b31345c308a448bc36" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.ColumnReversal2D</definition>
+        <argsstring>(ref bool[][] mtx)</argsstring>
+        <name>ColumnReversal2D</name>
+        <param>
+          <type>ref bool</type>
+          <declname>mtx</declname>
+          <array>[][]</array>
+        </param>
+        <briefdescription>
+<para>Reverses the columns of a 2D matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mtx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix source of columns.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="628" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="628" bodyend="636"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a23fd27ab893a401fcb9a85698c2e7345" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RowReversal2D</definition>
+        <argsstring>(ref bool[][] mtx)</argsstring>
+        <name>RowReversal2D</name>
+        <param>
+          <type>ref bool</type>
+          <declname>mtx</declname>
+          <array>[][]</array>
+        </param>
+        <briefdescription>
+<para>Reverses the rows of a 2D matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mtx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Matrix source of rows.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="642" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="642" bodyend="647"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ab5f5f731011afcd62d02621f96bfec6b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.BresenhamsLine3D</definition>
+        <argsstring>(int x1, int y1, int z1, int x2, int y2, int z2, bool setting)</argsstring>
+        <name>BresenhamsLine3D</name>
+        <param>
+          <type>int</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z1</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>z2</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>setting</declname>
+        </param>
+        <briefdescription>
+<para>This is an attempt to characterize Bresenham&apos;s Line Algorithm in 3D, extrapolating information from the 2D version. A 3D implementation has been modified from its source: <ulink url="https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs">https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs</ulink> </para>        </briefdescription>
+        <detaileddescription>
+<para>Basic idea in 2D: Let A = 2 times change in B Let B = A - 2 times change in A Let M = A - change in A</para><para>Set the starting point.</para><para>Then, for every position along A: while (!atEnd): M &lt; 0 new pixel on same line as last pixel; M += A; M &gt;= 0 new pixel on line higher than last pixel; M += B;</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x1</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y1</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z1</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>x2</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y2</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>z2</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="967" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="967" bodyend="1092"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ae075444e874717ae58ac87fcbd17fcaf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>A ***Z B **_ _ _X **Vertices are labeled in the diagram above.*&lt;/summary &gt; *&lt; paramname=&quot;S&quot;&gt; Source vertex.&lt;/param &gt; *&lt; paramname=&quot;dist&quot;&gt; Distance between</type>
+        <definition>A* * * Z B* * _ _ _X * * Vertices are labeled in the diagram above.*&lt;/summary&gt; *&lt;paramname=&quot;S&quot;&gt; Source vertex.&lt;/param&gt; *&lt;paramname=&quot;dist&quot;&gt; Distance between CubeController.Cube.vertices</definition>
+        <argsstring>(side length).&lt;/param &gt; */public void BoxWireFrame(Point S</argsstring>
+        <name>vertices</name>
+        <param>
+          <type>side</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1282" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1ac4885f97842e129acc0f028ba8591f6f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][]</type>
+        <definition>bool [][] CubeController.Cube.GetChar</definition>
+        <argsstring>(char c)</argsstring>
+        <name>GetChar</name>
+        <param>
+          <type>char</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Gets the character specified by &apos;c&apos;. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The char.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>C.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1334" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1334" bodyend="1337"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a7d0f1c2bac4e5014ef209e0c7cc6eee3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.DrawPositionsAxis</definition>
+        <argsstring>(Cube.AXIS axis, int[] positions, bool invert)</argsstring>
+        <name>DrawPositionsAxis</name>
+        <param>
+          <type><ref refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kindref="member">Cube.AXIS</ref></type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int[]</type>
+          <declname>positions</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>invert</declname>
+        </param>
+        <briefdescription>
+<para>A helper function for AxisUpDownRandSusp. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>axis</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>positions</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>invert</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1525" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1525" bodyend="1560"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1aa2f22e8ddcc15a7c16b0c9e74305cb9c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.Cube.RandomSparkleFlash</definition>
+        <argsstring>(int iterations, int voxels, int delay)</argsstring>
+        <name>RandomSparkleFlash</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>voxels</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Set a given number of voxels at random positions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>iterations</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of animation frames.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voxels</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of voxels to set.</para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Animation delay between frame updates.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="1965" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="1965" bodyend="1980"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_cube_1a143ec77de2186afbb3df7a28e377c09a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CubeController.Cube.TelcStairsDo</definition>
+        <argsstring>(int x, int delay)</argsstring>
+        <name>TelcStairsDo</name>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+<para>Again, not quite sure what this does! </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delay</parametername>
+</parameternamelist>
+<parameterdescription>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="2013" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="2013" bodyend="2026"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>CubeController.FontHandler</label>
+        <link refid="class_cube_controller_1_1_font_handler"/>
+      </node>
+      <node id="3">
+        <label>CubeController.SerialDriver</label>
+        <link refid="class_cube_controller_1_1_serial_driver"/>
+      </node>
+      <node id="1">
+        <label>CubeController.Cube</label>
+        <link refid="class_cube_controller_1_1_cube"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>_fontHandler</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_serialDriver</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" line="10" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Cube.cs" bodystart="9" bodyend="2090"/>
+    <listofallmembers>
+      <member refid="class_cube_controller_1_1_cube_1ab865359a0e6b58e13185d5b06ddd78fd" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_cubeState</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aca45b07b1a8dfa10170d31b70cde15a6" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_fontHandler</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a98d2c6615fa541b8a32f3fd77e66cd24" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_rgen</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a0d0378854720b76944d66c2c867fa0ca" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_serialDriver</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a0f1de4bd14615dd3988b49263949f043" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_serialDriverTimer</name></member>
+      <member refid="class_cube_controller_1_1_cube_1abc9f9721e7613dfe408ed51acbe48c20" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>_writeCubeCallback</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>AXIS</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ade63ba8237e0ec3ec23bc7378792206d" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>AxisBoing</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a931320bdf48f03b3978c23e556771ec6" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>AxisUpDownRandSups</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ab50798d1cde4a84ac31a5308c93a2127" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>BoxWoopWoop</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ab5f5f731011afcd62d02621f96bfec6b" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>BresenhamsLine3D</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa4313fe03c0a5f1a6ffb85b4b3fc68f3" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ClearEntireCube</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae55ee3263b7e1777cacbd0925c5aeeb2" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ClearLine</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a6011c9100abd5123127b20623fd9a6a0" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ClearLine</name></member>
+      <member refid="class_cube_controller_1_1_cube_1af951ad9cd93e438bbcd56f2d99f482f9" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ClearPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a77a227f0c3d12a38b79362aa212d29c6" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ClearVoxel</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a0dc94d83f8d7e9b31345c308a448bc36" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>ColumnReversal2D</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa5063999eb3d0028d2ed8d307b3d3843" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>Cube</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a9e0c61eb518c0fa9699501a30c923f29" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>DelayMS</name></member>
+      <member refid="class_cube_controller_1_1_cube_1af8b4bed33c4b80cc1de08583ec22ae04" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>DIMENSION</name></member>
+      <member refid="class_cube_controller_1_1_cube_1afc581e9955e6d793ce0055e92c415473" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>Dimension</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>DIRECTION</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aeb41c6a358f401c9a031da143c976a33" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>dist</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a6de7d776a7957463d759af960e877e2e" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>DrawCircle</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>DrawLine</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a588b61625eb1eb79b7e5e8195ede5841" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>DrawLine</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a7d0f1c2bac4e5014ef209e0c7cc6eee3" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>DrawPositionsAxis</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ad6844c1c7d39d5fe2a30df6a1238e5e4" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>DrawRectangle</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a87dc1aaa75e54cb16274c70b9092ecaa" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>Firework</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ac4885f97842e129acc0f028ba8591f6f" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>GetChar</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa87aeba0d386389035a4fce7d3be6549" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>GetCubeState</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a478ef408bdaaee6664279793d1c724ca" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>GetPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa8e927414815c791a65678b3a6ab6883" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>GetVoxel</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa832855a3a895c3a9fd135e29bc18395" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>InRange</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae9ce81ee202a87d3212a5486c733bfa7" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>LineSpin</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ade1d35a7484ac9a305fac950b62c7604" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>LoadBar</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ab050db384e01dfbe0932f0bd7c3b158a" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>MessageBanner</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a084e7f4d8ebb0a5395c0b3b48c6130d8" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>MessageFlyOnAxis</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae95ad5a384b692de255b5f911ef91742" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>MirrorCubeAlongAxis</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a940366f41383f5c6976fd8540fbe0151" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>NewEmptyPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a0fd48140ff7bd947d0789aaa339ad352" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>PartialRotation</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aec7dff8a9e7507dade41a1c35bcd1f83" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>PatternSetPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a5e36a9cf11e8f793f628b62338bf1431" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>PutChar</name></member>
+      <member refid="class_cube_controller_1_1_cube_1acd56842b64469ddfb19c4dbdc70e3b9b" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>Rain</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae1beff582abbe4c2ce3d6d6c92491310" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>RandomSparkle</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aa2f22e8ddcc15a7c16b0c9e74305cb9c" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>RandomSparkleFlash</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>REFLECTION</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a1e2f9e4fcf2133bc9f071fda0834ec01" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>RenderCube</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a9b3a284e6260d70df58a4254f586a3e2" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>RenderPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a1cae6b7dab34520359fd954b583d4bf3" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>Ripples</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a27eb8c6f4e685b8347a3911525b198fc" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>RotatePlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a23fd27ab893a401fcb9a85698c2e7345" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>RowReversal2D</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ab8e7d7047fbd82930b494e6a3814c251" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SendVoxelZ</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a7eed1a6432f4c80f6f9169f95fb4e096" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SetEntireCube</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a1da60272e09fd88ebbd5366b4c7a2121" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SetPlane</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae6764b8c60a8eb39603bd0e0a77e8e93" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SetVoxel</name></member>
+      <member refid="class_cube_controller_1_1_cube_1af4151687401470693d40b38708f2e4f0" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ShiftAndRoll</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae8fe40df6ad23a050fd9f13e3c633f20" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>ShiftNoRoll</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a5cf632c703acbfbf41e8e561f3cba8b0" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SideWaves</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a389b75c3b2b71320a332befe1d72b44c" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SineWave</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae70486fd7b425fa717fe226d6beae416" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SwapVoxel</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a324c737c502eb55e0bd8c06072d8461e" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>SymmetryAlongAxis</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a995910183c0a0c8c7d4b27f1c593f7ec" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>TelcStairs</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a143ec77de2186afbb3df7a28e377c09a" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>TelcStairsDo</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a509466d914ec42e2733cf7106cfb1ade" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>Transpose2D</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ae075444e874717ae58ac87fcbd17fcaf" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>vertices</name></member>
+      <member refid="class_cube_controller_1_1_cube_1aed74c8b833d6c124461d9680d19d25a2" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>VertSpiral</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a04c0549d8b6f796293942edbf4e2b377" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>VoxelTest</name></member>
+      <member refid="class_cube_controller_1_1_cube_1ad9281b2f10850ac966e67738be6e1611" prot="public" virt="non-virtual"><scope>CubeController::Cube</scope><name>WormSqueeze</name></member>
+      <member refid="class_cube_controller_1_1_cube_1a34db28475ec05492c7577a9224ebd48c" prot="private" virt="non-virtual"><scope>CubeController::Cube</scope><name>WriteCube</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

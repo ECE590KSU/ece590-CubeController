@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_cube_controller_1_1_effect">
+<title>CubeController::Effect class Reference</title>
+        <simplesect>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const int TEST_WAVE_ITERATIONS</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const double WAVE_CONSTANT<para><emphasis>&lt;summary&gt;
+A &quot;magic&quot; number used in some of the original Instructables C-code. 
+It seems to be used in connection with finding the distance from the center
+of the cube when propagating a sinusoidal wave.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const double RIPPLE_INTERVAL</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const double HELIX_BRAID_LENGTH_DELTA_T</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const double NICE_SINE_WAVE_DELTA_T</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const int COMFORTABLE_BOX_WOOP_WOOP_DELAY</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static double PI</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>const double CubeController.Effect.WAVE_CONSTANT</title>                
+<para>The actual definition comes from the original author doing the following: 7 | \ | \ A? |___\ 7 A = sqrt(7^2 + 7^2) ~= 9.899495 </para>
+
+                <para>Definition at line 21 of file Effect.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Effect.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+</section>

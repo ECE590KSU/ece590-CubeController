@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_cube_controller_1_1_font_handler">
+<title>CubeController::FontHandler class Reference</title>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Dictionary&lt; char, bool[][]&gt; _alphabet</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static string pathDictionarySource</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_cube_controller_1_1_font_handler_1a6960c0718a7b7a240b4dd35befd167af">FontHandler</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][] <link linkend="class_cube_controller_1_1_font_handler_1a0e2b097186bdc704250bfff7591fa329">LookupByKey</link> (
+char key)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_font_handler_1a99b898b0994fe77c2ab2ca2ca2ce3ccb">InitializeAlphabet</link> (
+ref Dictionary&lt; char, bool[][]&gt; alpha)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>bool[][] <link linkend="class_cube_controller_1_1_font_handler_1a07f14dfc8d01ccafadf1d724782f7fe9">NewEmptyPlane</link> (
+int size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+            <section xml:id="class_cube_controller_1_1_font_handler_1a6960c0718a7b7a240b4dd35befd167af">
+                <title>CubeController.FontHandler.FontHandler ()</title> <emphasis>&lt;summary&gt;
+Initializes a new instance of the FontHandler class.</emphasis>
+                
+<para>Non-default public constructor. </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_font_handler_1a0e2b097186bdc704250bfff7591fa329">
+                <title>bool [][] CubeController.FontHandler.LookupByKey (char key)</title> <emphasis>&lt;summary&gt;
+Public method to lookup the private Dictionary values by key.
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para>The the character bitmap for the char key.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>key</entry>
+                                <entry>
+<para>The character key to lookup the character bitmap by.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_font_handler_1a99b898b0994fe77c2ab2ca2ca2ce3ccb">
+                <title>void CubeController.FontHandler.InitializeAlphabet (ref Dictionary&lt; char, bool[][]&gt; alpha)</title> <emphasis>&lt;summary&gt;
+Initializes the alphabet lookup Dictionary.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>alpha</entry>
+                                <entry>
+<para>A reference to the alphabet lookup Dictionary.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_font_handler_1a07f14dfc8d01ccafadf1d724782f7fe9">
+                <title>bool [][] CubeController.FontHandler.NewEmptyPlane (int size)</title> <emphasis>&lt;summary&gt;
+Creates an empty plane for use of filling. 
+&lt;/summary&gt;</emphasis>
+                
+<para><formalpara><title>Returns: </title>
+
+<para>The empty plane.</para>
+</formalpara>
+
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>size</entry>
+                                <entry>
+<para>Size.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+</section>

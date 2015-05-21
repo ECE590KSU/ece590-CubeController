@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="class_cube_controller_1_1_serial_driver">
+<title>CubeController::SerialDriver class Reference</title>
+        <simplesect>
+            <title>Private Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>const int DIMENSION<para><emphasis>&lt;summary&gt;
+Cube dimension.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>SerialPort _serialPort<para><emphasis>&lt;summary&gt;
+Active serial port.
+&lt;/summary&gt;</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="class_cube_controller_1_1_serial_driver_1a3bbfd56c7eea9cb06ab866a8d9177d12">SerialDriver</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_serial_driver_1ab4f7cd418abdae1f6b124ec8cc5b3422">WriteCube</link> (
+bool cubeState)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_serial_driver_1a40ffa52da5db9f7c9f79e095674ab2e3">ClosePort</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_serial_driver_1a2d67b664a1d78f7856e2c5a666205b15">OpenPort</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_serial_driver_1a5e16087e2926a4047bf35f93402b8cd4">ConfigurePort</link> (
+int baudRate, int writeTimeout)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="class_cube_controller_1_1_serial_driver_1a56b9086165052ea7b13080c2e87a4a7b">SendEscapeSequence</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>byte[] <link linkend="class_cube_controller_1_1_serial_driver_1a1a03c793095eee4f4afe4140ed717de5">ConvertCubeStateToByteArray</link> (
+bool cubeState)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>const int CubeController.SerialDriver.DIMENSION</title>                
+                <para>Definition at line 15 of file SerialDriver.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>SerialDriver.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>SerialPort CubeController.SerialDriver._serialPort</title>                
+                <para>Definition at line 20 of file SerialDriver.cs</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>SerialDriver.cs</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a3bbfd56c7eea9cb06ab866a8d9177d12">
+                <title>CubeController.SerialDriver.SerialDriver ()</title> <emphasis>&lt;summary&gt;
+Default constructor for SerialDriver.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1ab4f7cd418abdae1f6b124ec8cc5b3422">
+                <title>void CubeController.SerialDriver.WriteCube (bool[][][] cubeState)</title> <emphasis>&lt;summary&gt;
+Writes a buffer to the ATMega via the configured serial port.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>cubeState</entry>
+                                <entry>
+<para>The voxel state you wish to send to the cube.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a40ffa52da5db9f7c9f79e095674ab2e3">
+                <title>void CubeController.SerialDriver.ClosePort ()</title> <emphasis>&lt;summary&gt;
+Closes the serial port that has been opened.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a2d67b664a1d78f7856e2c5a666205b15">
+                <title>void CubeController.SerialDriver.OpenPort ()</title> <emphasis>&lt;summary&gt;
+Opens a serial port.
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a5e16087e2926a4047bf35f93402b8cd4">
+                <title>void CubeController.SerialDriver.ConfigurePort (int baudRate, int writeTimeout)</title> <emphasis>&lt;summary&gt;
+Configures two serial settings on the port.
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>baudRate</entry>
+                                <entry>
+<para>The serial baud rate to be set.</para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>writeTimeout</entry>
+                                <entry>
+<para>The number of miliseconds before a time-out occurs when a write operation does not finish.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a56b9086165052ea7b13080c2e87a4a7b">
+                <title>void CubeController.SerialDriver.SendEscapeSequence ()</title> <emphasis>&lt;summary&gt;
+Sends escape sequence to the cube to ready it for a new draw at (0,0,0)
+&lt;/summary&gt;</emphasis>
+                
+            </section>
+            <section xml:id="class_cube_controller_1_1_serial_driver_1a1a03c793095eee4f4afe4140ed717de5">
+                <title>byte [] CubeController.SerialDriver.ConvertCubeStateToByteArray (bool[][][] cubeState)</title> <emphasis>&lt;summary&gt;
+Converts the triple boolean array into a buffer
+&lt;/summary&gt;</emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters</title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <tbody>
+                            <row>
+                                <entry>cubeState</entry>
+                                <entry>
+<para>The voxel state you wish to send to the cube.</para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                <formalpara><title>Returns: </title>
+
+<para>A buffer to be sent over serial comm</para>
+</formalpara>
+</para>
+
+            </section>
+</section>

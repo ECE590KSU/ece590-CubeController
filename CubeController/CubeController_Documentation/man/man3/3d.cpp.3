@@ -1,0 +1,487 @@
+.TH "3d.cpp" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+3d.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <math\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'draw\&.hpp'\fP
+.br
+\fC#include 'draw_3d\&.hpp'\fP
+.br
+\fC#include '3d\&.hpp'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBNUM_FIREWORK_COMPONENTS\fP   6"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBlinespin\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBsinelines\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBripples\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBsidewaves\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBspheremove\fP (int iterations, int delay)"
+.br
+.ti -1c
+.RI "void \fBfireworks\fP (int iterations, int n, int delay)"
+.br
+.ti -1c
+.RI "void \fBeffect_rotate_random_pixels\fP (int iterations, int delay, int pixels)"
+.br
+.ti -1c
+.RI "float \fBdistance2d\fP (float x1, float y1, float x2, float y2)"
+.br
+.ti -1c
+.RI "float \fBdistance3d\fP (float x1, float y1, float z1, float x2, float y2, float z2)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const float \fBPI\fP = 4\&.0f * atanf (1\&.0)"
+.br
+.ti -1c
+.RI "const float \fBWAVE_CONSTANT\fP = 9\&.899495f"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define NUM_FIREWORK_COMPONENTS   6"
+
+.PP
+Definition at line 11 of file 3d\&.cpp\&.
+.SH "Function Documentation"
+.PP 
+.SS "float distance2d (floatx1, floaty1, floatx2, floaty2)"
+
+.PP
+Definition at line 351 of file 3d\&.cpp\&.
+.PP
+.nf
+352 { 
+353     float dist;
+354     dist = sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+355 
+356     return dist;
+357 }
+.fi
+.SS "float distance3d (floatx1, floaty1, floatz1, floatx2, floaty2, floatz2)"
+
+.PP
+Definition at line 359 of file 3d\&.cpp\&.
+.PP
+.nf
+360 {    
+361     float dist;
+362     dist = sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
+363 
+364     return dist;
+365 }
+.fi
+.SS "void effect_rotate_random_pixels (intiterations, intdelay, intpixels)"
+
+.PP
+Definition at line 288 of file 3d\&.cpp\&.
+.PP
+.nf
+289 {
+290     // Vertex defined as struct -- cannot use new without creating a default public constructor
+291     // and class implementation\&. THANKS, Instructables\&. Must use malloc()\&. 
+292     // Note, this is an array of vertex structs, not a pointer to a struct\&. 
+293     vertex *points = (vertex*)malloc(sizeof(vertex)*pixels);
+294     vertex *rotated = (vertex*)malloc(sizeof(vertex)*pixels);
+295 
+296     float fy, fx, fz;
+297     int x,y,z;
+298     int i,p;
+299 
+300     float rot_x = 0;
+301     float rot_y = 0;
+302     float rot_z = 0;
+303     vertex cube_center = {3\&.5, 3\&.5, 3\&.5};
+304 
+305     for (i=0; i<pixels; i++)
+306     {
+307         x = rand()%1200-200;    
+308         y = rand()%1200-200;    
+309         z = rand()%1200-200;
+310         fx = (float)x/100;
+311         fy = (float)y/100;
+312         fz = (float)z/100;
+313 
+314         points[i]\&.x = fx;
+315         points[i]\&.y = fy;
+316         points[i]\&.z = fz;
+317 
+318         setvoxel((int)points[i]\&.x, (int)points[i]\&.y, (int)points[i]\&.z);
+319         delay_ms(100);
+320     }
+321     delay_ms(10000);
+322 
+323     for (i=0; i<iterations; i++)
+324     {
+325         rot_x = (float)i/75;
+326         rot_y = (float)i/150;
+327         rot_z = (float)i/200;
+328 
+329         for (p=0; p<pixels; p++)
+330         {
+331             rotated[p] = point_rotate_around_point (points[p], cube_center, rot_x, rot_y, rot_z);
+332         }
+333 
+334         fill(0x00);
+335         for (p=0; p<pixels; p++)
+336         {
+337             setvoxel((int)rotated[p]\&.x, (int)rotated[p]\&.y, (int)rotated[p]\&.z);
+338         }
+339 
+340         delay_ms(delay);
+341     }
+342 
+343     // Free the memory for points[] and rotated[] appropriately\&.
+344     free(points);
+345     free(rotated);
+346 
+347     fill(0x00);
+348 }
+.fi
+.SS "void fireworks (intiterations, intn, intdelay)"
+
+.PP
+Definition at line 197 of file 3d\&.cpp\&.
+.PP
+.nf
+198 {
+199     fill(0x00);
+200 
+201     int i,f,e;
+202 
+203     float origin_x = 3;
+204     float origin_y = 3;
+205     float origin_z = 3;
+206 
+207     int rand_y, rand_x, rand_z;
+208 
+209     float slowrate, gravity;
+210 
+211     // Particles and their position, x,y,z and their movement, dx, dy, dz
+212     // Compiler warns that it needs a constant expression for declaration of 2D arrays on stack\&. 
+213     // Changing to dynamic allocation instead:
+214     float **particles = new float*[n];
+215     for (i = 0; i < n; ++i)
+216     {
+217         particles[i] = new float[NUM_FIREWORK_COMPONENTS];
+218     }
+219 
+220     for (i=0; i<iterations; i++)
+221     {
+222         origin_x = (float)(rand() % 4);
+223         origin_y = (float)(rand() % 4);
+224         origin_z = (float)(rand() % 2);
+225         origin_z += (5\&.0f);
+226         origin_x += (2\&.0f);
+227         origin_y += (2\&.0f);
+228 
+229         // shoot a particle up in the air
+230         for (e=0;e<origin_z;e++)
+231         {
+232             setvoxel((int)origin_x, (int)origin_y, e);
+233             delay_ms(600+(500*e));
+234             fill(0x00);
+235         }
+236 
+237         // Fill particle array
+238         for (f=0; f<n; f++)
+239         {
+240             // Position
+241             particles[f][0] = origin_x;
+242             particles[f][1] = origin_y;
+243             particles[f][2] = origin_z;
+244             
+245             rand_x = rand()%200;
+246             rand_y = rand()%200;
+247             rand_z = rand()%200;
+248 
+249             // Movement
+250             particles[f][3] = 1-(float)rand_x/100; // dx
+251             particles[f][4] = 1-(float)rand_y/100; // dy
+252             particles[f][5] = 1-(float)rand_z/100; // dz
+253         }
+254 
+255         // explode
+256         for (e=0; e<25; e++)
+257         {
+258             slowrate = (1\&.0f) + (tanf((e+(0\&.1f))/20) * (10\&.0f));
+259             gravity = tanf((e+(0\&.1f))/20) / (2\&.0f);
+260 
+261             for (f=0; f<n; f++)
+262             {
+263                 particles[f][0] += particles[f][3]/slowrate;
+264                 particles[f][1] += particles[f][4]/slowrate;
+265                 particles[f][2] += particles[f][5]/slowrate;
+266                 particles[f][2] -= gravity;
+267 
+268                 setvoxel((int)particles[f][0], (int)particles[f][1], (int)particles[f][2]);
+269 
+270 
+271             }
+272 
+273             delay_ms(delay);
+274             fill(0x00);
+275         }
+276 
+277     }
+278 
+279     // Clean-up resources allocated with malloc\&.
+280     for (i = 0; i < n; ++i)
+281     {
+282         delete[] particles[i];
+283     }
+284     delete[] particles;
+285 
+286 }
+.fi
+.SS "void linespin (intiterations, intdelay)"
+
+.PP
+Definition at line 17 of file 3d\&.cpp\&.
+.PP
+.nf
+18 {
+19     float top_x, top_y, top_z, bot_x, bot_y, bot_z, sin_base;
+20     float center_x, center_y;
+21 
+22     center_x = 4;
+23     center_y = 4;
+24 
+25     int i, z;
+26     for (i=0;i<iterations;i++)
+27     {
+28 
+29         //printf("Sin base %f \n",sin_base);
+30 
+31         for (z = 0; z < 8; z++)
+32         {
+33 
+34         sin_base = (float)i/50 + (float)z/(10+(7*sin((float)i/200)));
+35 
+36         top_x = center_x + sin(sin_base)*5;
+37         top_y = center_x + cos(sin_base)*5;
+38         //top_z = center_x + cos(sin_base/100)*2\&.5;
+39 
+40         bot_x = center_x + sin(sin_base+PI)*10;
+41         bot_y = center_x + cos(sin_base+PI)*10;
+42         //bot_z = 7-top_z;
+43         
+44         bot_z = (float)z;
+45         top_z = (float)z;
+46 
+47         //setvoxel((int) top_x, (int) top_y, 7);
+48         //setvoxel((int) bot_x, (int) bot_y, 0);
+49 
+50         //printf("P1: %i %i %i P2: %i %i %i \n", (int) top_x, (int) top_y, 7, (int) bot_x, (int) bot_y, 0);
+51 
+52         //line_3d((int) top_x, (int) top_y, (int) top_z, (int) bot_x, (int) bot_y, (int) bot_z);
+53         line_3d((int) top_z, (int) top_x, (int) top_y, (int) bot_z, (int) bot_x, (int) bot_y);
+54         }
+55 
+56         delay_ms(120);
+57         fill(0x00);
+58     }
+59 
+60 }
+.fi
+.SS "void ripples (intiterations, intdelay)"
+
+.PP
+Definition at line 93 of file 3d\&.cpp\&.
+.PP
+.nf
+94 {
+95     float distance, height, ripple_interval;
+96     int x,y,i;
+97 
+98     fill(0x00);
+99 
+100     for (i=0;i<iterations;i++)
+101     {
+102         for (x=0;x<8;x++)
+103         {
+104             for (y=0;y<8;y++)
+105             {
+106                 distance = (distance2d(3\&.5, 3\&.5, (float)x, (float)y)/WAVE_CONSTANT)*(8\&.0f);
+107                 //distance = distance2d(3\&.5,3\&.5,x,y);
+108                 ripple_interval = (1\&.3f);
+109                 height = 4+sin(distance/ripple_interval+(float) i/50)*(4\&.0f);
+110 
+111                 setvoxel(x,y,(int) height); 
+112             }
+113         }
+114         delay_ms(delay);
+115         fill(0x00);
+116     }
+117 }
+.fi
+.SS "void sidewaves (intiterations, intdelay)"
+
+.PP
+Definition at line 119 of file 3d\&.cpp\&.
+.PP
+.nf
+120 {
+121     float origin_x, origin_y, distance, height, ripple_interval;
+122     int x,y,i;
+123 
+124     fill(0x00);
+125 
+126     for (i=0;i<iterations;i++)
+127     {
+128 
+129         origin_x = 3\&.5f+sin((float)i/500)*(4\&.0f);
+130         origin_y = 3\&.5f+cos((float)i/500)*(4\&.0f);
+131         
+132         for (x=0;x<8;x++)
+133         {
+134             for (y=0;y<8;y++)
+135             {
+136                 distance = (distance2d(origin_x, origin_y, (float)x, (float)y)/WAVE_CONSTANT)*(8\&.0f);
+137                 ripple_interval =2;
+138                 height = 4+sin((distance/ripple_interval)+(float) i/50)*(3\&.6f);
+139 
+140                 setvoxel(x,y,(int) height);
+141                 setvoxel(x,y,(int) height);
+142                     
+143             }
+144         }
+145 
+146         delay_ms(delay);
+147         fill(0x00);
+148     }
+149 }
+.fi
+.SS "void sinelines (intiterations, intdelay)"
+
+.PP
+Definition at line 62 of file 3d\&.cpp\&.
+.PP
+.nf
+63 {
+64     int i,x;
+65 
+66     float left, right, sine_base, x_dividor,ripple_height;
+67 
+68     for (i=0; i<iterations; i++)
+69     {
+70         for (x=0; x<8 ;x++)
+71         {
+72             x_dividor = 2 + sin((float)i/100)+1;
+73             ripple_height = 3 + (sin((float)i/200)+1)*6;
+74 
+75             sine_base = (float) (i/40) + (float) (x/x_dividor);
+76 
+77             left = (4\&.0f) + sin(sine_base)*ripple_height;
+78             right = (4\&.0f) + cos(sine_base)*ripple_height;
+79             right = (7\&.0f)-left;
+80 
+81             //printf("%i %i \n", (int) left, (int) right);
+82 
+83             line_3d(0-3, x, (int) left, 7+3, x, (int) right);
+84             //line_3d((int) right, 7, x);
+85         }
+86     
+87     delay_ms(delay);
+88     fill(0x00);
+89     }
+90 }
+.fi
+.SS "void spheremove (intiterations, intdelay)"
+
+.PP
+Definition at line 151 of file 3d\&.cpp\&.
+.PP
+.nf
+152 {
+153     
+154     fill(0x00);
+155 
+156     float origin_x, origin_y, origin_z, distance, diameter;
+157 
+158     origin_x = 0\&.0f;
+159     origin_y = 3\&.5f;
+160     origin_z = 3\&.5f;
+161 
+162     diameter = 3\&.0f;
+163 
+164     int x, y, z, i;
+165 
+166     for (i=0; i<iterations; i++)
+167     {
+168         origin_x = 3\&.5f + sin((float)i/50)*(2\&.5f);
+169         origin_y = 3\&.5f + cos((float)i/50)*(2\&.5f);
+170         origin_z = 3\&.5f + cos((float)i/30)*(2\&.0f);
+171 
+172         diameter = 2+sin((float)i/150);
+173 
+174         for (x=0; x<8; x++)
+175         {
+176             for (y=0; y<8; y++)
+177             {
+178                 for (z=0; z<8; z++)
+179                 {
+180                     distance = distance3d((float)x, (float)y, (float)z, origin_x, origin_y, origin_z);
+181                     //printf("Distance: %f \n", distance);
+182 
+183                     if (distance>diameter && distance<diameter+1)
+184                     {
+185                         setvoxel(x,y,z);
+186                     }
+187                 }
+188             }
+189         }
+190 
+191         delay_ms(delay);
+192         fill(0x00);
+193     }
+194 
+195 }
+.fi
+.SH "Variable Documentation"
+.PP 
+.SS "const float PI = 4\&.0f * atanf (1\&.0)"
+
+.PP
+Definition at line 14 of file 3d\&.cpp\&.
+.SS "const float WAVE_CONSTANT = 9\&.899495f"
+
+.PP
+Definition at line 15 of file 3d\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

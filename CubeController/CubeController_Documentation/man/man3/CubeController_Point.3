@@ -1,0 +1,133 @@
+.TH "CubeController.Point" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CubeController.Point \- 
+.PP
+Helper class\&. Defines a point in x,y,z space\&. Used to eliminate function calling signatures with many x,y,z args needed\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBPoint\fP ()"
+.br
+.ti -1c
+.RI "\fBPoint\fP (int x, int y, int z)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static double \fBDistance\fP (double x1, double x2, double y1, double y2, params double[] zcoords)"
+.br
+.RI "\fICalculates the distance between two points\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBX\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBY\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBZ\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Helper class\&. Defines a point in x,y,z space\&. Used to eliminate function calling signatures with many x,y,z args needed\&. 
+
+
+.PP
+Definition at line 2096 of file Cube\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CubeController\&.Point\&.Point ()"
+
+.PP
+Definition at line 2102 of file Cube\&.cs\&.
+.PP
+.nf
+2103         {
+2104 
+2105         }
+.fi
+.SS "CubeController\&.Point\&.Point (intx, inty, intz)"
+
+.PP
+Definition at line 2107 of file Cube\&.cs\&.
+.PP
+.nf
+2107                                           : base()
+2108         {
+2109             X = x;
+2110             Y = y;
+2111             Z = z;
+2112         }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "static double CubeController\&.Point\&.Distance (doublex1, doublex2, doubley1, doubley2, params double[]zcoords)\fC [static]\fP"
+
+.PP
+Calculates the distance between two points\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The d\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx1\fP The first x value\&.
+.br
+\fIx2\fP The second x value\&.
+.br
+\fIy1\fP The first y value\&.
+.br
+\fIy2\fP The second y value\&.
+.br
+\fIzcoords\fP Z coordinates (if provided) for a 3D distance calculation
+.RE
+.PP
+
+.PP
+Definition at line 2123 of file Cube\&.cs\&.
+.PP
+.nf
+2124         {
+2125             double distance = 0\&.0;
+2126 
+2127             if (zcoords\&.Length > 0) {
+2128                 distance += ((zcoords [1] - zcoords [0]) * (zcoords [1] - zcoords [0]));
+2129             }
+2130             distance += ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
+2131 
+2132             return Math\&.Sqrt(distance);
+2133         }
+.fi
+.SH "Property Documentation"
+.PP 
+.SS "int CubeController\&.Point\&.X\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Definition at line 2098 of file Cube\&.cs\&.
+.SS "int CubeController\&.Point\&.Y\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Definition at line 2099 of file Cube\&.cs\&.
+.SS "int CubeController\&.Point\&.Z\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Definition at line 2100 of file Cube\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

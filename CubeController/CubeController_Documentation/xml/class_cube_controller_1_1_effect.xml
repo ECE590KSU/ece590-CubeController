@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="class_cube_controller_1_1_effect" kind="class" prot="public">
+    <compoundname>CubeController::Effect</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1af2f23cddaf032617573d46642b14bc76" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int CubeController.Effect.TEST_WAVE_ITERATIONS</definition>
+        <argsstring></argsstring>
+        <name>TEST_WAVE_ITERATIONS</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="7" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="7" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1aea4ab35024dd6e92f36199862aedc829" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double CubeController.Effect.WAVE_CONSTANT</definition>
+        <argsstring></argsstring>
+        <name>WAVE_CONSTANT</name>
+        <initializer>= 9.899495</initializer>
+        <briefdescription>
+<para>A &quot;magic&quot; number used in some of the original Instructables C-code. It seems to be used in connection with finding the distance from the center of the cube when propagating a sinusoidal wave. </para>        </briefdescription>
+        <detaileddescription>
+<para>The actual definition comes from the original author doing the following: 7 | \ | \ A? |___\ 7 A = sqrt(7^2 + 7^2) ~= 9.899495 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="21" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1ac2aa211f00a7ac4dfd9fdc5ee6f67c14" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double CubeController.Effect.RIPPLE_INTERVAL</definition>
+        <argsstring></argsstring>
+        <name>RIPPLE_INTERVAL</name>
+        <initializer>= 1.3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="22" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1ada4abaf428db0ddfe7966c50b20a36b9" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double CubeController.Effect.HELIX_BRAID_LENGTH_DELTA_T</definition>
+        <argsstring></argsstring>
+        <name>HELIX_BRAID_LENGTH_DELTA_T</name>
+        <initializer>= 0.05</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="24" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1a3cb2c5bf52b3d30f3ba89a53f7c2db74" prot="public" static="no" mutable="no">
+        <type>const double</type>
+        <definition>const double CubeController.Effect.NICE_SINE_WAVE_DELTA_T</definition>
+        <argsstring></argsstring>
+        <name>NICE_SINE_WAVE_DELTA_T</name>
+        <initializer>= 0.75</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="25" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1a21d45a2f9419ab9237a25ae0cbe5af33" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int CubeController.Effect.COMFORTABLE_BOX_WOOP_WOOP_DELAY</definition>
+        <argsstring></argsstring>
+        <name>COMFORTABLE_BOX_WOOP_WOOP_DELAY</name>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="27" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_effect_1aca0941e884dbcae4f82b151840ca53d6" prot="public" static="yes" mutable="no">
+        <type>double</type>
+        <definition>double CubeController.Effect.PI</definition>
+        <argsstring></argsstring>
+        <name>PI</name>
+        <initializer>= 4.0 * Math.Atan(1.0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="23" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" line="6" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Effect.cs" bodystart="5" bodyend="28"/>
+    <listofallmembers>
+      <member refid="class_cube_controller_1_1_effect_1a21d45a2f9419ab9237a25ae0cbe5af33" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>COMFORTABLE_BOX_WOOP_WOOP_DELAY</name></member>
+      <member refid="class_cube_controller_1_1_effect_1ada4abaf428db0ddfe7966c50b20a36b9" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>HELIX_BRAID_LENGTH_DELTA_T</name></member>
+      <member refid="class_cube_controller_1_1_effect_1a3cb2c5bf52b3d30f3ba89a53f7c2db74" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>NICE_SINE_WAVE_DELTA_T</name></member>
+      <member refid="class_cube_controller_1_1_effect_1aca0941e884dbcae4f82b151840ca53d6" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>PI</name></member>
+      <member refid="class_cube_controller_1_1_effect_1ac2aa211f00a7ac4dfd9fdc5ee6f67c14" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>RIPPLE_INTERVAL</name></member>
+      <member refid="class_cube_controller_1_1_effect_1af2f23cddaf032617573d46642b14bc76" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>TEST_WAVE_ITERATIONS</name></member>
+      <member refid="class_cube_controller_1_1_effect_1aea4ab35024dd6e92f36199862aedc829" prot="public" virt="non-virtual"><scope>CubeController::Effect</scope><name>WAVE_CONSTANT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

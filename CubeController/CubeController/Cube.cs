@@ -46,7 +46,7 @@ namespace CubeController
         /// <summary>
         /// An enumeration of the axes upon which the cube can be oriented.
         /// </summary>
-		public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
+        public enum AXIS { AXIS_X, AXIS_Y, AXIS_Z };
 
         /// <summary>
         /// An enumeration of the directions that effects can be propagated.
@@ -88,10 +88,17 @@ namespace CubeController
 			_rgen = new Random ();
             _writeCubeCallback = WriteCube;
 
-            // NEED TO HANDLE CASES WHERE NO SERIAL CABLE IS ATTACHED
-            //_serialDriverTimer = new Timer(_writeCubeCallback, null, 10000, 1);
-            //_serialDriver = new SerialDriver();
-            //_serialDriver.OpenPort();
+            _serialDriver = new SerialDriver();
+            
+            if (_serialDriver.SerialDevicePresent)
+            {
+                _serialDriver.OpenPort();
+                _serialDriverTimer = new Timer(_writeCubeCallback, null, 0, 10);
+            }
+            else
+            {
+                Console.WriteLine("NO SERIAL DEVICE DETECTED.");
+            }
 		}
 
         /// <summary>
@@ -100,7 +107,7 @@ namespace CubeController
         /// <param name="stateInfo"></param>
         private void WriteCube(object stateInfo)
         {
-            //_serialDriver.WriteCube(_cubeState);
+            _serialDriver.WriteCube(_cubeState);
         }
         
 #region UTILITY
@@ -118,7 +125,7 @@ namespace CubeController
 		/// Delays the drawing buffer from updating for x milliseconds.
 		/// </summary>
 		/// <param name="x">The number of milliseconds to sleep.</param>
-		private void DelayMS(int x)
+		public void DelayMS(int x)
 		{
 			Thread.Sleep (x);
 		}
@@ -242,7 +249,7 @@ namespace CubeController
 		public void SetVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x] [y] [z] = true;
+				_cubeState [z] [x] [y] = true;
 			}
 		}
 
@@ -255,7 +262,7 @@ namespace CubeController
 		public void ClearVoxel(int x, int y, int z)
 		{
 			if (InRange (x, y, z)) {
-				_cubeState [x] [y] [z] = false;
+				_cubeState [z] [x] [y] = false;
 			}
 		}
 
@@ -271,7 +278,7 @@ namespace CubeController
 			if (!InRange (x, y, z)) {
 				return false;
 			} else {
-				return _cubeState [x] [y] [z];
+				return _cubeState [z] [x] [y];
 			}
 		}
 
@@ -284,7 +291,7 @@ namespace CubeController
 		public void SwapVoxel(int x, int y, int z)
 		{
             if (InRange(x, y, z)) {
-			_cubeState [x] [y] [z] = !_cubeState [x] [y] [z];
+			_cubeState [z] [x] [y] = !_cubeState [z] [x] [y];
             }
 		}
 
@@ -301,7 +308,7 @@ namespace CubeController
 				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
 						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [pl] [y] [z] = true;
+							SetVoxel(pl, y, z);
 						}
 					}
 					break;
@@ -309,7 +316,7 @@ namespace CubeController
 				case AXIS.AXIS_Y:
 					for (int x = 0; x < DIMENSION; ++x) {
 						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [x] [pl] [z] = true;
+                            SetVoxel(x, pl, z);
 						}
 					}
 					break;
@@ -317,7 +324,7 @@ namespace CubeController
 				case AXIS.AXIS_Z:
 					for (int x = 0; x < DIMENSION; ++x) {
 						for (int y = 0; y < DIMENSION; ++y) {
-							_cubeState [x] [y] [pl] = true;
+                            SetVoxel(x, y, pl);
 						}
 					}
 					break;
@@ -342,7 +349,7 @@ namespace CubeController
 				case AXIS.AXIS_X:
 					for (int y = 0; y < DIMENSION; ++y) {
 						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [pl] [y] [z] = false;
+                            ClearVoxel(pl, y, z);
 						}
 					}
 					break;
@@ -350,7 +357,7 @@ namespace CubeController
 				case AXIS.AXIS_Y:
 					for (int x = 0; x < DIMENSION; ++x) {
 						for (int z = 0; z < DIMENSION; ++z) {
-							_cubeState [x] [pl] [z] = false;
+                            ClearVoxel(x, pl, z);
 						}
 					}
 					break;
@@ -358,7 +365,7 @@ namespace CubeController
 				case AXIS.AXIS_Z:
 					for (int x = 0; x < DIMENSION; ++x) {
 						for (int y = 0; y < DIMENSION; ++y) {
-							_cubeState [x] [y] [pl] = false;
+                            ClearVoxel(x, y, pl);
 						}
 					}
 					break;
@@ -391,7 +398,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [y] [z] = _cubeState [pl] [y] [z];
+                        tmpplane[y][z] = GetVoxel(pl, y, z);
 					}
 				}
 				break;
@@ -399,7 +406,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						tmpplane [x] [z] = _cubeState [x] [pl] [z];
+                        tmpplane[x][z] = GetVoxel(x, pl, z);
 					}
 				}
 				break;
@@ -407,7 +414,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						tmpplane [x] [y] = _cubeState [y] [x] [pl];
+                        tmpplane[x][y] = GetVoxel(y, x, pl);
 					}
 				}
 				break;
@@ -436,7 +443,7 @@ namespace CubeController
 			case AXIS.AXIS_X:
 				for (int y = 0; y < DIMENSION; ++y) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [pl] [y] [z] = pattern [y] [z];
+						_cubeState [z] [y] [pl] = pattern [y] [z];
 					}
 				}
 				break;
@@ -445,7 +452,7 @@ namespace CubeController
 			case AXIS.AXIS_Y:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int z = 0; z < DIMENSION; ++z) {
-						_cubeState [x] [pl] [z] = pattern [x] [z];
+						_cubeState [z] [pl] [x] = pattern [x] [z];
 					}
 				}
 				break;
@@ -453,7 +460,7 @@ namespace CubeController
 			case AXIS.AXIS_Z:
 				for (int x = 0; x < DIMENSION; ++x) {
 					for (int y = 0; y < DIMENSION; ++y) {
-						_cubeState [x] [y] [pl] = pattern [x] [y];
+						_cubeState [pl] [y] [x] = pattern [x] [y];
 					}
 				}
 				break;
@@ -1586,7 +1593,7 @@ namespace CubeController
 	            for (int j = 0; j < originZ; j++)
 	            {
 	                SetVoxel((int) originX, (int) originY, j);
-	                DelayMS(600 + (500*j));
+	                DelayMS(6 + (5*j));
 	                ClearEntireCube();
 	            }
 
@@ -2131,6 +2138,11 @@ namespace CubeController
 
 			return Math.Sqrt(distance);
 		}
+
+        private string ErrorReport()
+        {
+            return "NO SERIAL DEVICE DETECTED";
+        }
 	}
 }
 

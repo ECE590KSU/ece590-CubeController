@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="dir_4419eec78c8b86028def52a872f295a3" kind="dir">
+    <compoundname>CubeController</compoundname>
+    <innerdir refid="dir_d56896c5b1d3b9e979f92d5fc3f4641d">cpp Code</innerdir>
+    <innerdir refid="dir_a44c26db532de6ea29c5b1e6b084a852">obj</innerdir>
+    <innerdir refid="dir_63330736016d994e792586ea35d15dc3">Properties</innerdir>
+    <innerfile refid="_cube_8cs">Cube.cs</innerfile>
+    <innerfile refid="_effect_8cs">Effect.cs</innerfile>
+    <innerfile refid="_font_handler_8cs">FontHandler.cs</innerfile>
+    <innerfile refid="_serial_driver_8cs">SerialDriver.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/"/>
+  </compounddef>
+</doxygen>

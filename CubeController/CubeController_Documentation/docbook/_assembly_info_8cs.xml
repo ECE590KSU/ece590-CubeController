@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_assembly_info_8cs">
+    <title>AssemblyInfo.cs File Reference</title>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespace_system_1_1_reflection">System::Reflection</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespace_system_1_1_runtime_1_1_compiler_services">System::Runtime::CompilerServices</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Properties/AssemblyInfo.cs</para>
+    </simplesect>
+</section>

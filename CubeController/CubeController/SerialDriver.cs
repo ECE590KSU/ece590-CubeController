@@ -20,24 +20,35 @@ namespace CubeController
         private SerialPort _serialPort;
 
         /// <summary>
+        /// Determine if there was a device connected, and if serial
+        /// driver was successfully created.
+        /// </summary>
+        public bool SerialDevicePresent = false;
+
+        /// <summary>
         /// Default constructor for SerialDriver.
         /// </summary>
         public SerialDriver ()
         {
             // Explicitly set for clarity
             _serialPort = new SerialPort();
+            var ports = SerialPort.GetPortNames();
+            
+            // Check for a valid, connected serial device. 
+            if (ports.Count() > 0)
+            {
                 _serialPort.PortName = SerialPort.GetPortNames()[0];
                 _serialPort.RtsEnable = true;
                 _serialPort.DtrEnable = true;
-                _serialPort.BaudRate = 115200;
+                _serialPort.BaudRate = 38400;
                 _serialPort.Parity = Parity.None;
                 _serialPort.DataBits = 8;
                 _serialPort.Handshake = Handshake.None;
                 _serialPort.StopBits = StopBits.One;
                 _serialPort.ReadTimeout = SerialPort.InfiniteTimeout;
                 _serialPort.WriteTimeout = SerialPort.InfiniteTimeout;
-
-            // Explicitly set for clarity
+                this.SerialDevicePresent = true;
+            }
         }
 
         /// <summary>

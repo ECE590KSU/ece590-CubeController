@@ -1,0 +1,702 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="3d_8cpp" kind="file">
+    <compoundname>3d.cpp</compoundname>
+    <includes local="no">math.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdint.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="yes">draw.hpp</includes>
+    <includes local="yes">draw_3d.hpp</includes>
+    <includes local="yes">3d.hpp</includes>
+    <incdepgraph>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="4">
+        <label>stdlib.h</label>
+      </node>
+      <node id="9">
+        <label>draw_3d.hpp</label>
+      </node>
+      <node id="10">
+        <label>3d.hpp</label>
+      </node>
+      <node id="7">
+        <label>string.h</label>
+      </node>
+      <node id="8">
+        <label>draw.hpp</label>
+      </node>
+      <node id="3">
+        <label>math.h</label>
+      </node>
+      <node id="6">
+        <label>stdio.h</label>
+      </node>
+      <node id="2">
+        <label>3d.cpp</label>
+        <link refid="3d.cpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="3d_8cpp_1ae97152c48aaed0bd0518138ab882f04c" prot="public" static="no">
+        <name>NUM_FIREWORK_COMPONENTS</name>
+        <initializer>6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="11" column="9" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float PI</definition>
+        <argsstring></argsstring>
+        <name>PI</name>
+        <initializer>= 4.0f * atanf (1.0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="14" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>const float WAVE_CONSTANT</definition>
+        <argsstring></argsstring>
+        <name>WAVE_CONSTANT</name>
+        <initializer>= 9.899495f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="15" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void linespin</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>linespin</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="17" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="17" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a3af37a0fb9ada060bf083e8e16be2a89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sinelines</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>sinelines</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="62" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="62" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a15c48e1b2565e2a696c7f10892f162f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ripples</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>ripples</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="93" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="93" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a938da6780ac8fa2d4699695020221a3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void sidewaves</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>sidewaves</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="119" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="119" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a6cb4e5723993d035441943cd1c3ecdd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void spheremove</definition>
+        <argsstring>(int iterations, int delay)</argsstring>
+        <name>spheremove</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="151" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="151" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a47d3fc1e87afd1adc254c4b83e9b5887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fireworks</definition>
+        <argsstring>(int iterations, int n, int delay)</argsstring>
+        <name>fireworks</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="197" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="197" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a3b89e513975ccfe8a0b07be6c5403ac5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void effect_rotate_random_pixels</definition>
+        <argsstring>(int iterations, int delay, int pixels)</argsstring>
+        <name>effect_rotate_random_pixels</name>
+        <param>
+          <type>int</type>
+          <declname>iterations</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>delay</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pixels</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="288" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="288" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float distance2d</definition>
+        <argsstring>(float x1, float y1, float x2, float y2)</argsstring>
+        <name>distance2d</name>
+        <param>
+          <type>float</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="351" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="351" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float distance3d</definition>
+        <argsstring>(float x1, float y1, float z1, float x2, float y2, float z2)</argsstring>
+        <name>distance3d</name>
+        <param>
+          <type>float</type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z1</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" line="359" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp" bodystart="359" bodyend="365"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdint.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;draw.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;draw_3d.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;3d.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>components<sp/>to<sp/>a<sp/>firework<sp/>simulation:<sp/>x,y,z,dx,dy,dz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="3d_8cpp_1ae97152c48aaed0bd0518138ab882f04c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_FIREWORK_COMPONENTS<sp/>6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Quick<sp/>way<sp/>to<sp/>compute<sp/>PI.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" kindref="member">PI</ref><sp/>=<sp/>4.0f<sp/>*<sp/>atanf<sp/>(1.0);</highlight></codeline>
+<codeline lineno="15" refid="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" kindref="member">WAVE_CONSTANT</ref><sp/>=<sp/>9.899495f;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8" kindref="member">linespin</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>top_x,<sp/>top_y,<sp/>top_z,<sp/>bot_x,<sp/>bot_y,<sp/>bot_z,<sp/>sin_base;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>center_x,<sp/>center_y;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>center_x<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>center_y<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>z;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;iterations;i++)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;Sin<sp/>base<sp/>%f<sp/>\n&quot;,sin_base);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(z<sp/>=<sp/>0;<sp/>z<sp/>&lt;<sp/>8;<sp/>z++)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sin_base<sp/>=<sp/>(float)i/50<sp/>+<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z/(10+(7*sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/200)));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>top_x<sp/>=<sp/>center_x<sp/>+<sp/>sin(sin_base)*5;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>top_y<sp/>=<sp/>center_x<sp/>+<sp/>cos(sin_base)*5;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//top_z<sp/>=<sp/>center_x<sp/>+<sp/>cos(sin_base/100)*2.5;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bot_x<sp/>=<sp/>center_x<sp/>+<sp/>sin(sin_base+<ref refid="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" kindref="member">PI</ref>)*10;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bot_y<sp/>=<sp/>center_x<sp/>+<sp/>cos(sin_base+<ref refid="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" kindref="member">PI</ref>)*10;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//bot_z<sp/>=<sp/>7-top_z;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bot_z<sp/>=<sp/>(float)z;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>top_z<sp/>=<sp/>(float)z;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//setvoxel((int)<sp/>top_x,<sp/>(int)<sp/>top_y,<sp/>7);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//setvoxel((int)<sp/>bot_x,<sp/>(int)<sp/>bot_y,<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;P1:<sp/>%i<sp/>%i<sp/>%i<sp/>P2:<sp/>%i<sp/>%i<sp/>%i<sp/>\n&quot;,<sp/>(int)<sp/>top_x,<sp/>(int)<sp/>top_y,<sp/>7,<sp/>(int)<sp/>bot_x,<sp/>(int)<sp/>bot_y,<sp/>0);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//line_3d((int)<sp/>top_x,<sp/>(int)<sp/>top_y,<sp/>(int)<sp/>top_z,<sp/>(int)<sp/>bot_x,<sp/>(int)<sp/>bot_y,<sp/>(int)<sp/>bot_z);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>top_z,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>top_x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>top_y,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>bot_z,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>bot_x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>bot_y);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(120);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="3d_8cpp_1a3af37a0fb9ada060bf083e8e16be2a89" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a3af37a0fb9ada060bf083e8e16be2a89" kindref="member">sinelines</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,x;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>left,<sp/>right,<sp/>sine_base,<sp/>x_dividor,ripple_height;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;iterations;<sp/>i++)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=0;<sp/>x&lt;8<sp/>;x++)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_dividor<sp/>=<sp/>2<sp/>+<sp/>sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/100)+1;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ripple_height<sp/>=<sp/>3<sp/>+<sp/>(sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/200)+1)*6;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sine_base<sp/>=<sp/>(float)<sp/>(i/40)<sp/>+<sp/>(float)<sp/>(x/x_dividor);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>left<sp/>=<sp/>(4.0f)<sp/>+<sp/>sin(sine_base)*ripple_height;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right<sp/>=<sp/>(4.0f)<sp/>+<sp/>cos(sine_base)*ripple_height;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>right<sp/>=<sp/>(7.0f)-left;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;%i<sp/>%i<sp/>\n&quot;,<sp/>(int)<sp/>left,<sp/>(int)<sp/>right);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kindref="member">line_3d</ref>(0-3,<sp/>x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>left,<sp/>7+3,<sp/>x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>right);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//line_3d((int)<sp/>right,<sp/>7,<sp/>x);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Display<sp/>a<sp/>sine<sp/>wave<sp/>running<sp/>out<sp/>from<sp/>the<sp/>center<sp/>of<sp/>the<sp/>cube.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="3d_8cpp_1a15c48e1b2565e2a696c7f10892f162f4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a15c48e1b2565e2a696c7f10892f162f4" kindref="member">ripples</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>distance,<sp/>height,<sp/>ripple_interval;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,y,i;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;iterations;i++)</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=0;x&lt;8;x++)</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;y&lt;8;y++)</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distance<sp/>=<sp/>(<ref refid="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" kindref="member">distance2d</ref>(3.5,<sp/>3.5,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)x,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)y)/<ref refid="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" kindref="member">WAVE_CONSTANT</ref>)*(8.0f);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//distance<sp/>=<sp/>distance2d(3.5,3.5,x,y);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ripple_interval<sp/>=<sp/>(1.3f);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>height<sp/>=<sp/>4+sin(distance/ripple_interval+(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>i/50)*(4.0f);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>(x,y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>height);<sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="3d_8cpp_1a938da6780ac8fa2d4699695020221a3f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a938da6780ac8fa2d4699695020221a3f" kindref="member">sidewaves</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>origin_x,<sp/>origin_y,<sp/>distance,<sp/>height,<sp/>ripple_interval;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,y,i;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;i&lt;iterations;i++)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_x<sp/>=<sp/>3.5f+sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/500)*(4.0f);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_y<sp/>=<sp/>3.5f+cos((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/500)*(4.0f);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=0;x&lt;8;x++)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;y&lt;8;y++)</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distance<sp/>=<sp/>(<ref refid="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" kindref="member">distance2d</ref>(origin_x,<sp/>origin_y,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)x,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)y)/<ref refid="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" kindref="member">WAVE_CONSTANT</ref>)*(8.0f);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ripple_interval<sp/>=2;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>height<sp/>=<sp/>4+sin((distance/ripple_interval)+(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)<sp/>i/50)*(3.6f);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>(x,y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>height);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>(x,y,(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>height);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="3d_8cpp_1a6cb4e5723993d035441943cd1c3ecdd8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a6cb4e5723993d035441943cd1c3ecdd8" kindref="member">spheremove</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>origin_x,<sp/>origin_y,<sp/>origin_z,<sp/>distance,<sp/>diameter;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>origin_x<sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>origin_y<sp/>=<sp/>3.5f;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>origin_z<sp/>=<sp/>3.5f;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>diameter<sp/>=<sp/>3.0f;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/>y,<sp/>z,<sp/>i;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;iterations;<sp/>i++)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_x<sp/>=<sp/>3.5f<sp/>+<sp/>sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/50)*(2.5f);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_y<sp/>=<sp/>3.5f<sp/>+<sp/>cos((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/50)*(2.5f);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_z<sp/>=<sp/>3.5f<sp/>+<sp/>cos((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/30)*(2.0f);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>diameter<sp/>=<sp/>2+sin((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)i/150);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(x=0;<sp/>x&lt;8;<sp/>x++)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(y=0;<sp/>y&lt;8;<sp/>y++)</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(z=0;<sp/>z&lt;8;<sp/>z++)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>distance<sp/>=<sp/><ref refid="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db" kindref="member">distance3d</ref>((</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)x,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)y,<sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">)z,<sp/>origin_x,<sp/>origin_y,<sp/>origin_z);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//printf(&quot;Distance:<sp/>%f<sp/>\n&quot;,<sp/>distance);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(distance&gt;diameter<sp/>&amp;&amp;<sp/>distance&lt;diameter+1)</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>(x,y,z);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="3d_8cpp_1a47d3fc1e87afd1adc254c4b83e9b5887" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a47d3fc1e87afd1adc254c4b83e9b5887" kindref="member">fireworks</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay)</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,f,e;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>origin_x<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>origin_y<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>origin_z<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rand_y,<sp/>rand_x,<sp/>rand_z;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>slowrate,<sp/>gravity;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Particles<sp/>and<sp/>their<sp/>position,<sp/>x,y,z<sp/>and<sp/>their<sp/>movement,<sp/>dx,<sp/>dy,<sp/>dz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compiler<sp/>warns<sp/>that<sp/>it<sp/>needs<sp/>a<sp/>constant<sp/>expression<sp/>for<sp/>declaration<sp/>of<sp/>2D<sp/>arrays<sp/>on<sp/>stack.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Changing<sp/>to<sp/>dynamic<sp/>allocation<sp/>instead:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>**particles<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*[n];</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[i]<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">[<ref refid="3d_8cpp_1ae97152c48aaed0bd0518138ab882f04c" kindref="member">NUM_FIREWORK_COMPONENTS</ref>];</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;iterations;<sp/>i++)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_x<sp/>=<sp/>(float)(rand()<sp/>%<sp/>4);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_y<sp/>=<sp/>(float)(rand()<sp/>%<sp/>4);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_z<sp/>=<sp/>(float)(rand()<sp/>%<sp/>2);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_z<sp/>+=<sp/>(5.0f);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_x<sp/>+=<sp/>(2.0f);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>origin_y<sp/>+=<sp/>(2.0f);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>shoot<sp/>a<sp/>particle<sp/>up<sp/>in<sp/>the<sp/>air</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(e=0;e&lt;origin_z;e++)</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)origin_x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)origin_y,<sp/>e);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(600+(500*e));</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>particle<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(f=0;<sp/>f&lt;n;<sp/>f++)</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Position</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][0]<sp/>=<sp/>origin_x;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][1]<sp/>=<sp/>origin_y;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][2]<sp/>=<sp/>origin_z;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rand_x<sp/>=<sp/>rand()%200;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rand_y<sp/>=<sp/>rand()%200;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rand_z<sp/>=<sp/>rand()%200;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Movement</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][3]<sp/>=<sp/>1-(float)rand_x/100;<sp/></highlight><highlight class="comment">//<sp/>dx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][4]<sp/>=<sp/>1-(float)rand_y/100;<sp/></highlight><highlight class="comment">//<sp/>dy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][5]<sp/>=<sp/>1-(float)rand_z/100;<sp/></highlight><highlight class="comment">//<sp/>dz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>explode</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(e=0;<sp/>e&lt;25;<sp/>e++)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>slowrate<sp/>=<sp/>(1.0f)<sp/>+<sp/>(tanf((e+(0.1f))/20)<sp/>*<sp/>(10.0f));</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gravity<sp/>=<sp/>tanf((e+(0.1f))/20)<sp/>/<sp/>(2.0f);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(f=0;<sp/>f&lt;n;<sp/>f++)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][0]<sp/>+=<sp/>particles[f][3]/slowrate;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][1]<sp/>+=<sp/>particles[f][4]/slowrate;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][2]<sp/>+=<sp/>particles[f][5]/slowrate;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>particles[f][2]<sp/>-=<sp/>gravity;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)particles[f][0],<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)particles[f][1],<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)particles[f][2]);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clean-up<sp/>resources<sp/>allocated<sp/>with<sp/>malloc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>particles[i];</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>particles;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="3d_8cpp_1a3b89e513975ccfe8a0b07be6c5403ac5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a3b89e513975ccfe8a0b07be6c5403ac5" kindref="member">effect_rotate_random_pixels</ref><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>iterations,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>delay,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pixels)</highlight></codeline>
+<codeline lineno="289"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Vertex<sp/>defined<sp/>as<sp/>struct<sp/>--<sp/>cannot<sp/>use<sp/>new<sp/>without<sp/>creating<sp/>a<sp/>default<sp/>public<sp/>constructor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>class<sp/>implementation.<sp/>THANKS,<sp/>Instructables.<sp/>Must<sp/>use<sp/>malloc().<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note,<sp/>this<sp/>is<sp/>an<sp/>array<sp/>of<sp/>vertex<sp/>structs,<sp/>not<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>struct.<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>vertex<sp/>*points<sp/>=<sp/>(vertex*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(vertex)*pixels);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>vertex<sp/>*rotated<sp/>=<sp/>(vertex*)malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(vertex)*pixels);</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fy,<sp/>fx,<sp/>fz;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,y,z;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,p;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rot_x<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rot_y<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>rot_z<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>vertex<sp/>cube_center<sp/>=<sp/>{3.5,<sp/>3.5,<sp/>3.5};</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;pixels;<sp/>i++)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/>rand()%1200-200;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>y<sp/>=<sp/>rand()%1200-200;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>z<sp/>=<sp/>rand()%1200-200;</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fx<sp/>=<sp/>(float)x/100;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fy<sp/>=<sp/>(float)y/100;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fz<sp/>=<sp/>(float)z/100;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>points[i].x<sp/>=<sp/>fx;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>points[i].y<sp/>=<sp/>fy;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>points[i].z<sp/>=<sp/>fz;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)points[i].x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)points[i].y,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)points[i].z);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(100);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(10000);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i=0;<sp/>i&lt;iterations;<sp/>i++)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot_x<sp/>=<sp/>(float)i/75;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot_y<sp/>=<sp/>(float)i/150;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rot_z<sp/>=<sp/>(float)i/200;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(p=0;<sp/>p&lt;pixels;<sp/>p++)</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rotated[p]<sp/>=<sp/><ref refid="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5" kindref="member">point_rotate_around_point</ref><sp/>(points[p],<sp/>cube_center,<sp/>rot_x,<sp/>rot_y,<sp/>rot_z);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(p=0;<sp/>p&lt;pixels;<sp/>p++)</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kindref="member">setvoxel</ref>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)rotated[p].x,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)rotated[p].y,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)rotated[p].z);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kindref="member">delay_ms</ref>(delay);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Free<sp/>the<sp/>memory<sp/>for<sp/>points[]<sp/>and<sp/>rotated[]<sp/>appropriately.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>free(points);</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/>free(rotated);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kindref="member">fill</ref>(0x00);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351" refid="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" kindref="member">distance2d</ref><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x2,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y2)</highlight></codeline>
+<codeline lineno="352"><highlight class="normal">{<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dist;</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>dist<sp/>=<sp/>sqrt((x1-x2)*(x1-x2)<sp/>+<sp/>(y1-y2)*(y1-y2));</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dist;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db" kindref="member">distance3d</ref><sp/>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z1,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>x2,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>y2,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>z2)</highlight></codeline>
+<codeline lineno="360"><highlight class="normal">{<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dist;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>dist<sp/>=<sp/>sqrt((x1-x2)*(x1-x2)<sp/>+<sp/>(y1-y2)*(y1-y2)<sp/>+<sp/>(z1-z2)*(z1-z2));</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>dist;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/3d.cpp"/>
+  </compounddef>
+</doxygen>

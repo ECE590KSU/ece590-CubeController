@@ -1,0 +1,2934 @@
+.TH "CubeController.Cube" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CubeController.Cube \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAXIS\fP { \fBAXIS\&.AXIS_X\fP, \fBAXIS\&.AXIS_Y\fP, \fBAXIS\&.AXIS_Z\fP }"
+.br
+.RI "\fIAn enumeration of the axes upon which the cube can be oriented\&. \fP"
+.ti -1c
+.RI "enum \fBDIRECTION\fP { \fBDIRECTION\&.FORWARD\fP, \fBDIRECTION\&.REVERSE\fP }"
+.br
+.RI "\fIAn enumeration of the directions that effects can be propagated\&. \fP"
+.ti -1c
+.RI "enum \fBREFLECTION\fP { \fBREFLECTION\&.ORIGIN\fP, \fBREFLECTION\&.TERMINUS\fP }"
+.br
+.RI "\fIAn enumeration of the reflection parameters of some cube effects\&. \fP"
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCube\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBCube\fP class\&. Default public constructor\&. \fP"
+.ti -1c
+.RI "bool[][][] \fBGetCubeState\fP ()"
+.br
+.RI "\fIGets the state of the cube\&. \fP"
+.ti -1c
+.RI "void \fBSetEntireCube\fP ()"
+.br
+.RI "\fISets the entire cube by setting Z-Planes\&. \fP"
+.ti -1c
+.RI "void \fBClearEntireCube\fP ()"
+.br
+.RI "\fIClears the entire cube by erasing Z-Planes\&. \fP"
+.ti -1c
+.RI "void \fBRenderPlane\fP (bool[][] plane)"
+.br
+.RI "\fIRenders a specified plane\&. DEBUGGING PURPOSES ONLY\&. \fP"
+.ti -1c
+.RI "void \fBRenderCube\fP ()"
+.br
+.RI "\fIRenders the cube by Z-Planes\&. DEBUGGING PURPOSES ONLY\&. \fP"
+.ti -1c
+.RI "void \fBSetVoxel\fP (int x, int y, int z)"
+.br
+.RI "\fISets the voxel\&. \fP"
+.ti -1c
+.RI "void \fBClearVoxel\fP (int x, int y, int z)"
+.br
+.RI "\fIClears the voxel\&. \fP"
+.ti -1c
+.RI "bool \fBGetVoxel\fP (int x, int y, int z)"
+.br
+.RI "\fIGets the voxel\&. \fP"
+.ti -1c
+.RI "void \fBSwapVoxel\fP (int x, int y, int z)"
+.br
+.RI "\fIPerforms logical NOT on voxel value\&. \fP"
+.ti -1c
+.RI "void \fBSetPlane\fP (\fBAXIS\fP axis, int pl)"
+.br
+.RI "\fITurns on all voxels on a given plane of the specified axis\&. \fP"
+.ti -1c
+.RI "void \fBClearPlane\fP (\fBAXIS\fP axis, int pl)"
+.br
+.RI "\fITurns off all voxels on a given plane of the specified axis\&. \fP"
+.ti -1c
+.RI "bool[][] \fBGetPlane\fP (\fBAXIS\fP axis, int pl)"
+.br
+.RI "\fIGets a plane by axis, indexed by pl\&. See documentation for graphical explanation\&. Complications arise due to cube orientation towards end user\&. \fP"
+.ti -1c
+.RI "void \fBPatternSetPlane\fP (\fBAXIS\fP axis, int pl, bool[][] pattern)"
+.br
+.RI "\fISets a plane indexed by pl on the axis axis to a given pattern\&. \fP"
+.ti -1c
+.RI "void \fBShiftAndRoll\fP (\fBAXIS\fP axis, \fBDIRECTION\fP direction)"
+.br
+.RI "\fIShift the specified axis in the specified direction\&. Roll planes through (do not discard planes)\&. \fP"
+.ti -1c
+.RI "void \fBShiftNoRoll\fP (\fBAXIS\fP axis, \fBDIRECTION\fP direction)"
+.br
+.RI "\fIShift the specified axis in the specified direction\&. Discard planes as they reach the boundary\&. \fP"
+.ti -1c
+.RI "void \fBRotatePlane\fP (\fBAXIS\fP axis, int pl, int theta)"
+.br
+.RI "\fIRotates the plane\&. \fP"
+.ti -1c
+.RI "void \fBPartialRotation\fP (\fBAXIS\fP axis, int pl, double theta)"
+.br
+.RI "\fIPartially rotates a given plane, not based on strictly 90°, 180°, or -90° turns\&. \fP"
+.ti -1c
+.RI "void \fBMirrorCubeAlongAxis\fP (\fBAXIS\fP axis)"
+.br
+.RI "\fIMirrors the cube along a given axis\&. \fP"
+.ti -1c
+.RI "void \fBSymmetryAlongAxis\fP (\fBAXIS\fP axis, \fBREFLECTION\fP refl)"
+.br
+.RI "\fIProvides symmetry of the cube along a given axis\&. You can reflect the axis either from origin or from the terminating end\&. \fP"
+.ti -1c
+.RI "void \fBDrawLine\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.RI "\fIDraws a line across the cube, in 3D\&. \fP"
+.ti -1c
+.RI "void \fBDrawLine\fP (\fBPoint\fP p1, \fBPoint\fP p2)"
+.br
+.RI "\fIDraws a line across the cube, in 3D\&. \fP"
+.ti -1c
+.RI "void \fBClearLine\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.RI "\fIClears a line across the cube, in 3D\&. \fP"
+.ti -1c
+.RI "void \fBClearLine\fP (\fBPoint\fP p1, \fBPoint\fP p2)"
+.br
+.RI "\fIClears a line across the cube, in 3D\&. \fP"
+.ti -1c
+.RI "void \fBDrawRectangle\fP (\fBCube\&.AXIS\fP axis, \fBCubeController\&.Point\fP A, \fBCubeController\&.Point\fP D)"
+.br
+.RI "\fIDraws a rectangle using point A and point D\&. \fP"
+.ti -1c
+.RI "void \fBDrawCircle\fP (\fBCube\&.AXIS\fP axis, \fBCubeController\&.Point\fP center, \fBCubeController\&.Point\fP rad)"
+.br
+.RI "\fIDraws a circle at [center] with radius [radius]\&. \fP"
+.ti -1c
+.RI "void \fBPutChar\fP (\fBAXIS\fP axis, int pl, char c)"
+.br
+.RI "\fIWrites a specified to a plane along axis\&. \fP"
+.ti -1c
+.RI "void \fBMessageFlyOnAxis\fP (string message, \fBAXIS\fP axis, \fBDIRECTION\fP direction)"
+.br
+.RI "\fIPrints a message character by character on a given axis, and sends it flying either front-to-back or back-to-front\&. \fP"
+.ti -1c
+.RI "void \fBMessageBanner\fP (string message, \fBDIRECTION\fP direction)"
+.br
+.RI "\fISends a message 'around' the cube in a banner-like manner (rhyme!)\&. \fP"
+.ti -1c
+.RI "void \fBAxisBoing\fP (\fBAXIS\fP axis, int speed)"
+.br
+.RI "\fIA single plane of all-set voxels is sent along [axis] away from ORIGIN towards TERMINUS\&. \fP"
+.ti -1c
+.RI "void \fBAxisUpDownRandSups\fP (\fBCube\&.AXIS\fP axis, int delay, int sleep, bool invert)"
+.br
+.RI "\fIShamelessy 'inspired' (edit: copied) from CHR's original code\&. \fP"
+.ti -1c
+.RI "void \fBFirework\fP (int iterations, int explosionSize, int delay)"
+.br
+.RI "\fIThis function will shoot a specified number of 'fireworks' up from the bottom layer\&. These explode and rain down\&. The function is more-or-less copied form \fB3d\&.cpp\fP\&. We need to experiment with it some on the cube to get it to our liking\&. \fP"
+.ti -1c
+.RI "void \fBLineSpin\fP (int iterations, int delay)"
+.br
+.RI "\fISpins a line in a sinusoidal fashion\&. Implementation nearly directly taken from \fB3d\&.cpp\fP\fBlinespin()\fP\&. Some of the values have been arbitrarily chosen by the team from CHR, so I've chosen not to mess with them too much\&. \fP"
+.ti -1c
+.RI "void \fBVertSpiral\fP (int iterations, int delay)"
+.br
+.RI "\fIPretty much like line spin, but with a twist on which axis dominates the \fBDrawLine()\fP invocation\&. Leads to some interesting effects\&. \fP"
+.ti -1c
+.RI "void \fBLoadBar\fP (int delay)"
+.br
+.RI "\fILight all LEDs layer by layer in strips, and then unset in the opposite pattern\&. \fP"
+.ti -1c
+.RI "void \fBRain\fP (int iterations, int delay)"
+.br
+.RI "\fICreate a rain-shower for the specified iterations, with [delay] ms between each frame\&. \fP"
+.ti -1c
+.RI "void \fBRipples\fP (int iterations, int delay)"
+.br
+.RI "\fICreates a sine wave that ripples from the center of the cube\&. \fP"
+.ti -1c
+.RI "void \fBSineWave\fP (int iterations, int delay, double delta_t)"
+.br
+.RI "\fIShows sinusoidal wave\&. Will only be shown from the front of the cube, i\&.e\&. the A-Z plane\&. \fP"
+.ti -1c
+.RI "void \fBSideWaves\fP (int iterations, int delay)"
+.br
+.RI "\fIGenerates waves that spin from side-to-side\&. \fP"
+.ti -1c
+.RI "void \fBSendVoxelZ\fP (int x, int y, int z, int delay)"
+.br
+.RI "\fITakes a voxel and sends it from one face of the cube to another along the Z-axis\&. \fP"
+.ti -1c
+.RI "void \fBBoxWoopWoop\fP (int iterations, int delay, bool grow, int size)"
+.br
+.RI "\fIGrows or shrinks a wireframe box given the value of [grow]\&. A really neat effect if used in the following manner: while (iteration < max){ BoxWoopWoop(1, delay, true, size); // Grow BoxWoopWoop(1, delay, false, size); // Shrink } // Repeatedly \fP"
+.ti -1c
+.RI "void \fBVoxelTest\fP (int delay)"
+.br
+.RI "\fISet every voxel on the cube, but plane by plane\&. \fP"
+.ti -1c
+.RI "void \fBRandomSparkle\fP (int sparkleCount, int delay)"
+.br
+.RI "\fIBlink an increasing number of random voxels, and then blink in a decreasing number back down to 1 again\&. \fP"
+.ti -1c
+.RI "void \fBTelcStairs\fP (bool invert, int delay)"
+.br
+.RI "\fINot quite sure what this does, in all reality\&. \fP"
+.ti -1c
+.RI "void \fBWormSqueeze\fP (int size, \fBCube\&.AXIS\fP axis, \fBCube\&.DIRECTION\fP direction, int iterations, int delay)"
+.br
+.RI "\fINot quite sure of the effect\&. \fP"
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBDimension\fP\fC [get]\fP"
+.br
+.RI "\fIGet the DIMENSION of the cube\&. \fP"
+.ti -1c
+.RI "A ***Z B **_ _ _X **Vertices 
+.br
+are labeled in the diagram 
+.br
+above\&.*</summary > *
+.br
+< paramname='S'> Source 
+.br
+vertex\&.</param > *< paramname='dist'>
+.br
+ Distance between int \fBdist\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBWriteCube\fP (object stateInfo)"
+.br
+.RI "\fIA callback for the \fBSerialDriver\fP thread responsible for pushing cube frames via TTL\&. \fP"
+.ti -1c
+.RI "void \fBDelayMS\fP (int x)"
+.br
+.RI "\fIDelays the drawing buffer from updating for x milliseconds\&. \fP"
+.ti -1c
+.RI "bool[][] \fBNewEmptyPlane\fP (int size)"
+.br
+.RI "\fICreates an empty plane for use of filling\&. \fP"
+.ti -1c
+.RI "bool \fBInRange\fP (int x, int y, int z)"
+.br
+.RI "\fIDetermines if the specified coordinates are in range of the cube dimensions\&. \fP"
+.ti -1c
+.RI "void \fBTranspose2D\fP (ref bool[][] mtx)"
+.br
+.RI "\fITransposes a 2D square matrix\&. \fP"
+.ti -1c
+.RI "void \fBColumnReversal2D\fP (ref bool[][] mtx)"
+.br
+.RI "\fIReverses the columns of a 2D matrix\&. \fP"
+.ti -1c
+.RI "void \fBRowReversal2D\fP (ref bool[][] mtx)"
+.br
+.RI "\fIReverses the rows of a 2D matrix\&. \fP"
+.ti -1c
+.RI "void \fBBresenhamsLine3D\fP (int x1, int y1, int z1, int x2, int y2, int z2, bool setting)"
+.br
+.RI "\fIThis is an attempt to characterize Bresenham's Line Algorithm in 3D, extrapolating information from the 2D version\&. A 3D implementation has been modified from its source: https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs \fP"
+.ti -1c
+.RI "A ***Z B **_ _ _X **Vertices 
+.br
+are labeled in the diagram 
+.br
+above\&.*</summary > *
+.br
+< paramname='S'> Source 
+.br
+vertex\&.</param > *< paramname='dist'>
+.br
+ Distance between \fBvertices\fP (side length)\&.</param > */public void BoxWireFrame(\fBPoint\fP S"
+.br
+.ti -1c
+.RI "bool[][] \fBGetChar\fP (char c)"
+.br
+.RI "\fIGets the character specified by 'c'\&. \fP"
+.ti -1c
+.RI "void \fBDrawPositionsAxis\fP (\fBCube\&.AXIS\fP axis, int[] positions, bool invert)"
+.br
+.RI "\fIA helper function for AxisUpDownRandSusp\&. \fP"
+.ti -1c
+.RI "void \fBRandomSparkleFlash\fP (int iterations, int voxels, int delay)"
+.br
+.RI "\fISet a given number of voxels at random positions\&. \fP"
+.ti -1c
+.RI "int \fBTelcStairsDo\fP (int x, int delay)"
+.br
+.RI "\fIAgain, not quite sure what this does! \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool[][][] \fB_cubeState\fP"
+.br
+.RI "\fIA 3D collection of voxels\&. \fP"
+.ti -1c
+.RI "const int \fBDIMENSION\fP = 8"
+.br
+.RI "\fIThe number of voxels per anode column\&. \fP"
+.ti -1c
+.RI "Random \fB_rgen\fP"
+.br
+.RI "\fIRandom number generator for the class (effects, advanced drawing, etc\&.)\&. \fP"
+.ti -1c
+.RI "\fBFontHandler\fP \fB_fontHandler\fP"
+.br
+.RI "\fIA font handler, which will translate character bitmpas into plane patterns\&. \fP"
+.ti -1c
+.RI "Timer \fB_serialDriverTimer\fP"
+.br
+.RI "\fIA timer for the \fBSerialDriver\fP object\&. \fP"
+.ti -1c
+.RI "TimerCallback \fB_writeCubeCallback\fP"
+.br
+.RI "\fIA timer callback for the \fBSerialDriver\fP object's Write() thread invocation\&. \fP"
+.ti -1c
+.RI "\fBSerialDriver\fP \fB_serialDriver\fP"
+.br
+.RI "\fIAn object capable of transmitting cube frames via TTL\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file Cube\&.cs\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCubeController\&.Cube\&.AXIS\fP"
+
+.PP
+An enumeration of the axes upon which the cube can be oriented\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAXIS_X \fP\fP
+.TP
+\fB\fIAXIS_Y \fP\fP
+.TP
+\fB\fIAXIS_Z \fP\fP
+.PP
+Definition at line 49 of file Cube\&.cs\&.
+.PP
+.nf
+49 { AXIS_X, AXIS_Y, AXIS_Z };
+.fi
+.SS "enum \fBCubeController\&.Cube\&.DIRECTION\fP"
+
+.PP
+An enumeration of the directions that effects can be propagated\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFORWARD \fP\fP
+.TP
+\fB\fIREVERSE \fP\fP
+.PP
+Definition at line 54 of file Cube\&.cs\&.
+.PP
+.nf
+54 { FORWARD, REVERSE };
+.fi
+.SS "enum \fBCubeController\&.Cube\&.REFLECTION\fP"
+
+.PP
+An enumeration of the reflection parameters of some cube effects\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIORIGIN \fP\fP
+.TP
+\fB\fITERMINUS \fP\fP
+.PP
+Definition at line 59 of file Cube\&.cs\&.
+.PP
+.nf
+59 { ORIGIN, TERMINUS };
+.fi
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CubeController\&.Cube\&.Cube ()"
+
+.PP
+Initializes a new instance of the \fBCube\fP class\&. Default public constructor\&. 
+.PP
+Definition at line 76 of file Cube\&.cs\&.
+.PP
+.nf
+77         {
+78             // Allocate space for a NxNxN cube, where N = DIMENSION\&.
+79             _cubeState = new bool[DIMENSION][][];
+80             for (int i = 0; i < DIMENSION; ++i) {
+81                 _cubeState[i] = new bool[DIMENSION][];
+82                 for (int j = 0; j < DIMENSION; ++j) {
+83                     _cubeState [i] [j] = new bool[DIMENSION];
+84                 }
+85             }
+86 
+87             _fontHandler = new FontHandler ();
+88             _rgen = new Random ();
+89             _writeCubeCallback = WriteCube;
+90 
+91             // NEED TO HANDLE CASES WHERE NO SERIAL CABLE IS ATTACHED
+92             //_serialDriverTimer = new Timer(_writeCubeCallback, null, 10000, 1);
+93             //_serialDriver = new SerialDriver();
+94             //_serialDriver\&.OpenPort();
+95         }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void CubeController\&.Cube\&.AxisBoing (\fBAXIS\fPaxis, intspeed)"
+
+.PP
+A single plane of all-set voxels is sent along [axis] away from ORIGIN towards TERMINUS\&. When the plane reaches TERMINUS, it delays for [speed] milliseconds\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis\&.
+.br
+\fIspeed\fP Speed\&.
+.RE
+.PP
+
+.PP
+Definition at line 1441 of file Cube\&.cs\&.
+.PP
+.nf
+1442         {
+1443             // Always set the ORIGIN plane first\&. 
+1444             SetPlane (axis, 0);
+1445 
+1446             // Because the ORIGIN plane is already set, we only have to Shift DIMENSION-1 times\&.
+1447             for (int i = 0; i < DIMENSION-1; ++i) {
+1448                 ShiftAndRoll (axis, DIRECTION\&.FORWARD);
+1449                 DelayMS (speed);
+1450             }
+1451             DelayMS (speed*2);
+1452             for (int i = 0; i < DIMENSION-1; ++i) {
+1453                 ShiftAndRoll (axis, DIRECTION\&.REVERSE);
+1454                 DelayMS (speed);
+1455             }
+1456         }
+.fi
+.SS "void CubeController\&.Cube\&.AxisUpDownRandSups (\fBCube\&.AXIS\fPaxis, intdelay, intsleep, boolinvert)"
+
+.PP
+Shamelessy 'inspired' (edit: copied) from CHR's original code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to randomly suspend along\&.
+.br
+\fIdelay\fP Delay between animation frames\&.
+.br
+\fIsleep\fP Time to hold the frozen suspensions\&.
+.br
+\fIinvert\fP Inversion?
+.RE
+.PP
+
+.PP
+Definition at line 1465 of file Cube\&.cs\&.
+.PP
+.nf
+1466         {
+1467             int length = DIMENSION * DIMENSION;
+1468             int[] positions = new int[length];
+1469             int[] destinations = new int[length];
+1470 
+1471             for (int i = 0; i < length; ++i)
+1472             {
+1473                 positions[i] = 0;
+1474                 destinations[i] = _rgen\&.Next() % (DIMENSION);
+1475             }
+1476 
+1477             for (int i = 0; i < DIMENSION; ++i)
+1478             {
+1479                 for (int px = 0; px < DIMENSION; ++px)
+1480                 {
+1481                     if (positions[px] < destinations[px])
+1482                     {
+1483                         positions[px]++;
+1484                     }
+1485                     if (positions[px] > destinations[px])
+1486                     {
+1487                         positions[px]--;
+1488                     }
+1489                 }
+1490                 DrawPositionsAxis(axis, positions, invert);
+1491                 DelayMS(delay);
+1492             }
+1493 
+1494             for (int i = 0; i < length; ++i)
+1495             {
+1496                 destinations[i] = (DIMENSION - 1);
+1497             }
+1498 
+1499             DelayMS(sleep);
+1500 
+1501             for (int i = 0; i < DIMENSION; ++i)
+1502             {
+1503                 for (int px = 0; px < length; ++px)
+1504                 {
+1505                     if (positions[px] < destinations[px])
+1506                     {
+1507                         positions[px]++;
+1508                     }
+1509                     if (positions[px] > destinations[px])
+1510                     {
+1511                         positions[px]--;
+1512                     }
+1513                 }
+1514                 DrawPositionsAxis(axis, positions, invert);
+1515                 DelayMS(delay);
+1516             }
+1517         }
+.fi
+.SS "void CubeController\&.Cube\&.BoxWoopWoop (intiterations, intdelay, boolgrow, intsize)"
+
+.PP
+Grows or shrinks a wireframe box given the value of [grow]\&. A really neat effect if used in the following manner: while (iteration < max){ BoxWoopWoop(1, delay, true, size); // Grow BoxWoopWoop(1, delay, false, size); // Shrink } // Repeatedly 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations to run to\&.
+.br
+\fIdelay\fP Delay between animation frames\&.
+.br
+\fIgrow\fP If set to \fCtrue\fP, then grow\&.
+.RE
+.PP
+
+.PP
+Definition at line 1887 of file Cube\&.cs\&.
+.PP
+.nf
+1888         {
+1889             ClearEntireCube ();
+1890             if (size <= DIMENSION && size >= 0)
+1891             {
+1892                 for (int k = 0; k < iterations; ++k)
+1893                 {
+1894                     if (grow)
+1895                     {
+1896                         for (int i = 0; i < size; ++i)
+1897                         {
+1898                             BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+1899                             DelayMS(delay);
+1900                             ClearEntireCube();
+1901                         }
+1902                     }
+1903                     else
+1904                     {
+1905                         for (int i = size - 1; i >= 0; --i)
+1906                         {
+1907                             BoxWireFrame(new Point(i, i, i), (size - 1 - i));
+1908                             DelayMS(delay);
+1909                             ClearEntireCube();
+1910                         }
+1911                     }
+1912                 }
+1913             }
+1914         }
+.fi
+.SS "void CubeController\&.Cube\&.BresenhamsLine3D (intx1, inty1, intz1, intx2, inty2, intz2, boolsetting)\fC [private]\fP"
+
+.PP
+This is an attempt to characterize Bresenham's Line Algorithm in 3D, extrapolating information from the 2D version\&. A 3D implementation has been modified from its source: https://www.ict.griffith.edu.au/anthony/info/graphics/bresenham.procs Basic idea in 2D: Let A = 2 times change in B Let B = A - 2 times change in A Let M = A - change in A
+.PP
+Set the starting point\&.
+.PP
+Then, for every position along A: while (!atEnd): M < 0 new pixel on same line as last pixel; M += A; M >= 0 new pixel on line higher than last pixel; M += B;
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx1\fP 
+.br
+\fIy1\fP 
+.br
+\fIz1\fP 
+.br
+\fIx2\fP 
+.br
+\fIy2\fP 
+.br
+\fIz2\fP 
+.RE
+.PP
+
+.PP
+Definition at line 967 of file Cube\&.cs\&.
+.PP
+.nf
+968         {
+969             #region setup
+970             // First you need to determine the changes in the x, y, and z coordinates\&.
+971             int dx = x2 - x1;
+972             int dy = y2 - y1;
+973             int dz = z2 - z1;
+974 
+975             // The voxel to draw through each step of the algorithm\&. 
+976             CubeController\&.Point v = new Point(x1, y1, z1);
+977 
+978             // Determines which way to "increment", depending on the slope of the line\&.
+979             // The increment will ALWAYS be by one voxel, whether 'up' or 'down'\&. 
+980             int x_inc = (dx < 0) ? -1 : 1;
+981             int y_inc = (dy < 0) ? -1 : 1;
+982             int z_inc = (dz < 0) ? -1 : 1;
+983 
+984             int len_x = Math\&.Abs(dx);
+985             int len_y = Math\&.Abs(dy);
+986             int len_z = Math\&.Abs(dz);
+987 
+988             // Twice the change in value\&. 
+989             int two_dx = 2 * len_x;
+990             int two_dy = 2 * len_y;
+991             int two_dz = 2 * len_z;
+992 
+993             // M1 and M2
+994             int m1 = 0;
+995             int m2 = 0;
+996             #endregion
+997 
+998             // BEGIN ALGORITHM
+999             // If the distance to travel in x is the largest\&.\&.\&.
+1000             if ((len_x >= len_y) && (len_x >= len_z))
+1001             {
+1002                 m1 = two_dy - len_x;    // M = A - dx = (2 * dy) - dx
+1003                 m2 = two_dz - len_x;    // Now perform for other axis
+1004 
+1005                 for (int i = 0; i < len_x; ++i)
+1006                 {
+1007                     if (setting) {
+1008                         SetVoxel(v\&.X, v\&.Y, v\&.Z);
+1009                     } else {
+1010                         ClearVoxel(v\&.X, v\&.Y, v\&.Z);
+1011                     }
+1012 
+1013                     if (m1 > 0)
+1014                     {
+1015                         v\&.Y += y_inc;
+1016                         m1 -= two_dx;
+1017                     }
+1018                     if (m2 > 0)
+1019                     {
+1020                         v\&.Z += z_inc;
+1021                         m2 -= two_dx;
+1022                     }
+1023                     m1 += two_dy;
+1024                     m2 += two_dz;
+1025                     v\&.X += x_inc;
+1026                 }
+1027             }
+1028             // Or if the distance to travel in y is the largest\&.\&.\&.
+1029             else if ((len_y >= len_x) && (len_y >= len_z))
+1030             {
+1031                 m1 = two_dx - len_y;
+1032                 m2 = two_dz - len_y;
+1033 
+1034                 for (int i = 0; i < len_y; ++i)
+1035                 {
+1036                     if (setting) {
+1037                         SetVoxel(v\&.X, v\&.Y, v\&.Z);
+1038                     } else {
+1039                         ClearVoxel(v\&.X, v\&.Y, v\&.Z);
+1040                     }
+1041 
+1042                     if (m1 > 0)
+1043                     {
+1044                         v\&.X += x_inc;
+1045                         m1 -= two_dy;
+1046                     }
+1047                     if (m2 > 0)
+1048                     {
+1049                         v\&.Z += z_inc;
+1050                         m2 -= two_dy;
+1051                     }
+1052                     m1 += two_dx;
+1053                     m2 += two_dz;
+1054                     v\&.Y += y_inc;
+1055                 }
+1056             }
+1057             // Otherwise, z is the largest distance to travel\&.\&.\&.
+1058             else
+1059             {
+1060                 m1 = two_dy - len_z;
+1061                 m2 = two_dx - len_z;
+1062 
+1063                 for (int i = 0; i < len_z; ++i)
+1064                 {
+1065                     if (setting) {
+1066                         SetVoxel(v\&.X, v\&.Y, v\&.Z);
+1067                     } else {
+1068                         ClearVoxel(v\&.X, v\&.Y, v\&.Z);
+1069                     }
+1070 
+1071                     if (m1 > 0)
+1072                     {
+1073                         v\&.Y += y_inc;
+1074                         m1 -= two_dz;
+1075                     }
+1076                     if (m2 > 0)
+1077                     {
+1078                         v\&.X += x_inc;
+1079                         m2 -= two_dz;
+1080                     }
+1081                     m1 += two_dy;
+1082                     m2 += two_dx;
+1083                     v\&.Z += z_inc;
+1084                 }
+1085 
+1086             }
+1087             if (setting) {
+1088                 SetVoxel(v\&.X, v\&.Y, v\&.Z);
+1089             } else {
+1090                 ClearVoxel(v\&.X, v\&.Y, v\&.Z);
+1091             }
+1092         }
+.fi
+.SS "void CubeController\&.Cube\&.ClearEntireCube ()"
+
+.PP
+Clears the entire cube by erasing Z-Planes\&. 
+.PP
+Definition at line 139 of file Cube\&.cs\&.
+.PP
+.nf
+140         {
+141             for (int i = 0; i < DIMENSION; ++i) {
+142                 ClearPlane (AXIS\&.AXIS_Z, i);
+143             }
+144         }
+.fi
+.SS "void CubeController\&.Cube\&.ClearLine (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Clears a line across the cube, in 3D\&. Line segment equations between two points in 3D: http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg\&.4, eq(1\&.13)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx1\fP The first x value\&.
+.br
+\fIy1\fP The first y value\&.
+.br
+\fIz1\fP The first z value\&.
+.br
+\fIx2\fP The second x value\&.
+.br
+\fIy2\fP The second y value\&.
+.br
+\fIz2\fP The second z value\&.
+.RE
+.PP
+
+.PP
+Definition at line 832 of file Cube\&.cs\&.
+.PP
+.nf
+833         {
+834             // Check if there are any matched pairs of coordinates\&. You can reduce the
+835             // complexity of the pixelated line by making this check\&.
+836             if ((x1 == x2) && (y1 == y2))
+837             {
+838                 // Always start from lower z and go to upper z\&. 
+839                 int zStart = (z1 < z2) ? z1 : z2;
+840                 int zEnd = (z1 < z2) ? z2 : z1;
+841 
+842                 for (int i = zStart; i <= zEnd; ++i)
+843                 {
+844                     // A and B are equal between the points\&. Arbitrary choice of x1 or x2\&.
+845                     ClearVoxel(x1, y1, i);
+846                 }
+847             }
+848             else if ((y1 == y2) && (z1 == z2))
+849             {
+850                 // Always start from lower x and go to upper x\&. 
+851                 int xStart = (x1 < x2) ? x1 : x2;
+852                 int xEnd = (x1 < x2) ? x2 : x1;
+853 
+854                 for (int i = xStart; i <= xEnd; ++i)
+855                 {
+856                     // B and Z are equal between the points\&. Arbitrary choice of y1 or y2\&.
+857                     ClearVoxel(i, y1, z1);
+858                 }
+859             }
+860             else if ((z1 == z2) && (x1 == x2))
+861             {
+862                 // Always start from lower y and go to upper y\&.
+863                 int yStart = (y1 < y2) ? y1 : y2;
+864                 int yEnd = (y1 < y2) ? y2 : y1;
+865 
+866                 for (int i = yStart; i <= yEnd; ++i)
+867                 {
+868                     // A and Z are equal between the points\&. Arbitrary choice of x1 or x2\&.
+869                     ClearVoxel(x1, i, z1);
+870                 }
+871             }
+872             // Otherwise, there are no straight lines, and we have to use
+873             // Bresenham's Line Algorithm:
+874             // http://csunplugged\&.org/wp-content/uploads/2014/12/Lines\&.pdf
+875             else
+876             {
+877                 BresenhamsLine3D(x1, y1, z1, x2, y2, z2, false);
+878             }
+879         }
+.fi
+.SS "void CubeController\&.Cube\&.ClearLine (\fBPoint\fPp1, \fBPoint\fPp2)"
+
+.PP
+Clears a line across the cube, in 3D\&. Line segment equations between two points in 3D: http://math.kennesaw.edu/~plaval/math2203/linesplanes.pdf, pg\&.4, eq(1\&.13)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp1\fP The source x,y,z point
+.br
+\fIp2\fP The destination x,y,z point
+.RE
+.PP
+
+.PP
+Definition at line 889 of file Cube\&.cs\&.
+.PP
+.nf
+890         {
+891             // Check if there are any matched pairs of coordinates\&. You can reduce the
+892             // complexity of the pixelated line by making this check\&.
+893             if ((p1\&.X == p2\&.X) && (p1\&.Y == p2\&.Y))
+894             {
+895                 // Always start from lower z and go to upper z\&. 
+896                 int zStart = (p1\&.Z < p2\&.Z) ? p1\&.Z : p2\&.Z;
+897                 int zEnd = (p1\&.Z < p2\&.Z) ? p2\&.Z : p1\&.Z;
+898 
+899                 for (int i = zStart; i <= zEnd; ++i)
+900                 {
+901                     // A and B are equal between the points\&. Arbitrary choice\&.
+902                     ClearVoxel(p1\&.X, p1\&.Y, i);
+903                 }
+904             }
+905             else if ((p1\&.Y == p2\&.Y) && (p1\&.Z == p2\&.Z))
+906             {
+907                 // Always start from lower x and go to upper x\&. 
+908                 int xStart = (p1\&.X < p2\&.X) ? p1\&.X : p2\&.X;
+909                 int xEnd = (p1\&.X < p2\&.X) ? p2\&.X : p1\&.X;
+910 
+911                 for (int i = xStart; i <= xEnd; ++i)
+912                 {
+913                     // B and Z are equal between the points\&. Arbitrary choice\&.
+914                     ClearVoxel(i, p1\&.Y, p1\&.Z);
+915                 }
+916 
+917             }
+918             else if ((p1\&.Z == p2\&.Z) && (p1\&.X == p2\&.X))
+919             {
+920                 // Always start from lower y and go to upper y\&.
+921                 int yStart = (p1\&.Y < p2\&.Y) ? p1\&.Y : p2\&.Y;
+922                 int yEnd = (p1\&.Y < p2\&.Y) ? p2\&.Y : p1\&.Y;
+923 
+924                 for (int i = yStart; i <= yEnd; ++i)
+925                 {
+926                     // A and Z are equal between the points\&. Arbitrary choice\&.
+927                     ClearVoxel(p1\&.X, i, p1\&.Z);
+928                 }
+929             }
+930             // Otherwise, there are no straight lines, and we have to use
+931             // Bresenham's Line Algorithm:
+932             // http://csunplugged\&.org/wp-content/uploads/2014/12/Lines\&.pdf
+933             else
+934             {
+935                 BresenhamsLine3D(p1\&.X, p1\&.Y, p1\&.Z, p2\&.X, p2\&.Y, p2\&.Z, false);
+936             }
+937         }
+.fi
+.SS "void CubeController\&.Cube\&.ClearPlane (\fBAXIS\fPaxis, intpl)"
+
+.PP
+Turns off all voxels on a given plane of the specified axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to manipulate\&.
+.br
+\fIpl\fP Plane index on axis\&.
+.RE
+.PP
+
+.PP
+Definition at line 337 of file Cube\&.cs\&.
+.PP
+.nf
+338         {
+339             if (pl >= 0 && pl < DIMENSION) {
+340 
+341                 switch (axis) {
+342                 case AXIS\&.AXIS_X:
+343                     for (int y = 0; y < DIMENSION; ++y) {
+344                         for (int z = 0; z < DIMENSION; ++z) {
+345                             _cubeState [pl] [y] [z] = false;
+346                         }
+347                     }
+348                     break;
+349 
+350                 case AXIS\&.AXIS_Y:
+351                     for (int x = 0; x < DIMENSION; ++x) {
+352                         for (int z = 0; z < DIMENSION; ++z) {
+353                             _cubeState [x] [pl] [z] = false;
+354                         }
+355                     }
+356                     break;
+357 
+358                 case AXIS\&.AXIS_Z:
+359                     for (int x = 0; x < DIMENSION; ++x) {
+360                         for (int y = 0; y < DIMENSION; ++y) {
+361                             _cubeState [x] [y] [pl] = false;
+362                         }
+363                     }
+364                     break;
+365 
+366                 default:
+367                     break;
+368                 }
+369             }
+370         }
+.fi
+.SS "void CubeController\&.Cube\&.ClearVoxel (intx, inty, intz)"
+
+.PP
+Clears the voxel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 255 of file Cube\&.cs\&.
+.PP
+.nf
+256         {
+257             if (InRange (x, y, z)) {
+258                 _cubeState [x] [y] [z] = false;
+259             }
+260         }
+.fi
+.SS "void CubeController\&.Cube\&.ColumnReversal2D (ref boolmtx[][])\fC [private]\fP"
+
+.PP
+Reverses the columns of a 2D matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImtx\fP Matrix source of columns\&.
+.RE
+.PP
+
+.PP
+Definition at line 628 of file Cube\&.cs\&.
+.PP
+.nf
+629         {
+630             List<bool[]> rowList = new List<bool[]> ();
+631             foreach (bool[] row in mtx) {
+632                 rowList\&.Add (row);
+633             }
+634             rowList\&.Reverse ();
+635             mtx = rowList\&.ToArray ();
+636         }
+.fi
+.SS "void CubeController\&.Cube\&.DelayMS (intx)\fC [private]\fP"
+
+.PP
+Delays the drawing buffer from updating for x milliseconds\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The number of milliseconds to sleep\&.
+.RE
+.PP
+
+.PP
+Definition at line 121 of file Cube\&.cs\&.
+.PP
+.nf
+122         {
+123             Thread\&.Sleep (x);
+124         }
+.fi
+.SS "void CubeController\&.Cube\&.DrawCircle (\fBCube\&.AXIS\fPaxis, \fBCubeController\&.Point\fPcenter, \fBCubeController\&.Point\fPrad)"
+
+.PP
+Draws a circle at [center] with radius [radius]\&. Follows the Midpoint Circle Algorithm: http://csunplugged.org/wp-content/uploads/2014/12/Lines.pdf, pg 9\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcenter\fP 
+.br
+\fIradius\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1152 of file Cube\&.cs\&.
+.PP
+.nf
+1153         {
+1154             int radius = int\&.MinValue;
+1155             int E;  // E = -radius
+1156             int A;  // A = +radius
+1157             int B = 0;
+1158 
+1159             // Until B becomes greater than A, repeat the following rules in order:
+1160             // Fill the pixel at coordinate (A + center\&.A, B+Center\&.B)
+1161 
+1162             // Increase E by (2*B + 1)
+1163             // Increase B by 1
+1164             // If E >= 0
+1165             //      E -= (2 * A - 1)
+1166             //      --A
+1167 
+1168             // This covers one octave, you must repeat 7 times with varying reflections
+1169             // in order to cover the circle\&. 
+1170 
+1171             // In three dimensions:
+1172             switch (axis)
+1173             {
+1174                 // On the Y-Z plane, fix to X coordinate
+1175                 // and draw for Y-Z\&. 
+1176                 case AXIS\&.AXIS_X:
+1177                     radius = (int)(Point\&.Distance(center\&.Y, rad\&.Y, center\&.Z, rad\&.Z));
+1178                     E = -radius;
+1179                     A = radius;
+1180                     while (B < A)
+1181                     {
+1182                         SetVoxel(center\&.X,  A + center\&.Y,  B + center\&.Z); 
+1183                         SetVoxel(center\&.X,  A + center\&.Y, -B + center\&.Z);
+1184                         SetVoxel(center\&.X, -A + center\&.Y,  B + center\&.Z);
+1185                         SetVoxel(center\&.X, -A + center\&.Y, -B + center\&.Z);
+1186                         
+1187                         SetVoxel(center\&.X,  B + center\&.Y,  A + center\&.Z);
+1188                         SetVoxel(center\&.X,  B + center\&.Y, -A + center\&.Z);
+1189                         SetVoxel(center\&.X, -B + center\&.Y,  A + center\&.Z);
+1190                         SetVoxel(center\&.X, -B + center\&.Y, -A + center\&.Z);
+1191 
+1192                         E += ((2 * B) + 1);
+1193                         ++B;
+1194                         if (E >= 0)
+1195                         {
+1196                             E -= ((2 * A) - 1);
+1197                             --A;
+1198                         }
+1199                     }
+1200                     break;
+1201                 // On the X-Z plane, fix to Y coordinate
+1202                 // and draw for X-Z\&.
+1203                 case AXIS\&.AXIS_Y:
+1204                     radius = (int)(Point\&.Distance(center\&.X, rad\&.X, center\&.Z, rad\&.Z));
+1205                     E = -radius;
+1206                     A = radius;
+1207                     while (B < A)
+1208                     {
+1209                         SetVoxel( A + center\&.X, center\&.Y,  B + center\&.Z);
+1210                         SetVoxel( A + center\&.X, center\&.Y, -B + center\&.Z);
+1211                         SetVoxel(-A + center\&.X, center\&.Y,  B + center\&.Z);
+1212                         SetVoxel(-A + center\&.X, center\&.Y, -B + center\&.Z);
+1213 
+1214                         SetVoxel( B + center\&.X, center\&.Y,  A + center\&.Z);
+1215                         SetVoxel( B + center\&.X, center\&.Y, -A + center\&.Z);
+1216                         SetVoxel(-B + center\&.X, center\&.Y,  A + center\&.Z);
+1217                         SetVoxel(-B + center\&.X, center\&.Y, -A + center\&.Z);
+1218                         E += ((2 * B) + 1);
+1219                         ++B;
+1220                         if (E >= 0)
+1221                         {
+1222                             E -= ((2 * A) - 1);
+1223                             --A;
+1224                         }
+1225                     }
+1226                     break;
+1227                 // On the X-Y plane, fix to Z coordinate
+1228                 // and draw for X-Y\&.
+1229                 case AXIS\&.AXIS_Z:
+1230                     radius = (int)(Point\&.Distance(center\&.X, rad\&.X, center\&.Y, rad\&.Y));
+1231                     E = -radius;
+1232                     A = radius;
+1233                     while (B < A)
+1234                     {
+1235                         SetVoxel( A + center\&.X,  B + center\&.Y, center\&.Z);
+1236                         SetVoxel( A + center\&.X, -B + center\&.Y, center\&.Z);
+1237                         SetVoxel(-A + center\&.X,  B + center\&.Y, center\&.Z);
+1238                         SetVoxel(-A + center\&.X, -B + center\&.Y, center\&.Z);
+1239 
+1240                         SetVoxel( B + center\&.X,  A + center\&.Y, center\&.Z);
+1241                         SetVoxel( B + center\&.X, -A + center\&.Y, center\&.Z);
+1242                         SetVoxel(-B + center\&.X,  A + center\&.Y, center\&.Z);
+1243                         SetVoxel(-B + center\&.X, -A + center\&.Y, center\&.Z);
+1244                         E += ((2 * B) + 1);
+1245                         ++B;
+1246                         if (E >= 0)
+1247                         {
+1248                             E -= ((2 * A) - 1);
+1249                             --A;
+1250                         }
+1251                     }
+1252                     break;
+1253                 default:
+1254                     break;
+1255             }
+1256         }
+.fi
+.SS "void CubeController\&.Cube\&.DrawLine (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Draws a line across the cube, in 3D\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx1\fP The first x coordinate\&.
+.br
+\fIy1\fP The first y coordinate\&.
+.br
+\fIz1\fP The first z coordinate\&.
+.br
+\fIx2\fP The second x coordinate\&.
+.br
+\fIy2\fP The second y coordinate\&.
+.br
+\fIz2\fP The second z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 715 of file Cube\&.cs\&.
+.PP
+.nf
+716         {
+717             // Check if there are any matched pairs of coordinates\&. You can reduce the
+718             // complexity of the pixelated line by making this check\&.
+719             if ((x1 == x2) && (y1 == y2))
+720             {
+721                 // Always start from lower z and go to upper z\&. 
+722                 int zStart = (z1 < z2) ? z1 : z2;
+723                 int zEnd = (z1 < z2) ? z2 : z1;
+724 
+725                 for (int i = zStart; i <= zEnd; ++i)
+726                 {
+727                     // A and B are equal between the points\&. Arbitrary choice of x1 or x2\&.
+728                     SetVoxel(x1, y1, i);
+729                 }
+730             }
+731             else if ((y1 == y2) && (z1 == z2))
+732             {
+733                 // Always start from lower x and go to upper x\&. 
+734                 int xStart = (x1 < x2) ? x1 : x2;
+735                 int xEnd = (x1 < x2) ? x2 : x1;
+736 
+737                 for (int i = xStart; i <= xEnd; ++i)
+738                 {
+739                     // B and Z are equal between the points\&. Arbitrary choice of y1 or y2\&.
+740                     SetVoxel(i, y1, z1);
+741                 }
+742             }
+743             else if ((z1 == z2) && (x1 == x2))
+744             {
+745                 // Always start from lower y and go to upper y\&.
+746                 int yStart = (y1 < y2) ? y1 : y2;
+747                 int yEnd = (y1 < y2) ? y2 : y1;
+748 
+749                 for (int i = yStart; i <= yEnd; ++i)
+750                 {
+751                     // A and Z are equal between the points\&. Arbitrary choice of x1 or x2\&.
+752                     SetVoxel(x1, i, z1);
+753                 }
+754             }
+755             // Otherwise, there are no straight lines, and we have to use
+756             // Bresenham's Line Algorithm:
+757             // http://csunplugged\&.org/wp-content/uploads/2014/12/Lines\&.pdf
+758             else
+759             {
+760                 BresenhamsLine3D(x1, y1, z1, x2, y2, z2, true);
+761             }
+762         }
+.fi
+.SS "void CubeController\&.Cube\&.DrawLine (\fBPoint\fPp1, \fBPoint\fPp2)"
+
+.PP
+Draws a line across the cube, in 3D\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIp1\fP The source x,y,z point
+.br
+\fIp2\fP The destination x,y,z point
+.RE
+.PP
+
+.PP
+Definition at line 770 of file Cube\&.cs\&.
+.PP
+.nf
+771         {
+772             // Check if there are any matched pairs of coordinates\&. You can reduce the
+773             // complexity of the pixelated line by making this check\&.
+774             if ((p1\&.X == p2\&.X) && (p1\&.Y == p2\&.Y))
+775             {
+776                 // Always start from lower z and go to upper z\&. 
+777                 int zStart = (p1\&.Z < p2\&.Z) ? p1\&.Z : p2\&.Z;
+778                 int zEnd   = (p1\&.Z < p2\&.Z) ? p2\&.Z : p1\&.Z;
+779 
+780                 for (int i = zStart; i <= zEnd; ++i)
+781                 {
+782                     // A and B are equal between the points\&. Arbitrary choice\&.
+783                     SetVoxel(p1\&.X, p1\&.Y, i);
+784                 }
+785             }
+786             else if ((p1\&.Y == p2\&.Y) && (p1\&.Z == p2\&.Z)) 
+787             {
+788                 // Always start from lower x and go to upper x\&. 
+789                 int xStart = (p1\&.X < p2\&.X) ? p1\&.X : p2\&.X;
+790                 int xEnd   = (p1\&.X < p2\&.X) ? p2\&.X : p1\&.X;
+791 
+792                 for (int i = xStart; i <= xEnd; ++i)
+793                 {
+794                     // B and Z are equal between the points\&. Arbitrary choice\&.
+795                     SetVoxel(i, p1\&.Y, p1\&.Z);
+796                 }
+797 
+798             }
+799             else if ((p1\&.Z == p2\&.Z) && (p1\&.X == p2\&.X))
+800             {
+801                 // Always start from lower y and go to upper y\&.
+802                 int yStart = (p1\&.Y < p2\&.Y) ? p1\&.Y : p2\&.Y;
+803                 int yEnd = (p1\&.Y < p2\&.Y) ? p2\&.Y : p1\&.Y;
+804 
+805                 for (int i = yStart; i <= yEnd; ++i)
+806                 {
+807                     // A and Z are equal between the points\&. Arbitrary choice\&.
+808                     SetVoxel(p1\&.X, i, p1\&.Z);
+809                 }
+810             }
+811             // Otherwise, there are no straight lines, and we have to use
+812             // Bresenham's Line Algorithm:
+813             // http://csunplugged\&.org/wp-content/uploads/2014/12/Lines\&.pdf
+814             else
+815             {
+816                 BresenhamsLine3D(p1\&.X, p1\&.Y, p1\&.Z, p2\&.X, p2\&.Y, p2\&.Z, true);
+817             }
+818         }
+.fi
+.SS "void CubeController\&.Cube\&.DrawPositionsAxis (\fBCube\&.AXIS\fPaxis, int[]positions, boolinvert)\fC [private]\fP"
+
+.PP
+A helper function for AxisUpDownRandSusp\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP 
+.br
+\fIpositions\fP 
+.br
+\fIinvert\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1525 of file Cube\&.cs\&.
+.PP
+.nf
+1526         {
+1527             int p = 0;
+1528 
+1529             ClearEntireCube();
+1530 
+1531             for (int x = 0; x < DIMENSION; ++x)
+1532             {
+1533                 for (int y = 0; y < DIMENSION; ++y)
+1534                 {
+1535                     if (invert)
+1536                     {
+1537                         p = (DIMENSION - 1 - positions[(x * DIMENSION) + y]);
+1538                     }
+1539                     else
+1540                     {
+1541                         p = positions[(x*DIMENSION) + y];
+1542                     }
+1543 
+1544                     switch (axis)
+1545                     {
+1546                         case AXIS\&.AXIS_X:
+1547                             SetVoxel(p, x, y);
+1548                             break;
+1549                         case AXIS\&.AXIS_Y:
+1550                             SetVoxel(x, p, y);
+1551                             break;
+1552                         case AXIS\&.AXIS_Z:
+1553                             SetVoxel(x, y, p);
+1554                             break;
+1555                         default:
+1556                             break;
+1557                     }
+1558                 }
+1559             }
+1560         }
+.fi
+.SS "void CubeController\&.Cube\&.DrawRectangle (\fBCube\&.AXIS\fPaxis, \fBCubeController\&.Point\fPA, \fBCubeController\&.Point\fPD)"
+
+.PP
+Draws a rectangle using point A and point D\&. Rectangle must be drawn on the coordinate that the points share, i\&.e\&., you cannot (or should not) draw a rectangle between a point at (0,0,7) and (1,2,3), as they have no common plane to drawn cleanly across at 90° angles\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIA\fP The first point to draw from (inside-originating corner)\&.
+.br
+\fID\fP The terminating point (outside-opposing corner)\&.
+.RE
+.PP
+
+.PP
+Definition at line 1104 of file Cube\&.cs\&.
+.PP
+.nf
+1105         {
+1106             // Draw the lines to the non-named points:
+1107             //
+1108             //                SIDE 1
+1109             //         A _______________ B
+1110             //          |               |
+1111             // SIDE 4   |               |   SIDE 2
+1112             //          |_______________|
+1113             //          C               D
+1114             //                SIDE 3
+1115             switch (axis)
+1116             {
+1117                 case AXIS\&.AXIS_X:
+1118                                        // X IS FIXED FOR BOTH A AND D
+1119                     DrawLine(A, new Point(A\&.X, A\&.Y, D\&.Z));  // Draw SIDE 1
+1120                     DrawLine(D, new Point(A\&.X, A\&.Y, D\&.Z));  // Draw SIDE 2
+1121                     DrawLine(D, new Point(A\&.X, D\&.Y, A\&.Z));  // Draw SIDE 3
+1122                     DrawLine(A, new Point(A\&.X, D\&.Y, A\&.Z));  // Draw SIDE 4
+1123                     break;
+1124 
+1125                 case AXIS\&.AXIS_Y:           // Y IS FIXED FOR BOTH A AND D
+1126                     DrawLine(A, new Point(A\&.X, A\&.Y, D\&.Z));  // Draw SIDE 1
+1127                     DrawLine(D, new Point(A\&.X, A\&.Y, D\&.Z));  // Draw SIDE 2
+1128                     DrawLine(D, new Point(D\&.X, A\&.Y, A\&.Z));  // Draw SIDE 3
+1129                     DrawLine(A, new Point(D\&.X, A\&.Y, A\&.Z));  // Draw SIDE 4
+1130                     break;
+1131 
+1132                 case AXIS\&.AXIS_Z:                // Z IS FIXED FOR BOTH A AND D
+1133                     DrawLine(A, new Point(D\&.X, A\&.Y, A\&.Z));  // Draw SIDE 1
+1134                     DrawLine(D, new Point(D\&.X, A\&.Y, A\&.Z));  // Draw SIDE 2
+1135                     DrawLine(D, new Point(A\&.X, D\&.Y, A\&.Z));  // Draw SIDE 3
+1136                     DrawLine(A, new Point(A\&.X, D\&.Y, A\&.Z));  // Draw SIDE 4
+1137                     break;
+1138 
+1139                 default:
+1140                     break;
+1141             }
+1142         }
+.fi
+.SS "void CubeController\&.Cube\&.Firework (intiterations, intexplosionSize, intdelay)"
+
+.PP
+This function will shoot a specified number of 'fireworks' up from the bottom layer\&. These explode and rain down\&. The function is more-or-less copied form \fB3d\&.cpp\fP\&. We need to experiment with it some on the cube to get it to our liking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP The number of fireworks to shoot
+.br
+\fIexplosionSize\fP The size of the explosion
+.br
+\fIdelay\fP The delay
+.RE
+.PP
+
+.PP
+Definition at line 1571 of file Cube\&.cs\&.
+.PP
+.nf
+1572         {
+1573             var particles = new double[explosionSize,6];
+1574 
+1575             for (int i = 0; i < iterations; i++)
+1576             {
+1577                 int randX, randY, randZ;
+1578                 double originX = (double) (_rgen\&.Next()%4);
+1579                 double originY = (double) (_rgen\&.Next()%4);
+1580                 double originZ = (double) (_rgen\&.Next()%2);
+1581                 originZ += 5\&.0;
+1582                 originX += 2\&.0;
+1583                 originY += 2\&.0;
+1584 
+1585                 // Shoot a particle up in the air
+1586                 for (int j = 0; j < originZ; j++)
+1587                 {
+1588                     SetVoxel((int) originX, (int) originY, j);
+1589                     DelayMS(600 + (500*j));
+1590                     ClearEntireCube();
+1591                 }
+1592 
+1593                 // Fill particle array
+1594                 for (int k = 0; k < explosionSize; k++)
+1595                 {
+1596                     // Position
+1597                     particles[k, 0] = originX;
+1598                     particles[k, 1] = originY;
+1599                     particles[k, 2] = originZ;
+1600 
+1601                     randX = _rgen\&.Next()%200;
+1602                     randY = _rgen\&.Next()%200;
+1603                     randZ = _rgen\&.Next()%200;
+1604 
+1605                     // Movement
+1606                     particles[k, 3] = 1 - (double) randX/100\&.0; //dx
+1607                     particles[k, 4] = 1 - (double) randY/100\&.0; //dx
+1608                     particles[k, 5] = 1 - (double) randZ/100\&.0; //dx
+1609                 }
+1610 
+1611                 // Explode
+1612                 for (int e = 0; e < 25; e++)
+1613                 {
+1614                     double slowRate = 1\&.0 + (Math\&.Tan((e + 1\&.0)/20\&.0)*10\&.0);
+1615                     double gravity = Math\&.Tan((e + 0\&.1)/20)/2\&.0;
+1616 
+1617                     for (int k = 0; k < explosionSize; k++)
+1618                     {
+1619                         particles[k,0] += particles[k,3] / slowRate;
+1620                         particles[k,1] += particles[k,4] / slowRate;
+1621                         particles[k,2] += particles[k,5] / slowRate;
+1622                         particles[k,2] -= gravity;
+1623 
+1624                         SetVoxel((int)particles[k, 0], (int)particles[k, 1], (int)particles[k, 2]);
+1625                     }
+1626                     DelayMS(delay);
+1627                     ClearEntireCube();
+1628                 }
+1629             }
+1630         }
+.fi
+.SS "bool [][] CubeController\&.Cube\&.GetChar (charc)\fC [private]\fP"
+
+.PP
+Gets the character specified by 'c'\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The char\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIc\fP C\&.
+.RE
+.PP
+
+.PP
+Definition at line 1334 of file Cube\&.cs\&.
+.PP
+.nf
+1335         {
+1336             return _fontHandler\&.LookupByKey (c);
+1337         }
+.fi
+.SS "bool [][][] CubeController\&.Cube\&.GetCubeState ()"
+
+.PP
+Gets the state of the cube\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The cube state\&.
+.RE
+.PP
+
+.PP
+Definition at line 112 of file Cube\&.cs\&.
+.PP
+.nf
+113         {
+114             return _cubeState;
+115         }
+.fi
+.SS "bool [][] CubeController\&.Cube\&.GetPlane (\fBAXIS\fPaxis, intpl)"
+
+.PP
+Gets a plane by axis, indexed by pl\&. See documentation for graphical explanation\&. Complications arise due to cube orientation towards end user\&. For instance: GetPlane(AXIS_Y, 1) --> return the A-Z plane at B=1\&. GetPlane(AXIS_X, 0) --> return the B-Z plane at A=0\&. GetPlane(AXIS_Z, 3) --> return the A-B plane at Z=3\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The plane indexed by pl on the axis axis\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP The axis of the plane\&.
+.br
+\fIpl\fP The index of the plane\&.
+.RE
+.PP
+
+.PP
+Definition at line 385 of file Cube\&.cs\&.
+.PP
+.nf
+386         {
+387             bool[][] tmpplane = NewEmptyPlane(DIMENSION);
+388 
+389             switch (axis) {
+390 
+391             case AXIS\&.AXIS_X:
+392                 for (int y = 0; y < DIMENSION; ++y) {
+393                     for (int z = 0; z < DIMENSION; ++z) {
+394                         tmpplane [y] [z] = _cubeState [pl] [y] [z];
+395                     }
+396                 }
+397                 break;
+398 
+399             case AXIS\&.AXIS_Y:
+400                 for (int x = 0; x < DIMENSION; ++x) {
+401                     for (int z = 0; z < DIMENSION; ++z) {
+402                         tmpplane [x] [z] = _cubeState [x] [pl] [z];
+403                     }
+404                 }
+405                 break;
+406 
+407             case AXIS\&.AXIS_Z:
+408                 for (int x = 0; x < DIMENSION; ++x) {
+409                     for (int y = 0; y < DIMENSION; ++y) {
+410                         tmpplane [x] [y] = _cubeState [y] [x] [pl];
+411                     }
+412                 }
+413                 break;
+414 
+415             default:
+416                 break;
+417             }
+418 
+419             return tmpplane;
+420         }
+.fi
+.SS "bool CubeController\&.Cube\&.GetVoxel (intx, inty, intz)"
+
+.PP
+Gets the voxel\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP, if voxel was set, \fCfalse\fP otherwise\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 269 of file Cube\&.cs\&.
+.PP
+.nf
+270         {
+271             if (!InRange (x, y, z)) {
+272                 return false;
+273             } else {
+274                 return _cubeState [x] [y] [z];
+275             }
+276         }
+.fi
+.SS "bool CubeController\&.Cube\&.InRange (intx, inty, intz)\fC [private]\fP"
+
+.PP
+Determines if the specified coordinates are in range of the cube dimensions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 225 of file Cube\&.cs\&.
+.PP
+.nf
+226         {
+227             if ((x >= 0 && x < DIMENSION)
+228                 && (y >= 0 && y < DIMENSION)
+229                 && (z >= 0 && z < DIMENSION)) {
+230                 return true;
+231             } else {
+232                 return false;
+233             }
+234         }
+.fi
+.SS "void CubeController\&.Cube\&.LineSpin (intiterations, intdelay)"
+
+.PP
+Spins a line in a sinusoidal fashion\&. Implementation nearly directly taken from \fB3d\&.cpp\fP\fBlinespin()\fP\&. Some of the values have been arbitrarily chosen by the team from CHR, so I've chosen not to mess with them too much\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations\&.
+.br
+\fIdelay\fP Delay\&.
+.RE
+.PP
+
+.PP
+Definition at line 1639 of file Cube\&.cs\&.
+.PP
+.nf
+1640         {
+1641             double top_x = 0\&.0, top_y = 0\&.0, bot_x = 0\&.0, bot_y = 0\&.0;
+1642             double sine_base = 0\&.0;
+1643             double center_x = 4\&.0, center_y = 4\&.0;
+1644 
+1645             for (int i = 0; i < iterations; ++i) {
+1646 
+1647                 // For each plane
+1648                 for (int z = 0; z < DIMENSION; ++z) {
+1649                     sine_base = (double)(i / (double)20) + 
+1650                         (double)(z / ((double)(10 + (7\&.0 * Math\&.Sin ((double)i / 20)))));
+1651 
+1652                     top_x = center_x + Math\&.Sin (sine_base) * 5;
+1653                     top_y = center_y + Math\&.Cos(sine_base) * 5;
+1654 
+1655                     bot_x = center_x + Math\&.Sin (sine_base + Effect\&.PI) * 10;
+1656                     bot_y = center_y + Math\&.Cos (sine_base + Effect\&.PI) * 10;
+1657 
+1658                     DrawLine ((int)top_x, (int)top_y, z,
+1659                         (int)bot_x, (int)bot_y, z);
+1660                 }
+1661 
+1662                 DelayMS (delay);
+1663                 ClearEntireCube ();
+1664             }
+1665         }
+.fi
+.SS "void CubeController\&.Cube\&.LoadBar (intdelay)"
+
+.PP
+Light all LEDs layer by layer in strips, and then unset in the opposite pattern\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdelay\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1707 of file Cube\&.cs\&.
+.PP
+.nf
+1708         {
+1709             ClearEntireCube();
+1710             
+1711             for (int z = 0; z < DIMENSION; ++z)
+1712             {
+1713                 for (int y = 0; y < DIMENSION; ++y)
+1714                 {
+1715                     DrawLine(0, y, z, DIMENSION - 1, y, z);
+1716                     DelayMS(delay);
+1717                 }
+1718             }
+1719 
+1720             DelayMS(delay * 2);
+1721 
+1722             for (int z = (DIMENSION - 1); z >= 0; --z)
+1723             {
+1724                 for (int y = (DIMENSION - 1); y >= 0; --y)
+1725                 {
+1726                     ClearLine(0, y, z, DIMENSION - 1, y, z);
+1727                     DelayMS(delay);
+1728                 }
+1729             }
+1730         }
+.fi
+.SS "void CubeController\&.Cube\&.MessageBanner (stringmessage, \fBDIRECTION\fPdirection)"
+
+.PP
+Sends a message 'around' the cube in a banner-like manner (rhyme!)\&. A character is put on either the 0th A plane, or th 7th A plane, and then is printed out character by character, and rotated around the cube\&. Only three characters will be printed at a time (see documentation for explanation)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Message to print\&.
+.br
+\fIdirection\fP Direction to send around cube\&.
+.RE
+.PP
+
+.PP
+Definition at line 1377 of file Cube\&.cs\&.
+.PP
+.nf
+1378         {
+1379 
+1380             // A message will be sent: LAST CHARACTER --> around cube R-L --> gone\&.
+1381             // And then each character preceding it will be sent in quick succession\&.
+1382             // At any given point up to three characters will be printed out\&.
+1383             if (direction == DIRECTION\&.FORWARD) {
+1384                 // The message needs to be reversed to send the last character out first\&. 
+1385                 var chars = message\&.ToCharArray ();
+1386                 Array\&.Reverse (chars);
+1387                 // Tack on three extra blank characters, so that the actual last
+1388                 // character will "fall-off" the cube\&. 
+1389                 message = new string(chars);
+1390                 message += "   ";
+1391 
+1392                 for (int i = 0; i < message\&.Length; ++i) {
+1393                     // Take the character from the FRONT-FACE, and put it on the RIGHT-FACE\&.
+1394                     ClearPlane (AXIS\&.AXIS_X, 7);
+1395                     PatternSetPlane (AXIS\&.AXIS_X, 7, GetPlane (AXIS\&.AXIS_Y, 0));
+1396 
+1397                     // Take the character from the LEFT-FACE, and put it on FRONT-FACE\&.
+1398                     ClearPlane (AXIS\&.AXIS_Y, 0);
+1399                     PatternSetPlane (AXIS\&.AXIS_Y, 0, GetPlane (AXIS\&.AXIS_X, 0));
+1400 
+1401                     // Put the ith character on the LEFT-FACE of CUBE\&.
+1402                     ClearPlane (AXIS\&.AXIS_X, 0);
+1403                     PatternSetPlane (AXIS\&.AXIS_X, 0, GetChar (message [i]));
+1404                 }
+1405             
+1406             // A Message will be sent: FIRST CHARACTER --> around cube L-R --> gone\&.
+1407             // And then each character following it will be sent in quick session\&.
+1408             } else {
+1409 
+1410                 message += "   ";
+1411 
+1412                 for (int i = 0; i < message\&.Length; ++i) {
+1413                     // Put the ith character on the RIGHT-FACE of CUBE\&.
+1414                     PatternSetPlane (AXIS\&.AXIS_X, 7, GetChar (message [i]));
+1415                     DelayMS (400);
+1416 
+1417                     // Take the character from the RIGHT-FACE, and put it on FRONT-FACE\&.
+1418                     PatternSetPlane (AXIS\&.AXIS_Y, 0, GetPlane (AXIS\&.AXIS_X, 7));
+1419                     DelayMS (400);
+1420 
+1421                     // Take the character from the FRONT-FACE, and put it on the LEFT-FACE\&.
+1422                     PatternSetPlane (AXIS\&.AXIS_X, 0, GetPlane (AXIS\&.AXIS_Y, 0));
+1423                     DelayMS (400);
+1424                 }
+1425 
+1426             }
+1427         }
+.fi
+.SS "void CubeController\&.Cube\&.MessageFlyOnAxis (stringmessage, \fBAXIS\fPaxis, \fBDIRECTION\fPdirection)"
+
+.PP
+Prints a message character by character on a given axis, and sends it flying either front-to-back or back-to-front\&. NOTE: front-to-back is relative to axis, specifically from ORIGIN-to-TERMINUS, or as close as possible\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP Message to transmit\&.
+.br
+\fIaxis\fP Axis to send message along\&.
+.br
+\fIdirection\fP Direction of travel\&.
+.RE
+.PP
+
+.PP
+Definition at line 1349 of file Cube\&.cs\&.
+.PP
+.nf
+1350         {
+1351             // Make sure that the string is a valid message\&. If it is null or empty, then we
+1352             // have no message to transmit\&. 
+1353             if (String\&.IsNullOrEmpty (message)) {
+1354                 message = "INVALID TEXT";
+1355             }
+1356 
+1357             foreach (char c in message) {
+1358                 PutChar (axis, 0, c);
+1359                 for (int i = 0; i < DIMENSION; ++i) {
+1360                     ShiftAndRoll (axis, direction);
+1361                     DelayMS (200);
+1362                 }
+1363                 ClearEntireCube ();
+1364             }
+1365         }
+.fi
+.SS "void CubeController\&.Cube\&.MirrorCubeAlongAxis (\fBAXIS\fPaxis)"
+
+.PP
+Mirrors the cube along a given axis\&. If a cube is mirrored along it's Z-axis, the voxels at the top will now become the voxels at the bottom\&. They DO NOT change x-y positions though within the x-y plane from that Z-slice\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to mirror across\&.
+.RE
+.PP
+
+.PP
+Definition at line 657 of file Cube\&.cs\&.
+.PP
+.nf
+658         {
+659             // Get the outer-two most planes along the given axis\&. Swap them\&. 
+660             // Then move on to the next inner-two\&. Swap them as well\&.
+661             // Repeat until no planes are left!
+662             bool[][] plane1;
+663             bool[][] plane2;
+664 
+665             for (int i = 0; i < (DIMENSION / 2); ++i) {
+666                 plane1 = GetPlane (axis, i);                 // Get the plane closest to origin\&.
+667                 plane2 = GetPlane (axis, DIMENSION - 1 - i); // Get the plane closest to terminus\&.
+668 
+669                 PatternSetPlane (axis, i, plane2);  // Put plane2 at the beginning\&.
+670                 PatternSetPlane (axis, DIMENSION - 1 - i, plane1);  // Put plane1 at the end\&. 
+671             }
+672         }
+.fi
+.SS "bool [][] CubeController\&.Cube\&.NewEmptyPlane (intsize)\fC [private]\fP"
+
+.PP
+Creates an empty plane for use of filling\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The empty plane\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP Size\&.
+.RE
+.PP
+
+.PP
+Definition at line 151 of file Cube\&.cs\&.
+.PP
+.nf
+152         {
+153             bool[][] tmpplane = new bool[size][];
+154             for (int i = 0; i < size; ++i)
+155             {
+156                 tmpplane[i] = new bool[size];
+157             }
+158 
+159             return tmpplane;
+160         }
+.fi
+.SS "void CubeController\&.Cube\&.PartialRotation (\fBAXIS\fPaxis, intpl, doubletheta)"
+
+.PP
+Partially rotates a given plane, not based on strictly 90°, 180°, or -90° turns\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to rotate along\&.
+.br
+\fIpl\fP Plane of axis to rotate\&.
+.br
+\fItheta\fP Degree of rotation\&.
+.RE
+.PP
+
+.PP
+Definition at line 580 of file Cube\&.cs\&.
+.PP
+.nf
+581         {
+582             // Get the plane that you need to rotate\&. 
+583             bool[][] tmpplane = GetPlane(axis, pl);
+584 
+585             // List of coordinates of voxels that are set, and which need to
+586             // be rotated through\&. 
+587             var coords = new List<Point>();
+588             var rotated = new List<Point>();
+589 
+590             // Parital rotation is accomplished via the following matrix expansion:
+591             // | x' | = | cos(θ) - sin(θ) | | x |
+592             // | y' | = | sin(θ) + cos(θ) | | y |
+593             //      Therefore
+594             // x' = x * cos(θ) - y * sin(θ)
+595             // y' = x * sin(θ) + y * cos(θ)
+596             double sin_t = Math\&.Sin(theta);
+597             double cos_t = Math\&.Cos(theta);
+598 
+599             int x_prime = 0;
+600             int y_prime = 0;
+601 
+602             // Determine which voxels are currently set on this plane\&. 
+603             //  x_prime = (int)((P\&.B * cos_t) - (P\&.Z * sin_t));
+604             //  y_prime = (int)((P\&.B * sin_t) + (P\&.Z * cos_t));
+605         }
+.fi
+.SS "void CubeController\&.Cube\&.PatternSetPlane (\fBAXIS\fPaxis, intpl, boolpattern[][])"
+
+.PP
+Sets a plane indexed by pl on the axis axis to a given pattern\&. See documentation for graphical explanation\&. Complications arise due to cube orientation towards end user\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP The axis to set the plane on\&.
+.br
+\fIpl\fP The index of the plane\&.
+.br
+\fIpattern\fP The pattern to fill the plane with\&.
+.RE
+.PP
+
+.PP
+Definition at line 432 of file Cube\&.cs\&.
+.PP
+.nf
+433         {
+434             switch (axis) {
+435 
+436             case AXIS\&.AXIS_X:
+437                 for (int y = 0; y < DIMENSION; ++y) {
+438                     for (int z = 0; z < DIMENSION; ++z) {
+439                         _cubeState [pl] [y] [z] = pattern [y] [z];
+440                     }
+441                 }
+442                 break;
+443             
+444             // 
+445             case AXIS\&.AXIS_Y:
+446                 for (int x = 0; x < DIMENSION; ++x) {
+447                     for (int z = 0; z < DIMENSION; ++z) {
+448                         _cubeState [x] [pl] [z] = pattern [x] [z];
+449                     }
+450                 }
+451                 break;
+452 
+453             case AXIS\&.AXIS_Z:
+454                 for (int x = 0; x < DIMENSION; ++x) {
+455                     for (int y = 0; y < DIMENSION; ++y) {
+456                         _cubeState [x] [y] [pl] = pattern [x] [y];
+457                     }
+458                 }
+459                 break;
+460 
+461             default:
+462                 break;
+463             }
+464         }
+.fi
+.SS "void CubeController\&.Cube\&.PutChar (\fBAXIS\fPaxis, intpl, charc)"
+
+.PP
+Writes a specified to a plane along axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to write along\&.
+.br
+\fIpl\fP Plane to modify\&.
+.br
+\fIc\fP Character to write (lookup bitmap)\&.
+.RE
+.PP
+
+.PP
+Definition at line 1324 of file Cube\&.cs\&.
+.PP
+.nf
+1325         {
+1326             PatternSetPlane (axis, pl, GetChar (c));
+1327         }
+.fi
+.SS "void CubeController\&.Cube\&.Rain (intiterations, intdelay)"
+
+.PP
+Create a rain-shower for the specified iterations, with [delay] ms between each frame\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations\&.
+.br
+\fIdelay\fP Delay\&.
+.RE
+.PP
+
+.PP
+Definition at line 1738 of file Cube\&.cs\&.
+.PP
+.nf
+1739         {
+1740             int rnd_x = 0, rnd_y = 0;
+1741 
+1742             for (int j = 0; j < iterations; ++j){
+1743                 int randnum = _rgen\&.Next () % 4;
+1744 
+1745                 for (int i = 0; i < randnum; ++i) {
+1746                     rnd_x = _rgen\&.Next () % 8;
+1747                     rnd_y = _rgen\&.Next () % 8;
+1748                     SetVoxel (rnd_x, rnd_y, 7);
+1749                 }
+1750 
+1751                 DelayMS (delay);
+1752                 ShiftNoRoll (Cube\&.AXIS\&.AXIS_Z, Cube\&.DIRECTION\&.REVERSE);
+1753             }
+1754         }
+.fi
+.SS "void CubeController\&.Cube\&.RandomSparkle (intsparkleCount, intdelay)"
+
+.PP
+Blink an increasing number of random voxels, and then blink in a decreasing number back down to 1 again\&. 
+.PP
+Definition at line 1943 of file Cube\&.cs\&.
+.PP
+.nf
+1944         {
+1945             if ((sparkleCount >= 0) && (sparkleCount <= 512))
+1946             {
+1947                 for (int i = 0; i <= sparkleCount; ++i)
+1948                 {
+1949                     RandomSparkleFlash(5, i, delay);
+1950                 }
+1951 
+1952                 for (int i = sparkleCount; i >= 0; --i)
+1953                 {
+1954                     RandomSparkleFlash(5, i, delay);
+1955                 }
+1956             }
+1957         }
+.fi
+.SS "void CubeController\&.Cube\&.RandomSparkleFlash (intiterations, intvoxels, intdelay)\fC [private]\fP"
+
+.PP
+Set a given number of voxels at random positions\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Number of animation frames\&.
+.br
+\fIvoxels\fP Number of voxels to set\&.
+.br
+\fIdelay\fP Animation delay between frame updates\&.
+.RE
+.PP
+
+.PP
+Definition at line 1965 of file Cube\&.cs\&.
+.PP
+.nf
+1966         {
+1967             for (int i = 0; i < iterations; ++i)
+1968             {
+1969                 for (int v = 0; v <= voxels; ++v)
+1970                 {
+1971                     // Set a random voxel based\&. 
+1972                     SetVoxel(_rgen\&.Next() % DIMENSION, 
+1973                         _rgen\&.Next() % DIMENSION, 
+1974                         _rgen\&.Next() % DIMENSION);
+1975 
+1976                     DelayMS(delay);
+1977                     ClearEntireCube();
+1978                 }
+1979             }
+1980         }
+.fi
+.SS "void CubeController\&.Cube\&.RenderCube ()"
+
+.PP
+Renders the cube by Z-Planes\&. DEBUGGING PURPOSES ONLY\&. 
+.PP
+Definition at line 193 of file Cube\&.cs\&.
+.PP
+.nf
+194         {
+195             if (_cubeState != null) {
+196                 // Print each z plane\&. 
+197                 for (int z = 0; z < 8; ++z) {
+198                     //Console\&.WriteLine ("PLANE {0}", z);
+199                     for (int x = 0; x < 8; ++x) {
+200                         for (int y = 0; y < 8; ++y) {
+201                             if (_cubeState [x] [y] [z]) {
+202                                 Console\&.Write ("# ");
+203                             } else {
+204                                 Console\&.Write ("  ");
+205                             }
+206                         }
+207                         Console\&.WriteLine ();
+208                     }
+209                     Console\&.WriteLine ("\n");
+210                 }
+211             }
+212         }
+.fi
+.SS "void CubeController\&.Cube\&.RenderPlane (boolplane[][])"
+
+.PP
+Renders a specified plane\&. DEBUGGING PURPOSES ONLY\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIplane\fP 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file Cube\&.cs\&.
+.PP
+.nf
+167         {
+168             if (plane != null)
+169             {
+170                 for (int i = 0; i < 8; ++i)
+171                 {
+172                     for (int j = 0; j < 8; ++j)
+173                     {
+174                         if (plane[i][j])
+175                         {
+176                             Console\&.Write("# ");
+177                         }
+178                         else
+179                         {
+180                             Console\&.Write("  ");
+181                         }
+182                     }
+183                     Console\&.WriteLine();
+184                 }
+185                 Console\&.WriteLine();
+186                 Console\&.WriteLine();
+187             }
+188         }
+.fi
+.SS "void CubeController\&.Cube\&.Ripples (intiterations, intdelay)"
+
+.PP
+Creates a sine wave that ripples from the center of the cube\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations to run to\&.
+.br
+\fIdelay\fP Animation speed (delay between frames in milliseconds)\&.
+.RE
+.PP
+
+.PP
+Definition at line 1761 of file Cube\&.cs\&.
+.PP
+.nf
+1762         {
+1763             double  distance = 0\&.0,
+1764                     height = 0\&.0,
+1765                     ripple_interval = Effect\&.RIPPLE_INTERVAL;
+1766 
+1767             int x = 0,
+1768                 y = 0;
+1769 
+1770             for (int i = 0; i < iterations; ++i) {
+1771                 for (x = 0; x < DIMENSION; ++x) {
+1772                     for (y = 0; y < DIMENSION; ++y) {
+1773                         // Calculate distance of this point from the center of cube in 
+1774                         // relation to the sine wave\&. 
+1775                         distance = Point\&.Distance ( 
+1776                             (double)((DIMENSION - 1) / 2), // First x is center of 0:7\&. 
+1777                             (double)x,                   
+1778                             (double)((DIMENSION - 1) / 2), // First y is center of 0:7\&.
+1779                             (double)(y / Effect\&.WAVE_CONSTANT)) // Second y is distance to hypotenous 
+1780                             * 8\&.0; 
+1781                                                              
+1782 
+1783                         height = 4\&.0 + (Math\&.Sin ((distance / ripple_interval) + (i / 50\&.0)) * 4\&.0);
+1784                         SetVoxel (x, y, (int)height);
+1785                     }
+1786                 }
+1787                 DelayMS (delay);
+1788                 ClearEntireCube ();
+1789             }
+1790         }
+.fi
+.SS "void CubeController\&.Cube\&.RotatePlane (\fBAXIS\fPaxis, intpl, inttheta)"
+
+.PP
+Rotates the plane\&. Rotate by +90: Transpose matrix\&. Reverse rows\&.
+.PP
+Rotate by +180: Reverse each row, then each column\&.
+.PP
+Rotate by +270: Transpose matrix\&. Reverse columns\&.
+.PP
+See: http://stackoverflow.com/a/8664879 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis\&.
+.br
+\fIpl\fP Pl\&.
+.br
+\fItheta\fP Theta\&.
+.RE
+.PP
+
+.PP
+Definition at line 542 of file Cube\&.cs\&.
+.PP
+.nf
+543         {
+544             // Acquire the plane on the axis you intend to rotate\&. 
+545             bool[][] plane = GetPlane (axis, pl);
+546 
+547             switch (theta) {
+548 
+549             case 90:
+550                 Transpose2D (ref plane);
+551                 RowReversal2D (ref plane);
+552                 break;
+553 
+554             case 180:
+555                 Transpose2D (ref plane);
+556                 RowReversal2D (ref plane);
+557                 ColumnReversal2D (ref plane);
+558                 break;
+559 
+560             case 270:
+561                 Transpose2D (ref plane);
+562                 ColumnReversal2D (ref plane);
+563                 break;
+564 
+565             default:
+566                 break;
+567             }
+568 
+569             // Write your changes to the cube\&. 
+570             PatternSetPlane (axis, pl, plane);
+571         }
+.fi
+.SS "void CubeController\&.Cube\&.RowReversal2D (ref boolmtx[][])\fC [private]\fP"
+
+.PP
+Reverses the rows of a 2D matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImtx\fP Matrix source of rows\&.
+.RE
+.PP
+
+.PP
+Definition at line 642 of file Cube\&.cs\&.
+.PP
+.nf
+643         {
+644             foreach (bool[] row in mtx) {
+645                 Array\&.Reverse (row);
+646             }
+647         }
+.fi
+.SS "void CubeController\&.Cube\&.SendVoxelZ (intx, inty, intz, intdelay)"
+
+.PP
+Takes a voxel and sends it from one face of the cube to another along the Z-axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.br
+\fIdelay\fP Delay between frames\&.
+.RE
+.PP
+
+.PP
+Definition at line 1859 of file Cube\&.cs\&.
+.PP
+.nf
+1860         {
+1861             int dest = 0;
+1862             for (int i = 0; i < DIMENSION; ++i) {
+1863                 if (z == (DIMENSION - 1)) {
+1864                     dest = DIMENSION - 1 - i;
+1865                     ClearVoxel (x, y, dest+1);
+1866                 } else {
+1867                     dest = i;
+1868                     ClearVoxel (x, y, dest-1);
+1869                 }
+1870                 SetVoxel (x, y, dest);
+1871                 DelayMS (delay);
+1872             }
+1873         }
+.fi
+.SS "void CubeController\&.Cube\&.SetEntireCube ()"
+
+.PP
+Sets the entire cube by setting Z-Planes\&. 
+.PP
+Definition at line 129 of file Cube\&.cs\&.
+.PP
+.nf
+130         {
+131             for (int i = 0; i < DIMENSION; ++i) {
+132                 SetPlane (AXIS\&.AXIS_Z, i);
+133             }
+134         }
+.fi
+.SS "void CubeController\&.Cube\&.SetPlane (\fBAXIS\fPaxis, intpl)"
+
+.PP
+Turns on all voxels on a given plane of the specified axis\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to manipulate\&.
+.br
+\fIpl\fP Plane index on axis\&.
+.RE
+.PP
+
+.PP
+Definition at line 296 of file Cube\&.cs\&.
+.PP
+.nf
+297         {
+298             if (pl >= 0 && pl < DIMENSION) {
+299 
+300                 switch (axis) {
+301                 case AXIS\&.AXIS_X:
+302                     for (int y = 0; y < DIMENSION; ++y) {
+303                         for (int z = 0; z < DIMENSION; ++z) {
+304                             _cubeState [pl] [y] [z] = true;
+305                         }
+306                     }
+307                     break;
+308 
+309                 case AXIS\&.AXIS_Y:
+310                     for (int x = 0; x < DIMENSION; ++x) {
+311                         for (int z = 0; z < DIMENSION; ++z) {
+312                             _cubeState [x] [pl] [z] = true;
+313                         }
+314                     }
+315                     break;
+316 
+317                 case AXIS\&.AXIS_Z:
+318                     for (int x = 0; x < DIMENSION; ++x) {
+319                         for (int y = 0; y < DIMENSION; ++y) {
+320                             _cubeState [x] [y] [pl] = true;
+321                         }
+322                     }
+323                     break;
+324 
+325                 default:
+326                     break;
+327                 }
+328             }
+329 
+330         }
+.fi
+.SS "void CubeController\&.Cube\&.SetVoxel (intx, inty, intz)"
+
+.PP
+Sets the voxel\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 242 of file Cube\&.cs\&.
+.PP
+.nf
+243         {
+244             if (InRange (x, y, z)) {
+245                 _cubeState [x] [y] [z] = true;
+246             }
+247         }
+.fi
+.SS "void CubeController\&.Cube\&.ShiftAndRoll (\fBAXIS\fPaxis, \fBDIRECTION\fPdirection)"
+
+.PP
+Shift the specified axis in the specified direction\&. Roll planes through (do not discard planes)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis\&.
+.br
+\fIdirection\fP Direction\&.
+.RE
+.PP
+
+.PP
+Definition at line 476 of file Cube\&.cs\&.
+.PP
+.nf
+477         {
+478             bool[][] tmpplane;
+479 
+480             if (direction == DIRECTION\&.FORWARD) {
+481                 // Save the last plane so that it may be rotated through as element 0\&.
+482                 tmpplane = GetPlane (axis, DIMENSION - 1);
+483                 for (int i = DIMENSION - 1; i > 0; --i) {
+484                     // Set the ith plane to the plane before it\&.
+485                     PatternSetPlane (axis, i, GetPlane(axis, i-1));
+486                 }
+487                 // Rotate the last plane through to the first element\&.
+488                 PatternSetPlane (axis, 0, tmpplane);
+489             } else {
+490                 // Save the first plane so it will rotate through as last element\&.
+491                 tmpplane = GetPlane (axis, 0);
+492                 for (int i = 0; i < DIMENSION - 1; ++i) {
+493                     // Set the ith plane to the plane after it\&.
+494                     PatternSetPlane (axis, i, GetPlane (axis, i+1));
+495                 }
+496                 // Rotate the first plane through as the last element\&.
+497                 PatternSetPlane (axis, DIMENSION - 1, tmpplane);
+498             }
+499         }
+.fi
+.SS "void CubeController\&.Cube\&.ShiftNoRoll (\fBAXIS\fPaxis, \fBDIRECTION\fPdirection)"
+
+.PP
+Shift the specified axis in the specified direction\&. Discard planes as they reach the boundary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis\&.
+.br
+\fIdirection\fP Direction\&.
+.RE
+.PP
+
+.PP
+Definition at line 507 of file Cube\&.cs\&.
+.PP
+.nf
+508         {
+509             if (direction == DIRECTION\&.FORWARD) {
+510                 for (int i = DIMENSION - 1; i > 0; --i) {
+511                     // Set the ith plane to the plane before it\&.
+512                     PatternSetPlane (axis, i, GetPlane(axis, i-1));
+513                 }
+514                 ClearPlane (axis, 0);
+515             } else {
+516                 for (int i = 0; i < DIMENSION - 1; ++i) {
+517                     PatternSetPlane (axis, i, GetPlane (axis, i+1));
+518                 }
+519                 ClearPlane (axis, DIMENSION - 1);
+520             }
+521         }
+.fi
+.SS "void CubeController\&.Cube\&.SideWaves (intiterations, intdelay)"
+
+.PP
+Generates waves that spin from side-to-side\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations\&.
+.br
+\fIdelay\fP Delay\&.
+.RE
+.PP
+
+.PP
+Definition at line 1827 of file Cube\&.cs\&.
+.PP
+.nf
+1828         {
+1829             double origin_x = 0\&.0, origin_y = 0\&.0, 
+1830                 distance = 0\&.0, height = 0\&.0;
+1831 
+1832             ClearEntireCube ();
+1833 
+1834             for (int i = 0; i < iterations; ++i) {
+1835                 origin_x = 3\&.5 + Math\&.Sin ((double)i / 500) * 4\&.0;
+1836                 origin_y = 3\&.5 + Math\&.Cos ((double)i / 500) * 4\&.0;
+1837 
+1838                 for (int x = 0; x < DIMENSION; ++x) {
+1839                     for (int y = 0; y < DIMENSION; ++y) {
+1840                         distance = Point\&.Distance (origin_x, origin_y, (double)x, (double)y / Effect\&.WAVE_CONSTANT) * 8\&.0;
+1841                         height = 4\&.0 + Math\&.Sin ((distance / 2\&.0) + ((double)i / 500)) * 3\&.6;
+1842 
+1843                         SetVoxel (x, y, (int)height);
+1844                     }
+1845                 }
+1846                 DelayMS (delay);
+1847                 ClearEntireCube ();
+1848             }
+1849         }
+.fi
+.SS "void CubeController\&.Cube\&.SineWave (intiterations, intdelay, doubledelta_t)"
+
+.PP
+Shows sinusoidal wave\&. Will only be shown from the front of the cube, i\&.e\&. the A-Z plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations to run the effect to\&.
+.br
+\fIdelay\fP Delay between frames (in milliseconds)\&.
+.RE
+.PP
+
+.PP
+Definition at line 1798 of file Cube\&.cs\&.
+.PP
+.nf
+1799         {
+1800             double t = 0\&.0;
+1801             double[] xvals = new double[8];
+1802             double[] zvals = new double[8];
+1803 
+1804             for (int i = 0; i < iterations; ++i) {
+1805                 for (int j = 0; j < DIMENSION; ++j){
+1806                     for (int k = 0; k < DIMENSION; ++k) {
+1807                         xvals [k] = t;
+1808                         t += delta_t;
+1809                     }
+1810                     zvals [j] = 3\&.5 + (Math\&.Sin (i+xvals[j]))*3\&.0;
+1811 
+1812                     // Purposefully backwards for testing purposes\&. 
+1813                     for (int z = 0; z < DIMENSION; ++z) {
+1814                         SetVoxel (j, (int)zvals [j], z);
+1815                     }
+1816                 }
+1817                 DelayMS (delay);
+1818                 ClearEntireCube ();
+1819             }
+1820         }
+.fi
+.SS "void CubeController\&.Cube\&.SwapVoxel (intx, inty, intz)"
+
+.PP
+Performs logical NOT on voxel value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP The x coordinate\&.
+.br
+\fIy\fP The y coordinate\&.
+.br
+\fIz\fP The z coordinate\&.
+.RE
+.PP
+
+.PP
+Definition at line 284 of file Cube\&.cs\&.
+.PP
+.nf
+285         {
+286             if (InRange(x, y, z)) {
+287             _cubeState [x] [y] [z] = !_cubeState [x] [y] [z];
+288             }
+289         }
+.fi
+.SS "void CubeController\&.Cube\&.SymmetryAlongAxis (\fBAXIS\fPaxis, \fBREFLECTION\fPrefl)"
+
+.PP
+Provides symmetry of the cube along a given axis\&. You can reflect the axis either from origin or from the terminating end\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaxis\fP Axis to provide symmetry along\&.
+.br
+\fIrefl\fP Reflection direction\&.
+.RE
+.PP
+
+.PP
+Definition at line 681 of file Cube\&.cs\&.
+.PP
+.nf
+682         {
+683             bool[][] plane_source;
+684 
+685             switch (refl) {
+686             // Reflect the cube along the plane along the specified axis, starting
+687             // from origin\&. The closest planes to 0,0,0 are what source the symmetry\&.
+688             case REFLECTION\&.ORIGIN:
+689                 for (int i = 0; i < (DIMENSION / 2); ++i) {
+690                     plane_source = GetPlane (axis, i);
+691                     PatternSetPlane (axis, DIMENSION - 1 - i, plane_source);
+692                 }
+693                 break;
+694             case REFLECTION\&.TERMINUS:
+695                 for (int i = 0; i < (DIMENSION / 2); ++i) {
+696                     plane_source = GetPlane (axis, DIMENSION - 1 - i);
+697                     PatternSetPlane (axis, i, plane_source);
+698                 }
+699                 break;
+700             default:
+701                 break;
+702             }
+703         }
+.fi
+.SS "void CubeController\&.Cube\&.TelcStairs (boolinvert, intdelay)"
+
+.PP
+Not quite sure what this does, in all reality\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinvert\fP 
+.br
+\fIdelay\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1987 of file Cube\&.cs\&.
+.PP
+.nf
+1988         {
+1989             int x = 0;
+1990 
+1991             if (invert)
+1992             {
+1993                 for (x = DIMENSION * 2; x >= 0; --x)
+1994                 {
+1995                     x = TelcStairsDo(x, delay);
+1996                 }
+1997             }
+1998             else
+1999             { 
+2000                 for(x = 0; x < (DIMENSION*2); ++x)
+2001                 {
+2002                     x = TelcStairsDo(x, delay);
+2003                 }
+2004             }
+2005         }
+.fi
+.SS "int CubeController\&.Cube\&.TelcStairsDo (intx, intdelay)\fC [private]\fP"
+
+.PP
+Again, not quite sure what this does! 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIx\fP 
+.br
+\fIdelay\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 2013 of file Cube\&.cs\&.
+.PP
+.nf
+2014         {
+2015             int y = 0, z = 0;
+2016 
+2017             for (y = 0, z = x; y <= z; ++y, --x)
+2018             {
+2019                 if (x < DIMENSION && y < DIMENSION)
+2020                 {
+2021                     SetVoxel(x, y, z);
+2022                 }
+2023             }
+2024             DelayMS(delay);
+2025             return z;
+2026         }
+.fi
+.SS "void CubeController\&.Cube\&.Transpose2D (ref boolmtx[][])\fC [private]\fP"
+
+.PP
+Transposes a 2D square matrix\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImtx\fP Matrix to transpose\&.
+.RE
+.PP
+
+.PP
+Definition at line 611 of file Cube\&.cs\&.
+.PP
+.nf
+612         {
+613             bool[][] temp = NewEmptyPlane (DIMENSION);
+614 
+615             for (int i = 0; i < DIMENSION; ++i) {
+616                 for (int j = 0; j < DIMENSION; ++j) {
+617                     temp[j][i] = mtx [i] [j];
+618                 }
+619             }
+620 
+621             mtx = temp;
+622         }
+.fi
+.SS "A* * * Z B* * _ _ _X * * Vertices are labeled in the diagram above\&.*</summary> *<paramname='S'> Source vertex\&.</param> *<paramname='dist'> Distance between CubeController\&.Cube\&.vertices (sidelength)\fC [private]\fP"
+
+.SS "void CubeController\&.Cube\&.VertSpiral (intiterations, intdelay)"
+
+.PP
+Pretty much like line spin, but with a twist on which axis dominates the \fBDrawLine()\fP invocation\&. Leads to some interesting effects\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiterations\fP Iterations\&.
+.br
+\fIdelay\fP Delay\&.
+.RE
+.PP
+
+.PP
+Definition at line 1674 of file Cube\&.cs\&.
+.PP
+.nf
+1675         {
+1676             double top_x = 0\&.0, top_y = 0\&.0, bot_x = 0\&.0, bot_y = 0\&.0;
+1677             double sine_base = 0\&.0;
+1678             double center_x = 4\&.0, center_y = 4\&.0;
+1679 
+1680             for (int i = 0; i < iterations; ++i) {
+1681 
+1682                 // For each plane
+1683                 for (int z = 0; z < DIMENSION; ++z) {
+1684                     sine_base = (double)(i / (double)20) + 
+1685                         (double)(z / ((double)(10 + (7\&.0 * Math\&.Sin ((double)i / 20)))));
+1686 
+1687                     top_x = center_x + Math\&.Sin (sine_base) * 5;
+1688                     top_y = center_y + Math\&.Cos(sine_base) * 5;
+1689 
+1690                     bot_x = center_x + Math\&.Sin (sine_base + Effect\&.PI) * 10;
+1691                     bot_y = center_y + Math\&.Cos (sine_base + Effect\&.PI) * 10;
+1692 
+1693                     DrawLine (z, (int)top_x, (int)top_y,
+1694                         z, (int)bot_x, (int)bot_y);
+1695                 }
+1696 
+1697                 DelayMS (delay);
+1698                 ClearEntireCube ();
+1699             }
+1700         }
+.fi
+.SS "void CubeController\&.Cube\&.VoxelTest (intdelay)"
+
+.PP
+Set every voxel on the cube, but plane by plane\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdelay\fP Delay between plane refreshes\&.
+.RE
+.PP
+
+.PP
+Definition at line 1920 of file Cube\&.cs\&.
+.PP
+.nf
+1921         {
+1922             ClearEntireCube ();
+1923 
+1924             // Go Z-plane by Z-plane\&.
+1925             for (int z = 0; z < DIMENSION; ++z) {
+1926                 // Set every voxel on this Z-plane, 1x1\&.
+1927                 for (int x = 0; x < DIMENSION; ++x) {
+1928                     for (int y = 0; y < DIMENSION; ++y) {
+1929                         SetVoxel (x, y, z);
+1930                         DelayMS (15);
+1931                     }
+1932                     DelayMS (delay);
+1933                 }
+1934                 // Clear out the entire plane\&.
+1935                 ClearPlane (AXIS\&.AXIS_Z, z);
+1936             }
+1937         }
+.fi
+.SS "void CubeController\&.Cube\&.WormSqueeze (intsize, \fBCube\&.AXIS\fPaxis, \fBCube\&.DIRECTION\fPdirection, intiterations, intdelay)"
+
+.PP
+Not quite sure of the effect\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP 
+.br
+\fIaxis\fP 
+.br
+\fIdirection\fP 
+.br
+\fIiterations\fP 
+.br
+\fIdelay\fP 
+.RE
+.PP
+
+.PP
+Definition at line 2036 of file Cube\&.cs\&.
+.PP
+.nf
+2037         {
+2038             int cubeSize = DIMENSION - size - 1;
+2039             // If the direction is forward, start from ORIGIN\&.
+2040             // Otherwise, start from TERMINUS\&.
+2041             int origin = direction == DIRECTION\&.FORWARD ? 0 : (DIMENSION - 1);
+2042 
+2043             int x = _rgen\&.Next() % cubeSize;
+2044             int y = _rgen\&.Next() % cubeSize;
+2045 
+2046             for (int i = 0; i < iterations; ++i)
+2047             {
+2048                 // Random change in x and y\&. 
+2049                 int dx = (_rgen\&.Next() % 3) - 1;
+2050                 int dy = (_rgen\&.Next() % 3) - 1;
+2051 
+2052                 if ((x + dx) > 0 && (x + dx) < cubeSize)
+2053                 {
+2054                     x += dx;
+2055                 }
+2056                 if ((y+dy) > 0 && (y+dy) < cubeSize)
+2057                 {
+2058                     y += dy;
+2059                 }
+2060 
+2061                 ShiftNoRoll(axis, direction);
+2062 
+2063                 for (int j = 0; j < size; ++j)
+2064                 {
+2065                     for (int k = 0; k < size; ++k)
+2066                     {
+2067                         switch (axis)
+2068                         {
+2069                             case AXIS\&.AXIS_X:
+2070                                 SetVoxel(origin, x + j, y + k);
+2071                                 break;
+2072                             case AXIS\&.AXIS_Y:
+2073                                 SetVoxel(x + j, origin, y + k);
+2074                                 break;
+2075                             case AXIS\&.AXIS_Z:
+2076                                 SetVoxel(x + j, y + k, origin);
+2077                                 break;
+2078                             default:
+2079                                 break;
+2080                         }
+2081                     }
+2082                 }
+2083 
+2084                 DelayMS(delay);
+2085             }
+2086         }
+.fi
+.SS "void CubeController\&.Cube\&.WriteCube (objectstateInfo)\fC [private]\fP"
+
+.PP
+A callback for the \fBSerialDriver\fP thread responsible for pushing cube frames via TTL\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstateInfo\fP 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file Cube\&.cs\&.
+.PP
+.nf
+102         {
+103             //_serialDriver\&.WriteCube(_cubeState);
+104         }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "bool [][][] CubeController\&.Cube\&._cubeState\fC [private]\fP"
+
+.PP
+A 3D collection of voxels\&. 
+.PP
+Definition at line 14 of file Cube\&.cs\&.
+.SS "\fBFontHandler\fP CubeController\&.Cube\&._fontHandler\fC [private]\fP"
+
+.PP
+A font handler, which will translate character bitmpas into plane patterns\&. 
+.PP
+Definition at line 29 of file Cube\&.cs\&.
+.SS "Random CubeController\&.Cube\&._rgen\fC [private]\fP"
+
+.PP
+Random number generator for the class (effects, advanced drawing, etc\&.)\&. 
+.PP
+Definition at line 24 of file Cube\&.cs\&.
+.SS "\fBSerialDriver\fP CubeController\&.Cube\&._serialDriver\fC [private]\fP"
+
+.PP
+An object capable of transmitting cube frames via TTL\&. 
+.PP
+Definition at line 44 of file Cube\&.cs\&.
+.SS "Timer CubeController\&.Cube\&._serialDriverTimer\fC [private]\fP"
+
+.PP
+A timer for the \fBSerialDriver\fP object\&. 
+.PP
+Definition at line 34 of file Cube\&.cs\&.
+.SS "TimerCallback CubeController\&.Cube\&._writeCubeCallback\fC [private]\fP"
+
+.PP
+A timer callback for the \fBSerialDriver\fP object's Write() thread invocation\&. 
+.PP
+Definition at line 39 of file Cube\&.cs\&.
+.SS "const int CubeController\&.Cube\&.DIMENSION = 8\fC [private]\fP"
+
+.PP
+The number of voxels per anode column\&. 
+.PP
+Definition at line 19 of file Cube\&.cs\&.
+.SH "Property Documentation"
+.PP 
+.SS "int CubeController\&.Cube\&.Dimension\fC [get]\fP"
+
+.PP
+Get the DIMENSION of the cube\&. 
+.PP
+Definition at line 65 of file Cube\&.cs\&.
+.SS "A* * * Z B* * _ _ _X * * Vertices are labeled in the diagram above\&.*</summary> *<paramname='S'> Source vertex\&.</param> *<paramname='dist'> Distance between int CubeController\&.Cube\&.dist\fC [private]\fP"
+
+.PP
+Definition at line 1284 of file Cube\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

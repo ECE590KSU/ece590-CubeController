@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="draw__3d_8cpp">
+    <title>draw_3d.cpp File Reference</title>
+    <programlisting>#include &lt;math.h&gt;</programlisting>
+    <programlisting>#include &quot;draw_3d.hpp&quot;</programlisting>
+    <programlisting>#include &quot;draw.hpp&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>vertex <link linkend="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5">point_rotate_around_point</link> (
+vertex point, vertex center, float rotation_x, float rotation_y, float rotation_z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw__3d_8cpp_1a5f659fb1aa42d831deb1891310706e97">calculate_cube_corners</link> (
+vertex pnt, vertex center, float size)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw__3d_8cpp_1a3357f0278e3ec1fce7ff22e5f10d4956">draw_cube_wireframe</link> (
+vertex pnt)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw_3d.cpp</para>
+    </simplesect>
+</section>

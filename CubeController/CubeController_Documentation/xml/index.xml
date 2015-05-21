@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.7">
+  <compound refid="class_cube_controller_1_1_cube" kind="class"><name>CubeController::Cube</name>
+    <member refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130a" kind="enum"><name>AXIS</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aafb7ec808a21c7770ccd7060e715983ba" kind="enumvalue"><name>AXIS_X</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa3e69e41ce011d74658d6ccce110e5f1a" kind="enumvalue"><name>AXIS_Y</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a413311e03a56b9ec8daf20c70f36130aa19aa520601d5d2f29571f14a3278216f" kind="enumvalue"><name>AXIS_Z</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158" kind="enum"><name>DIRECTION</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158abfec72bb37910c61f36b6c29a1f7ec31" kind="enumvalue"><name>FORWARD</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a66eb16a643fde218ab2674de9899f158a642e0b6684e6165e142c074f1cd8d55c" kind="enumvalue"><name>REVERSE</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597" kind="enum"><name>REFLECTION</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597a6d7b0f55d14f78a5611f7e00a2e3c2ec" kind="enumvalue"><name>ORIGIN</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a5240da6a4c8c74cd3db6cc3fed582597aa60fa4ca41f91140a80531d4fcda8e11" kind="enumvalue"><name>TERMINUS</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ab865359a0e6b58e13185d5b06ddd78fd" kind="variable"><name>_cubeState</name></member>
+    <member refid="class_cube_controller_1_1_cube_1af8b4bed33c4b80cc1de08583ec22ae04" kind="variable"><name>DIMENSION</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a98d2c6615fa541b8a32f3fd77e66cd24" kind="variable"><name>_rgen</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aca45b07b1a8dfa10170d31b70cde15a6" kind="variable"><name>_fontHandler</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a0f1de4bd14615dd3988b49263949f043" kind="variable"><name>_serialDriverTimer</name></member>
+    <member refid="class_cube_controller_1_1_cube_1abc9f9721e7613dfe408ed51acbe48c20" kind="variable"><name>_writeCubeCallback</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a0d0378854720b76944d66c2c867fa0ca" kind="variable"><name>_serialDriver</name></member>
+    <member refid="class_cube_controller_1_1_cube_1afc581e9955e6d793ce0055e92c415473" kind="property"><name>Dimension</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aeb41c6a358f401c9a031da143c976a33" kind="property"><name>dist</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa5063999eb3d0028d2ed8d307b3d3843" kind="function"><name>Cube</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa87aeba0d386389035a4fce7d3be6549" kind="function"><name>GetCubeState</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a7eed1a6432f4c80f6f9169f95fb4e096" kind="function"><name>SetEntireCube</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa4313fe03c0a5f1a6ffb85b4b3fc68f3" kind="function"><name>ClearEntireCube</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a9b3a284e6260d70df58a4254f586a3e2" kind="function"><name>RenderPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a1e2f9e4fcf2133bc9f071fda0834ec01" kind="function"><name>RenderCube</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae6764b8c60a8eb39603bd0e0a77e8e93" kind="function"><name>SetVoxel</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a77a227f0c3d12a38b79362aa212d29c6" kind="function"><name>ClearVoxel</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa8e927414815c791a65678b3a6ab6883" kind="function"><name>GetVoxel</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae70486fd7b425fa717fe226d6beae416" kind="function"><name>SwapVoxel</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a1da60272e09fd88ebbd5366b4c7a2121" kind="function"><name>SetPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1af951ad9cd93e438bbcd56f2d99f482f9" kind="function"><name>ClearPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a478ef408bdaaee6664279793d1c724ca" kind="function"><name>GetPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aec7dff8a9e7507dade41a1c35bcd1f83" kind="function"><name>PatternSetPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1af4151687401470693d40b38708f2e4f0" kind="function"><name>ShiftAndRoll</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae8fe40df6ad23a050fd9f13e3c633f20" kind="function"><name>ShiftNoRoll</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a27eb8c6f4e685b8347a3911525b198fc" kind="function"><name>RotatePlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a0fd48140ff7bd947d0789aaa339ad352" kind="function"><name>PartialRotation</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae95ad5a384b692de255b5f911ef91742" kind="function"><name>MirrorCubeAlongAxis</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a324c737c502eb55e0bd8c06072d8461e" kind="function"><name>SymmetryAlongAxis</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a70fb2bf5f055a9f7c10c923f8a4dd738" kind="function"><name>DrawLine</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a588b61625eb1eb79b7e5e8195ede5841" kind="function"><name>DrawLine</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae55ee3263b7e1777cacbd0925c5aeeb2" kind="function"><name>ClearLine</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a6011c9100abd5123127b20623fd9a6a0" kind="function"><name>ClearLine</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ad6844c1c7d39d5fe2a30df6a1238e5e4" kind="function"><name>DrawRectangle</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a6de7d776a7957463d759af960e877e2e" kind="function"><name>DrawCircle</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a5e36a9cf11e8f793f628b62338bf1431" kind="function"><name>PutChar</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a084e7f4d8ebb0a5395c0b3b48c6130d8" kind="function"><name>MessageFlyOnAxis</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ab050db384e01dfbe0932f0bd7c3b158a" kind="function"><name>MessageBanner</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ade63ba8237e0ec3ec23bc7378792206d" kind="function"><name>AxisBoing</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a931320bdf48f03b3978c23e556771ec6" kind="function"><name>AxisUpDownRandSups</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a87dc1aaa75e54cb16274c70b9092ecaa" kind="function"><name>Firework</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae9ce81ee202a87d3212a5486c733bfa7" kind="function"><name>LineSpin</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aed74c8b833d6c124461d9680d19d25a2" kind="function"><name>VertSpiral</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ade1d35a7484ac9a305fac950b62c7604" kind="function"><name>LoadBar</name></member>
+    <member refid="class_cube_controller_1_1_cube_1acd56842b64469ddfb19c4dbdc70e3b9b" kind="function"><name>Rain</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a1cae6b7dab34520359fd954b583d4bf3" kind="function"><name>Ripples</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a389b75c3b2b71320a332befe1d72b44c" kind="function"><name>SineWave</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a5cf632c703acbfbf41e8e561f3cba8b0" kind="function"><name>SideWaves</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ab8e7d7047fbd82930b494e6a3814c251" kind="function"><name>SendVoxelZ</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ab50798d1cde4a84ac31a5308c93a2127" kind="function"><name>BoxWoopWoop</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a04c0549d8b6f796293942edbf4e2b377" kind="function"><name>VoxelTest</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae1beff582abbe4c2ce3d6d6c92491310" kind="function"><name>RandomSparkle</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a995910183c0a0c8c7d4b27f1c593f7ec" kind="function"><name>TelcStairs</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ad9281b2f10850ac966e67738be6e1611" kind="function"><name>WormSqueeze</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a34db28475ec05492c7577a9224ebd48c" kind="function"><name>WriteCube</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a9e0c61eb518c0fa9699501a30c923f29" kind="function"><name>DelayMS</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a940366f41383f5c6976fd8540fbe0151" kind="function"><name>NewEmptyPlane</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa832855a3a895c3a9fd135e29bc18395" kind="function"><name>InRange</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a509466d914ec42e2733cf7106cfb1ade" kind="function"><name>Transpose2D</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a0dc94d83f8d7e9b31345c308a448bc36" kind="function"><name>ColumnReversal2D</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a23fd27ab893a401fcb9a85698c2e7345" kind="function"><name>RowReversal2D</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ab5f5f731011afcd62d02621f96bfec6b" kind="function"><name>BresenhamsLine3D</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ae075444e874717ae58ac87fcbd17fcaf" kind="function"><name>vertices</name></member>
+    <member refid="class_cube_controller_1_1_cube_1ac4885f97842e129acc0f028ba8591f6f" kind="function"><name>GetChar</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a7d0f1c2bac4e5014ef209e0c7cc6eee3" kind="function"><name>DrawPositionsAxis</name></member>
+    <member refid="class_cube_controller_1_1_cube_1aa2f22e8ddcc15a7c16b0c9e74305cb9c" kind="function"><name>RandomSparkleFlash</name></member>
+    <member refid="class_cube_controller_1_1_cube_1a143ec77de2186afbb3df7a28e377c09a" kind="function"><name>TelcStairsDo</name></member>
+  </compound>
+  <compound refid="class_cube_controller_1_1_effect" kind="class"><name>CubeController::Effect</name>
+    <member refid="class_cube_controller_1_1_effect_1af2f23cddaf032617573d46642b14bc76" kind="variable"><name>TEST_WAVE_ITERATIONS</name></member>
+    <member refid="class_cube_controller_1_1_effect_1aea4ab35024dd6e92f36199862aedc829" kind="variable"><name>WAVE_CONSTANT</name></member>
+    <member refid="class_cube_controller_1_1_effect_1ac2aa211f00a7ac4dfd9fdc5ee6f67c14" kind="variable"><name>RIPPLE_INTERVAL</name></member>
+    <member refid="class_cube_controller_1_1_effect_1ada4abaf428db0ddfe7966c50b20a36b9" kind="variable"><name>HELIX_BRAID_LENGTH_DELTA_T</name></member>
+    <member refid="class_cube_controller_1_1_effect_1a3cb2c5bf52b3d30f3ba89a53f7c2db74" kind="variable"><name>NICE_SINE_WAVE_DELTA_T</name></member>
+    <member refid="class_cube_controller_1_1_effect_1a21d45a2f9419ab9237a25ae0cbe5af33" kind="variable"><name>COMFORTABLE_BOX_WOOP_WOOP_DELAY</name></member>
+    <member refid="class_cube_controller_1_1_effect_1aca0941e884dbcae4f82b151840ca53d6" kind="variable"><name>PI</name></member>
+  </compound>
+  <compound refid="class_cube_controller_1_1_font_handler" kind="class"><name>CubeController::FontHandler</name>
+    <member refid="class_cube_controller_1_1_font_handler_1ad326e39518e0dbd4bd677d87d6ba8894" kind="variable"><name>_alphabet</name></member>
+    <member refid="class_cube_controller_1_1_font_handler_1a9ae2d09f0822dbe3e04c56efa03b8f8c" kind="variable"><name>pathDictionarySource</name></member>
+    <member refid="class_cube_controller_1_1_font_handler_1a6960c0718a7b7a240b4dd35befd167af" kind="function"><name>FontHandler</name></member>
+    <member refid="class_cube_controller_1_1_font_handler_1a0e2b097186bdc704250bfff7591fa329" kind="function"><name>LookupByKey</name></member>
+    <member refid="class_cube_controller_1_1_font_handler_1a99b898b0994fe77c2ab2ca2ca2ce3ccb" kind="function"><name>InitializeAlphabet</name></member>
+    <member refid="class_cube_controller_1_1_font_handler_1a07f14dfc8d01ccafadf1d724782f7fe9" kind="function"><name>NewEmptyPlane</name></member>
+  </compound>
+  <compound refid="class_cube_controller_1_1_point" kind="class"><name>CubeController::Point</name>
+    <member refid="class_cube_controller_1_1_point_1a5ead68badca46885c015fe3d99ed0772" kind="property"><name>X</name></member>
+    <member refid="class_cube_controller_1_1_point_1ad952ae9b1f7be2b6e327f2977de7efc1" kind="property"><name>Y</name></member>
+    <member refid="class_cube_controller_1_1_point_1a7cf4a9355a324048ae72cd8b38a42ac1" kind="property"><name>Z</name></member>
+    <member refid="class_cube_controller_1_1_point_1ae9456ff844c9cd52c3f041aaf6cedc22" kind="function"><name>Point</name></member>
+    <member refid="class_cube_controller_1_1_point_1ac6148b303571f0df6954dd4982f7eae6" kind="function"><name>Point</name></member>
+    <member refid="class_cube_controller_1_1_point_1af0f9e1fa9bc406c7adfb3b51e62f63dd" kind="function"><name>Distance</name></member>
+  </compound>
+  <compound refid="class_cube_controller_1_1_serial_driver" kind="class"><name>CubeController::SerialDriver</name>
+    <member refid="class_cube_controller_1_1_serial_driver_1a0ea8959c46b0fd05621375461c4d00fc" kind="variable"><name>DIMENSION</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1ae27f29d1663a0480b847bfe656fee915" kind="variable"><name>_serialPort</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a3bbfd56c7eea9cb06ab866a8d9177d12" kind="function"><name>SerialDriver</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1ab4f7cd418abdae1f6b124ec8cc5b3422" kind="function"><name>WriteCube</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a40ffa52da5db9f7c9f79e095674ab2e3" kind="function"><name>ClosePort</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a2d67b664a1d78f7856e2c5a666205b15" kind="function"><name>OpenPort</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a5e16087e2926a4047bf35f93402b8cd4" kind="function"><name>ConfigurePort</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a56b9086165052ea7b13080c2e87a4a7b" kind="function"><name>SendEscapeSequence</name></member>
+    <member refid="class_cube_controller_1_1_serial_driver_1a1a03c793095eee4f4afe4140ed717de5" kind="function"><name>ConvertCubeStateToByteArray</name></member>
+  </compound>
+  <compound refid="namespace_cube_controller" kind="namespace"><name>CubeController</name>
+  </compound>
+  <compound refid="namespace_system" kind="namespace"><name>System</name>
+  </compound>
+  <compound refid="namespace_system_1_1_collections_1_1_generic" kind="namespace"><name>System::Collections::Generic</name>
+  </compound>
+  <compound refid="namespace_system_1_1_globalization" kind="namespace"><name>System::Globalization</name>
+  </compound>
+  <compound refid="namespace_system_1_1_i_o" kind="namespace"><name>System::IO</name>
+  </compound>
+  <compound refid="namespace_system_1_1_i_o_1_1_ports" kind="namespace"><name>System::IO::Ports</name>
+  </compound>
+  <compound refid="namespace_system_1_1_linq" kind="namespace"><name>System::Linq</name>
+  </compound>
+  <compound refid="namespace_system_1_1_reflection" kind="namespace"><name>System::Reflection</name>
+  </compound>
+  <compound refid="namespace_system_1_1_runtime_1_1_compiler_services" kind="namespace"><name>System::Runtime::CompilerServices</name>
+  </compound>
+  <compound refid="namespace_system_1_1_runtime_1_1_interop_services" kind="namespace"><name>System::Runtime::InteropServices</name>
+  </compound>
+  <compound refid="namespace_system_1_1_text" kind="namespace"><name>System::Text</name>
+  </compound>
+  <compound refid="namespace_system_1_1_threading" kind="namespace"><name>System::Threading</name>
+  </compound>
+  <compound refid="namespace_system_1_1_threading_1_1_tasks" kind="namespace"><name>System::Threading::Tasks</name>
+  </compound>
+  <compound refid="_8_n_e_t_framework_00_version_0Av4_85_8_assembly_attribute_8cs" kind="file"><name>.NETFramework,Version=v4.5.AssemblyAttribute.cs</name>
+  </compound>
+  <compound refid="3d_8cpp" kind="file"><name>3d.cpp</name>
+    <member refid="3d_8cpp_1ae97152c48aaed0bd0518138ab882f04c" kind="define"><name>NUM_FIREWORK_COMPONENTS</name></member>
+    <member refid="3d_8cpp_1aa08a577393243b86dfd2a97e61443673" kind="variable"><name>PI</name></member>
+    <member refid="3d_8cpp_1a2de4bfe47849fcffb842ccac0cef5957" kind="variable"><name>WAVE_CONSTANT</name></member>
+    <member refid="3d_8cpp_1a6d2de51a530beec8dd8eea531eedcfd8" kind="function"><name>linespin</name></member>
+    <member refid="3d_8cpp_1a3af37a0fb9ada060bf083e8e16be2a89" kind="function"><name>sinelines</name></member>
+    <member refid="3d_8cpp_1a15c48e1b2565e2a696c7f10892f162f4" kind="function"><name>ripples</name></member>
+    <member refid="3d_8cpp_1a938da6780ac8fa2d4699695020221a3f" kind="function"><name>sidewaves</name></member>
+    <member refid="3d_8cpp_1a6cb4e5723993d035441943cd1c3ecdd8" kind="function"><name>spheremove</name></member>
+    <member refid="3d_8cpp_1a47d3fc1e87afd1adc254c4b83e9b5887" kind="function"><name>fireworks</name></member>
+    <member refid="3d_8cpp_1a3b89e513975ccfe8a0b07be6c5403ac5" kind="function"><name>effect_rotate_random_pixels</name></member>
+    <member refid="3d_8cpp_1a4ba03d3bcd3d5b27776efe5e195a72ce" kind="function"><name>distance2d</name></member>
+    <member refid="3d_8cpp_1abc5dd80377b4e7338fb9caf53ff3c1db" kind="function"><name>distance3d</name></member>
+  </compound>
+  <compound refid="_assembly_info_8cs" kind="file"><name>AssemblyInfo.cs</name>
+  </compound>
+  <compound refid="_cube_8cs" kind="file"><name>Cube.cs</name>
+  </compound>
+  <compound refid="draw_8cpp" kind="file"><name>draw.cpp</name>
+    <member refid="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075" kind="function"><name>setvoxel</name></member>
+    <member refid="draw_8cpp_1ac06e695567468bafd93600f867291336" kind="function"><name>tmpsetvoxel</name></member>
+    <member refid="draw_8cpp_1a75c5dbbf30f02be790e3559898063c0e" kind="function"><name>clrvoxel</name></member>
+    <member refid="draw_8cpp_1a2fc4484d8f73282f409ed9603f919a07" kind="function"><name>tmpclrvoxel</name></member>
+    <member refid="draw_8cpp_1a4bd85d012bfd507d75c49520c0851777" kind="function"><name>inrange</name></member>
+    <member refid="draw_8cpp_1aeb6c647a3d508216663fc981a6661fdf" kind="function"><name>getvoxel</name></member>
+    <member refid="draw_8cpp_1afd8b1732026e05a0d3aafa513c6905d1" kind="function"><name>altervoxel</name></member>
+    <member refid="draw_8cpp_1a1a7ea46766afa66bdc91b2a5d4be6aab" kind="function"><name>flpvoxel</name></member>
+    <member refid="draw_8cpp_1a191757d5b6d0288284b2697c2c78bfa5" kind="function"><name>argorder</name></member>
+    <member refid="draw_8cpp_1a1155c8a3004dc27ed396447d9bf52f51" kind="function"><name>setplane_z</name></member>
+    <member refid="draw_8cpp_1a05a398d2f15f6a2fb345bc67599fc831" kind="function"><name>clrplane_z</name></member>
+    <member refid="draw_8cpp_1a79e1cd1aa078e4b91c118b3e74f816e0" kind="function"><name>setplane_x</name></member>
+    <member refid="draw_8cpp_1aefae4c208e833fd0a93dda91a674f632" kind="function"><name>clrplane_x</name></member>
+    <member refid="draw_8cpp_1ae494331db20f7f2812c583f059bd4d46" kind="function"><name>setplane_y</name></member>
+    <member refid="draw_8cpp_1acc35f7bc1ca8ad7c7e2367457935b9a9" kind="function"><name>clrplane_y</name></member>
+    <member refid="draw_8cpp_1a132684b2346edeb21cec4231f88247a5" kind="function"><name>fill</name></member>
+    <member refid="draw_8cpp_1a65b6c733c70929c63ee737d12ec52e7f" kind="function"><name>tmpfill</name></member>
+    <member refid="draw_8cpp_1a0214713b6ec809139b76107248ef4dc4" kind="function"><name>box_filled</name></member>
+    <member refid="draw_8cpp_1aabfa4368081ccec9503719b459f892b8" kind="function"><name>box_walls</name></member>
+    <member refid="draw_8cpp_1ada7bc5edfe08f20007bf6eac7bc1a8c8" kind="function"><name>box_wireframe</name></member>
+    <member refid="draw_8cpp_1afa0005d22039caa9a33ef00f3c4b192b" kind="function"><name>byteline</name></member>
+    <member refid="draw_8cpp_1a22df93484ea4a4174124213056668e2e" kind="function"><name>flipbyte</name></member>
+    <member refid="draw_8cpp_1a79b165e7d83e572c20246ef244289ddc" kind="function"><name>line</name></member>
+    <member refid="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad" kind="function"><name>delay_ms</name></member>
+    <member refid="draw_8cpp_1ad182a4571738c1e6c25555dd33a09f6c" kind="function"><name>tmp2cube</name></member>
+    <member refid="draw_8cpp_1ad5af2c5bf477eaf37bfbd1232475ee1e" kind="function"><name>shift</name></member>
+    <member refid="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66" kind="function"><name>line_3d</name></member>
+    <member refid="draw_8cpp_1ac7254aa55555111575efff014800930a" kind="function"><name>line_3d_float</name></member>
+    <member refid="draw_8cpp_1a201213691e286d996e3eb242a3cd92a0" kind="function"><name>mirror_x</name></member>
+    <member refid="draw_8cpp_1aca98f5df30d9656c3483ea61bfa71835" kind="function"><name>mirror_y</name></member>
+    <member refid="draw_8cpp_1a6ba3177475dcbd2feabc9febeae0ae52" kind="function"><name>mirror_z</name></member>
+  </compound>
+  <compound refid="draw__3d_8cpp" kind="file"><name>draw_3d.cpp</name>
+    <member refid="draw__3d_8cpp_1a221b511e0c310a1554b99fe45004e9f5" kind="function"><name>point_rotate_around_point</name></member>
+    <member refid="draw__3d_8cpp_1a5f659fb1aa42d831deb1891310706e97" kind="function"><name>calculate_cube_corners</name></member>
+    <member refid="draw__3d_8cpp_1a3357f0278e3ec1fce7ff22e5f10d4956" kind="function"><name>draw_cube_wireframe</name></member>
+  </compound>
+  <compound refid="effect_8cpp" kind="file"><name>effect.cpp</name>
+    <member refid="effect_8cpp_1aed4c49e66d09794947718c5ef0615a01" kind="function"><name>effect_test</name></member>
+    <member refid="effect_8cpp_1a953564c3380a66416b77fbedc7a3718f" kind="function"><name>effect_stringfly2</name></member>
+    <member refid="effect_8cpp_1aecb1dbe29616bf7a39cc52356b2f90bb" kind="function"><name>effect_planboing</name></member>
+    <member refid="effect_8cpp_1a96945eb686852f0f2fb2e0a60eb8a20d" kind="function"><name>effect_blinky2</name></member>
+    <member refid="effect_8cpp_1a31165aa0ee673b0ae24415bfb21e482d" kind="function"><name>effect_box_shrink_grow</name></member>
+    <member refid="effect_8cpp_1a3a457c62b54dda936812d9a64f32d28d" kind="function"><name>effect_box_woopwoop</name></member>
+    <member refid="effect_8cpp_1a1b90100679313be86bd5f717d0dee338" kind="function"><name>sendvoxel_z</name></member>
+    <member refid="effect_8cpp_1a92b9ac889604bb5f5b2b21e5ad28ae8a" kind="function"><name>sendplane_rand_z</name></member>
+    <member refid="effect_8cpp_1a05a9bd57e4b84f6545d0628bb62aa65e" kind="function"><name>sendvoxels_rand_z</name></member>
+    <member refid="effect_8cpp_1a2b8cd1b272f51d98b33f1fd610955f8c" kind="function"><name>boingboing</name></member>
+    <member refid="effect_8cpp_1abeb35545cc2b89e05e9bc9a2a65086a1" kind="function"><name>effect_random_filler</name></member>
+    <member refid="effect_8cpp_1aa96f794a6e8546217dcfbe2f4b5d0fd2" kind="function"><name>effect_rain</name></member>
+    <member refid="effect_8cpp_1a6336a3e7066f5259eeb955e241074e77" kind="function"><name>effect_z_updown</name></member>
+    <member refid="effect_8cpp_1a67965620084652ed8abd32998b7f22b4" kind="function"><name>effect_z_updown_move</name></member>
+    <member refid="effect_8cpp_1a6a5e19f322ac0a0cfc3890dfd5c47c97" kind="function"><name>effect_axis_updown_randsuspend</name></member>
+    <member refid="effect_8cpp_1aea9225c18e543990b039c2a368cfe568" kind="function"><name>draw_positions_axis</name></member>
+    <member refid="effect_8cpp_1afb0c4b2cf784563c126a0145e190b5ba" kind="function"><name>effect_boxside_randsend_parallel</name></member>
+    <member refid="effect_8cpp_1a4d1a720efd27f7b78406d6e612316130" kind="function"><name>effect_loadbar</name></member>
+    <member refid="effect_8cpp_1aa70a5cebad4250a6e93f439bc5dc1fec" kind="function"><name>effect_random_sparkle_flash</name></member>
+    <member refid="effect_8cpp_1a9b2e95aab72a602163d73ed19a109a49" kind="function"><name>effect_random_sparkle</name></member>
+    <member refid="effect_8cpp_1a91c298406c03d67c4516b55243c69f40" kind="function"><name>effect_telcstairs_do</name></member>
+    <member refid="effect_8cpp_1aa1e8a6e945378342d749067523274f9e" kind="function"><name>effect_telcstairs</name></member>
+    <member refid="effect_8cpp_1a8d88ac1e1ff108979c447f6fdacbab26" kind="function"><name>effect_wormsqueeze</name></member>
+    <member refid="effect_8cpp_1ab004dcc78c5bbe6cfb50952003d656f6" kind="function"><name>effect_smileyspin</name></member>
+    <member refid="effect_8cpp_1a11573aaadfdef6f118b2a81af399c65b" kind="function"><name>effect_pathmove</name></member>
+    <member refid="effect_8cpp_1a74eb64e65c7c194d6dbba556f16ea543" kind="function"><name>effect_rand_patharound</name></member>
+    <member refid="effect_8cpp_1ae190dfd6540f6002dddd6dbcb84dee9a" kind="function"><name>effect_pathspiral</name></member>
+    <member refid="effect_8cpp_1a046b208e94ea53191c0f575be9de247f" kind="function"><name>effect_path_text</name></member>
+    <member refid="effect_8cpp_1a899ae8823e531cddd848f65de8703f27" kind="function"><name>effect_path_bitmap</name></member>
+  </compound>
+  <compound refid="_effect_8cs" kind="file"><name>Effect.cs</name>
+  </compound>
+  <compound refid="_font_handler_8cs" kind="file"><name>FontHandler.cs</name>
+  </compound>
+  <compound refid="_serial_driver_8cs" kind="file"><name>SerialDriver.cs</name>
+  </compound>
+  <compound refid="_debug_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs" kind="file"><name>Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs</name>
+  </compound>
+  <compound refid="_release_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs" kind="file"><name>Release/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs</name>
+  </compound>
+  <compound refid="_debug_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs" kind="file"><name>Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs</name>
+  </compound>
+  <compound refid="_release_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs" kind="file"><name>Release/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs</name>
+  </compound>
+  <compound refid="_debug_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs" kind="file"><name>Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs</name>
+  </compound>
+  <compound refid="_release_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs" kind="file"><name>Release/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs</name>
+  </compound>
+  <compound refid="dir_d56896c5b1d3b9e979f92d5fc3f4641d" kind="dir"><name>cpp Code</name>
+  </compound>
+  <compound refid="dir_4419eec78c8b86028def52a872f295a3" kind="dir"><name>CubeController</name>
+  </compound>
+  <compound refid="dir_e40248023c512d4d7b2ac17bd464baa9" kind="dir"><name>Debug</name>
+  </compound>
+  <compound refid="dir_a44c26db532de6ea29c5b1e6b084a852" kind="dir"><name>obj</name>
+  </compound>
+  <compound refid="dir_63330736016d994e792586ea35d15dc3" kind="dir"><name>Properties</name>
+  </compound>
+  <compound refid="dir_1e6b3c46f8162c17f4ea913a07b6799a" kind="dir"><name>Release</name>
+  </compound>
+</doxygenindex>

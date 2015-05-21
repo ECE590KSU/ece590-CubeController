@@ -1,0 +1,1 @@
+To view the documentation, navigate to the folder html/ and double-click on the file named 'index.html'. 

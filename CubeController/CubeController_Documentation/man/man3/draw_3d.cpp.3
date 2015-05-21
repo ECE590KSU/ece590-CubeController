@@ -1,0 +1,136 @@
+.TH "draw_3d.cpp" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+draw_3d.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <math\&.h>\fP
+.br
+\fC#include 'draw_3d\&.hpp'\fP
+.br
+\fC#include 'draw\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "vertex \fBpoint_rotate_around_point\fP (vertex point, vertex center, float rotation_x, float rotation_y, float rotation_z)"
+.br
+.ti -1c
+.RI "void \fBcalculate_cube_corners\fP (vertex pnt[8], vertex center, float size)"
+.br
+.ti -1c
+.RI "void \fBdraw_cube_wireframe\fP (vertex pnt[8])"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void calculate_cube_corners (vertexpnt[8], vertexcenter, floatsize)"
+
+.PP
+Definition at line 50 of file draw_3d\&.cpp\&.
+.PP
+.nf
+51 {
+52 
+53     // Distance from center on any axis\&.
+54     float dist = size/2;
+55 
+56     // Points
+57     // X                Y               Z
+58 
+59     pnt[0]\&.x = center\&.x+dist; pnt[0]\&.y = center\&.y+dist; pnt[0]\&.z = center\&.z+dist; // 0 right, front, upper
+60     pnt[1]\&.x = center\&.x-dist; pnt[1]\&.y = center\&.y+dist; pnt[1]\&.z = center\&.z+dist; // 1 left, front, upper
+61     pnt[2]\&.x = center\&.x+dist; pnt[2]\&.y = center\&.y-dist; pnt[2]\&.z = center\&.z+dist; // 2 right, back, upper
+62     pnt[3]\&.x = center\&.x-dist; pnt[3]\&.y = center\&.y-dist; pnt[3]\&.z = center\&.z+dist; // 3 left, back, uppper
+63     pnt[4]\&.x = center\&.x+dist; pnt[4]\&.y = center\&.y+dist; pnt[4]\&.z = center\&.z-dist; // 4 right, front, lower
+64     pnt[5]\&.x = center\&.x-dist; pnt[5]\&.y = center\&.y+dist; pnt[5]\&.z = center\&.z-dist; // 5 left, front, lower
+65     pnt[6]\&.x = center\&.x+dist; pnt[6]\&.y = center\&.y-dist; pnt[6]\&.z = center\&.z-dist; // 6 right, back, lower
+66     pnt[7]\&.x = center\&.x-dist; pnt[7]\&.y = center\&.y-dist; pnt[7]\&.z = center\&.z-dist; // 7 left, bakc, lower
+67 
+68 
+69 }
+.fi
+.SS "void draw_cube_wireframe (vertexpnt[8])"
+
+.PP
+Definition at line 71 of file draw_3d\&.cpp\&.
+.PP
+.nf
+72 {
+73     //int i;
+74     
+75     // upper "lid"
+76     line_3d ((int)pnt[0]\&.x,(int)pnt[0]\&.y,(int)pnt[0]\&.z,(int)pnt[1]\&.x,(int)pnt[1]\&.y,(int)pnt[1]\&.z);
+77     line_3d ((int)pnt[2]\&.x,(int)pnt[2]\&.y,(int)pnt[2]\&.z,(int)pnt[3]\&.x,(int)pnt[3]\&.y,(int)pnt[3]\&.z);
+78     line_3d ((int)pnt[1]\&.x,(int)pnt[1]\&.y,(int)pnt[1]\&.z,(int)pnt[3]\&.x,(int)pnt[3]\&.y,(int)pnt[3]\&.z);
+79     line_3d ((int)pnt[2]\&.x,(int)pnt[2]\&.y,(int)pnt[2]\&.z,(int)pnt[0]\&.x,(int)pnt[0]\&.y,(int)pnt[0]\&.z);
+80 
+81     // lower "lid"
+82     line_3d ((int)pnt[4]\&.x,(int)pnt[4]\&.y,(int)pnt[4]\&.z,(int)pnt[5]\&.x,(int)pnt[5]\&.y,(int)pnt[5]\&.z);
+83     line_3d ((int)pnt[6]\&.x,(int)pnt[6]\&.y,(int)pnt[6]\&.z,(int)pnt[7]\&.x,(int)pnt[7]\&.y,(int)pnt[7]\&.z);
+84     line_3d ((int)pnt[5]\&.x,(int)pnt[5]\&.y,(int)pnt[5]\&.z,(int)pnt[7]\&.x,(int)pnt[7]\&.y,(int)pnt[7]\&.z);
+85     line_3d ((int)pnt[6]\&.x,(int)pnt[6]\&.y,(int)pnt[6]\&.z,(int)pnt[4]\&.x,(int)pnt[4]\&.y,(int)pnt[4]\&.z);
+86 
+87     // side walls
+88     line_3d ((int)pnt[0]\&.x,(int)pnt[0]\&.y,(int)pnt[0]\&.z,(int)pnt[4]\&.x,(int)pnt[4]\&.y,(int)pnt[4]\&.z);
+89     line_3d ((int)pnt[1]\&.x,(int)pnt[1]\&.y,(int)pnt[1]\&.z,(int)pnt[5]\&.x,(int)pnt[5]\&.y,(int)pnt[5]\&.z);
+90     line_3d ((int)pnt[2]\&.x,(int)pnt[2]\&.y,(int)pnt[2]\&.z,(int)pnt[6]\&.x,(int)pnt[6]\&.y,(int)pnt[6]\&.z);
+91     line_3d ((int)pnt[3]\&.x,(int)pnt[3]\&.y,(int)pnt[3]\&.z,(int)pnt[7]\&.x,(int)pnt[7]\&.y,(int)pnt[7]\&.z);
+92 
+93 }
+.fi
+.SS "vertex point_rotate_around_point (vertexpoint, vertexcenter, floatrotation_x, floatrotation_y, floatrotation_z)"
+
+.PP
+Definition at line 5 of file draw_3d\&.cpp\&.
+.PP
+.nf
+6 {
+7     float x, y, z;
+8     float sx,cx, sy,cy, sz,cz;
+9     float xy,xz, yx,yz, zx,zy;
+10     vertex newpoint;
+11 
+12     // Center all the points around 0,0,0
+13     x = point\&.x - center\&.x;
+14     y = point\&.y - center\&.y;
+15     z = point\&.z - center\&.z;
+16 
+17     // Precalculate sinus and cosinus for each axis rotation
+18     sx = sin(rotation_x);
+19     cx = cos(rotation_x);
+20 
+21     sy = sin(rotation_y);
+22     cy = cos(rotation_y);
+23 
+24     sz = sin(rotation_z);
+25     cz = cos(rotation_z);
+26 
+27 
+28     // Rotation around x
+29     xy = cx*y - sx*z;
+30     xz = sx*y + cx*z;
+31     
+32     // Rotation around y
+33     yz = cy*xz - sy*x;
+34     yx = sy*xz + cy*x;
+35     
+36     // Rotation around z
+37     zx = cz*yx - sz*xy;
+38     zy = sz*yx + cz*xy;
+39 
+40     newpoint\&.x = zx + center\&.x;
+41     newpoint\&.y = zy + center\&.y;
+42     newpoint\&.z = yz + center\&.z;
+43 
+44 
+45     return newpoint;
+46 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

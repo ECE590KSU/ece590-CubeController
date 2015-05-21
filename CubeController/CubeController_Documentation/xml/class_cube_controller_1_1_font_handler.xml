@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.7">
+  <compounddef id="class_cube_controller_1_1_font_handler" kind="class" prot="public">
+    <compoundname>CubeController::FontHandler</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_font_handler_1ad326e39518e0dbd4bd677d87d6ba8894" prot="private" static="no" mutable="no">
+        <type>Dictionary&lt; char, bool[][]&gt;</type>
+        <definition>Dictionary&lt;char, bool[][]&gt; CubeController.FontHandler._alphabet</definition>
+        <argsstring></argsstring>
+        <name>_alphabet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="11" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_cube_controller_1_1_font_handler_1a9ae2d09f0822dbe3e04c56efa03b8f8c" prot="private" static="yes" mutable="no">
+        <type>string</type>
+        <definition>string CubeController.FontHandler.pathDictionarySource</definition>
+        <argsstring></argsstring>
+        <name>pathDictionarySource</name>
+        <initializer>= @&quot;..\..\alphabitmap.txt&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="14" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_font_handler_1a6960c0718a7b7a240b4dd35befd167af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CubeController.FontHandler.FontHandler</definition>
+        <argsstring>()</argsstring>
+        <name>FontHandler</name>
+        <briefdescription>
+<para>Initializes a new instance of the <ref refid="class_cube_controller_1_1_font_handler" kindref="compound">FontHandler</ref> class. </para>        </briefdescription>
+        <detaileddescription>
+<para>Non-default public constructor. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="23" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="23" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_font_handler_1a0e2b097186bdc704250bfff7591fa329" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][]</type>
+        <definition>bool [][] CubeController.FontHandler.LookupByKey</definition>
+        <argsstring>(char key)</argsstring>
+        <name>LookupByKey</name>
+        <param>
+          <type>char</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Public method to lookup the private Dictionary values by key. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The the character bitmap for the char key.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The character key to lookup the character bitmap by.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="70" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="70" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_cube_controller_1_1_font_handler_1a99b898b0994fe77c2ab2ca2ca2ce3ccb" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CubeController.FontHandler.InitializeAlphabet</definition>
+        <argsstring>(ref Dictionary&lt; char, bool[][]&gt; alpha)</argsstring>
+        <name>InitializeAlphabet</name>
+        <param>
+          <type>ref Dictionary&lt; char, bool[][]&gt;</type>
+          <declname>alpha</declname>
+        </param>
+        <briefdescription>
+<para>Initializes the alphabet lookup Dictionary. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to the alphabet lookup Dictionary.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="33" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="33" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_cube_controller_1_1_font_handler_1a07f14dfc8d01ccafadf1d724782f7fe9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool[][]</type>
+        <definition>bool [][] CubeController.FontHandler.NewEmptyPlane</definition>
+        <argsstring>(int size)</argsstring>
+        <name>NewEmptyPlane</name>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Creates an empty plane for use of filling. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The empty plane.</para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="80" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="80" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" line="10" column="1" bodyfile="C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/FontHandler.cs" bodystart="9" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_cube_controller_1_1_font_handler_1ad326e39518e0dbd4bd677d87d6ba8894" prot="private" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>_alphabet</name></member>
+      <member refid="class_cube_controller_1_1_font_handler_1a6960c0718a7b7a240b4dd35befd167af" prot="public" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>FontHandler</name></member>
+      <member refid="class_cube_controller_1_1_font_handler_1a99b898b0994fe77c2ab2ca2ca2ce3ccb" prot="private" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>InitializeAlphabet</name></member>
+      <member refid="class_cube_controller_1_1_font_handler_1a0e2b097186bdc704250bfff7591fa329" prot="public" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>LookupByKey</name></member>
+      <member refid="class_cube_controller_1_1_font_handler_1a07f14dfc8d01ccafadf1d724782f7fe9" prot="private" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>NewEmptyPlane</name></member>
+      <member refid="class_cube_controller_1_1_font_handler_1a9ae2d09f0822dbe3e04c56efa03b8f8c" prot="private" virt="non-virtual"><scope>CubeController::FontHandler</scope><name>pathDictionarySource</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

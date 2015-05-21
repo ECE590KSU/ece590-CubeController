@@ -1,0 +1,179 @@
+.TH "CubeController.FontHandler" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CubeController.FontHandler \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFontHandler\fP ()"
+.br
+.RI "\fIInitializes a new instance of the \fBFontHandler\fP class\&. \fP"
+.ti -1c
+.RI "bool[][] \fBLookupByKey\fP (char key)"
+.br
+.RI "\fIPublic method to lookup the private Dictionary values by key\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInitializeAlphabet\fP (ref Dictionary< char, bool[][]> alpha)"
+.br
+.RI "\fIInitializes the alphabet lookup Dictionary\&. \fP"
+.ti -1c
+.RI "bool[][] \fBNewEmptyPlane\fP (int size)"
+.br
+.RI "\fICreates an empty plane for use of filling\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "Dictionary< char, bool[][]> \fB_alphabet\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static string \fBpathDictionarySource\fP = @'\&.\&.\\\&.\&.\\alphabitmap\&.txt'"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 9 of file FontHandler\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CubeController\&.FontHandler\&.FontHandler ()"
+
+.PP
+Initializes a new instance of the \fBFontHandler\fP class\&. Non-default public constructor\&. 
+.PP
+Definition at line 23 of file FontHandler\&.cs\&.
+.PP
+.nf
+24         {
+25             _alphabet = new Dictionary<char, bool[][]> ();
+26             InitializeAlphabet (ref _alphabet);
+27         }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void CubeController\&.FontHandler\&.InitializeAlphabet (ref Dictionary< char, bool[][]>alpha)\fC [private]\fP"
+
+.PP
+Initializes the alphabet lookup Dictionary\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalpha\fP A reference to the alphabet lookup Dictionary\&.
+.RE
+.PP
+
+.PP
+Definition at line 33 of file FontHandler\&.cs\&.
+.PP
+.nf
+34         {
+35             TextReader txtReader = File\&.OpenText (pathDictionarySource);
+36 
+37             string line = "";
+38 
+39             if (txtReader != null) {
+40                 // Pull in line by line from the alphabitmap\&.txt\&.
+41                 while ( (line = txtReader\&.ReadLine()) != null ){
+42                     // Establish a new character map\&.
+43                     bool[][] charMap = NewEmptyPlane (8);
+44 
+45                     // Each character key is surrounded by square brackets, e\&.g\&.,
+46                     //  [A]\&. 
+47                     // Pull out the middle, or, line[1]\&. 
+48                     char key = line [1];
+49 
+50                     // Each character bitmap is 8 rows in height\&. 
+51                     for (int i = 0; i < 8; ++i) {
+52                         line = txtReader\&.ReadLine ();
+53                         // Convert bit string to boolean array using LINQ\&.
+54                         charMap[i] = line\&.Select (c => c == '1')\&.ToArray ();
+55                     }
+56 
+57                     // Add the key and its character bitmap to the dictionary\&. 
+58                     alpha\&.Add (key, charMap);
+59                 }
+60 
+61                 txtReader\&.Close ();
+62             }
+63         }
+.fi
+.SS "bool [][] CubeController\&.FontHandler\&.LookupByKey (charkey)"
+
+.PP
+Public method to lookup the private Dictionary values by key\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The the character bitmap for the char key\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIkey\fP The character key to lookup the character bitmap by\&.
+.RE
+.PP
+
+.PP
+Definition at line 70 of file FontHandler\&.cs\&.
+.PP
+.nf
+71         {
+72             return _alphabet [key];
+73         }
+.fi
+.SS "bool [][] CubeController\&.FontHandler\&.NewEmptyPlane (intsize)\fC [private]\fP"
+
+.PP
+Creates an empty plane for use of filling\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The empty plane\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsize\fP Size\&.
+.RE
+.PP
+
+.PP
+Definition at line 80 of file FontHandler\&.cs\&.
+.PP
+.nf
+81         {
+82             bool[][] tmpplane = new bool[size][];
+83             for (int i = 0; i < size; ++i){
+84                 tmpplane [i] = new bool[size];
+85             }
+86 
+87             return tmpplane;
+88         }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "Dictionary<char, bool[][]> CubeController\&.FontHandler\&._alphabet\fC [private]\fP"
+
+.PP
+Definition at line 11 of file FontHandler\&.cs\&.
+.SS "string CubeController\&.FontHandler\&.pathDictionarySource = @'\&.\&.\\\&.\&.\\alphabitmap\&.txt'\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line 14 of file FontHandler\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

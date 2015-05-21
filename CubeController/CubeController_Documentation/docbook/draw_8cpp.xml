@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="draw_8cpp">
+    <title>draw.cpp File Reference</title>
+    <programlisting>#include &lt;math.h&gt;</programlisting>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+    <programlisting>#include &lt;windows.h&gt;</programlisting>
+    <programlisting>#include &quot;draw.hpp&quot;</programlisting>
+    <programlisting>#include &quot;draw_3d.hpp&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a8ad494a4970c6ade91a70cd0ce6db075">setvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ac06e695567468bafd93600f867291336">tmpsetvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a75c5dbbf30f02be790e3559898063c0e">clrvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a2fc4484d8f73282f409ed9603f919a07">tmpclrvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned char <link linkend="draw_8cpp_1a4bd85d012bfd507d75c49520c0851777">inrange</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>unsigned char <link linkend="draw_8cpp_1aeb6c647a3d508216663fc981a6661fdf">getvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1afd8b1732026e05a0d3aafa513c6905d1">altervoxel</link> (
+int x, int y, int z, int state)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a1a7ea46766afa66bdc91b2a5d4be6aab">flpvoxel</link> (
+int x, int y, int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a191757d5b6d0288284b2697c2c78bfa5">argorder</link> (
+int ix1, int ix2, int * ox1, int * ox2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a1155c8a3004dc27ed396447d9bf52f51">setplane_z</link> (
+int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a05a398d2f15f6a2fb345bc67599fc831">clrplane_z</link> (
+int z)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a79e1cd1aa078e4b91c118b3e74f816e0">setplane_x</link> (
+int x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1aefae4c208e833fd0a93dda91a674f632">clrplane_x</link> (
+int x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ae494331db20f7f2812c583f059bd4d46">setplane_y</link> (
+int y)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1acc35f7bc1ca8ad7c7e2367457935b9a9">clrplane_y</link> (
+int y)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a132684b2346edeb21cec4231f88247a5">fill</link> (
+unsigned char pattern)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a65b6c733c70929c63ee737d12ec52e7f">tmpfill</link> (
+unsigned char pattern)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a0214713b6ec809139b76107248ef4dc4">box_filled</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1aabfa4368081ccec9503719b459f892b8">box_walls</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ada7bc5edfe08f20007bf6eac7bc1a8c8">box_wireframe</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="draw_8cpp_1afa0005d22039caa9a33ef00f3c4b192b">byteline</link> (
+int start, int end)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>char <link linkend="draw_8cpp_1a22df93484ea4a4174124213056668e2e">flipbyte</link> (
+char byte)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a79b165e7d83e572c20246ef244289ddc">line</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a4114f38f9c18da918d36acaae21b90ad">delay_ms</link> (
+int x)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ad182a4571738c1e6c25555dd33a09f6c">tmp2cube</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ad5af2c5bf477eaf37bfbd1232475ee1e">shift</link> (
+char axis, int direction)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ae145a184d7b5a12f3bc35002abc4fc66">line_3d</link> (
+int x1, int y1, int z1, int x2, int y2, int z2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1ac7254aa55555111575efff014800930a">line_3d_float</link> (
+vertex point1, vertex point2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a201213691e286d996e3eb242a3cd92a0">mirror_x</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1aca98f5df30d9656c3483ea61bfa71835">mirror_y</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="draw_8cpp_1a6ba3177475dcbd2feabc9febeae0ae52">mirror_z</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/cpp Code/draw.cpp</para>
+    </simplesect>
+</section>

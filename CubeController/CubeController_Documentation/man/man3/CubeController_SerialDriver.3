@@ -1,0 +1,230 @@
+.TH "CubeController.SerialDriver" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CubeController.SerialDriver \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSerialDriver\fP ()"
+.br
+.RI "\fIDefault constructor for \fBSerialDriver\fP\&. \fP"
+.ti -1c
+.RI "void \fBWriteCube\fP (bool[][][] cubeState)"
+.br
+.RI "\fIWrites a buffer to the ATMega via the configured serial port\&. \fP"
+.ti -1c
+.RI "void \fBClosePort\fP ()"
+.br
+.RI "\fICloses the serial port that has been opened\&. \fP"
+.ti -1c
+.RI "void \fBOpenPort\fP ()"
+.br
+.RI "\fIOpens a serial port\&. \fP"
+.ti -1c
+.RI "void \fBConfigurePort\fP (int baudRate, int writeTimeout)"
+.br
+.RI "\fIConfigures two serial settings on the port\&. \fP"
+.ti -1c
+.RI "void \fBSendEscapeSequence\fP ()"
+.br
+.RI "\fISends escape sequence to the cube to ready it for a new draw at (0,0,0) \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "byte[] \fBConvertCubeStateToByteArray\fP (bool[][][] cubeState)"
+.br
+.RI "\fIConverts the triple boolean array into a buffer \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBDIMENSION\fP = 8"
+.br
+.RI "\fI\fBCube\fP dimension\&. \fP"
+.ti -1c
+.RI "SerialPort \fB_serialPort\fP"
+.br
+.RI "\fIActive serial port\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 10 of file SerialDriver\&.cs\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CubeController\&.SerialDriver\&.SerialDriver ()"
+
+.PP
+Default constructor for \fBSerialDriver\fP\&. 
+.PP
+Definition at line 25 of file SerialDriver\&.cs\&.
+.PP
+.nf
+26         {
+27             // Explicitly set for clarity
+28             _serialPort = new SerialPort();
+29                 _serialPort\&.PortName = SerialPort\&.GetPortNames()[0];
+30                 _serialPort\&.RtsEnable = true;
+31                 _serialPort\&.DtrEnable = true;
+32                 _serialPort\&.BaudRate = 115200;
+33                 _serialPort\&.Parity = Parity\&.None;
+34                 _serialPort\&.DataBits = 8;
+35                 _serialPort\&.Handshake = Handshake\&.None;
+36                 _serialPort\&.StopBits = StopBits\&.One;
+37                 _serialPort\&.ReadTimeout = SerialPort\&.InfiniteTimeout;
+38                 _serialPort\&.WriteTimeout = SerialPort\&.InfiniteTimeout;
+39 
+40             // Explicitly set for clarity
+41         }
+.fi
+.SH "Member Function Documentation"
+.PP 
+.SS "void CubeController\&.SerialDriver\&.ClosePort ()"
+
+.PP
+Closes the serial port that has been opened\&. 
+.PP
+Definition at line 56 of file SerialDriver\&.cs\&.
+.PP
+.nf
+57         {
+58             _serialPort\&.Close();
+59         }
+.fi
+.SS "void CubeController\&.SerialDriver\&.ConfigurePort (intbaudRate, intwriteTimeout)"
+
+.PP
+Configures two serial settings on the port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbaudRate\fP The serial baud rate to be set\&.
+.br
+\fIwriteTimeout\fP The number of miliseconds before a time-out occurs when a write operation does not finish\&.
+.RE
+.PP
+
+.PP
+Definition at line 74 of file SerialDriver\&.cs\&.
+.PP
+.nf
+75         {
+76             _serialPort\&.BaudRate = baudRate;
+77             _serialPort\&.WriteTimeout = writeTimeout;
+78         }
+.fi
+.SS "byte [] CubeController\&.SerialDriver\&.ConvertCubeStateToByteArray (boolcubeState[][][])\fC [private]\fP"
+
+.PP
+Converts the triple boolean array into a buffer 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcubeState\fP The voxel state you wish to send to the cube\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A buffer to be sent over serial comm
+.RE
+.PP
+
+.PP
+Definition at line 94 of file SerialDriver\&.cs\&.
+.PP
+.nf
+95         {
+96             List<byte> cubeStateBuffer = new List<byte> ();
+97 
+98             for (int x = 0; x < DIMENSION; x++)
+99             {
+100                 for (int y = 0; y < DIMENSION; y++)
+101                 {
+102                     byte row = 0x00;
+103                     for (int z = 0; z < DIMENSION; z++)
+104                     {
+105                         if (cubeState[x][y][z])
+106                             row |= (byte) (1 << z);
+107                     }
+108 
+109                     cubeStateBuffer\&.Add (row);
+110                     // 0xFF is an escape code, so it must be sent twice if is actually 
+111                     // intended to turn 8 LEDs on
+112                     if (row == (byte)0xff)
+113                         cubeStateBuffer\&.Add (row);
+114                 }
+115             }
+116 
+117             return cubeStateBuffer\&.ToArray();
+118         }
+.fi
+.SS "void CubeController\&.SerialDriver\&.OpenPort ()"
+
+.PP
+Opens a serial port\&. 
+.PP
+Definition at line 64 of file SerialDriver\&.cs\&.
+.PP
+.nf
+65         {
+66             _serialPort\&.Open();
+67         }
+.fi
+.SS "void CubeController\&.SerialDriver\&.SendEscapeSequence ()"
+
+.PP
+Sends escape sequence to the cube to ready it for a new draw at (0,0,0) 
+.PP
+Definition at line 83 of file SerialDriver\&.cs\&.
+.PP
+.nf
+84         {
+85             byte[] buffer = new byte[] { 0xff, 0x00 };
+86             _serialPort\&.Write(buffer, 0, 2);
+87         }
+.fi
+.SS "void CubeController\&.SerialDriver\&.WriteCube (boolcubeState[][][])"
+
+.PP
+Writes a buffer to the ATMega via the configured serial port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcubeState\fP The voxel state you wish to send to the cube\&.
+.RE
+.PP
+
+.PP
+Definition at line 47 of file SerialDriver\&.cs\&.
+.PP
+.nf
+48         {
+49             byte[] buffer = ConvertCubeStateToByteArray (cubeState);
+50             _serialPort\&.Write(buffer, 0, buffer\&.Length);
+51         }
+.fi
+.SH "Member Data Documentation"
+.PP 
+.SS "SerialPort CubeController\&.SerialDriver\&._serialPort\fC [private]\fP"
+
+.PP
+Active serial port\&. 
+.PP
+Definition at line 20 of file SerialDriver\&.cs\&.
+.SS "const int CubeController\&.SerialDriver\&.DIMENSION = 8\fC [private]\fP"
+
+.PP
+\fBCube\fP dimension\&. 
+.PP
+Definition at line 15 of file SerialDriver\&.cs\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.

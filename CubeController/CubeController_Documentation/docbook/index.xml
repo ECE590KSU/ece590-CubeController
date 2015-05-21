@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>ECE590CubeController</title>
+    </info>
+    <chapter>
+        <title>Namespace Documentation</title>
+        <xi:include href="namespace_cube_controller.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_collections_1_1_generic.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_globalization.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_i_o.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_i_o_1_1_ports.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_linq.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_reflection.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_runtime_1_1_compiler_services.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_runtime_1_1_interop_services.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_text.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_threading.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="namespace_system_1_1_threading_1_1_tasks.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Class Documentation</title>
+        <xi:include href="class_cube_controller_1_1_cube.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="class_cube_controller_1_1_effect.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="class_cube_controller_1_1_font_handler.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="class_cube_controller_1_1_point.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="class_cube_controller_1_1_serial_driver.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="_8_n_e_t_framework_00_version_0Av4_85_8_assembly_attribute_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="3d_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_assembly_info_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_cube_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="draw_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="draw__3d_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="effect_8cpp.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_effect_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_font_handler_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_serial_driver_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_debug_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_release_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_debug_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_release_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_debug_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_release_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Directory Documentation</title>
+        <xi:include href="dir_d56896c5b1d3b9e979f92d5fc3f4641d.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_4419eec78c8b86028def52a872f295a3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_e40248023c512d4d7b2ac17bd464baa9.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_a44c26db532de6ea29c5b1e6b084a852.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_63330736016d994e792586ea35d15dc3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_1e6b3c46f8162c17f4ea913a07b6799a.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>

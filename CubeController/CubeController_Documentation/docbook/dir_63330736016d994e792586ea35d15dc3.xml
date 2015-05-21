@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="dir_63330736016d994e792586ea35d15dc3">
+    <title>Properties Directory Reference</title>
+        <simplesect>
+            <title> Files </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>file <link linkend="_assembly_info_8cs">AssemblyInfo.cs</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Directory location is C:/Users/Tyler/Documents/GitHub/ece590-CubeController/CubeController/CubeController/Properties/</para>
+    </simplesect>
+</section>

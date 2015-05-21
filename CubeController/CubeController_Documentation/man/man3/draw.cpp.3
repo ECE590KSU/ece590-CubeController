@@ -1,0 +1,982 @@
+.TH "draw.cpp" 3 "Thu May 7 2015" "Version 1.0" "ECE590CubeController" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+draw.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <math\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <windows\&.h>\fP
+.br
+\fC#include 'draw\&.hpp'\fP
+.br
+\fC#include 'draw_3d\&.hpp'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBtmpsetvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBclrvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBtmpclrvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "unsigned char \fBinrange\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "unsigned char \fBgetvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBaltervoxel\fP (int x, int y, int z, int state)"
+.br
+.ti -1c
+.RI "void \fBflpvoxel\fP (int x, int y, int z)"
+.br
+.ti -1c
+.RI "void \fBargorder\fP (int ix1, int ix2, int *ox1, int *ox2)"
+.br
+.ti -1c
+.RI "void \fBsetplane_z\fP (int z)"
+.br
+.ti -1c
+.RI "void \fBclrplane_z\fP (int z)"
+.br
+.ti -1c
+.RI "void \fBsetplane_x\fP (int x)"
+.br
+.ti -1c
+.RI "void \fBclrplane_x\fP (int x)"
+.br
+.ti -1c
+.RI "void \fBsetplane_y\fP (int y)"
+.br
+.ti -1c
+.RI "void \fBclrplane_y\fP (int y)"
+.br
+.ti -1c
+.RI "void \fBfill\fP (unsigned char pattern)"
+.br
+.ti -1c
+.RI "void \fBtmpfill\fP (unsigned char pattern)"
+.br
+.ti -1c
+.RI "void \fBbox_filled\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.ti -1c
+.RI "void \fBbox_walls\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.ti -1c
+.RI "void \fBbox_wireframe\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.ti -1c
+.RI "char \fBbyteline\fP (int start, int end)"
+.br
+.ti -1c
+.RI "char \fBflipbyte\fP (char byte)"
+.br
+.ti -1c
+.RI "void \fBline\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.ti -1c
+.RI "void \fBdelay_ms\fP (int x)"
+.br
+.ti -1c
+.RI "void \fBtmp2cube\fP (void)"
+.br
+.ti -1c
+.RI "void \fBshift\fP (char axis, int direction)"
+.br
+.ti -1c
+.RI "void \fBline_3d\fP (int x1, int y1, int z1, int x2, int y2, int z2)"
+.br
+.ti -1c
+.RI "void \fBline_3d_float\fP (vertex point1, vertex point2)"
+.br
+.ti -1c
+.RI "void \fBmirror_x\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmirror_y\fP (void)"
+.br
+.ti -1c
+.RI "void \fBmirror_z\fP (void)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void altervoxel (intx, inty, intz, intstate)"
+
+.PP
+Definition at line 64 of file draw\&.cpp\&.
+.PP
+.nf
+65 {
+66     if (state == 1)
+67     {
+68         setvoxel(x,y,z);
+69     } else
+70     {
+71         clrvoxel(x,y,z);
+72     }
+73 }
+.fi
+.SS "void argorder (intix1, intix2, int *ox1, int *ox2)"
+
+.PP
+Definition at line 84 of file draw\&.cpp\&.
+.PP
+.nf
+85 {
+86     if (ix1>ix2)
+87     {
+88         int tmp;
+89         tmp = ix1;
+90         ix1= ix2;
+91         ix2 = tmp;
+92     }
+93     *ox1 = ix1;
+94     *ox2 = ix2;
+95 }
+.fi
+.SS "void box_filled (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Definition at line 198 of file draw\&.cpp\&.
+.PP
+.nf
+199 {
+200     int iy;
+201     int iz;
+202 
+203     argorder(x1, x2, &x1, &x2);
+204     argorder(y1, y2, &y1, &y2);
+205     argorder(z1, z2, &z1, &z2);
+206 
+207     for (iz=z1;iz<=z2;iz++)
+208     {
+209         for (iy=y1;iy<=y2;iy++)
+210         {
+211             cube[iz][iy] |= byteline(x1,x2);
+212         }
+213     }
+214 
+215 }
+.fi
+.SS "void box_walls (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Definition at line 217 of file draw\&.cpp\&.
+.PP
+.nf
+218 {
+219     int iy;
+220     int iz;
+221     
+222     argorder(x1, x2, &x1, &x2);
+223     argorder(y1, y2, &y1, &y2);
+224     argorder(z1, z2, &z1, &z2);
+225 
+226     for (iz=z1;iz<=z2;iz++)
+227     {
+228         for (iy=y1;iy<=y2;iy++)
+229         {   
+230             if (iy == y1 || iy == y2 || iz == z1 || iz == z2)
+231             {
+232                 cube[iz][iy] = byteline(x1,x2);
+233             } else
+234             {
+235                 cube[iz][iy] |= ((0x01 << x1) | (0x01 << x2));
+236             }
+237         }
+238     }
+239 
+240 }
+.fi
+.SS "void box_wireframe (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Definition at line 243 of file draw\&.cpp\&.
+.PP
+.nf
+244 {
+245     int iy;
+246     int iz;
+247 
+248     argorder(x1, x2, &x1, &x2);
+249     argorder(y1, y2, &y1, &y2);
+250     argorder(z1, z2, &z1, &z2);
+251 
+252     // Lines along X axis
+253     cube[z1][y1] = byteline(x1,x2);
+254     cube[z1][y2] = byteline(x1,x2);
+255     cube[z2][y1] = byteline(x1,x2);
+256     cube[z2][y2] = byteline(x1,x2);
+257 
+258     // Lines along Y axis
+259     for (iy=y1;iy<=y2;iy++)
+260     {
+261         setvoxel(x1,iy,z1);
+262         setvoxel(x1,iy,z2);
+263         setvoxel(x2,iy,z1);
+264         setvoxel(x2,iy,z2);
+265     }
+266 
+267     // Lines along Z axis
+268     for (iz=z1;iz<=z2;iz++)
+269     {
+270         setvoxel(x1,y1,iz);
+271         setvoxel(x1,y2,iz);
+272         setvoxel(x2,y1,iz);
+273         setvoxel(x2,y2,iz);
+274     }
+275 
+276 }
+.fi
+.SS "char byteline (intstart, intend)"
+
+.PP
+Definition at line 280 of file draw\&.cpp\&.
+.PP
+.nf
+281 {
+282     return ((0xff<<start) & ~(0xff<<(end+1)));
+283 }
+.fi
+.SS "void clrplane_x (intx)"
+
+.PP
+Definition at line 134 of file draw\&.cpp\&.
+.PP
+.nf
+135 {
+136     int z;
+137     int y;
+138     if (x>=0 && x<8)
+139     {
+140         for (z=0;z<8;z++)
+141         {
+142             for (y=0;y<8;y++)
+143             {
+144                 cube[z][y] &= ~(1 << x);
+145             }
+146         }
+147     }
+148 }
+.fi
+.SS "void clrplane_y (inty)"
+
+.PP
+Definition at line 160 of file draw\&.cpp\&.
+.PP
+.nf
+161 {
+162     int z;
+163     if (y>=0 && y<8)
+164     {
+165         for (z=0;z<8;z++)
+166             cube[z][y] = 0x00; 
+167     }
+168 }
+.fi
+.SS "void clrplane_z (intz)"
+
+.PP
+Definition at line 108 of file draw\&.cpp\&.
+.PP
+.nf
+109 {
+110     int i;
+111     if (z>=0 && z<8)
+112     {
+113         for (i=0;i<8;i++)
+114             cube[z][i] = 0x00;
+115     }
+116 }
+.fi
+.SS "void clrvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 21 of file draw\&.cpp\&.
+.PP
+.nf
+22 {
+23     if (inrange(x,y,z))
+24         cube[z][y] &= ~(1 << x);
+25 }
+.fi
+.SS "void delay_ms (intx)"
+
+.PP
+Definition at line 349 of file draw\&.cpp\&.
+.PP
+.nf
+350 {
+351     // No implicit conversion for volatile char[][]\&. 
+352     memcpy((void*)rs232_cube, (void*)cube, 64);
+353     
+354     // Windows has no usleep() call, must use <windows\&.h>::Sleep(DWORD slpMilliseconds)
+355     Sleep(x*40);
+356 }
+.fi
+.SS "void fill (unsigned charpattern)"
+
+.PP
+Definition at line 171 of file draw\&.cpp\&.
+.PP
+.nf
+172 {
+173     int z;
+174     int y;
+175     for (z=0;z<8;z++)
+176     {
+177         for (y=0;y<8;y++)
+178         {
+179             cube[z][y] = pattern;
+180         }
+181     }
+182 }
+.fi
+.SS "char flipbyte (charbyte)"
+
+.PP
+Definition at line 285 of file draw\&.cpp\&.
+.PP
+.nf
+286 {
+287     char flop = 0x00;
+288 
+289     flop = (flop & 0xFE) | (0x01 & (byte >> 7));
+290     flop = (flop & 0xFD) | (0x02 & (byte >> 5));
+291     flop = (flop & 0xFB) | (0x04 & (byte >> 3));
+292     flop = (flop & 0xF7) | (0x08 & (byte >> 1));
+293     flop = (flop & 0xEF) | (0x10 & (byte << 1));
+294     flop = (flop & 0xDF) | (0x20 & (byte << 3));
+295     flop = (flop & 0xBF) | (0x40 & (byte << 5));
+296     flop = (flop & 0x7F) | (0x80 & (byte << 7));
+297     return flop;
+298 }
+.fi
+.SS "void flpvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 77 of file draw\&.cpp\&.
+.PP
+.nf
+78 {
+79     if (inrange(x, y, z))
+80         cube[z][y] ^= (1 << x);
+81 }
+.fi
+.SS "unsigned char getvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 47 of file draw\&.cpp\&.
+.PP
+.nf
+48 {
+49     if (inrange(x,y,z))
+50     {
+51         if (cube[z][y] & (1 << x))
+52         {
+53             return 0x01;
+54         } else
+55         {
+56             return 0x00;
+57         }
+58     } else
+59     {
+60         return 0x00;
+61     }
+62 }
+.fi
+.SS "unsigned char inrange (intx, inty, intz)"
+
+.PP
+Definition at line 34 of file draw\&.cpp\&.
+.PP
+.nf
+35 {
+36     if (x >= 0 && x < 8 && y >= 0 && y < 8 && z >= 0 && z < 8)
+37     {
+38         return 0x01;
+39     } else
+40     {
+41         // One of the coordinates was outside the cube\&.
+42         return 0x00;
+43     }
+44 }
+.fi
+.SS "void line (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Definition at line 300 of file draw\&.cpp\&.
+.PP
+.nf
+301 {
+302     float xy;   // how many voxels do we move on the y axis for each step on the x axis
+303     float xz;   // how many voxels do we move on the y axis for each step on the x axis 
+304     unsigned char x,y,z;
+305     unsigned char lasty,lastz;
+306 
+307     // We always want to draw the line from x=0 to x=7\&.
+308     // If x1 is bigget than x2, we need to flip all the values\&.
+309     if (x1>x2)
+310     {
+311         int tmp;
+312         tmp = x2; x2 = x1; x1 = tmp;
+313         tmp = y2; y2 = y1; y1 = tmp;
+314         tmp = z2; z2 = z1; z1 = tmp;
+315     }
+316 
+317     
+318     if (y1>y2)
+319     {
+320         xy = (float)(y1-y2)/(float)(x2-x1);
+321         lasty = y2;
+322     } else
+323     {
+324         xy = (float)(y2-y1)/(float)(x2-x1);
+325         lasty = y1;
+326     }
+327 
+328     if (z1>z2)
+329     {
+330         xz = (float)(z1-z2)/(float)(x2-x1);
+331         lastz = z2;
+332     } else
+333     {
+334         xz = (float)(z2-z1)/(float)(x2-x1);
+335         lastz = z1;
+336     }
+337 
+338 
+339 
+340     for (x = x1; x<=x2;x++)
+341     {
+342         y = (unsigned char)(xy*(x-x1))+y1;
+343         z = (unsigned char)(xz*(x - x1)) + z1;
+344         setvoxel(x,y,z);
+345     }
+346     
+347 }
+.fi
+.SS "void line_3d (intx1, inty1, intz1, intx2, inty2, intz2)"
+
+.PP
+Definition at line 446 of file draw\&.cpp\&.
+.PP
+.nf
+447 {
+448     int i,                      // Counter variable\&.
+449         dx, dy, dz,             // Changes in components x, y, and z\&. 
+450         l, m, n,                // Absolute values of change in components\&. 
+451         x_inc, y_inc, z_inc,
+452         err_1, err_2, 
+453         dx2, dy2, dz2;
+454 
+455     int pixel[3];
+456 
+457     pixel[0] = x1;
+458     pixel[1] = y1;
+459     pixel[2] = z1;
+460 
+461     dx = x2 - x1;
+462     dy = y2 - y1;
+463     dz = z2 - z1;
+464 
+465     x_inc = (dx < 0) ? -1 : 1;
+466     l = abs(dx);
+467     
+468     y_inc = (dy < 0) ? -1 : 1;
+469     m = abs(dy);
+470     
+471     z_inc = (dz < 0) ? -1 : 1;
+472     n = abs(dz);
+473     
+474     dx2 = l << 1;
+475     dy2 = m << 1;
+476     dz2 = n << 1;
+477     
+478     if ((l >= m) && (l >= n)) {
+479         err_1 = dy2 - l;
+480         err_2 = dz2 - l;
+481         
+482         for (i = 0; i < l; i++) {
+483             //PUT_PIXEL(pixel);
+484             setvoxel(pixel[0],pixel[1],pixel[2]);
+485             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+486             if (err_1 > 0) {
+487                 pixel[1] += y_inc;
+488                 err_1 -= dx2;
+489             }
+490 
+491             if (err_2 > 0) {
+492                 pixel[2] += z_inc;
+493                 err_2 -= dx2;
+494             }
+495 
+496             err_1 += dy2;
+497             err_2 += dz2;
+498             pixel[0] += x_inc;
+499         }
+500 
+501     } 
+502     else if ((m >= l) && (m >= n)) {
+503         err_1 = dx2 - m;
+504         err_2 = dz2 - m;
+505         
+506         for (i = 0; i < m; i++) {
+507             //PUT_PIXEL(pixel);
+508             setvoxel(pixel[0],pixel[1],pixel[2]);
+509             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+510             if (err_1 > 0) {
+511                 pixel[0] += x_inc;
+512                 err_1 -= dy2;
+513             }
+514 
+515             if (err_2 > 0) {
+516                 pixel[2] += z_inc;
+517                 err_2 -= dy2;
+518             }
+519 
+520             err_1 += dx2;
+521             err_2 += dz2;
+522             pixel[1] += y_inc;
+523         }
+524     } 
+525     else {
+526         err_1 = dy2 - n;
+527         err_2 = dx2 - n;
+528         
+529         for (i = 0; i < n; i++) {
+530             setvoxel(pixel[0],pixel[1],pixel[2]);
+531             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+532             //PUT_PIXEL(pixel);
+533             if (err_1 > 0) {
+534                 pixel[1] += y_inc;
+535                 err_1 -= dz2;
+536             }
+537 
+538             if (err_2 > 0) {
+539                 pixel[0] += x_inc;
+540                 err_2 -= dz2;
+541             }
+542 
+543             err_1 += dy2;
+544             err_2 += dx2;
+545             pixel[2] += z_inc;
+546             }
+547     }
+548     
+549     setvoxel(pixel[0],pixel[1],pixel[2]);
+550     //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+551     //PUT_PIXEL(pixel);
+552 }
+.fi
+.SS "void line_3d_float (vertexpoint1, vertexpoint2)"
+
+.PP
+Definition at line 555 of file draw\&.cpp\&.
+.PP
+.nf
+556 {
+557     float x1, y1, z1, x2, y2, z2;
+558 
+559     x1 = point1\&.x;
+560     y1 = point1\&.y;
+561     z1 = point1\&.z;
+562     x2 = point2\&.x;
+563     y2 = point2\&.y;
+564     z2 = point2\&.z;
+565 
+566     float i;
+567     float dx, dy, dz, 
+568         l, m, n, 
+569         x_inc, y_inc, z_inc,
+570         err_1, err_2, 
+571         dx2, dy2, dz2;
+572 
+573     float pixel[3];
+574     pixel[0] = x1;
+575     pixel[1] = y1;
+576     pixel[2] = z1;
+577 
+578     dx = x2 - x1;
+579     dy = y2 - y1;
+580     dz = z2 - z1;
+581 
+582     x_inc = (dx < 0) ? (-1\&.0f) : (1\&.0f);
+583     l = fabs(dx);
+584 
+585     y_inc = (dy < 0) ? (-1\&.0f) : (1\&.0f);
+586     m = fabs(dy);
+587 
+588     z_inc = (dz < 0) ? (-1\&.0f) : (1\&.0f);
+589     n = fabs(dz);
+590 
+591     dx2 = l*l;
+592     dy2 = m*m;
+593     dz2 = n*n;
+594 
+595     if ((l >= m) && (l >= n)) {
+596         err_1 = dy2 - l;
+597         err_2 = dz2 - l;
+598         
+599         for (i = 0; i < l; i++) {
+600             //PUT_PIXEL(pixel);
+601             setvoxel((int)pixel[0],(int)pixel[1],(int)pixel[2]);
+602             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+603             if (err_1 > 0) {
+604                 pixel[1] += y_inc;
+605                 err_1 -= dx2;
+606             }
+607 
+608             if (err_2 > 0) {
+609                 pixel[2] += z_inc;
+610                 err_2 -= dx2;
+611             }
+612 
+613             err_1 += dy2;
+614             err_2 += dz2;
+615             pixel[0] += x_inc;
+616         }
+617     } 
+618     else if ((m >= l) && (m >= n)) {
+619         err_1 = dx2 - m;
+620         err_2 = dz2 - m;
+621     
+622         for (i = 0; i < m; i++) {
+623             //PUT_PIXEL(pixel);
+624             //setvoxel(pixel[0]/scale,pixel[1]/scale,pixel[2]/scale);
+625             setvoxel((int)pixel[0],(int)pixel[1],(int)pixel[2]);
+626             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+627             if (err_1 > 0) {
+628                 pixel[0] += x_inc;
+629                 err_1 -= dy2;
+630             }
+631 
+632             if (err_2 > 0) {
+633                 pixel[2] += z_inc;
+634                 err_2 -= dy2;
+635             }
+636 
+637             err_1 += dx2;
+638             err_2 += dz2;
+639             pixel[1] += y_inc;
+640         }
+641     } 
+642     else {
+643         err_1 = dy2 - n;
+644         err_2 = dx2 - n;
+645         
+646         for (i = 0; i < n; i++) {
+647             //setvoxel(pixel[0]/scale,pixel[1]/scale,pixel[2]/scale);
+648             setvoxel((int)pixel[0],(int)pixel[1],(int)pixel[2]);
+649             //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+650             //PUT_PIXEL(pixel);
+651             if (err_1 > 0) {
+652                 pixel[1] += y_inc;
+653                 err_1 -= dz2;
+654             }
+655 
+656             if (err_2 > 0) {
+657                 pixel[0] += x_inc;
+658                 err_2 -= dz2;
+659             }
+660 
+661             err_1 += dy2;
+662             err_2 += dx2;
+663             pixel[2] += z_inc;
+664         }
+665     }
+666     //setvoxel(pixel[0]/scale,pixel[1]/scale,pixel[2]/scale);
+667     setvoxel((int)pixel[0],(int)pixel[1],(int)pixel[2]);
+668     //printf("Setting %i %i %i \n", pixel[0],pixel[1],pixel[2]);
+669     //PUT_PIXEL(pixel);
+670 }
+.fi
+.SS "void mirror_x (void)"
+
+.PP
+Definition at line 673 of file draw\&.cpp\&.
+.PP
+.nf
+674 {
+675     unsigned char buffer[8][8];
+676     unsigned char y,z;
+677 
+678     memcpy ((void*)buffer, (void*)cube, 64); // copy the current cube into a buffer\&.
+679 
+680     fill(0x00);
+681 
+682     for (z=0; z<8; z++)
+683     {
+684         for (y=0; y<8; y++)
+685         {
+686             cube[z][y] = flipbyte(buffer[z][y]);
+687         }
+688     }
+689 }
+.fi
+.SS "void mirror_y (void)"
+
+.PP
+Definition at line 691 of file draw\&.cpp\&.
+.PP
+.nf
+692 {
+693     unsigned char buffer[8][8];
+694     unsigned char x,y,z;
+695 
+696     memcpy ((void*)buffer, (void*)cube, 64); // copy the current cube into a buffer\&.
+697 
+698     fill(0x00);
+699     for (z=0; z<8; z++)
+700     {
+701         for (y=0; y<8; y++)
+702         {
+703             for (x=0; x<8; x++)
+704             {
+705                 if (buffer[z][y] & (0x01 << x))
+706                     setvoxel(x,7-y,z);
+707             }
+708         }
+709     }
+710 
+711 }
+.fi
+.SS "void mirror_z (void)"
+
+.PP
+Definition at line 713 of file draw\&.cpp\&.
+.PP
+.nf
+714 {
+715     unsigned char buffer[8][8];
+716     unsigned char z, y;
+717 
+718     memcpy ((void*)buffer, (void*)cube, 64); // copy the current cube into a buffer\&.
+719 
+720     for (y=0; y<8; y++)
+721     {
+722         for (z=0; z<8; z++)
+723         {
+724             cube[7-z][y] = buffer[z][y];
+725         }
+726     }
+727 }
+.fi
+.SS "void setplane_x (intx)"
+
+.PP
+Definition at line 118 of file draw\&.cpp\&.
+.PP
+.nf
+119 {
+120     int z;
+121     int y;
+122     if (x>=0 && x<8)
+123     {
+124         for (z=0;z<8;z++)
+125         {
+126             for (y=0;y<8;y++)
+127             {
+128                 cube[z][y] |= (1 << x);
+129             }
+130         }
+131     }
+132 }
+.fi
+.SS "void setplane_y (inty)"
+
+.PP
+Definition at line 150 of file draw\&.cpp\&.
+.PP
+.nf
+151 {
+152     int z;
+153     if (y>=0 && y<8)
+154     {
+155         for (z=0;z<8;z++)
+156             cube[z][y] = 0xff;
+157     } 
+158 }
+.fi
+.SS "void setplane_z (intz)"
+
+.PP
+Definition at line 97 of file draw\&.cpp\&.
+.PP
+.nf
+98 {
+99     int i;
+100     if (z>=0 && z<8)
+101     {
+102         for (i=0;i<8;i++)
+103             cube[z][i] = 0xff;
+104     }
+105 }
+.fi
+.SS "void setvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 8 of file draw\&.cpp\&.
+.PP
+.nf
+9 {
+10     if (inrange(x,y,z))
+11         cube[z][y] |= (1 << x);
+12     
+13 }
+.fi
+.SS "void shift (charaxis, intdirection)"
+
+.PP
+Definition at line 371 of file draw\&.cpp\&.
+.PP
+.nf
+372 {
+373     int i, x ,y;
+374     int ii, iii;
+375     int state;
+376 
+377     for (i = 0; i < 8; i++)
+378     {
+379         if (direction == -1)
+380         {
+381             ii = i;
+382         } else
+383         {
+384             ii = (7-i);
+385         }   
+386     
+387     
+388         for (x = 0; x < 8; x++)
+389         {
+390             for (y = 0; y < 8; y++)
+391             {
+392                 if (direction == -1)
+393                 {
+394                     iii = ii+1;
+395                 } else
+396                 {
+397                     iii = ii-1;
+398                 }
+399                 
+400                 if (axis == AXIS_Z)
+401                 {
+402                     state = getvoxel(x,y,iii);
+403                     altervoxel(x,y,ii,state);
+404                 }
+405                 
+406                 if (axis == AXIS_Y)
+407                 {
+408                     state = getvoxel(x,iii,y);
+409                     altervoxel(x,ii,y,state);
+410                 }
+411                 
+412                 if (axis == AXIS_X)
+413                 {
+414                     state = getvoxel(iii,y,x);
+415                     altervoxel(ii,x,y,state);
+416                 }
+417             }
+418         }
+419     }
+420     
+421     if (direction == -1)
+422     {
+423         i = 7;
+424     } else
+425     {
+426         i = 0;
+427     }   
+428     
+429     for (x = 0; x < 8; x++)
+430     {
+431         for (y = 0; y < 8; y++)
+432         {
+433             if (axis == AXIS_Z)
+434                 clrvoxel(x,y,i);
+435                 
+436             if (axis == AXIS_Y)
+437                 clrvoxel(x,i,y);
+438             
+439             if (axis == AXIS_X)
+440                 clrvoxel(i,y,x);
+441         }
+442     }
+443 }
+.fi
+.SS "void tmp2cube (void)"
+
+.PP
+Definition at line 359 of file draw\&.cpp\&.
+.PP
+.nf
+360 { 
+361     int y, z;
+362     for (z=0;z<8;z++)
+363     {
+364         for (y=0;y<8;y++)
+365         {
+366             cube[z][y] = fb[z][y];
+367         }
+368     }
+369 }
+.fi
+.SS "void tmpclrvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 27 of file draw\&.cpp\&.
+.PP
+.nf
+28 {
+29     if (inrange(x,y,z))
+30         fb[z][y] &= ~(1 << x);
+31 }
+.fi
+.SS "void tmpfill (unsigned charpattern)"
+
+.PP
+Definition at line 184 of file draw\&.cpp\&.
+.PP
+.nf
+185 {
+186     int z;
+187     int y;
+188     for (z=0;z<8;z++)
+189     {
+190         for (y=0;y<8;y++)
+191         {
+192             fb[z][y] = pattern;
+193         }
+194     }
+195 }
+.fi
+.SS "void tmpsetvoxel (intx, inty, intz)"
+
+.PP
+Definition at line 15 of file draw\&.cpp\&.
+.PP
+.nf
+16 {
+17     if (inrange(x,y,z))
+18         fb[z][y] |= (1 << x);
+19 }
+.fi
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ECE590CubeController from the source code\&.
