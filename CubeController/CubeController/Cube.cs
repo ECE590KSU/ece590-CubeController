@@ -86,19 +86,8 @@ namespace CubeController
 
 			_fontHandler = new FontHandler ();
 			_rgen = new Random ();
-            _writeCubeCallback = WriteCube;
 
-            _serialDriver = new SerialDriver();
-            
-            if (_serialDriver.SerialDevicePresent)
-            {
-                _serialDriver.OpenPort();
-                _serialDriverTimer = new Timer(_writeCubeCallback, null, 0, 10);
-            }
-            else
-            {
-                Console.WriteLine("NO SERIAL DEVICE DETECTED.");
-            }
+            RefreshSerialDriver();
 		}
 
         /// <summary>
@@ -217,6 +206,36 @@ namespace CubeController
 				}
 			}
 		}
+
+        /// <summary>
+        /// If the serial cable has been disconnected or moved, this allows
+        /// the user to refresh the SerialDriver class. Calls to it will close any
+        /// current serial driver and open a new connection.
+        /// </summary>
+        public void RefreshSerialDriver()
+        {
+            // If there is already a timer protocol established, then
+            // reset the timer. We don't want writes to the cube to happen while
+            // resetting the serial driver class.
+            if (_serialDriverTimer != null)
+            {
+                _serialDriverTimer.Dispose();
+            }
+
+            _writeCubeCallback = WriteCube;
+
+            _serialDriver = new SerialDriver();
+
+            if (_serialDriver.SerialDevicePresent)
+            {
+                _serialDriver.OpenPort();
+                _serialDriverTimer = new Timer(_writeCubeCallback, null, 0, 10);
+            }
+            else
+            {
+                Console.WriteLine("NO SERIAL DEVICE DETECTED.");
+            }
+        }
 
 #endregion // UTILITY
 
