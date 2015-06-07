@@ -38,11 +38,5 @@
     <Compile Include="SerialDriver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="cpp Code\3d.cpp" />
-    <None Include="cpp Code\draw.cpp" />
-    <None Include="cpp Code\draw_3d.cpp" />
-    <None Include="cpp Code\effect.cpp" />
-  </ItemGroup>
   <ItemGroup />
 </Project>
